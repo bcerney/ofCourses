@@ -10,11 +10,13 @@
 </head>
 <body>
 <div id="createCourse">
-<c:url var="createCourseURL" value="createCourse">
-					</c:url> <a href="Create Course"> Back to List </a>
+<c:url var="createCourseURL" value="/CreateCourse">
+					</c:url> <a href="#">Create Course</a>
 </div>
 
 <div id="manageCourse">
+<c:url var="manageCourseURL" value="/ManageCourse">
+					</c:url> <a href="#">Manage Course</a>
 
 </div>
 </body>
