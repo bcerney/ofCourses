@@ -19,7 +19,8 @@
 						<li><a href="#">Teachers</a></li>
 						<li><a href="#">Students</a></li>
 						<li><a href="#">Log In</a></li>
-						<li><a href="#">Sign Up</a></li>
+						<c:url value="/login/register" var="register"/>
+						<li><a href="${register}">Sign Up</a></li>
 					</ul>
 				</div> <!-- .navbar-collpase -->
 			
