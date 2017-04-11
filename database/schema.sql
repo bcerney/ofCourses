@@ -30,10 +30,10 @@ description text NOT NULL,
 fee decimal (7,2) NOT NULL,
 startDate date NOT NULL,
 endDate date NOT NULL,
-userId integer NOT NULL,	
+teacherId integer NOT NULL,	
 subject varchar (64) NOT NULL,
 CONSTRAINT pk_courses_courseId PRIMARY KEY (courseId),
-CONSTRAINT fk_courses_userId FOREIGN KEY (userId) REFERENCES users(userId)
+CONSTRAINT fk_courses_teacherId FOREIGN KEY (teacherId) REFERENCES users(userId)
 );
 
 CREATE SEQUENCE seq_moduleId;

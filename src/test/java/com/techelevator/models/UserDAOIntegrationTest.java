@@ -32,6 +32,11 @@ public class UserDAOIntegrationTest extends DAOIntegrationTest{
 	}
 	
 	private void assert_users_are_equal(User createdUser, User returnedUser) {
+		Assert.assertEquals(createdUser.getUserId(), returnedUser.getUserId());
 		Assert.assertEquals(createdUser.getFirstName(), returnedUser.getFirstName());
+		Assert.assertEquals(createdUser.getLastName(), returnedUser.getLastName());
+		Assert.assertEquals(createdUser.getEmail(), returnedUser.getEmail());
+		Assert.assertEquals(createdUser.getPassword(), returnedUser.getPassword());
+		Assert.assertEquals(createdUser.isTeacher(), returnedUser.isTeacher());
 	}
 }
