@@ -22,7 +22,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	public User createNewUser(User user) {
 		long id = getNextUserId();
 		String sqlCreateUser = "INSERT INTO users (userId, firstName, lastName, email, password, isTeacher) VALUES (?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlCreateUser, id, user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.isTeacher());
+		int rowsAffected = jdbcTemplate.update(sqlCreateUser, id, user.getFirstName(), user.getLastName(), user.getEmail().toLowerCase(), user.getPassword(), user.isTeacher());
 		
 		if(rowsAffected == 1) {
 			user.setUserId(id);
@@ -42,6 +42,19 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 		}
 		return user;
 	}
+	
+	@Override
+	public User getUserOnLogin(String email, String password) {
+		User verifiedUser = null;
+		String sqlGetUserOnLogin = "SELECT * FROM users WHERE email = ? AND password = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetUserOnLogin, email.toLowerCase(), password);
+		
+		if (results.next()) {
+			return mapRowToUser(results);
+		} else {
+			return null;
+		}
+	}	
 
 	private User mapRowToUser(SqlRowSet results) {
 		User aUser = new User();
@@ -57,5 +70,5 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	private long getNextUserId() {
 		return super.getNextId("seq_userId");
 	}
-	
+
 }

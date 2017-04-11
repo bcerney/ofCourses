@@ -12,10 +12,12 @@ import com.techelevator.jdbc.JDBCUserDAO;
 public class UserDAOIntegrationTest extends DAOIntegrationTest{
 
 	private static UserDAO dao;
+	private static User newUser;
 	
 	@Before
 	public void setup() {
 		dao = new JDBCUserDAO(getDataSource());
+		
 	}
 	
 	@Test
@@ -29,6 +31,11 @@ public class UserDAOIntegrationTest extends DAOIntegrationTest{
 		User savedUser = dao.createNewUser(newUser);
 		
 		assert_users_are_equal(savedUser, dao.getUserById(savedUser.getUserId()));
+	}
+	
+	@Test
+	public void confirm_user_is_returned_on_login(){
+		//TODO: create new user 
 	}
 	
 	private void assert_users_are_equal(User createdUser, User returnedUser) {
