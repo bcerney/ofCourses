@@ -62,6 +62,14 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 	
 	private void assert_courses_are_equal(Course createdCourse, Course returnedCourse) {
 		Assert.assertEquals(createdCourse.getCourseId(), returnedCourse.getCourseId());
+		Assert.assertEquals(createdCourse.getName(), returnedCourse.getCourseId());
+		Assert.assertEquals(createdCourse.getCapactiy(), returnedCourse.getCapactiy());
+		Assert.assertEquals(createdCourse.getDescription(), returnedCourse.getDescription());
+		Assert.assertEquals(createdCourse.getFee(), returnedCourse.getFee());
+		Assert.assertEquals(createdCourse.getStartDate(), returnedCourse.getStartDate());
+		Assert.assertEquals(createdCourse.getEndDate(), returnedCourse.getEndDate());
+		Assert.assertEquals(createdCourse.getTeacherId(), returnedCourse.getTeacherId());
+		Assert.assertEquals(createdCourse.getSubject(), returnedCourse.getSubject());
 	}
 	
 	
