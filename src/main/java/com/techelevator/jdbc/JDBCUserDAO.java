@@ -45,7 +45,6 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	
 	@Override
 	public User getUserOnLogin(String email, String password) {
-		User verifiedUser = null;
 		String sqlGetUserOnLogin = "SELECT * FROM users WHERE email = ? AND password = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetUserOnLogin, email.toLowerCase(), password);
 		

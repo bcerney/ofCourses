@@ -14,7 +14,7 @@ isTeacher boolean NOT NULL,
 firstName varchar (64) NOT NULL,
 lastName varchar (64) NOT NULL,
 email varchar (128) NOT NULL,
-password varchar (64) NOT NULL,	
+password varchar (128) NOT NULL,	
 CONSTRAINT pk_users_userId PRIMARY KEY (userId)
 );
 
