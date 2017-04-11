@@ -17,7 +17,8 @@
 				
 				<div class="collapse navbar-collapse" id="te-navbar-collapse">	
 					<ul class="nav navbar-nav">
-						<li><a href="#">Teachers</a></li>
+						<c:url value="/user/teacherDashboard" var="teachers"/>
+						<li><a href="${teachers}">Teachers</a></li>
 						<c:url value="/user/studentDashboard" var="students"/>
 						<li><a href="${students}">Students</a></li>
 						<c:url value="/login/login" var="login"/>
