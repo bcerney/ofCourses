@@ -5,17 +5,17 @@
 BEGIN;
 
 -- CREATE statements go here
-CREATE SEQUENCE seq_users;
+CREATE SEQUENCE seq_userId;
 
 CREATE TABLE users
 (
-userId integer NOT NULL,
+userId integer DEFAULT NEXTVAL('seq_userId'),
 isTeacher boolean NOT NULL,
 firstName varchar (64) NOT NULL,
 lastName varchar (64) NOT NULL,
 email varchar (128) NOT NULL,
 password varchar (64) NOT NULL,	
-CONSTRAINT pk_users_userId PRIMARY KEY (userId),
+CONSTRAINT pk_users_userId PRIMARY KEY (userId)
 );
 
 
@@ -23,7 +23,7 @@ CREATE SEQUENCE seq_courseId;
 
 CREATE TABLE courses
 (
-courseId integer NOT NULL,
+courseId integer DEFAULT NEXTVAL('seq_courseId'),
 name varchar (255) NOT NULL,
 capacity integer NOT NULL,
 description text NOT NULL,
@@ -33,14 +33,14 @@ endDate date NOT NULL,
 teacherId integer NOT NULL,	
 subject varchar (64) NOT NULL,
 CONSTRAINT pk_courses_courseId PRIMARY KEY (courseId),
-CONSTRAINT fk_courses_teacherId FOREIGN KEY (teacherId) REFERENCES teachers(teacherId)
+CONSTRAINT fk_courses_teacherId FOREIGN KEY (teacherId) REFERENCES users(userId)
 );
 
-CREATE SEQUENCE seq_modules;
+CREATE SEQUENCE seq_moduleId;
 
 CREATE TABLE modules
 (
-moduleId integer NOT NULL,
+moduleId integer DEFAULT NEXTVAL('seq_moduleId'),
 name varchar (255) NOT NULL,
 description text NOT NULL,
 courseId integer NOT NULL,	
@@ -48,11 +48,11 @@ CONSTRAINT pk_modules_moduleId PRIMARY KEY (moduleId),
 CONSTRAINT fk_modules_courseId FOREIGN KEY (courseId) REFERENCES courses(courseId)
 );
 
-CREATE SEQUENCE seq_lessons;
+CREATE SEQUENCE seq_lessonId;
 
 CREATE TABLE lessons
 (
-lessonId integer NOT NULL,
+lessonId integer DEFAULT NEXTVAL('seq_lessonId'),
 name varchar (255) NOT NULL,
 description text NOT NULL,	
 moduleId integer NOT NULL,
@@ -60,11 +60,11 @@ CONSTRAINT pk_lessons_lessonId PRIMARY KEY (lessonId),
 CONSTRAINT fk_lessons_moduleId FOREIGN KEY (moduleId) REFERENCES modules(moduleId)
 );
 
-CREATE SEQUENCE seq_assignments;
+CREATE SEQUENCE seq_assignmentId;
 
 CREATE TABLE assignments
 (
-assignmentId integer NOT NULL,
+assignmentId integer DEFAULT NEXTVAL('seq_assignmentId'),
 name varchar (255) NOT NULL,
 description text NOT NULL,	
 assignDate date NOT NULL,
@@ -102,5 +102,7 @@ score integer NOT NULL,
 CONSTRAINT pk_grades_userId_assignmentId PRIMARY KEY (userId, assignmentId)	
 );
 
+ALTER TABLE users ALTER COLUMN isTeacher
+SET DEFAULT FALSE;
 
 COMMIT;
