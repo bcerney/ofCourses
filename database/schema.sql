@@ -5,29 +5,19 @@
 BEGIN;
 
 -- CREATE statements go here
-CREATE SEQUENCE seq_students;
+CREATE SEQUENCE seq_users;
 
-CREATE TABLE students
+CREATE TABLE users
 (
-studentId integer NOT NULL,
+userId integer NOT NULL,
+isTeacher boolean NOT NULL,
 firstName varchar (64) NOT NULL,
 lastName varchar (64) NOT NULL,
 email varchar (128) NOT NULL,
 password varchar (64) NOT NULL,	
-CONSTRAINT pk_students_studentId PRIMARY KEY (studentId),
+CONSTRAINT pk_users_userId PRIMARY KEY (userId),
 );
 
-CREATE SEQUENCE seq_teachers;
-
-CREATE TABLE teachers
-(
-teacherId integer NOT NULL,
-firstName varchar (64) NOT NULL,
-lastName varchar (64) NOT NULL,
-email varchar (128) NOT NULL,
-password varchar (64) NOT NULL,	
-CONSTRAINT pk_teachers_teacherId PRIMARY KEY (teacherId),
-);
 
 CREATE SEQUENCE seq_courseId;
 
@@ -41,6 +31,7 @@ fee decimal (7,2) NOT NULL,
 startDate date NOT NULL,
 endDate date NOT NULL,
 teacherId integer NOT NULL,	
+subject varchar (64) NOT NULL,
 CONSTRAINT pk_courses_courseId PRIMARY KEY (courseId),
 CONSTRAINT fk_courses_teacherId FOREIGN KEY (teacherId) REFERENCES teachers(teacherId)
 );
@@ -73,7 +64,7 @@ CREATE SEQUENCE seq_assignments;
 
 CREATE TABLE assignments
 (
-assinmentId integer NOT NULL,
+assignmentId integer NOT NULL,
 name varchar (255) NOT NULL,
 description text NOT NULL,	
 assignDate date NOT NULL,
@@ -98,17 +89,17 @@ CONSTRAINT fk_resources_lessonId FOREIGN KEY (lessonId) REFERENCES lessons(lesso
 
 CREATE TABLE student_course
 (
-studentId integer NOT NULL,
+userId integer NOT NULL,
 courseId integer NOT NULL,
-CONSTRAINT pk_student_course_studentId_courseId PRIMARY KEY (studentId, courseId)	
+CONSTRAINT pk_student_course_userId_courseId PRIMARY KEY (userId, courseId)	
 );
 
 CREATE TABLE scores
 (
-studentId integer NOT NULL,
+userId integer NOT NULL,
 assignmentId integer NOT NULL,
 score integer NOT NULL,
-CONSTRAINT pk_grades_studentId_assignmentId PRIMARY KEY (studentId, assignmentId)	
+CONSTRAINT pk_grades_userId_assignmentId PRIMARY KEY (userId, assignmentId)	
 );
 
 
