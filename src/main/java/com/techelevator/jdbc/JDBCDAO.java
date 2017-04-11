@@ -12,7 +12,7 @@ public class JDBCDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	protected int getNextId(String sequence) {
+	protected long getNextId(String sequence) {
 		String sqlNextId = "SELECT nextval('" + sequence + "')";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlNextId);
 		result.next();
