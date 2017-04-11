@@ -1,7 +1,7 @@
 
 
-/* @media (min-width: 768px) */
-.sidebar {
+
+.sidebar-div {
 	position: fixed;
 	top: 50px;
 	display: block;
