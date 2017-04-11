@@ -8,7 +8,7 @@
 <title>Student Dashboard</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, userscalable=no">
-<%-- <c:url value="../../css/student.css" var="cssHref" /> --%>
+	<c:url value="/css/student.css" var="cssHref" /> 
 <link rel="stylesheet"
 	href="<c:url value="/src/main/webapp/css/student.css"/>">
 <!-- <link rel="stylesheet" type="text/css" href="/../css/student.css"> -->
