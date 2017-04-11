@@ -1,5 +1,8 @@
 package com.techelevator.jdbc;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -8,9 +11,12 @@ import com.techelevator.daos.CourseDAO;
 import com.techelevator.models.Course;
 
 @Component
-public class JDBCCourseDAO implements CourseDAO {
+public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	
-	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	public JDBCCourseDAO(DataSource dataSource) {
+		super(dataSource);
+	}
 
 	@Override
 	public void createNewCourse(Course course) {
@@ -43,4 +49,7 @@ public class JDBCCourseDAO implements CourseDAO {
 		return aCourse;
 	}
 	
+	private int getNextUserId() {
+		return super.getNextId("seq_courseId");
+	}
 }

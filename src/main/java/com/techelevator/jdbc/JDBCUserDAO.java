@@ -11,13 +11,11 @@ import com.techelevator.daos.UserDAO;
 import com.techelevator.models.User;
 
 @Component
-public class JDBCUserDAO implements UserDAO {
-	
-	private JdbcTemplate jdbcTemplate;
+public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 
 	@Autowired
 	public JDBCUserDAO(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		super(dataSource);
 	}
 	
 	@Override
@@ -46,6 +44,10 @@ public class JDBCUserDAO implements UserDAO {
 		aUser.setPassword(results.getString("password"));
 		aUser.setTeacher(results.getBoolean("isTeacher"));
 		return aUser;
+	}
+	
+	private int getNextUserId() {
+		return super.getNextId("seq_userId");
 	}
 	
 }
