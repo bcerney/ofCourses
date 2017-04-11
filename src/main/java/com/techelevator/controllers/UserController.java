@@ -10,21 +10,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/user")
 public class UserController {
 	
-	@RequestMapping(path="#", method=RequestMethod.POST)
-	public String displayUserDashboard(@RequestParam String email,
-										@RequestParam String password,
-										ModelMap model) {
-		if (userDAO.searchForEmailAndPassword(email, password)) {
-			//return user model
-			model.put("currentUser", userModel);
-			if (userModel.isTeacher()) {
-				return "redirect:/user/"+userId+"/teacherDashboard";
-			} else {
-				return "redirect:/user/"+userId+"/studentDashboard";
-			}
-		} else {
-			return "redirect:/login";
-		}
+//	@RequestMapping(path="#", method=RequestMethod.POST)
+//	public String displayUserDashboard(@RequestParam String email,
+//										@RequestParam String password,
+//										ModelMap model) {
+//		if (userDAO.searchForEmailAndPassword(email, password)) {
+//			//return user model
+//			model.put("currentUser", userModel);
+//			if (userModel.isTeacher()) {
+//				return "redirect:/user/"+userId+"/teacherDashboard";
+//			} else {
+//				return "redirect:/user/"+userId+"/studentDashboard";
+//			}
+//		} else {
+//			return "redirect:/login";
+//		}
+//	}
+	
+	@RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
+	public String displayStudentDashboard() {
+		return "user/studentDashboard";
 	}
 	
 	

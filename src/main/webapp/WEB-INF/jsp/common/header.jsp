@@ -5,7 +5,8 @@
 			<div class="container-fluid">
 				
 				<div class="navbar-header">
-					<a class="navbar-brand" href='#'>eLearning Portal</a>
+					<c:url value="/home" var="home"/>
+					<a class="navbar-brand" href="${home}">eLearning Portal</a>
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#portal-navbar-collapse" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
@@ -18,7 +19,8 @@
 					<ul class="nav navbar-nav">
 						<li><a href="#">Teachers</a></li>
 						<li><a href="#">Students</a></li>
-						<li><a href="#">Log In</a></li>
+						<c:url value="/login/login" var="login"/>
+						<li><a href="${login}">Log In</a></li>
 						<c:url value="/login/register" var="register"/>
 						<li><a href="${register}">Sign Up</a></li>
 					</ul>
