@@ -63,7 +63,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 		aUser.setLastName(results.getString("lastName"));
 		aUser.setEmail(results.getString("email"));
 		aUser.setPassword(results.getString("password"));
-		aUser.setTeacher(results.getBoolean("isTeacher"));
+		aUser.setTeacher(results.getString("isTeacher"));
 		return aUser;
 	}
 	
