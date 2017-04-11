@@ -21,8 +21,8 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	@Override
 	public Course createNewCourse(Course course) {
 		long id = getNextCourseId();
-		String sqlCreateCourse = "INSERT INTO courses (courseId, name, capacity, description, fee, startDate, endDate, userId, subject) VALUES (?,?,?,?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlCreateCourse, id, course.getName(), course.getCapactiy(), course.getDescription(), course.getFee(), course.getStartDate(), course.getEndDate(), course.getUserId(), course.getSubject());
+		String sqlCreateCourse = "INSERT INTO courses (courseId, name, capacity, description, fee, startDate, endDate, teacherId, subject) VALUES (?,?,?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlCreateCourse, id, course.getName(), course.getCapactiy(), course.getDescription(), course.getFee(), course.getStartDate(), course.getEndDate(), course.getTeacherId(), course.getSubject());
 		
 		if (rowsAffected == 1) {
 			course.setCourseId(id);
@@ -36,7 +36,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	public Course getCourseById(long id) {
 		Course course = null;
 		String sqlGetCourseById = "SELECT * FROM courses WHERE courseId = ?";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCourseById);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCourseById, id);
 		if(results.next()) {
 			course = mapRowToCourse(results);
 		}
@@ -46,13 +46,13 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	private Course mapRowToCourse(SqlRowSet results) {
 		Course aCourse = new Course();
 		aCourse.setCourseId(results.getLong("courseId"));
-		aCourse.setName(results.getString("courseName"));
+		aCourse.setName(results.getString("name"));
 		aCourse.setCapactiy(results.getLong("capacity"));
 		aCourse.setDescription(results.getString("description"));
 		aCourse.setFee(results.getBigDecimal("fee"));
 		aCourse.setStartDate(results.getDate("startDate").toLocalDate());
 		aCourse.setEndDate(results.getDate("endDate").toLocalDate());
-		aCourse.setUserId(results.getLong("userId"));
+		aCourse.setTeacherId(results.getLong("teacherId"));
 		aCourse.setSubject(results.getString("subject"));
 		return aCourse;
 	}
