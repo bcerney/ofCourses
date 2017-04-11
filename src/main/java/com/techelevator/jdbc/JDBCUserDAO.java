@@ -46,7 +46,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 		return aUser;
 	}
 	
-	private int getNextUserId() {
+	private long getNextUserId() {
 		return super.getNextId("seq_userId");
 	}
 	

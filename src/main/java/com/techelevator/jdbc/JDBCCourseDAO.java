@@ -49,7 +49,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		return aCourse;
 	}
 	
-	private int getNextUserId() {
+	private long getNextUserId() {
 		return super.getNextId("seq_courseId");
 	}
 }
