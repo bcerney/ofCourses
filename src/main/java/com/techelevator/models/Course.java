@@ -11,7 +11,7 @@ public class Course {
 	private BigDecimal fee;
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private long teacherId;
+	private long userId;
 	private String subject;
 	
 	public long getCourseId() {
@@ -56,11 +56,11 @@ public class Course {
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-	public long getTeacherId() {
-		return teacherId;
+	public long getUserId() {
+		return userId;
 	}
-	public void setTeacherId(long teacherId) {
-		this.teacherId = teacherId;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 	public String getSubject() {
 		return subject;
