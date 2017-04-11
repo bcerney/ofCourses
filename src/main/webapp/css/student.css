@@ -1,0 +1,11 @@
+
+
+/* @media (min-width: 768px) */
+.sidebar {
+	position: fixed;
+	top: 50px;
+	display: block;
+	padding: 20px;
+	background-color: blue;
+	
+}

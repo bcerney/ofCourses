@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/student")
+@RequestMapping("/user")
 public class StudentController {
 	
-	@RequestMapping(path={"/dashboard"}, method=RequestMethod.GET)
-	public String displayStudentDashboard() {
-		return "student/dashboard";
-	}
+//	@RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
+//	public String displayStudentDashboard() {
+//		return "user/studentDashboard";
+//	}
 
 }
