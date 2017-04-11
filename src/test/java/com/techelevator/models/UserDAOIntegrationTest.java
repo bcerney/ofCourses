@@ -1,7 +1,8 @@
-package com.techelevator;
+package com.techelevator.models;
 
 import org.junit.Before;
 
+import com.techelevator.DAOIntegrationTest;
 import com.techelevator.daos.UserDAO;
 
 public class UserDAOIntegrationTest extends DAOIntegrationTest{
