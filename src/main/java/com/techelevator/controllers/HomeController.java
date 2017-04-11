@@ -1,12 +1,26 @@
 package com.techelevator.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.techelevator.daos.UserDAO;
+import com.techelevator.models.User;
 
 @Controller
+@SessionAttributes("currentUser")
 public class HomeController {
+	
+	private UserDAO userDAO;
+	
+	@Autowired
+	public HomeController(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 	
 	@RequestMapping(path={"/", "/home"}, method=RequestMethod.GET)
 	public String displayHomePage() {
@@ -32,4 +46,23 @@ public class HomeController {
 	public String displayLoginPage() {
 		return "login/login";
 	}
+	
+	@RequestMapping(path={"/login/login"}, method=RequestMethod.POST)
+	public String login(@RequestParam String email,
+						@RequestParam String password,
+						ModelMap model) {
+		User currentUser = userDAO.getUserOnLogin(email, password);
+		if ( currentUser != null) {
+			model.put("currentUser", currentUser);
+			if (currentUser.isTeacher()) {
+				return "redirect:/user/teacherDashboard";
+			} else {
+				return "redirect:/user/studentDashboard";
+			}
+		} else {
+			return "redirect:/login/login";
+		}
+	}
+	
+	
 }
