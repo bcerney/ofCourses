@@ -1,5 +1,6 @@
 package com.techelevator.models;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,9 +19,19 @@ public class UserDAOIntegrationTest extends DAOIntegrationTest{
 	}
 	
 	@Test
-	public void confirm_new_user_created() {
-		UserDAO userDAO = new JDBCUserDAO(getDataSource());
-		User user = new User();
-//		user.setUserId
+	public void confirm_new_user_can_be_found_by_id_after_being_created() {
+		User newUser = new User();
+		newUser.setFirstName("Anakin");
+		newUser.setLastName("Skywalker");
+		newUser.setEmail("dvader@deathstar.com");
+		newUser.setPassword("iamyourfather");
+		newUser.setTeacher(true);
+		User savedUser = dao.createNewUser(newUser);
+		
+		assert_users_are_equal(savedUser, dao.getUserById(savedUser.getUserId()));
+	}
+	
+	private void assert_users_are_equal(User createdUser, User returnedUser) {
+		Assert.assertEquals(createdUser.getFirstName(), returnedUser.getFirstName());
 	}
 }

@@ -19,9 +19,17 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	}
 	
 	@Override
-	public void createNewUser(User user) {
+	public User createNewUser(User user) {
+		long id = getNextUserId();
 		String sqlCreateUser = "INSERT INTO users (userId, firstName, lastName, email, password, isTeacher) VALUES (?,?,?,?,?,?)";
-		jdbcTemplate.update(sqlCreateUser, user.getUserId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.isTeacher());
+		int rowsAffected = jdbcTemplate.update(sqlCreateUser, id, user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.isTeacher());
+		
+		if(rowsAffected == 1) {
+			user.setUserId(id);
+			return user;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
