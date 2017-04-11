@@ -33,4 +33,20 @@ public class UserController {
 	}
 	
 	
+	@RequestMapping(path={"/teacherDashboard"}, method=RequestMethod.GET)
+	public String displayTeacherDashboard() {
+		return "user/teacherDashboard";
+	}
+	
+	@RequestMapping(path={"/createCourse"}, method=RequestMethod.GET)
+	public String displayCreateCourse() {
+		return "user/createCourse";
+	}
+	
+	@RequestMapping(path={"/courseDetail"}, method=RequestMethod.GET)
+	public String displayCourseDetail() {
+		return "user/courseDetail";
+	}
+	
+	
 }
