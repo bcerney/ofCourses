@@ -4,7 +4,7 @@ import com.techelevator.models.Course;
 
 public interface CourseDAO {
 
-	public void createNewCourse(Course course);
+	public Course createNewCourse(Course course);
 	public Course getCourseById(long id);
 	
 }

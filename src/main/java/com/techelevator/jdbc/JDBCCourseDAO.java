@@ -19,9 +19,17 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	}
 
 	@Override
-	public void createNewCourse(Course course) {
+	public Course createNewCourse(Course course) {
+		long id = getNextCourseId();
 		String sqlCreateCourse = "INSERT INTO courses (courseId, name, capacity, description, fee, startDate, endDate, userId, subject) VALUES (?,?,?,?,?,?,?,?,?)";
-		jdbcTemplate.update(sqlCreateCourse, course.getCourseId(), course.getName(), course.getCapactiy(), course.getDescription(), course.getFee(), course.getStartDate(), course.getEndDate(), course.getUserId(), course.getSubject());
+		int rowsAffected = jdbcTemplate.update(sqlCreateCourse, id, course.getName(), course.getCapactiy(), course.getDescription(), course.getFee(), course.getStartDate(), course.getEndDate(), course.getUserId(), course.getSubject());
+		
+		if (rowsAffected == 1) {
+			course.setCourseId(id);
+			return course;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -49,7 +57,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		return aCourse;
 	}
 	
-	private long getNextUserId() {
+	private long getNextCourseId() {
 		return super.getNextId("seq_courseId");
 	}
 }
