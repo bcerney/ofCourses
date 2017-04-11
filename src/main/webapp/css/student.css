@@ -1,11 +1,19 @@
 
 
-/* @media (min-width: 768px) */
-.sidebar {
+
+.sidebar-div {
 	position: fixed;
 	top: 50px;
 	display: block;
 	padding: 20px;
-	background-color: blue;
+	background-color: #cccccc;
 	
+}
+
+.dashboard-course-div {
+	background-color: #cccccc;
+	border-radius: 5px;
+	margin: 0 auto;
+	max-width: 75%;
+	padding: 5px;
 }
