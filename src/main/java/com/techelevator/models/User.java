@@ -1,17 +1,18 @@
 package com.techelevator.models;
 
-public class Student {
-	private long studentId;
+public class User {
+	private long userId;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
-
-	public long getStudentId() {
-		return studentId;
+	private boolean isTeacher;
+	
+	public long getUserId() {
+		return userId;
 	}
-	public void setStudentId(long studentId) {
-		this.studentId = studentId;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -37,4 +38,10 @@ public class Student {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public boolean isTeacher() {
+		return isTeacher;
+	}
+	public void setTeacher(boolean isTeacher) {
+		this.isTeacher = isTeacher;
+	}	
 }
