@@ -2,6 +2,7 @@ package com.techelevator.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -34,6 +35,8 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 	public void create_course_and_make_sure_its_there(){
 		Course course = new Course();
 		
+		BigDecimal fee = new BigDecimal(8);
+		
 		User newUser = new User();
 		newUser.setFirstName("Anakin");
 		newUser.setLastName("Skywalker");
@@ -46,7 +49,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		course.setName("Intro to School");
 		course.setCapactiy(10);
 		course.setDescription("It's a class!");
-		course.setFee(new BigDecimal(8));
+		course.setFee(new BigDecimal(8).setScale(2));
 		course.setStartDate(LocalDate.of(1990, 1, 1));
 		course.setEndDate(LocalDate.of(1990, 1, 1));
 		course.setTeacherId(teachId);
@@ -62,7 +65,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 	
 	private void assert_courses_are_equal(Course createdCourse, Course returnedCourse) {
 		Assert.assertEquals(createdCourse.getCourseId(), returnedCourse.getCourseId());
-		Assert.assertEquals(createdCourse.getName(), returnedCourse.getCourseId());
+		Assert.assertEquals(createdCourse.getName(), returnedCourse.getName());
 		Assert.assertEquals(createdCourse.getCapactiy(), returnedCourse.getCapactiy());
 		Assert.assertEquals(createdCourse.getDescription(), returnedCourse.getDescription());
 		Assert.assertEquals(createdCourse.getFee(), returnedCourse.getFee());
@@ -72,7 +75,50 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		Assert.assertEquals(createdCourse.getSubject(), returnedCourse.getSubject());
 	}
 	
-	
+	@Test
+	public void get_Courses_By_Teacher_Returns_Proper_Courses() {
+
+		Course course = new Course();
+
+		User newUser = new User();
+		newUser.setFirstName("Anakin");
+		newUser.setLastName("Skywalker");
+		newUser.setEmail("dvader@deathstar.com");
+		newUser.setPassword("iamyourfather");
+		newUser.setTeacher(true);
+		long teachId = userDao.createNewUser(newUser).getUserId();
+
+
+		course.setName("Intro to School");
+		course.setCapactiy(10);
+		course.setDescription("It's a class!");
+		course.setFee(new BigDecimal(8));
+		course.setStartDate(LocalDate.of(1990, 1, 1));
+		course.setEndDate(LocalDate.of(1990, 1, 1));
+		course.setTeacherId(teachId);
+		course.setSubject("Books");
+
+		Course testCourse = courseDao.createNewCourse(course);
+		
+		course.setName("Intro to School Part 2");
+		course.setCapactiy(10);
+		course.setDescription("It's still a class!");
+		course.setFee(new BigDecimal(8));
+		course.setStartDate(LocalDate.of(1990, 1, 1));
+		course.setEndDate(LocalDate.of(1990, 1, 1));
+		course.setTeacherId(teachId);
+		course.setSubject("Books");
+
+		Course testCourse1 = courseDao.createNewCourse(course);
+		
+		ArrayList <Course> teacherCourses = new ArrayList<>();
+		teacherCourses = courseDao.getCoursesByTeacher(teachId);
+		
+		Assert.assertEquals(teacherCourses.size(), 2);
+		Assert.assertEquals(testCourse.getDescription(), testCourse1.getDescription());
+	}
+
+
 	
 	
 	

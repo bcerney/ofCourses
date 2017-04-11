@@ -1,5 +1,8 @@
 package com.techelevator.jdbc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +46,8 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		return course;
 	}
 	
+	
+	
 	private Course mapRowToCourse(SqlRowSet results) {
 		Course aCourse = new Course();
 		aCourse.setCourseId(results.getLong("courseId"));
@@ -59,5 +64,17 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	
 	private long getNextCourseId() {
 		return super.getNextId("seq_courseId");
+	}
+
+	@Override
+	public ArrayList <Course> getCoursesByTeacher(long teacherId) {
+		ArrayList <Course> teacherCourses = new ArrayList<>();
+		String sqlGetCoursesByTeacherId = "SELECT * FROM courses WHERE teacherId = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCoursesByTeacherId, teacherId);
+		while (results.next()){
+			Course nextCourse = mapRowToCourse(results);
+			teacherCourses.add(nextCourse);
+		}
+		return teacherCourses;
 	}
 }
