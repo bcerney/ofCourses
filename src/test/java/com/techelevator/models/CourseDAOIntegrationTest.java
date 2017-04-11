@@ -9,15 +9,13 @@ import com.techelevator.jdbc.JDBCCourseDAO;
 
 public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 	
-	private JdbcTemplate jdbcTemplate;
-	private static CourseDAO courseDAO; 
-	
-	@Before
-	public void setup(){
-		courseDAO = new JDBCCourseDAO(getDataSource());
-		jdbcTemplate = new JdbcTemplate(getDataSource());
-	}
-	
+	private static CourseDAO dao;
+//	
+//	@Before
+//	public void setup(){
+//		dao = new JDBCCourseDAO(getDataSource());
+//	}
+//	
 	
 	
 	
