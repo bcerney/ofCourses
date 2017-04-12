@@ -42,7 +42,7 @@ public class JDBCAssignmentDAO extends JDBCDAO implements AssignmentDAO{
 	}
 
 	@Override
-	public ArrayList<Assignment> getAssignmentByLessonId(long lessonId) {
+	public ArrayList<Assignment> getAssignmentsByLessonId(long lessonId) {
 		ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 		String sqlGetAssignmentsByLessonId = "SELECT * FROM assignments WHERE lessonId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAssignmentsByLessonId, lessonId);
