@@ -16,7 +16,15 @@
 </head>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
+	<body>
+    <header>
 
+    	<c:url value="/img/background_v1.jpg" var="landingHero" />
+        
+        		<img src="${landingHero}" alt="Welcome to eLearning" />
+        
+        
+    </body>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
 
