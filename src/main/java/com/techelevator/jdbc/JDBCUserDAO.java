@@ -36,6 +36,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 		String saltString = new String(Base64.encode(newSalt));
 		
 		long id = getNextUserId();
+
 		String sqlCreateUser = "INSERT INTO users (userId, firstName, lastName, email, userType, salt, password) VALUES (?,?,?,?,?,?,?,?)";
 		int rowsAffected = jdbcTemplate.update(sqlCreateUser, id, user.getFirstName(), user.getLastName(), user.getEmail().toLowerCase(), user.getUserType(), saltString, hashedPassword);
 		

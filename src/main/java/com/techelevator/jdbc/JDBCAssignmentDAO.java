@@ -20,8 +20,8 @@ public class JDBCAssignmentDAO extends JDBCDAO implements AssignmentDAO{
 	@Override
 	public Assignment createNewAssignment(Assignment assignment) {
 		long id = getNextAssignmentId();
-		String sqlCreateAssignment = "INSERT INTO assignments (assignmentId, name, description, assignDate, dueDate, maxScore) VALUES (?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlCreateAssignment, id, assignment.getName(), assignment.getDescription(), assignment.getAssignDate(), assignment.getDueDate(), assignment.getMaxScore());
+		String sqlCreateAssignment = "INSERT INTO assignments (assignmentId, name, description, assignDate, dueDate, maxScore, lessonId) VALUES (?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlCreateAssignment, id, assignment.getName(), assignment.getDescription(), assignment.getAssignDate(), assignment.getDueDate(), assignment.getMaxScore(), assignment.getLessonId());
 		if (rowsAffected == 1) {
 			assignment.setAssignmentId(id);
 			return assignment;
