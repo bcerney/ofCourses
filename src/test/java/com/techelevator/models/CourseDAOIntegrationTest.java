@@ -44,7 +44,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		
 		
 		course.setName("Intro to School");
-		course.setCapactiy(10);
+		course.setCapacity(10);
 		course.setDescription("It's a class!");
 		course.setFee(new BigDecimal(8).setScale(2));
 		course.setStartDate(LocalDate.of(1990, 1, 1));
@@ -63,7 +63,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 	private void assert_courses_are_equal(Course createdCourse, Course returnedCourse) {
 		Assert.assertEquals(createdCourse.getCourseId(), returnedCourse.getCourseId());
 		Assert.assertEquals(createdCourse.getName(), returnedCourse.getName());
-		Assert.assertEquals(createdCourse.getCapactiy(), returnedCourse.getCapactiy());
+		Assert.assertEquals(createdCourse.getCapacity(), returnedCourse.getCapacity());
 		Assert.assertEquals(createdCourse.getDescription(), returnedCourse.getDescription());
 		Assert.assertEquals(createdCourse.getFee(), returnedCourse.getFee());
 		Assert.assertEquals(createdCourse.getStartDate(), returnedCourse.getStartDate());
@@ -86,7 +86,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 
 
 		course.setName("Intro to School");
-		course.setCapactiy(10);
+		course.setCapacity(10);
 		course.setDescription("It's a class!");
 		course.setFee(new BigDecimal(8));
 		course.setStartDate(LocalDate.of(1990, 1, 1));
@@ -97,7 +97,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		Course testCourse = courseDao.createNewCourse(course);
 		
 		course.setName("Intro to School Part 2");
-		course.setCapactiy(10);
+		course.setCapacity(10);
 		course.setDescription("It's still a class!");
 		course.setFee(new BigDecimal(8));
 		course.setStartDate(LocalDate.of(1990, 1, 1));
