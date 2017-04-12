@@ -35,8 +35,6 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 	public void create_course_and_make_sure_its_there(){
 		Course course = new Course();
 		
-		BigDecimal fee = new BigDecimal(8);
-		
 		User newUser = new User();
 		newUser.setFirstName("Anakin");
 		newUser.setLastName("Skywalker");

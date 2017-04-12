@@ -10,7 +10,7 @@ CREATE SEQUENCE seq_userId;
 CREATE TABLE users
 (
 userId integer DEFAULT NEXTVAL('seq_userId'),
-isTeacher boolean NOT NULL,
+userType varchar (32) NOT NULL,
 firstName varchar (64) NOT NULL,
 lastName varchar (64) NOT NULL,
 email varchar (128) NOT NULL,
@@ -89,17 +89,21 @@ CONSTRAINT fk_resources_lessonId FOREIGN KEY (lessonId) REFERENCES lessons(lesso
 
 CREATE TABLE student_course
 (
-userId integer NOT NULL,
+studentId integer NOT NULL,
 courseId integer NOT NULL,
-CONSTRAINT pk_student_course_userId_courseId PRIMARY KEY (userId, courseId)	
+CONSTRAINT pk_student_course_studentId_courseId PRIMARY KEY (userId, courseId),
+CONSTRAINT fk_student_course_studentId FOREIGN KEY (studentId) REFERENCES users(userId),
+CONSTRAINT fk_student_course_courseId FOREIGN KEY (courseId) REFERENCES courses(courseId)
 );
 
 CREATE TABLE scores
 (
-userId integer NOT NULL,
+studentId integer NOT NULL,
 assignmentId integer NOT NULL,
 score integer NOT NULL,
-CONSTRAINT pk_grades_userId_assignmentId PRIMARY KEY (userId, assignmentId)	
+CONSTRAINT pk_grades_studentId_assignmentId PRIMARY KEY (studentId, assignmentId),
+CONSTRAINT fk_scores_studentId FOREIGN KEY (studentId) REFERENCES users(userId),
+CONSTRAINT fk_scores_assignmentId FOREIGN KEY (assignmentId) REFERENCES assignment(assignmentId)
 );
 
 ALTER TABLE users ALTER COLUMN isTeacher
