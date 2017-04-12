@@ -41,7 +41,7 @@ public class ModuleDAOIntegrationTest extends DAOIntegrationTest {
 		newUser.setLastName("Skywalker");
 		newUser.setEmail("dvader@deathstar.com");
 		newUser.setPassword("iamyourfather");
-		newUser.setTeacher(true);
+		newUser.setUserType("teacher");
 		long teachId = userDao.createNewUser(newUser).getUserId();
 		
 		Course course = new Course();
@@ -77,18 +77,45 @@ public class ModuleDAOIntegrationTest extends DAOIntegrationTest {
 		
 	}
 	
+	@Test
 	public void get_modules_by_course_id(){
 		
+		User newUser = new User();
 		
+		newUser.setFirstName("Anakin");
+		newUser.setLastName("Skywalker");
+		newUser.setEmail("dvader@deathstar.com");
+		newUser.setPassword("iamyourfather");
+		newUser.setUserType("Teacher");
+		long teachId = userDao.createNewUser(newUser).getUserId();
 		
-//		Module newModule1 = new Module();
-//		newModule1.setName("Test");
-//		newModule1.setDescription("It's a test!");
-//		newModule1.setCourseId(courseId);
-//		Module testModule1 = moduleDao.createNewModule(newModule);
-//		
-//		
-//		
+		Course course = new Course();
+		
+		course.setName("Intro to School");
+		course.setCapactiy(10);
+		course.setDescription("It's a class!");
+		course.setFee(new BigDecimal(8).setScale(2));
+		course.setStartDate(LocalDate.of(1990, 1, 1));
+		course.setEndDate(LocalDate.of(1990, 1, 1));
+		course.setTeacherId(teachId);
+		course.setSubject("Books");
+		
+		long courseId = courseDao.createNewCourse(course).getCourseId();
+		
+		Module newModule1 = new Module();
+		newModule1.setName("Test");
+		newModule1.setDescription("It's a test!");
+		newModule1.setCourseId(courseId);
+		Module testModule1 = moduleDao.createNewModule(newModule1);
+		
+		Module newModule2 = new Module();
+		newModule2.setName("Test");
+		newModule2.setDescription("It's a test!");
+		newModule2.setCourseId(courseId);
+		Module testModule2 = moduleDao.createNewModule(newModule2);
+		
+		Assert.assertEquals(2, moduleDao.getModulesByCourseId(courseId).size());
+
 		
 	}
 

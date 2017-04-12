@@ -22,7 +22,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	@Override
 	public User createNewUser(User user) {
 		long id = getNextUserId();
-		String sqlCreateUser = "INSERT INTO users (userId, firstName, lastName, email, password, isTeacher) VALUES (?,?,?,?,?,?)";
+		String sqlCreateUser = "INSERT INTO users (userId, firstName, lastName, email, password, userType) VALUES (?,?,?,?,?,?)";
 		int rowsAffected = jdbcTemplate.update(sqlCreateUser, id, user.getFirstName(), user.getLastName(), user.getEmail().toLowerCase(), user.getPassword(), user.getUserType());
 		
 		if(rowsAffected == 1) {
