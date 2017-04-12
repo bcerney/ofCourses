@@ -35,7 +35,7 @@
 				<h1 class="page-header">My Courses</h1>
 
 				<div id="createCourse" class="create-course-div">
-					<c:url var="formAction" value="/createCourse" />
+					<c:url var="formAction" value="/user/createCourse" />
 					<form method="POST" action="${formAction}">
 						<h2>Create Course</h2>
 
@@ -64,22 +64,22 @@
 							<label for="courseDifficulty">Course Difficulty</label> <select
 								class="custom-select">
 								<option selected>Choose Difficulty</option>
-								<option value="1">Beginner</option>
-								<option value="2">Intermediate</option>
-								<option value="3">Advanced</option>
+								<option value="Beginner">Beginner</option>
+								<option value="Intermediate">Intermediate</option>
+								<option value="Advanced">Advanced</option>
 							</select>
 
 							<!-- <input
 							type="text" name="courseDifficulty" placeholder="Difficulty" /> -->
 						</div>
 
-						<div class="courseCost" class="form-group">
-							<label for="courseCost">Course Cost</label> <input type="text"
-								name="courseCost" placeholder="Cost" />
+						<div class="courseFee" class="form-group">
+							<label for="courseFee">Course Fee</label> <input type="text"
+								name="courseFee" placeholder="Course Fee" />
 						</div>
 						
 						<div id="startDate" class="form-group row">
-							<label for="startDate" class="col-md-2 col-form-label">Start Date</label>
+							<label for="startDate" class="col-md-2 col-form-label">Start Date (mm/dd/yyyy)</label>
 							<div class="col-md-8">
 								<input class="form-control" type="date" name="startDate"
 									placeholder="Start Date" />
@@ -87,7 +87,7 @@
 						</div>
 						
 						<div id="endDate" class="form-group row">
-							<label for="endDate" class="col-md-2 col-form-label">End Date</label>
+							<label for="endDate" class="col-md-2 col-form-label">End Date (mm/dd/yyyy)</label>
 							<div class="col-md-8">
 								<input class="form-control" type="date" name="endDate"
 									placeholder="End Date" />

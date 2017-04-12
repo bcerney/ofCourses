@@ -64,7 +64,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 		aUser.setEmail(results.getString("email"));
 		aUser.setPassword(results.getString("password"));
 		//TODO: update database from isTeacher as boolean to userType as string
-		aUser.setUserType(results.getString("isTeacher"));
+		aUser.setUserType(results.getString("usertype"));
 		return aUser;
 	}
 	
