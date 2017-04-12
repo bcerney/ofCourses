@@ -25,8 +25,9 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	
 	@Override
 	public boolean emailAlreadyExists(String email) {
-		// TODO Auto-generated method stub
-		return false;
+		String sqlSearchExistingEmail = "SELECT * FROM users WHERE email = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchExistingEmail, email.toLowerCase());
+		return results.next();
 	}
 
 	@Override
@@ -37,7 +38,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 		
 		long id = getNextUserId();
 
-		String sqlCreateUser = "INSERT INTO users (userId, firstName, lastName, email, userType, salt, password) VALUES (?,?,?,?,?,?,?,?)";
+		String sqlCreateUser = "INSERT INTO users (userId, firstName, lastName, email, userType, salt, password) VALUES (?,?,?,?,?,?,?)";
 		int rowsAffected = jdbcTemplate.update(sqlCreateUser, id, user.getFirstName(), user.getLastName(), user.getEmail().toLowerCase(), user.getUserType(), saltString, hashedPassword);
 		
 		if(rowsAffected == 1) {
@@ -61,11 +62,9 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	
 	@Override
 	public boolean userIsAuthenticated(String email, String password) {
-		String sqlSearchForUser = "SELECT * "+
-								  "FROM users "+
-								  "WHERE lower(email) = ?";
-		
+		String sqlSearchForUser = "SELECT * FROM users WHERE email = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser, email.toLowerCase());
+		
 		if(results.next()) {
 			String storedSalt = results.getString("salt");
 			String storedPassword = results.getString("password");
@@ -78,8 +77,8 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	
 	@Override
 	public User getUserOnLogin(String email, String password) {
-		String sqlGetUserOnLogin = "SELECT * FROM users WHERE email = ? AND password = ?";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetUserOnLogin, email.toLowerCase(), password);
+		String sqlGetUserOnLogin = "SELECT * FROM users WHERE email = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetUserOnLogin, email.toLowerCase());
 		
 		if (results.next()) {
 			return mapRowToUser(results);
