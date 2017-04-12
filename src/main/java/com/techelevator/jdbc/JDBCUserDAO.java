@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.techelevator.daos.UserDAO;
 import com.techelevator.models.User;
@@ -22,7 +23,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	public User createNewUser(User user) {
 		long id = getNextUserId();
 		String sqlCreateUser = "INSERT INTO users (userId, firstName, lastName, email, password, isTeacher) VALUES (?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlCreateUser, id, user.getFirstName(), user.getLastName(), user.getEmail().toLowerCase(), user.getPassword(), user.isTeacher());
+		int rowsAffected = jdbcTemplate.update(sqlCreateUser, id, user.getFirstName(), user.getLastName(), user.getEmail().toLowerCase(), user.getPassword(), user.getUserType());
 		
 		if(rowsAffected == 1) {
 			user.setUserId(id);
@@ -62,7 +63,8 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 		aUser.setLastName(results.getString("lastName"));
 		aUser.setEmail(results.getString("email"));
 		aUser.setPassword(results.getString("password"));
-		aUser.setTeacher(results.getString("isTeacher"));
+		//TODO: update database from isTeacher as boolean to userType as string
+		aUser.setUserType(results.getString("isTeacher"));
 		return aUser;
 	}
 	

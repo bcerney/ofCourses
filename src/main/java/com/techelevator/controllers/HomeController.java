@@ -15,13 +15,12 @@ import com.techelevator.models.User;
 @SessionAttributes("currentUser")
 public class HomeController {
 	
-	@Autowired
 	private UserDAO userDAO;
 	
-//	@Autowired
-//	public HomeController(UserDAO userDAO) {
-//		this.userDAO = userDAO;
-//	}
+	@Autowired
+	public HomeController(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 	
 	@RequestMapping(path={"/", "/home"}, method=RequestMethod.GET)
 	public String displayHomePage() {
@@ -39,10 +38,9 @@ public class HomeController {
 									 @RequestParam String email,
 									 @RequestParam String password,
 									 @RequestParam String userType) {
-		
+
 		User registeringUser = new User(firstName, lastName, email, password, userType);
 		User returnedUser = userDAO.createNewUser(registeringUser);
-		System.out.println(returnedUser.getUserId());
 		
 		if (returnedUser != null) {
 			return "redirect:/login/login";
@@ -62,10 +60,10 @@ public class HomeController {
 						@RequestParam String password,
 						ModelMap model) {
 		User currentUser = userDAO.getUserOnLogin(email, password);
-		if ( currentUser != null) {
+		if (currentUser != null) {
 			model.put("currentUser", currentUser);
-			if (currentUser.isTeacher()) {
-				return "redirect:/user/"+currentUser.getUserId()+"teacherDashboard";
+			if (currentUser.getUserType().equals("teacher")) {
+				return "redirect:/user/teacherDashboard";
 			} else {
 				return "redirect:/user/studentDashboard";
 			}
