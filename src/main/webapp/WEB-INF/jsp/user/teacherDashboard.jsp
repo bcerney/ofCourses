@@ -44,8 +44,14 @@
 			</div>
 		<div id= "courses">
 			<c:forEach var="course" items="${user}">
-				
-			
+				<h3>"${userCourses.name}"</h3>
+				<p>"${userCourses.subject}"</p>
+				<p>"${userCourses.capacity}"</p>
+				<p>"${userCourses.description}"</p>
+				<p>"${userCourses.fee}"</p>
+				<p>"${userCourses.startDate}"</p>
+				<p>"${userCourses.endDate}"</p>
+				<p>"${userCourses.difficulty}"</p>	
 			</c:forEach>
 		</div>
 		</div>
