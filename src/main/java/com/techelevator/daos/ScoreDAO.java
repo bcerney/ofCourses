@@ -1,5 +1,12 @@
 package com.techelevator.daos;
 
-public interface ScoreDAO {
+import java.util.ArrayList;
 
+import com.techelevator.models.Score;
+
+public interface ScoreDAO {
+	
+	public Score createScore(Score score);
+	public Score getScoreForStudentByAssignmentId(long studentId, long assignmentId);
+//	public ArrayList<Score> getAllScoresForStudentByCourseId(long assignmentId);
 }
