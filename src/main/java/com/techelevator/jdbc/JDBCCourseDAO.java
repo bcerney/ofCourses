@@ -59,6 +59,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		aCourse.setEndDate(results.getDate("endDate").toLocalDate());
 		aCourse.setTeacherId(results.getLong("teacherId"));
 		aCourse.setSubject(results.getString("subject"));
+		aCourse.setDifficulty(results.getString("difficulty"));
 		return aCourse;
 	}
 	

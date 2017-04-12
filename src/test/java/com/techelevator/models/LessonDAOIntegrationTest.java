@@ -43,9 +43,8 @@ public class LessonDAOIntegrationTest extends DAOIntegrationTest {
 		newUser.setFirstName("Anakin");
 		newUser.setLastName("Skywalker");
 		newUser.setEmail("dvader@deathstar.com");
-		newUser.setPassword("iamyourfather");
 		newUser.setUserType("teacher");
-		long teachId = userDao.createNewUser(newUser).getUserId();
+		long teachId = userDao.createNewUser(newUser, "password").getUserId();
 		
 		Course course = new Course();
 		
