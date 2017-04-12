@@ -6,7 +6,7 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	private boolean isTeacher;
+	private String userType;
 	
 	public User() {
 		
@@ -17,7 +17,7 @@ public class User {
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		setTeacher(userType);
+		this.userType = userType;
 	}
 	
 	public long getUserId() {
@@ -50,14 +50,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isTeacher() {
-		return isTeacher;
+	public String getUserType() {
+		return userType;
 	}
-	public void setTeacher(String userType) {
-		if (userType.equals("student")) {
-			isTeacher = false;
-		} else {
-			isTeacher = true;
-		}
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}	
 }
