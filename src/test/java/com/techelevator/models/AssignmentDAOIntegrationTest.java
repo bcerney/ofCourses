@@ -52,7 +52,7 @@ public class AssignmentDAOIntegrationTest extends DAOIntegrationTest {
 		Course course = new Course();
 		
 		course.setName("Intro to School");
-		course.setCapactiy(10);
+		course.setCapacity(10);
 		course.setDescription("It's a class!");
 		course.setFee(new BigDecimal(8).setScale(2));
 		course.setStartDate(LocalDate.of(1990, 1, 1));
