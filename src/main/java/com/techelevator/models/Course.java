@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Course {
 	private long courseId;
 	private String name;
-	private long capactiy;
+	private long capacity;
 	private String description;
 	private BigDecimal fee;
 	private LocalDate startDate;
@@ -19,11 +19,11 @@ public class Course {
 		
 	}
 	
-	public Course(long teacherId, String name, long capactiy, String description, BigDecimal fee, LocalDate startDate,
+	public Course(long teacherId, String name, long capacity, String description, BigDecimal fee, LocalDate startDate,
 			LocalDate endDate, String subject, String difficulty) {
 		this.teacherId = teacherId;
 		this.name = name;
-		this.capactiy = capactiy;
+		this.capacity = capacity;
 		this.description = description;
 		this.fee = fee;
 		this.startDate = startDate;
@@ -44,11 +44,11 @@ public class Course {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public long getCapactiy() {
-		return capactiy;
+	public long getCapacity() {
+		return capacity;
 	}
-	public void setCapactiy(long capactiy) {
-		this.capactiy = capactiy;
+	public void setCapacity(long capacity) {
+		this.capacity = capacity;
 	}
 	public String getDescription() {
 		return description;
