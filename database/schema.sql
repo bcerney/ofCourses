@@ -91,7 +91,7 @@ CREATE TABLE student_course
 (
 studentId integer NOT NULL,
 courseId integer NOT NULL,
-CONSTRAINT pk_student_course_studentId_courseId PRIMARY KEY (userId, courseId),
+CONSTRAINT pk_student_course_studentId_courseId PRIMARY KEY (studentId, courseId),
 CONSTRAINT fk_student_course_studentId FOREIGN KEY (studentId) REFERENCES users(userId),
 CONSTRAINT fk_student_course_courseId FOREIGN KEY (courseId) REFERENCES courses(courseId)
 );
@@ -103,10 +103,7 @@ assignmentId integer NOT NULL,
 score integer NOT NULL,
 CONSTRAINT pk_grades_studentId_assignmentId PRIMARY KEY (studentId, assignmentId),
 CONSTRAINT fk_scores_studentId FOREIGN KEY (studentId) REFERENCES users(userId),
-CONSTRAINT fk_scores_assignmentId FOREIGN KEY (assignmentId) REFERENCES assignment(assignmentId)
+CONSTRAINT fk_scores_assignmentId FOREIGN KEY (assignmentId) REFERENCES assignments(assignmentId)
 );
-
-ALTER TABLE users ALTER COLUMN isTeacher
-SET DEFAULT FALSE;
 
 COMMIT;
