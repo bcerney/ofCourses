@@ -18,7 +18,7 @@
 				<div class="collapse navbar-collapse" id="te-navbar-collapse">	
 					<ul class="nav navbar-nav">
 						
-						<c:url value="/logout" var="logout"/>
+						<c:url value="/" var="logout"/>
 						<li><a href="${logout}">Log Out</a></li>
 						
 					</ul>
