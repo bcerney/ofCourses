@@ -46,6 +46,14 @@
 									placeholder="Name" />
 							</div>
 						</div>
+						
+						<div id="subject" class="form-group row">
+							<label for="subject" class="col-md-2 col-form-label">Subject</label>
+							<div class="col-md-8">
+								<input class="form-control" type="text" name="subject"
+									placeholder="Subject" />
+							</div>
+						</div>
 
 						<div id="courseCapacity" class="form-group row">
 							<label for="courseCapacity" class="col-md-2 col-form-label">Capacity</label>
@@ -60,8 +68,8 @@
 								type="text" name="courseDescription" placeholder="Description" />
 						</div>
 
-						<div class="courseDifficulty" class="form-group">
-							<label for="courseDifficulty">Course Difficulty</label> <select
+						<div id="courseDifficulty" class="form-group">
+							<label for="courseDifficulty">Course Difficulty</label> <select name= "courseDifficulty"
 								class="custom-select">
 								<option selected>Choose Difficulty</option>
 								<option value="Beginner">Beginner</option>

@@ -58,10 +58,9 @@ public class HomeController {
 	public String login(@RequestParam String email,
 						@RequestParam String password,
 						ModelMap model) {
-				
+		
 		if(userDAO.userIsAuthenticated(email, password)) {
 			User currentUser = userDAO.getUserOnLogin(email, password);
-						
 			model.put("currentUser", currentUser);
 			if (currentUser.getUserType().equals("teacher")) {
 				return "redirect:/user/teacherDashboard";
