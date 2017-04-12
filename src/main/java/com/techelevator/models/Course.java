@@ -13,6 +13,7 @@ public class Course {
 	private LocalDate endDate;
 	private long teacherId;
 	private String subject;
+	private String difficulty;
 	
 	public long getCourseId() {
 		return courseId;
@@ -67,5 +68,11 @@ public class Course {
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+	public String getDifficulty() {
+		return difficulty;
+	}
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
 	}
 }

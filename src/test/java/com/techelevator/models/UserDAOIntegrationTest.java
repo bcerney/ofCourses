@@ -3,7 +3,6 @@ package com.techelevator.models;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.techelevator.DAOIntegrationTest;
 import com.techelevator.daos.UserDAO;
@@ -22,7 +21,7 @@ public class UserDAOIntegrationTest extends DAOIntegrationTest{
 		newUser.setLastName("Skywalker");
 		newUser.setEmail("dvader@deathstar.com");
 		newUser.setPassword("iamyourfather");
-		newUser.setTeacher("teacher");
+		newUser.setUserType("teacher");
 	}
 	
 	@Test
@@ -51,6 +50,6 @@ public class UserDAOIntegrationTest extends DAOIntegrationTest{
 		Assert.assertEquals(createdUser.getLastName(), returnedUser.getLastName());
 		Assert.assertEquals(createdUser.getEmail(), returnedUser.getEmail());
 		Assert.assertEquals(createdUser.getPassword(), returnedUser.getPassword());
-		Assert.assertEquals(createdUser.isTeacher(), returnedUser.isTeacher());
+		Assert.assertEquals(createdUser.getUserType(), returnedUser.getUserType());
 	}
 }
