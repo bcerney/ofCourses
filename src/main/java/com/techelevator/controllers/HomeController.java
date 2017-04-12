@@ -64,6 +64,7 @@ public class HomeController {
 						ModelMap model) {
 		User currentUser = userDAO.getUserOnLogin(email, password);
 		if (currentUser != null) {
+			// TODO: Invalidate session
 			model.put("currentUser", currentUser);
 			if (currentUser.getUserType().equals("teacher")) {
 				return "redirect:/user/teacherDashboard";

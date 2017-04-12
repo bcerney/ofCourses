@@ -24,8 +24,8 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	@Override
 	public Course createNewCourse(Course course) {
 		long id = getNextCourseId();
-		String sqlCreateCourse = "INSERT INTO courses (courseId, name, capacity, description, fee, startDate, endDate, teacherId, subject) VALUES (?,?,?,?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlCreateCourse, id, course.getName(), course.getCapactiy(), course.getDescription(), course.getFee(), course.getStartDate(), course.getEndDate(), course.getTeacherId(), course.getSubject());
+		String sqlCreateCourse = "INSERT INTO courses (courseId, name, capacity, description, fee, startDate, endDate, teacherId, subject, difficulty) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlCreateCourse, id, course.getName(), course.getCapactiy(), course.getDescription(), course.getFee(), course.getStartDate(), course.getEndDate(), course.getTeacherId(), course.getSubject(), course.getDifficulty());
 		
 		if (rowsAffected == 1) {
 			course.setCourseId(id);

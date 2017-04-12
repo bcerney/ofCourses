@@ -15,17 +15,21 @@ public class Course {
 	private String subject;
 	private String difficulty;
 	
-//	public Course(String name, long capactiy, String description, String startDate,
-//			String endDate, long teacherId, String subject) {
-//		this.name = name;
-//		this.capactiy = capactiy;
-//		this.description = description;
-//		this.fee = fee;
-//		this.startDate = startDate;
-//		this.endDate = endDate;
-//		this.teacherId = teacherId;
-//		this.subject = subject;
-//	}
+	public Course() {
+		
+	}
+	
+	public Course(long teacherId, String name, long capactiy, String description, BigDecimal fee, LocalDate startDate,
+			LocalDate endDate, String subject, String difficulty) {
+		this.name = name;
+		this.capactiy = capactiy;
+		this.description = description;
+		this.fee = fee;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.subject = subject;
+		this.difficulty = difficulty;
+	}
 	
 	public long getCourseId() {
 		return courseId;
