@@ -81,17 +81,20 @@ public class UserController {
 									   @RequestParam String courseDescription,
 									   @NumberFormat(pattern="#.##")
 									   @RequestParam BigDecimal courseFee,
+									   @RequestParam("startDate")
 									   @DateTimeFormat(pattern="MM/dd/yyyy")
-									   @RequestParam LocalDate startDate,
+									   LocalDate startDate,
+									   @RequestParam("endDate")
 									   @DateTimeFormat(pattern="MM/dd/yyyy")
-									   @RequestParam LocalDate endDate,
+									   LocalDate endDate,
 									   @RequestParam String subject,
-									   @RequestParam String difficulty,
+									   @RequestParam("courseDifficulty") String courseDifficulty,
 									   ModelMap model,
 									   HttpServletRequest request) {
+		System.out.println(courseName);
 		
 		User currentUser = (User) model.get("currentUser");
-		Course courseToCreate = new Course(currentUser.getUserId(), courseName, courseCapacity, courseDescription, courseFee, startDate, endDate, subject, difficulty);
+		Course courseToCreate = new Course(currentUser.getUserId(), courseName, courseCapacity, courseDescription, courseFee, startDate, endDate, subject, courseDifficulty);
 		Course createdCourse = courseDAO.createNewCourse(courseToCreate);
 		
 		if (createdCourse != null) {

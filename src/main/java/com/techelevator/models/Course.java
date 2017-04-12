@@ -21,6 +21,7 @@ public class Course {
 	
 	public Course(long teacherId, String name, long capactiy, String description, BigDecimal fee, LocalDate startDate,
 			LocalDate endDate, String subject, String difficulty) {
+		this.teacherId = teacherId;
 		this.name = name;
 		this.capactiy = capactiy;
 		this.description = description;
