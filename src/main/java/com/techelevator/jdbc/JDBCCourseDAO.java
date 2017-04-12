@@ -25,7 +25,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	public Course createNewCourse(Course course) {
 		long id = getNextCourseId();
 		String sqlCreateCourse = "INSERT INTO courses (courseId, name, capacity, description, fee, startDate, endDate, teacherId, subject, difficulty) VALUES (?,?,?,?,?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlCreateCourse, id, course.getName(), course.getCapactiy(), course.getDescription(), course.getFee(), course.getStartDate(), course.getEndDate(), course.getTeacherId(), course.getSubject(), course.getDifficulty());
+		int rowsAffected = jdbcTemplate.update(sqlCreateCourse, id, course.getName(), course.getCapacity(), course.getDescription(), course.getFee(), course.getStartDate(), course.getEndDate(), course.getTeacherId(), course.getSubject(), course.getDifficulty());
 		
 		if (rowsAffected == 1) {
 			course.setCourseId(id);
@@ -52,7 +52,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		Course aCourse = new Course();
 		aCourse.setCourseId(results.getLong("courseId"));
 		aCourse.setName(results.getString("name"));
-		aCourse.setCapactiy(results.getLong("capacity"));
+		aCourse.setCapacity(results.getLong("capacity"));
 		aCourse.setDescription(results.getString("description"));
 		aCourse.setFee(results.getBigDecimal("fee"));
 		aCourse.setStartDate(results.getDate("startDate").toLocalDate());
