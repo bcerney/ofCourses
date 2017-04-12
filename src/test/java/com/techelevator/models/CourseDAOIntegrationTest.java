@@ -117,9 +117,4 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		Assert.assertEquals(teacherCourses.size(), 2);
 		Assert.assertEquals(testCourse.getDescription(), testCourse1.getDescription());
 	}
-
-
-	
-	
-	
 }

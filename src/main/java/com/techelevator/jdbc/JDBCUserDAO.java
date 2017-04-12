@@ -34,13 +34,13 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 
 	@Override
 	public User getUserById(long id) {
-		User user = null;
 		String sqlGetUserById = "SELECT * FROM users WHERE userId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetUserById, id);
-		if(results.next()) {
-			user = mapRowToUser(results);
+		if (results.next()) {
+			return mapRowToUser(results);
+		} else {
+			return null;
 		}
-		return user;
 	}
 	
 	@Override
