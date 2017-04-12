@@ -18,7 +18,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<c:import url="/WEB-INF/jsp/common/loggedInHeader.jsp" />
 <div id="dashboardDiv" class="container-fluid">
 	<div class="row">
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
