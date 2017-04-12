@@ -4,7 +4,13 @@ import com.techelevator.models.User;
 
 public interface UserDAO {
 	
-	public User createNewUser(User user);
-	public User getUserById(long id);
+	public boolean emailAlreadyExists(String email);
+	// TODO: check if user already exists
+	public User createNewUser(User user, String password);
+	
+	public boolean userIsAuthenticated(String email, String password);
 	public User getUserOnLogin(String email, String password);
+	
+	public User getUserById(long id);
+
 }

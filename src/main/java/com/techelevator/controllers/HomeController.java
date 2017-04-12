@@ -38,16 +38,19 @@ public class HomeController {
 									 @RequestParam String email,
 									 @RequestParam String password,
 									 @RequestParam String userType) {
-
-		User registeringUser = new User(firstName, lastName, email, password, userType);
-		User returnedUser = userDAO.createNewUser(registeringUser);
 		
-		if (returnedUser != null) {
-			return "redirect:/login/login";
-		} else {
-			return "redirect:/login/register";
+		if (userDAO.userIsAuthenticated(email, password)) {
+			User registeringUser = new User(firstName, lastName, email, userType);
+			User returnedUser = userDAO.createNewUser(registeringUser, password);
+			
+			if (returnedUser != null) {
+				return "redirect:/login/login";
+			} else {
+				return "redirect:/login/register";
+			}
 		}
-
+		
+		return "redirect:/login/register";
 	}
 	
 	@RequestMapping(path={"/login/login"}, method=RequestMethod.GET)

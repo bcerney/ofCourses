@@ -13,6 +13,7 @@ public class Course {
 	private LocalDate endDate;
 	private long teacherId;
 	private String subject;
+	private String difficulty;
 	
 //	public Course(String name, long capactiy, String description, String startDate,
 //			String endDate, long teacherId, String subject) {
@@ -79,5 +80,11 @@ public class Course {
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+	public String getDifficulty() {
+		return difficulty;
+	}
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
 	}
 }

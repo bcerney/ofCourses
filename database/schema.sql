@@ -14,7 +14,8 @@ userType varchar (32) NOT NULL,
 firstName varchar (64) NOT NULL,
 lastName varchar (64) NOT NULL,
 email varchar (128) NOT NULL,
-password varchar (128) NOT NULL,	
+salt varchar (255) NOT NULL,
+password varchar (64) NOT NULL,
 CONSTRAINT pk_users_userId PRIMARY KEY (userId)
 );
 
@@ -32,6 +33,7 @@ startDate date NOT NULL,
 endDate date NOT NULL,
 teacherId integer NOT NULL,	
 subject varchar (64) NOT NULL,
+difficulty varchar (16) NOT NULL,
 CONSTRAINT pk_courses_courseId PRIMARY KEY (courseId),
 CONSTRAINT fk_courses_teacherId FOREIGN KEY (teacherId) REFERENCES users(userId)
 );
@@ -75,6 +77,7 @@ CONSTRAINT pk_assignments_assignmentId PRIMARY KEY (assignmentId),
 CONSTRAINT fk_assignments_lessonId FOREIGN KEY (lessonId) REFERENCES lessons(lessonId)
 );
 
+CREATE SEQUENCE seq_resourceId;
 
 CREATE TABLE resources
 (
