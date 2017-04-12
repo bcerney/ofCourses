@@ -76,7 +76,7 @@ public class HomeController {
 	@RequestMapping(path="/user/logout")
     public String logout(HttpSession session, ModelMap model) {
     	session.invalidate();
-    	model.remove("email");
+    	model.remove("currentUser");
         return "redirect:/";
     }
 	
