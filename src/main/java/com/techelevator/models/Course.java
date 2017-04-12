@@ -14,6 +14,18 @@ public class Course {
 	private long teacherId;
 	private String subject;
 	
+//	public Course(String name, long capactiy, String description, String startDate,
+//			String endDate, long teacherId, String subject) {
+//		this.name = name;
+//		this.capactiy = capactiy;
+//		this.description = description;
+//		this.fee = fee;
+//		this.startDate = startDate;
+//		this.endDate = endDate;
+//		this.teacherId = teacherId;
+//		this.subject = subject;
+//	}
+	
 	public long getCourseId() {
 		return courseId;
 	}

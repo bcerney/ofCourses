@@ -60,7 +60,7 @@ public class UserController {
 	@RequestMapping(path={"/createCourse"}, method=RequestMethod.POST)
 	public String submitCreateCourse(HttpServletRequest request,
 									   @RequestParam String courseName,
-									   @RequestParam String courseCapacity,
+									   @RequestParam long courseCapacity,
 									   @RequestParam String courseDescription,
 									   @RequestParam String courseFee,
 									   @RequestParam String startDate,
