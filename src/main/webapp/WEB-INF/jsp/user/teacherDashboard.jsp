@@ -44,6 +44,7 @@
 			</div>
 		<div id= "courses">
 			<c:forEach var="course" items="${userCourses}">
+
 				<h3>${course.name}</h3>
 				<p>${course.subject}</p>
 				<p>${course.capacity}</p>
@@ -52,6 +53,7 @@
 				<p>${course.startDate}</p>
 				<p>${course.endDate}</p>
 				<p>${course.difficulty}</p>	
+
 			</c:forEach>
 		</div>
 		</div>
