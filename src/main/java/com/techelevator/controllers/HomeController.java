@@ -39,18 +39,14 @@ public class HomeController {
 									 @RequestParam String password,
 									 @RequestParam String userType) {
 		
-		if (userDAO.userIsAuthenticated(email, password)) {
+		if (userDAO.emailAlreadyExists(email)) {
+			return "redirect:/login/register";
+		} else {
 			User registeringUser = new User(firstName, lastName, email, userType);
 			User returnedUser = userDAO.createNewUser(registeringUser, password);
 			
-			if (returnedUser != null) {
-				return "redirect:/login/login";
-			} else {
-				return "redirect:/login/register";
-			}
+			return "redirect:/login/login";
 		}
-		
-		return "redirect:/login/register";
 	}
 	
 	@RequestMapping(path={"/login/login"}, method=RequestMethod.GET)
@@ -62,8 +58,10 @@ public class HomeController {
 	public String login(@RequestParam String email,
 						@RequestParam String password,
 						ModelMap model) {
-		User currentUser = userDAO.getUserOnLogin(email, password);
-		if (currentUser != null) {
+				
+		if(userDAO.userIsAuthenticated(email, password)) {
+			User currentUser = userDAO.getUserOnLogin(email, password);
+						
 			model.put("currentUser", currentUser);
 			if (currentUser.getUserType().equals("teacher")) {
 				return "redirect:/user/teacherDashboard";
@@ -74,6 +72,4 @@ public class HomeController {
 			return "redirect:/login/login";
 		}
 	}
-	
-	
 }
