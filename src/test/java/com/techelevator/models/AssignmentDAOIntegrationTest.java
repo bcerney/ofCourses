@@ -46,9 +46,8 @@ public class AssignmentDAOIntegrationTest extends DAOIntegrationTest {
 		newUser.setFirstName("Anakin");
 		newUser.setLastName("Skywalker");
 		newUser.setEmail("dvader@deathstar.com");
-		newUser.setPassword("iamyourfather");
 		newUser.setUserType("teacher");
-		long teachId = userDao.createNewUser(newUser).getUserId();
+		long teachId = userDao.createNewUser(newUser, "password").getUserId();
 		
 		Course course = new Course();
 		
@@ -60,6 +59,7 @@ public class AssignmentDAOIntegrationTest extends DAOIntegrationTest {
 		course.setEndDate(LocalDate.of(1990, 1, 1));
 		course.setTeacherId(teachId);
 		course.setSubject("Books");
+		course.setDifficulty("easy");
 		
 		long courseId = courseDao.createNewCourse(course).getCourseId();
 		
@@ -89,6 +89,9 @@ public class AssignmentDAOIntegrationTest extends DAOIntegrationTest {
 	
 	private void assert_assignments_are_equal(Assignment createdAssignment, Assignment returnedAssignment) {
 		Assert.assertEquals(createdAssignment.getAssignDate(), returnedAssignment.getAssignDate());
+		Assert.assertEquals(createdAssignment.getDescription(), returnedAssignment.getDescription());
+		Assert.assertEquals(createdAssignment.getDueDate(), returnedAssignment.getDueDate());
+		Assert.assertEquals(createdAssignment.getMaxScore(), returnedAssignment.getMaxScore());
 	}
 	
 	

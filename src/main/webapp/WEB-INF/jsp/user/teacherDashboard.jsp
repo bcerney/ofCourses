@@ -42,7 +42,12 @@
 			<div id="exampleCourse" class="dashboard-course-div">
 			
 			</div>
-
+		<div id= "courses">
+			<c:forEach var="course" items="${user}">
+				
+			
+			</c:forEach>
+		</div>
 		</div>
 		<!-- dashMain -->
 
