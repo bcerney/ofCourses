@@ -69,7 +69,7 @@
 						</div>
 
 						<div id="courseDifficulty" class="form-group">
-							<label for="courseDifficulty">Course Difficulty</label> <select
+							<label for="courseDifficulty">Course Difficulty</label> <select name= "courseDifficulty"
 								class="custom-select">
 								<option selected>Choose Difficulty</option>
 								<option value="Beginner">Beginner</option>
