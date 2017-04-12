@@ -46,9 +46,8 @@ public class ResourceDAOIntegrationTest extends DAOIntegrationTest {
 		newUser.setFirstName("Anakin");
 		newUser.setLastName("Skywalker");
 		newUser.setEmail("dvader@deathstar.com");
-		newUser.setPassword("iamyourfather");
 		newUser.setUserType("teacher");
-		long teachId = userDao.createNewUser(newUser).getUserId();
+		long teachId = userDao.createNewUser(newUser, "password").getUserId();
 		
 		Course course = new Course();
 		
@@ -60,6 +59,7 @@ public class ResourceDAOIntegrationTest extends DAOIntegrationTest {
 		course.setEndDate(LocalDate.of(1990, 1, 1));
 		course.setTeacherId(teachId);
 		course.setSubject("Books");
+		course.setDifficulty("easy");
 		
 		long courseId = courseDao.createNewCourse(course).getCourseId();
 		

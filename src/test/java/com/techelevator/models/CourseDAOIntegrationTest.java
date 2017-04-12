@@ -39,9 +39,8 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		newUser.setFirstName("Anakin");
 		newUser.setLastName("Skywalker");
 		newUser.setEmail("dvader@deathstar.com");
-		newUser.setPassword("iamyourfather");
 		newUser.setUserType("teacher");
-		long teachId = userDao.createNewUser(newUser).getUserId();
+		long teachId = userDao.createNewUser(newUser, "password").getUserId();
 		
 		
 		course.setName("Intro to School");
@@ -82,9 +81,8 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		newUser.setFirstName("Anakin");
 		newUser.setLastName("Skywalker");
 		newUser.setEmail("dvader@deathstar.com");
-		newUser.setPassword("iamyourfather");
 		newUser.setUserType("teacher");
-		long teachId = userDao.createNewUser(newUser).getUserId();
+		long teachId = userDao.createNewUser(newUser, "password").getUserId();
 
 
 		course.setName("Intro to School");
