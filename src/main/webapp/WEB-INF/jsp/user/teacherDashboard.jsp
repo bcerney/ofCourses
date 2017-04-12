@@ -43,7 +43,7 @@
 			
 			</div>
 		<div id= "courses">
-			<c:forEach var="course" items="${user}">
+			<c:forEach var="course" items="${userCourses}">
 				<h3>"${userCourses.name}"</h3>
 				<p>"${userCourses.subject}"</p>
 				<p>"${userCourses.capacity}"</p>
