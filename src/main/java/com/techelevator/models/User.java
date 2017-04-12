@@ -10,7 +10,7 @@ public class User {
 	public User() {
 	}
 	
-	public User(String firstName, String lastName, String email, String saltString, String hashPass, String userType) {
+	public User(String firstName, String lastName, String email, String userType) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
