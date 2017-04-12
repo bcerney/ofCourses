@@ -35,8 +35,9 @@
 		</div>
 		<!-- dashSidebar -->
 
-
+		
 		<div id="dashMain" class="col-sm-9 col-md-10">
+			<p><c:out value="${currentUser.getName}"/></p>
 			<h1 class="page-header">My Courses</h1>
 			<div id="exampleCourse" class="dashboard-course-div">
 			

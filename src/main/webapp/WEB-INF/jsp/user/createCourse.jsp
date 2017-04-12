@@ -31,45 +31,78 @@
 		<!-- dashSidebar -->
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
-			<h1 class="page-header">My Courses</h1>
-			<div id="exampleCourse" class="dashboard-course-div"></div>
+			<div class="container-fluid">
+				<h1 class="page-header">My Courses</h1>
+
+				<div id="createCourse" class="create-course-div">
+					<c:url var="formAction" value="/createCourse" />
+					<form method="POST" action="${formAction}">
+						<h2>Create Course</h2>
+
+						<div id="courseName" class="form-group row">
+							<label for="courseName" class="col-md-2 col-form-label">Name</label>
+							<div class="col-md-8">
+								<input class="form-control" type="text" name="courseName"
+									placeholder="Name" />
+							</div>
+						</div>
+
+						<div id="courseCapacity" class="form-group row">
+							<label for="courseCapacity" class="col-md-2 col-form-label">Capacity</label>
+							<div class="col-md-8">
+								<input class="form-control" type="text" name="courseCapacity"
+									placeholder="Capacity" />
+							</div>
+						</div>
+
+						<div id="courseDescription" class="form-group">
+							<label for="courseDescription">Course Description</label> <input
+								type="text" name="courseDescription" placeholder="Description" />
+						</div>
+
+						<div class="courseDifficulty" class="form-group">
+							<label for="courseDifficulty">Course Difficulty</label> <select
+								class="custom-select">
+								<option selected>Choose Difficulty</option>
+								<option value="1">Beginner</option>
+								<option value="2">Intermediate</option>
+								<option value="3">Advanced</option>
+							</select>
+
+							<!-- <input
+							type="text" name="courseDifficulty" placeholder="Difficulty" /> -->
+						</div>
+
+						<div class="courseCost" class="form-group">
+							<label for="courseCost">Course Cost</label> <input type="text"
+								name="courseCost" placeholder="Cost" />
+						</div>
+						
+						<div id="startDate" class="form-group row">
+							<label for="startDate" class="col-md-2 col-form-label">Start Date</label>
+							<div class="col-md-8">
+								<input class="form-control" type="date" name="startDate"
+									placeholder="Start Date" />
+							</div>
+						</div>
+						
+						<div id="endDate" class="form-group row">
+							<label for="endDate" class="col-md-2 col-form-label">End Date</label>
+							<div class="col-md-8">
+								<input class="form-control" type="date" name="endDate"
+									placeholder="End Date" />
+							</div>
+						</div>
+
+						<input class="formSubmitButton" type="submit" value="Submit!" />
 
 
+					</form>
 
-			<div class="createCourse">
-				<c:url var="formAction" value="/createCourse" />
-				<form method="POST" action="${formAction}">
-					<h2>Create Course</h2>
-					<br>
-					<div>
-						<label for="courseName">Name</label> <input type="text"
-							name="courseName" placeholder="Name" />
-					</div>
-
-					<div class="courseDescription">
-						<label for="courseDescription">Course Description</label> <input
-							type="text" name="courseDescription"
-							placeholder="Description" />
-					</div>
-
-					<div class="courseDifficulty">
-						<label for="courseDifficulty">Course Difficulty</label> <input
-							type="text" name="courseDifficulty"
-							placeholder="Difficulty" />
-					</div>
-
-					<div class="courseCost">
-						<label for="courseCost">Course Cost</label> <input type="text"
-							name="courseCost" placeholder="Cost" />
-					</div>
-
-					<input class="formSubmitButton" type="submit" value="Submit!" />
-
-
-				</form>
-
+				</div>
+				<!-- createCourse -->
 			</div>
-
+			<!-- .container-fluid -->
 		</div>
 		<!-- dashMain -->
 	</div>
