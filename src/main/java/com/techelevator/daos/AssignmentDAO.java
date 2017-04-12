@@ -1,5 +1,12 @@
 package com.techelevator.daos;
 
-public interface AssignmentDAO {
+import java.util.ArrayList;
 
+import com.techelevator.models.Assignment;
+
+public interface AssignmentDAO {
+	
+	public Assignment createNewAssignment(Assignment assignment);
+	public Assignment getAssignmentbyAssignmentId(long id);
+	public ArrayList<Assignment> getAssignmentByLessonId(long id);
 }
