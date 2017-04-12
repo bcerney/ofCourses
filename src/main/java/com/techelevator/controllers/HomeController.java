@@ -1,5 +1,7 @@
 package com.techelevator.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -71,4 +73,12 @@ public class HomeController {
 			return "redirect:/login/login";
 		}
 	}
+	@RequestMapping(path="/user/logout")
+    public String logout(HttpSession session, ModelMap model) {
+    	session.invalidate();
+    	model.remove("currentUser");
+        return "redirect:/";
+    }
+	
+	
 }
