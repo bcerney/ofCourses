@@ -8,6 +8,18 @@ public class User {
 	private String password;
 	private boolean isTeacher;
 	
+	public User() {
+		
+	}
+	
+	public User(String firstName, String lastName, String email, String password, String userType) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		setTeacher(userType);
+	}
+	
 	public long getUserId() {
 		return userId;
 	}
@@ -41,7 +53,11 @@ public class User {
 	public boolean isTeacher() {
 		return isTeacher;
 	}
-	public void setTeacher(boolean isTeacher) {
-		this.isTeacher = isTeacher;
+	public void setTeacher(String userType) {
+		if (userType.equals("student")) {
+			isTeacher = false;
+		} else {
+			isTeacher = true;
+		}
 	}	
 }

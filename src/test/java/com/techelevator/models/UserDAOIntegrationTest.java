@@ -22,7 +22,7 @@ public class UserDAOIntegrationTest extends DAOIntegrationTest{
 		newUser.setLastName("Skywalker");
 		newUser.setEmail("dvader@deathstar.com");
 		newUser.setPassword("iamyourfather");
-		newUser.setTeacher(true);
+		newUser.setTeacher("teacher");
 	}
 	
 	@Test

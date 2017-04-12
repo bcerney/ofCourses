@@ -68,8 +68,8 @@
 			<div class="col-sm-4"></div>
 			<div class="form-group">
 				<label class="radio-inline"><input type="radio"
-					name="userType">Student</label> <label class="radio-inline"><input
-					type="radio" name="userType">Teacher</label>
+					name="userType" value="student">Student</label> <label class="radio-inline"><input
+					type="radio" name="userType" value="teacher">Teacher</label>
 			</div>
 			<div class="form-group">
 				<label for="firstName">First Name: </label> <input type="text"
@@ -87,13 +87,13 @@
 					class="form-control" />
 			</div>
 			<div class="form-group">
-				<label for="password">Password: </label> <input type="text"
+				<label for="password">Password: </label> <input type="password"
 					id="password" name="password" placeholder="Password"
 					class="form-control" />
 			</div>
 			<div class="form-group">
 				<label for="confirmPassword">Confirm Password: </label> <input
-					type="text" id="confirmPassword" name="confirmPassword"
+					type="password" id="confirmPassword" name="confirmPassword"
 					placeholder="Re-type Password" class="form-control" />
 			</div>
 			<button type="submit" class="btn btn-default">Create Account</button>
