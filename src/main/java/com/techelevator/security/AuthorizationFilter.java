@@ -29,7 +29,7 @@ public class AuthorizationFilter implements Filter {
 		String sessionUser = getUserFromSession(httpRequest);
 		String requestUser = getUserFromRequest(httpRequest);
 		
-		if(requestUser != null && requestUser.equals(sessionUser) == false) {
+		if(requestUser != null && !requestUser.equals(sessionUser)) {
 			if(sessionUser == null) {
 				redirectToLoginPage(httpRequest, httpResponse);
 			} else {
