@@ -55,7 +55,7 @@
 		<c:url var="formAction" value="#" />
 		<form method="POST" action="${formAction}">
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-			<div class="col-sm-4"></div>
+			<div class="col-sm-6">
 			<div class="form-group">
 				<label class="radio-inline"><input type="radio"
 					name="userType" value="student">Student</label> <label class="radio-inline"><input
@@ -88,8 +88,9 @@
 			</div>
 			<button type="submit" class="btn btn-default">Create Account</button>
 
-			<div class="col-sm-4"></div>
+			</div>
 		</form>
+		<div class="col-sm-6"></div>
 	</div>
 </div>
 
