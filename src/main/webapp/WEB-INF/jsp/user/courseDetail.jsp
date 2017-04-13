@@ -7,26 +7,26 @@
 		<div class="row">
 			<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 				<ul class="nav sidebar-nav">
-					<li>My Courses</li>
-					<li>Course Catalog</li>
 					<li>Add Module</li>
 					<li>Add Lesson</li>
-					<li>Resources</li>
+					<li>Add Resources</li>
+				</ul>
+				<ul class="nav sidebar-nav">
+					<c:url value="/user/teacherDashboard" var="dashboard"/>
+					<li><a href="${dashboard}">My Courses</a></li>
 				</ul>
 			</div>
 			<!-- dashSidebar -->
 
 			<div id="dashMain" class="col-sm-9 col-md-10">
-				<h1 class="page-header"></h1>
-				<div id="exampleCourse" class="dashboard-course-div"></div>
+				<h1 class="page-header"><c:out value="${course.name}"/></h1>
 
-
-
-				<div class="courseDetail">
+				<%-- <div class="courseDetail">
 					<c:url var="formAction" value="/courseDetail" />
+
 					
-						<h2>Course Name</h2>
-						<br>
+						<h2>${course.name}</h2>
+
 						<div>
 							<label for="courseModule">Course Module 1</label> <input
 								type="text" name="courseModule" placeholder="Course Module" />
@@ -43,7 +43,7 @@
 						</div>
 
 
-				</div>
+				</div> --%>
 
 			</div>
 			<!-- dashMain -->

@@ -3,6 +3,7 @@ package com.techelevator.controllers;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,25 +26,7 @@ import com.techelevator.models.User;
 
 @Controller
 @SessionAttributes("currentUser")
-@RequestMapping("/user")
 public class UserController {
-	
-//	@RequestMapping(path="#", method=RequestMethod.POST)
-//	public String displayUserDashboard(@RequestParam String email,
-//										@RequestParam String password,
-//										ModelMap model) {
-//		if (userDAO.searchForEmailAndPassword(email, password)) {
-//			//return user model
-//			model.put("currentUser", userModel);
-//			if (userModel.isTeacher()) {
-//				return "redirect:/user/"+userId+"/teacherDashboard";
-//			} else {
-//				return "redirect:/user/"+userId+"/studentDashboard";
-//			}
-//		} else {
-//			return "redirect:/login";
-//		}
-//	}
 	
 	private UserDAO userDAO;
 	private CourseDAO courseDAO;
@@ -54,26 +37,38 @@ public class UserController {
 		this.courseDAO = courseDAO;
 	}
 	
-	
-	@RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
-	public String displayStudentDashboard(HttpServletRequest request, ModelMap model) {
+	@RequestMapping(path={"/dashboard"}, method=RequestMethod.GET)
+	public String displayDashboard(HttpServletRequest request, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
-		ArrayList <Course> studentCourses = courseDAO.getCoursesByUserId(currentUser.getUserId());
-		System.out.println(currentUser.getFirstName());
-		request.setAttribute("studentsCourses", studentCourses);
-		return "user/studentDashboard";
+		if (currentUser.getUserType().equals("teacher")) {
+			List<Course> userCourses = courseDAO.getCoursesByTeacherId(currentUser.getUserId());
+			request.setAttribute("userCourses", userCourses);
+			return "user/teacherDashboard";
+		} else {
+			List<Course> studentCourses = courseDAO.getCoursesByUserId(currentUser.getUserId());
+			request.setAttribute("studentsCourses", studentCourses);
+			return "user/studentDashboard";
+		}
 	}
+
 	
 	
-	@RequestMapping(path={"/teacherDashboard"}, method=RequestMethod.GET)
-	public String displayTeacherDashboard(HttpServletRequest request, ModelMap model) {
-		User currentUser = (User) model.get("currentUser");
-		ArrayList <Course> userCourses = courseDAO.getCoursesByTeacher(currentUser.getUserId());
-		//TODO: should I be able to access currentUser through session scope with adding to HTTP request
-		request.setAttribute("user", currentUser);
-		request.setAttribute("userCourses", userCourses);
-		return "user/teacherDashboard";
-	}
+//	@RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
+//	public String displayStudentDashboard(HttpServletRequest request, ModelMap model) {
+//		User currentUser = (User) model.get("currentUser");
+//		ArrayList <Course> studentCourses = courseDAO.getCoursesByUserId(currentUser.getUserId());
+//		request.setAttribute("studentsCourses", studentCourses);
+//		return "dashboard";
+//	}
+//	
+//	
+//	@RequestMapping(path={"/teacherDashboard"}, method=RequestMethod.GET)
+//	public String displayTeacherDashboard(HttpServletRequest request, ModelMap model) {
+//		User currentUser = (User) model.get("currentUser");
+//		ArrayList <Course> userCourses = courseDAO.getCoursesByTeacherId(currentUser.getUserId());
+//		request.setAttribute("userCourses", userCourses);
+//		return "dashboard";
+//	}
 	
 	@RequestMapping(path={"/createCourse"}, method=RequestMethod.GET)
 	public String displayCreateCourse() {
@@ -115,8 +110,17 @@ public class UserController {
 	public String displayCourseDetail(HttpServletRequest request, @RequestParam long courseId) {
 		Course course = courseDAO.getCourseById(courseId);
 		request.setAttribute("course", course);
+		System.out.println(course.getName());
 		
 		return "user/courseDetail";
+	}
+	
+	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.GET)
+	public String displyCourseCatalogPage(HttpServletRequest request) {
+		ArrayList <Course> allCourses = courseDAO.getAllCourses();
+		request.setAttribute("allCourses", allCourses);
+		
+		return "user/courseCatalog";
 	}
 
 }

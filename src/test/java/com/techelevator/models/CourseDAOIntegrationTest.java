@@ -108,7 +108,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		Course testCourse1 = courseDao.createNewCourse(course);
 		
 		ArrayList <Course> teacherCourses = new ArrayList<>();
-		teacherCourses = courseDao.getCoursesByTeacher(teachId);
+		teacherCourses = courseDao.getCoursesByTeacherId(teachId);
 		
 		Assert.assertEquals(teacherCourses.size(), 2);
 		Assert.assertEquals(testCourse.getDescription(), testCourse1.getDescription());

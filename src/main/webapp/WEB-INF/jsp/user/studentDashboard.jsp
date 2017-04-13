@@ -24,7 +24,22 @@
 				<h2>Course Name</h2>
 				<p>A description of the course.</p>
 			</div>
-
+			<div id= "courses">
+			<c:forEach var="course" items="${studentsCourses}">
+				<h3>${course.name}</h3>
+				<p>${course.subject}</p>
+				<p>${course.capacity}</p>
+				<p>${course.description}</p>
+				<p>${course.fee}</p>
+				<p>${course.startDate}</p>
+				<p>${course.endDate}</p>
+				<p>${course.difficulty}</p>	
+				<c:url var="courseDetailHref" value="/user/courseDetail">
+					<c:param name ="courseId" value="${course.courseId}"/>
+					</c:url>
+				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a>	
+			</c:forEach>
+		</div>
 		</div>
 		<!-- dashMain -->
 
