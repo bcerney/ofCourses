@@ -19,7 +19,7 @@
     <url-pattern>*.gif</url-pattern>
   </servlet-mapping>
   
-  <filter>
+  <!-- <filter>
   	<filter-name>authorizationFilter</filter-name>
   	<filter-class>com.techelevator.security.AuthorizationFilter</filter-class>
   </filter>
@@ -38,5 +38,5 @@
   	<filter-name>csrfFilter</filter-name>
   	<servlet-name>springmvc</servlet-name>
   </filter-mapping>  
-  
+   -->
 </web-app>
