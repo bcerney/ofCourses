@@ -21,9 +21,6 @@
   
 
 <!--   <filter>
-=======
-  <!-- <filter>
-
   	<filter-name>authorizationFilter</filter-name>
   	<filter-class>com.techelevator.security.AuthorizationFilter</filter-class>
   </filter>
