@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.techelevator.daos.CourseDAO;
 import com.techelevator.models.Course;
+import com.techelevator.models.User;
 
 @Component
 public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
@@ -102,6 +103,9 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		}
 		return usersCourses;
 	}
+	
+	
+	
 	
 	
 }
