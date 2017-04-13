@@ -1,5 +1,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>eLearning Portal</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, userscalable=no">
+<!-- <link rel="stylesheet" type="text/css" href="/../css/student.css"> -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+</head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
