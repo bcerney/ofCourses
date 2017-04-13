@@ -14,5 +14,6 @@ public interface UserDAO {
 	public User getUserOnLogin(String email, String password);
 	public ArrayList getStudentsByCourseId(long courseId);
 	public User getUserById(long id);
+	public void addUserToCourse(long studentId, long courseId);
 
 }
