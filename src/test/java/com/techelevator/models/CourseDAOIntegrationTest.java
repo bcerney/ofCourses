@@ -3,6 +3,7 @@ package com.techelevator.models;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -107,7 +108,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 
 		Course testCourse1 = courseDao.createNewCourse(course);
 		
-		ArrayList <Course> teacherCourses = new ArrayList<>();
+		List <Course> teacherCourses = new ArrayList<>();
 		teacherCourses = courseDao.getCoursesByTeacherId(teachId);
 		
 		Assert.assertEquals(teacherCourses.size(), 2);

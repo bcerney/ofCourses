@@ -121,10 +121,19 @@ public class UserController {
 	
 	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.GET)
 	public String displyCourseCatalogPage(HttpServletRequest request) {
-		ArrayList <Course> allCourses = courseDAO.getAllCourses();
+		List <Course> allCourses = courseDAO.getAllCourses();
 		request.setAttribute("allCourses", allCourses);
 		
 		return "user/courseCatalog";
 	}
-
+	
+	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.POST)
+	public String enroleStudents(HttpServletRequest request,
+								@RequestParam long studentId,
+								@RequestParam long courseId){
+		userDAO.addUserToCourse(studentId, courseId);
+		
+		return "redirect:/"+ courseId;
+	
+	}
 }
