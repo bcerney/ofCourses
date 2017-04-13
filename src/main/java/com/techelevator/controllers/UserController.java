@@ -117,9 +117,5 @@ public class UserController {
 		
 		return "user/courseDetail";
 	}
-	
-	
-	
-	
-	
+
 }
