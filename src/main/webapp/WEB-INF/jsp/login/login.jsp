@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<c:url var="formAction" value="/login/login" />
+		<c:url var="formAction" value="/login" />
 		<form method="POST" action="${formAction}">
 			<%-- <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> --%>
 			<div class="col-sm-4"></div>

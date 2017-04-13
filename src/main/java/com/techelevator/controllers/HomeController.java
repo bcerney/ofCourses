@@ -29,12 +29,12 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(path={"/login/register"}, method=RequestMethod.GET)
+	@RequestMapping(path={"/register"}, method=RequestMethod.GET)
 	public String displayRegistrationPage() {
 		return "login/register";
 	}
 	
-	@RequestMapping(path={"/login/register"}, method=RequestMethod.POST)
+	@RequestMapping(path={"/register"}, method=RequestMethod.POST)
 	public String submitRegistration(@RequestParam String firstName,
 									 @RequestParam String lastName,
 									 @RequestParam String email,
@@ -47,16 +47,16 @@ public class HomeController {
 			User registeringUser = new User(firstName, lastName, email, userType);
 			User returnedUser = userDAO.createNewUser(registeringUser, password);
 			
-			return "redirect:/login/login";
+			return "redirect:/login";
 		}
 	}
 	
-	@RequestMapping(path={"/login/login"}, method=RequestMethod.GET)
+	@RequestMapping(path={"/login"}, method=RequestMethod.GET)
 	public String displayLoginPage() {
 		return "login/login";
 	}
 	
-	@RequestMapping(path={"/login/login"}, method=RequestMethod.POST)
+	@RequestMapping(path={"/login"}, method=RequestMethod.POST)
 	public String login(@RequestParam String email,
 						@RequestParam String password,
 						ModelMap model) {
@@ -64,13 +64,14 @@ public class HomeController {
 		if(userDAO.userIsAuthenticated(email, password)) {
 			User currentUser = userDAO.getUserOnLogin(email, password);
 			model.put("currentUser", currentUser);
-			if (currentUser.getUserType().equals("teacher")) {
-				return "redirect:/user/teacherDashboard";
-			} else {
-				return "redirect:/user/studentDashboard";
-			}
+			return "redirect:/dashboard";
+//			if (currentUser.getUserType().equals("teacher")) {
+//				return "redirect:/user/teacherDashboard";
+//			} else {
+//				return "redirect:/user/studentDashboard";
+//			}
 		} else {
-			return "redirect:/login/login";
+			return "redirect:/login";
 		}
 	}
 	@RequestMapping(path="/user/logout")
