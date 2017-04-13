@@ -5,8 +5,9 @@
 	<div class="row">
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
+				<c:url value="/dashboard" var="dashboard"/>
 				<li>
-					<a href="#">My Courses</a>
+					<a href="${dashboard}">My Courses</a>
 				</li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
@@ -34,10 +35,11 @@
 				<p>${course.startDate}</p>
 				<p>${course.endDate}</p>
 				<p>${course.difficulty}</p>	
-				<c:url var="courseDetailHref" value="/courseDetail">
+				<!-- TODO: have this navigate to student view of course -->
+				<%-- <c:url var="courseDetailHref" value="/courseDetail">
 					<c:param name ="courseId" value="${course.courseId}"/>
 					</c:url>
-				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a>	
+				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a> --%>	
 			</c:forEach>
 		</div>
 		</div>

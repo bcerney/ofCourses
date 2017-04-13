@@ -71,12 +71,20 @@ public class UserController {
 //		return "dashboard";
 //	}
 	
-	@RequestMapping(path={"/createCourse"}, method=RequestMethod.GET)
+	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.GET)
+	public String displyCourseCatalogPage(HttpServletRequest request) {
+		List <Course> allCourses = courseDAO.getAllCourses();
+		request.setAttribute("allCourses", allCourses);
+		
+		return "user/courseCatalog";
+	}
+	
+	@RequestMapping(path={"/dashboard/createCourse"}, method=RequestMethod.GET)
 	public String displayCreateCourse() {
 		return "user/createCourse";
 	}
 	
-	@RequestMapping(path={"/createCourse"}, method=RequestMethod.POST)
+	@RequestMapping(path={"/dashboard/createCourse"}, method=RequestMethod.POST)
 	public String submitCreateCourse(HttpServletRequest request,
 									   @RequestParam String courseName,
 									   @RequestParam long courseCapacity,
@@ -107,9 +115,7 @@ public class UserController {
 		}
 	}
 	
-	
-	
-	@RequestMapping(path={"/{courseId}"}, method=RequestMethod.GET)
+	@RequestMapping(path={"/dashboard/{courseId}"}, method=RequestMethod.GET)
 	public String displayCourseDetail(HttpServletRequest request, 
 									  @PathVariable long courseId,
 									  ModelMap model) {
@@ -119,12 +125,21 @@ public class UserController {
 		return "user/courseDetail";
 	}
 	
-	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.GET)
-	public String displyCourseCatalogPage(HttpServletRequest request) {
-		List <Course> allCourses = courseDAO.getAllCourses();
-		request.setAttribute("allCourses", allCourses);
+
+	@RequestMapping(path={"/dashboard/{courseId}/addModule"}, method=RequestMethod.GET)
+	public String displayAddModule(HttpServletRequest request, 
+									  @PathVariable long courseId,
+									  ModelMap model) {
+		User currentUser = (User) model.get("currentUser");
+		Course course = courseDAO.getCourseById(courseId);
+		request.setAttribute("course", course);
 		
-		return "user/courseCatalog";
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/addModule";
+		} else {
+			//TODO: add error message or 403 redirect
+			return "redirect:/courseDetail";
+		}
 	}
 	
 	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.POST)
