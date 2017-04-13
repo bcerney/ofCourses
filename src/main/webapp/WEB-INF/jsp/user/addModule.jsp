@@ -20,7 +20,7 @@
 			<!-- dashSidebar -->
 
 			<div id="dashMain" class="col-sm-9 col-md-10">
-				<h1 class="page-header"><c:out value="${course.name}"/></h1>
+				<h1 class="page-header">Add Module</h1>
 
 				<%-- <div class="courseDetail">
 					<c:url var="formAction" value="/courseDetail" />
