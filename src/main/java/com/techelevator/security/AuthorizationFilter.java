@@ -16,6 +16,10 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.web.filter.GenericFilterBean;
 
 import com.techelevator.daos.CourseDAO;
 import com.techelevator.daos.UserDAO;
@@ -29,13 +33,12 @@ public class AuthorizationFilter implements Filter {
 	@Autowired
 	CourseDAO courseDAO;
 	
-//	@Autowired
-//	UserDAO userDAO;	
-	
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		
+	public void init(FilterConfig filterConfig) throws ServletException {	
+		WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(filterConfig.getServletContext());
+		courseDAO = context.getBean(CourseDAO.class);
 	}
+
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -44,17 +47,27 @@ public class AuthorizationFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
 		HttpServletResponse httpResponse = (HttpServletResponse)response;
 		
-		long sessionUserId = getUserIdFromSession(httpRequest);
+		Long sessionUserId = getUserIdFromSession(httpRequest);
 		String requestCourseId = getCourseIdFromRequest(httpRequest);
-				
-		if(!courseDAO.courseHasGivenTeacher(requestCourseId, sessionUserId) 
-				&& !courseDAO.studentIsEnrolledInCourse(requestCourseId, sessionUserId)) {
-			if(sessionUserId == 0) {
-				redirectToLoginPage(httpRequest, httpResponse);
-			} else {
-				httpResponse.sendError(403);
-			}
+		
+		// Accessing a restricted resource, not logged in
+		if(requestCourseId != null && sessionUserId == null) {
+			redirectToLoginPage(httpRequest, httpResponse);
+		// Accessing a restricted resource without access
+		} else if(requestCourseId != null && 
+				!courseDAO.courseHasGivenTeacher(Long.parseLong(requestCourseId), sessionUserId) &&
+				!courseDAO.studentIsEnrolledInCourse(Long.parseLong(requestCourseId), sessionUserId)){
+			httpResponse.sendError(403);
 		}
+
+//		if(requestCourseId != null && (!courseDAO.courseHasGivenTeacher(Long.parseLong(requestCourseId), sessionUserId)
+//		   || !courseDAO.studentIsEnrolledInCourse(Long.parseLong(requestCourseId), sessionUserId)) ) {
+//			if(sessionUserId == null) {
+//				redirectToLoginPage(httpRequest, httpResponse);
+//			} else {
+//				httpResponse.sendError(403);
+//			}
+//		}
 		
 		chain.doFilter(request, response);
 	}
@@ -72,9 +85,9 @@ public class AuthorizationFilter implements Filter {
 		httpResponse.sendRedirect(context+"/login?destination="+URLEncoder.encode(originalRequest, "UTF-8"));
 	}
 
-	private long getUserIdFromSession(HttpServletRequest httpRequest) {
+	private Long getUserIdFromSession(HttpServletRequest httpRequest) {
 		User user = (User)httpRequest.getSession().getAttribute("currentUser");
-		return user.getUserId();
+		return user == null ? null : user.getUserId();
 	}
 
 	private String getCourseIdFromRequest(HttpServletRequest httpRequest) {
