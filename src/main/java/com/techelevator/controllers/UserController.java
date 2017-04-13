@@ -68,7 +68,7 @@ public class UserController {
 	@RequestMapping(path={"/teacherDashboard"}, method=RequestMethod.GET)
 	public String displayTeacherDashboard(HttpServletRequest request, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
-		ArrayList <Course> userCourses = courseDAO.getCoursesByTeacher(currentUser.getUserId());
+		ArrayList <Course> userCourses = courseDAO.getCoursesByTeacherId(currentUser.getUserId());
 		//TODO: should I be able to access currentUser through session scope with adding to HTTP request
 		request.setAttribute("user", currentUser);
 		request.setAttribute("userCourses", userCourses);
@@ -115,8 +115,17 @@ public class UserController {
 	public String displayCourseDetail(HttpServletRequest request, @RequestParam long courseId) {
 		Course course = courseDAO.getCourseById(courseId);
 		request.setAttribute("course", course);
+		System.out.println(course.getName());
 		
 		return "user/courseDetail";
+	}
+	
+	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.GET)
+	public String displyCourseCatalogPage(HttpServletRequest request) {
+		ArrayList <Course> allCourses = courseDAO.getAllCourses();
+		request.setAttribute("allCourses", allCourses);
+		
+		return "user/courseCatalog";
 	}
 
 }
