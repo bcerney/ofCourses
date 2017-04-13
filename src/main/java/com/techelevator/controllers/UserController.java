@@ -111,7 +111,10 @@ public class UserController {
 	
 	
 	@RequestMapping(path={"/courseDetail"}, method=RequestMethod.GET)
-	public String displayCourseDetail() {
+	public String displayCourseDetail(HttpServletRequest request, @RequestParam long courseId) {
+		Course course = courseDAO.getCourseById(courseId);
+		request.setAttribute("course", course);
+		
 		return "user/courseDetail";
 	}
 	
