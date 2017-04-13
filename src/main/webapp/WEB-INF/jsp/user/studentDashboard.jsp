@@ -8,7 +8,7 @@
 				<li>
 					<a href="#">My Courses</a>
 				</li>
-				<c:url value="/user/courseCatalog" var="catalog"/>
+				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
 					<a href="${catalog}">Course Catalog</a>
 				</li>
@@ -34,7 +34,7 @@
 				<p>${course.startDate}</p>
 				<p>${course.endDate}</p>
 				<p>${course.difficulty}</p>	
-				<c:url var="courseDetailHref" value="/user/courseDetail">
+				<c:url var="courseDetailHref" value="/courseDetail">
 					<c:param name ="courseId" value="${course.courseId}"/>
 					</c:url>
 				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a>	

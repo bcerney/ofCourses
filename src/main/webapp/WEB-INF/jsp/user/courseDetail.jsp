@@ -12,7 +12,7 @@
 					<li>Add Resources</li>
 				</ul>
 				<ul class="nav sidebar-nav">
-					<c:url value="/user/teacherDashboard" var="dashboard"/>
+					<c:url value="/dashboard" var="dashboard"/>
 					<li><a href="${dashboard}">My Courses</a></li>
 				</ul>
 			</div>

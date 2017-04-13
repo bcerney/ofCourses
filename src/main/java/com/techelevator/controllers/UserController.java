@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -97,20 +98,23 @@ public class UserController {
 		Course createdCourse = courseDAO.createNewCourse(courseToCreate);
 		
 		if (createdCourse != null) {
-			request.setAttribute("createdCourseId", createdCourse.getCourseId());
-			return "redirect:/user/courseDetail";
+			long courseId = createdCourse.getCourseId();
+			request.setAttribute("courseId", courseId);
+			return "redirect:/" + courseId;
 		} else {
-			return "redirect:/user/createCourse";
+			//TODO: add error message to request
+			return "redirect:/createCourse";
 		}
 	}
 	
 	
 	
-	@RequestMapping(path={"/courseDetail"}, method=RequestMethod.GET)
-	public String displayCourseDetail(HttpServletRequest request, @RequestParam long courseId) {
+	@RequestMapping(path={"/{courseId}"}, method=RequestMethod.GET)
+	public String displayCourseDetail(HttpServletRequest request, 
+									  @PathVariable long courseId,
+									  ModelMap model) {
 		Course course = courseDAO.getCourseById(courseId);
 		request.setAttribute("course", course);
-		System.out.println(course.getName());
 		
 		return "user/courseDetail";
 	}
