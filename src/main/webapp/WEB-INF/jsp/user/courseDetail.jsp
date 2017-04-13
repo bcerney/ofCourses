@@ -23,8 +23,10 @@
 
 				<%-- <div class="courseDetail">
 					<c:url var="formAction" value="/courseDetail" />
-						
-						<h2>Course Name</h2>
+
+					
+						<h2>${course.name}</h2>
+
 						<div>
 							<label for="courseModule">Course Module 1</label> <input
 								type="text" name="courseModule" placeholder="Course Module" />

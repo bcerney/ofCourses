@@ -68,7 +68,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	}
 
 	@Override
-	public ArrayList <Course> getCoursesByTeacher(long teacherId) {
+	public ArrayList <Course> getCoursesByTeacherId(long teacherId) {
 		ArrayList <Course> teacherCourses = new ArrayList<>();
 		String sqlGetCoursesByTeacherId = "SELECT * FROM courses WHERE teacherId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCoursesByTeacherId, teacherId);
