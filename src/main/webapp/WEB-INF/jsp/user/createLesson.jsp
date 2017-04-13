@@ -1,16 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <c:import url="/WEB-INF/jsp/common/loggedInHeader.jsp" />
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-<title>eLearning Portal</title>
-</head>
-<body><div class="createLesson">
+<div class="createLesson">
 	<c:url var="formAction" value="/createLesson" />
 	<form method="POST" action="${formAction}">
+	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 	<h2>Create Lesson</h2>
 	<br>
 		<div>
