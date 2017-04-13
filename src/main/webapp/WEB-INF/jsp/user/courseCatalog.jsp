@@ -38,6 +38,12 @@
 					<c:param name ="courseId" value="${course.courseId}"/>
 					</c:url>
 				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a>
+				<c:url var="formAction" value="/courseCatalog">
+					
+				<c:param name="courseId" value= "${course.courseId}"/></c:url>
+				<form method = "POST" action= "${formAction}">
+				<input type="submit" value="Enroll Today!"/>
+				</form>
 			</c:forEach>
 		</div>
 		</div>
