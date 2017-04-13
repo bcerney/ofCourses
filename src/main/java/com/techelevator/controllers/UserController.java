@@ -73,7 +73,7 @@ public class UserController {
 	
 	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.GET)
 	public String displyCourseCatalogPage(HttpServletRequest request) {
-		ArrayList <Course> allCourses = courseDAO.getAllCourses();
+		List <Course> allCourses = courseDAO.getAllCourses();
 		request.setAttribute("allCourses", allCourses);
 		
 		return "user/courseCatalog";
@@ -125,11 +125,11 @@ public class UserController {
 		return "user/courseDetail";
 	}
 	
+
 	@RequestMapping(path={"/dashboard/{courseId}/addModule"}, method=RequestMethod.GET)
 	public String displayAddModule(HttpServletRequest request, 
 									  @PathVariable long courseId,
 									  ModelMap model) {
-		
 		User currentUser = (User) model.get("currentUser");
 		Course course = courseDAO.getCourseById(courseId);
 		request.setAttribute("course", course);
@@ -141,5 +141,14 @@ public class UserController {
 			return "redirect:/courseDetail";
 		}
 	}
-
+	
+	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.POST)
+	public String enroleStudents(HttpServletRequest request,
+								@RequestParam long studentId,
+								@RequestParam long courseId){
+		userDAO.addUserToCourse(studentId, courseId);
+		
+		return "redirect:/"+ courseId;
+	
+	}
 }

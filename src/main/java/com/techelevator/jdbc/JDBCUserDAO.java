@@ -114,4 +114,10 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 		}
 		return courseRoster;
 	}
+	
+	@Override
+	public void addUserToCourse(long studentId, long courseId) {
+		String sqlAddStudentToCourse = "INSERT INTO student_course (studentId, courseId) VALUES (?, ?)";
+		jdbcTemplate.update(sqlAddStudentToCourse, studentId, courseId);
+	}
 }

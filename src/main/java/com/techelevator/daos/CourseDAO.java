@@ -9,7 +9,8 @@ public interface CourseDAO {
 
 	public Course createNewCourse(Course course);
 	public Course getCourseById(long id);
-	public ArrayList getCoursesByTeacherId(long teacherId);
-	public ArrayList getAllCourses();
-	public ArrayList getCoursesByUserId(long userId);
+	public List getCoursesByTeacherId(long teacherId);
+	public List getAllCourses();
+	public List getCoursesByUserId(long userId);
+	public boolean courseHasGivenTeacher(long courseId, long teacherId);
 }
