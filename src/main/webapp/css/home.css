@@ -1,8 +1,3 @@
-.nav navbar-nav > a{
-	text-align: right;
-	
-}
-
 .welcomeImg{
 	display: block;
 	margin: auto;
@@ -19,10 +14,7 @@
 .form-group{
 	margin: 20px;
 	}
-	
-.lg-12{
-	display: inline-block;
-}	
+
 #firstName{
 	width: 30%;
 }
@@ -42,6 +34,6 @@
 #confirmPassword{
 	width: 30%;
 }
-.btn > btn-default{
+.btn-default{
 	margin: 20px;
 }
