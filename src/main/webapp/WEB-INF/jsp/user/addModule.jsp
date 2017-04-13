@@ -7,7 +7,7 @@
 		<div class="row">
 			<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 				<ul class="nav sidebar-nav">
-					<c:url value="/${course.courseId}/addModule" var="addModule"/>
+					<c:url value="/dashboard/${course.courseId}/addModule" var="addModule"/>
 					<li><a href="${addModule}">Add Module</a></li>
 					<li>Add Lesson</li>
 					<li>Add Resources</li>
@@ -55,14 +55,3 @@
 </body>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
 </html>
-
-
-
-
-
-
-
-
-
-
-
