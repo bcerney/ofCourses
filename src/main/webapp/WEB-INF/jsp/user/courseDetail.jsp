@@ -17,7 +17,7 @@
 			<!-- dashSidebar -->
 
 			<div id="dashMain" class="col-sm-9 col-md-10">
-				<h1 class="page-header">My Courses</h1>
+				<h1 class="page-header"></h1>
 				<div id="exampleCourse" class="dashboard-course-div"></div>
 
 
