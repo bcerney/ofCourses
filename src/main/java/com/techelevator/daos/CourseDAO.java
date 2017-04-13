@@ -10,4 +10,6 @@ public interface CourseDAO {
 	public Course createNewCourse(Course course);
 	public Course getCourseById(long id);
 	public ArrayList getCoursesByTeacher(long teacherId);
+	public ArrayList getAllCourses();
+	public ArrayList getCoursesByUserId(long userId);
 }
