@@ -1,0 +1,15 @@
+.nav navbar-nav > a{
+	text-align: right;
+	
+}
+
+#firstName{
+	max-width: 50%;
+}
+
+.welcomeImg{
+	display: block;
+	margin: auto;
+	width: 80%;
+	box-shadow: 5px 5px 15px black;
+}
