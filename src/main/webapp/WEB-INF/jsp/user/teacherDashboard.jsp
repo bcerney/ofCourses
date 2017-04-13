@@ -9,7 +9,7 @@
 			<ul class="nav sidebar-nav">
 				<li>My Courses</li>
 				<li>Course Catalog</li>
-				<c:url value="/user/createCourse" var="createCourse" />
+				<c:url value="/dashboard/createCourse" var="createCourse" />
 				<li><a href="${createCourse}">Create Course</a></li>
 				<li></li>
 			</ul>
@@ -34,8 +34,8 @@
 					<p>Start Date: ${course.startDate}</p>
 					<p>End Date: ${course.endDate}</p>
 					
-					<c:url value="/user/courseDetail" var="courseDetail">
-						<c:param name="courseId" value="${course.courseId}"/>
+					<c:url value="/dashboard/${course.courseId}" var="courseDetail">
+						<%-- <c:param name="courseId" value="${course.courseId}"/> --%>
 					</c:url>
 					<a id="courseDetailBtn" class="btn btn-primary" href="${courseDetail}">Go To Course</a>
 				</c:forEach>
