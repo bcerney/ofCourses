@@ -56,10 +56,11 @@ public class UserController {
 	
 	
 	@RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
-	public String displayStudentDashboard(ModelMap model) {
+	public String displayStudentDashboard(HttpServletRequest request, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
-		
+		ArrayList <Course> studentCourses = courseDAO.getCoursesByUserId(currentUser.getUserId());
 		System.out.println(currentUser.getFirstName());
+		request.setAttribute("studentsCourses", studentCourses);
 		return "user/studentDashboard";
 	}
 	

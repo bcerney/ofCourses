@@ -78,4 +78,30 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		}
 		return teacherCourses;
 	}
+
+	@Override
+	public ArrayList <Course> getAllCourses() {
+		ArrayList <Course> allCourses = new ArrayList<>();
+		String sqlGetAllCourses = "SELECT * FROM courses WHERE startDate >= NOW()";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCourses);
+		while (results.next()) {
+			Course nextCourse = mapRowToCourse(results);
+			allCourses.add(nextCourse);
+		}
+		return allCourses;
+	}
+
+	@Override
+	public ArrayList getCoursesByUserId(long userId) {
+		ArrayList <Course> usersCourses = new ArrayList<>();
+		String sqlGetAllCoursesByUser = "SELECT * FROM courses JOIN student_course ON courses.courseId = student_course.courseId JOIN users ON users.userId = student_course.studentId WHERE userId = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCoursesByUser, userId);
+		while (results.next()) {
+			Course nextCourse = mapRowToCourse(results);
+			usersCourses.add(nextCourse);
+		}
+		return usersCourses;
+	}
+	
+	
 }
