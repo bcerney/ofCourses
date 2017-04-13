@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="/WEB-INF/jsp/common/loggedInHeader.jsp" />
 
@@ -17,7 +18,7 @@
 				<h1 class="page-header">My Courses</h1>
 
 				<div id="createCourse" class="create-course-div">
-					<c:url var="formAction" value="/user/createCourse" />
+					<c:url var="formAction" value="/createCourse" />
 					<form method="POST" action="${formAction}">
 					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 						<h2>Create Course</h2>
