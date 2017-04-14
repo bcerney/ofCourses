@@ -9,7 +9,10 @@
 			<ul class="nav sidebar-nav">
 			<c:url value="/dashboard" var="dashboard"/>
 					<li><a href="${dashboard}">Dashboard</a></li>
-				<li>Course Catalog</li>
+				<c:url value="/courseCatalog" var="catalog"/>
+				<li>
+					<a href="${catalog}">Course Catalog</a>
+				</li>
 				<c:url value="/dashboard/createCourse" var="createCourse" />
 				<li><a href="${createCourse}">Create Course</a></li>
 				<li></li>
