@@ -51,7 +51,10 @@
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard"/>
 					<li><a href="${dashboard}">Dashboard</a></li>
-				<li>Course Catalog</li>
+				<c:url value="/courseCatalog" var="catalog"/>
+				<li>
+					<a href="${catalog}">Course Catalog</a>
+				</li>
 				<li></li>
 			</ul>
 		</div>

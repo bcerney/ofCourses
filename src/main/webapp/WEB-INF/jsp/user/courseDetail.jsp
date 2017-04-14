@@ -40,9 +40,8 @@
 					
 					<c:forEach var = "module" items = "${modules}" >
 					<div class = "courseModule">
-						<c:url var="moduleHref" value="/dashboard/${course.courseId}/${module.moduleId}">
-						<c:param name ="moduleId" value="${module.moduleId}"/>
-						</c:url>
+						<c:url var="moduleHref" value="/dashboard/${course.courseId}/${module.moduleId}"/>
+						
 				<a id="detailPageLink" href= "${moduleHref}">${module.name}</a> </div>
 					
 					</c:forEach>
