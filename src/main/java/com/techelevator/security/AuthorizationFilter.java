@@ -58,9 +58,9 @@ public class AuthorizationFilter implements Filter {
 				!courseDAO.courseHasGivenTeacher(Long.parseLong(requestCourseId), sessionUserId) &&
 				!courseDAO.studentIsEnrolledInCourse(Long.parseLong(requestCourseId), sessionUserId)){
 			httpResponse.sendError(403);
+		} else {
+			chain.doFilter(request, response);
 		}
-		
-		chain.doFilter(request, response);
 	}
 
 	private void redirectToLoginPage(HttpServletRequest httpRequest, HttpServletResponse httpResponse)

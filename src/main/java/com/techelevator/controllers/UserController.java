@@ -162,10 +162,10 @@ public class UserController {
 		
 		if (addedModule != null) {
 			long moduleId = addedModule.getModuleId();
-			return "redirect:/dashboard/{courseId}/"+moduleId;
+			return "redirect:/dashboard/"+courseId+"/"+moduleId;
 		} else {
 			//TODO: if module not added, have error message
-			return "redirect:/dashboard/{courseId}/addModule";
+			return "redirect:/dashboard/"+courseId+"/addModule";
 		}
 	}
 	
@@ -189,13 +189,17 @@ public class UserController {
 	public String displayModule(HttpServletRequest request,
 									@PathVariable long courseId,
 									@PathVariable long moduleId) {
+		
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
-		ArrayList<Lesson> lessons = lessonDAO.getLessonsByModuleId(moduleId);
 		request.setAttribute("module", module);
-		request.setAttribute("lessons", lessons);
+		
+		ArrayList<Lesson> lessons = lessonDAO.getLessonsByModuleId(moduleId);
+		if (lessons != null) {
+			request.setAttribute("lessons", lessons);
+		}
 
 		if (module.getCourseId() == courseId) {
-			return "user/dashboard/moduleView";
+			return "user/moduleView";
 		} else {
 			//TODO: add error message or 403 redirect
 			return "redirect:/dashboard/"+courseId+"/"+moduleId;
