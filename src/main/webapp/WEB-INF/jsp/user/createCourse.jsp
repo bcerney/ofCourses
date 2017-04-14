@@ -2,11 +2,55 @@
 
 <c:import url="/WEB-INF/jsp/common/loggedInHeader.jsp" />
 
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		
+		$("form").validate({
+			
+			rules : {
+				courseName : {
+					required : true
+				},
+				subject : {
+					required : true
+				},
+				courseCapacity : {
+					required : true
+				},
+				courseDescription : {
+					required : true
+				},
+				courseDifficulty : {
+					required : true
+				},
+				courseFee : {
+					required : true
+				},
+				startDate : {
+					required : true
+				},
+				endDate : {
+					required : true
+				},
+				
+					
+				},
+				
+			
+			errorClass: "error"
+		});
+	});
+	
+	
+</script>
+
 <div id="dashboardDiv" class="container-fluid">
 	<div class="row">
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
-				<li>My Courses</li>
+				<c:url value="/dashboard" var="dashboard"/>
+					<li><a href="${dashboard}">Dashboard</a></li>
 				<li>Course Catalog</li>
 				<li></li>
 			</ul>
@@ -47,13 +91,14 @@
 							</div>
 						</div>
 
-						<div id="courseDescription" class="form-group">
-							<label for="courseDescription">Course Description</label> <input
-								type="text" name="courseDescription" placeholder="Description" />
+						<div id="courseDescription" class="form-group row">
+							<label for="courseDescription" class="col-md-2 col-form-label">Description</label> 
+							<div class="col-md-8"><input
+								class="form-control" type="text" name="courseDescription" placeholder="Description" />
 						</div>
-
+						</div>
 						<div id="courseDifficulty" class="form-group">
-							<label for="courseDifficulty">Course Difficulty</label> <select name= "courseDifficulty"
+							<label for="courseDifficulty">Difficulty</label> <select name= "courseDifficulty"
 								class="custom-select">
 								<option selected>Choose Difficulty</option>
 								<option value="Beginner">Beginner</option>
@@ -65,13 +110,15 @@
 							type="text" name="courseDifficulty" placeholder="Difficulty" /> -->
 						</div>
 
-						<div class="courseFee" class="form-group">
-							<label for="courseFee">Course Fee</label> <input type="text"
+						<div id="courseFee" class="form-group row">
+							<label for="courseFee" class="col-md-2 col-form-label">Fee</label> 
+							<div class="col-md-8"><input class="form-control" type="text"
 								name="courseFee" placeholder="Course Fee" />
+						</div>
 						</div>
 						
 						<div id="startDate" class="form-group row">
-							<label for="startDate" class="col-md-2 col-form-label">Start Date (mm/dd/yyyy)</label>
+							<label for="startDate" class="col-md-2 col-form-label">Start Date</label>
 							<div class="col-md-8">
 								<input class="form-control" type="date" name="startDate"
 									placeholder="Start Date" />
@@ -79,7 +126,7 @@
 						</div>
 						
 						<div id="endDate" class="form-group row">
-							<label for="endDate" class="col-md-2 col-form-label">End Date (mm/dd/yyyy)</label>
+							<label for="endDate" class="col-md-2 col-form-label">End Date</label>
 							<div class="col-md-8">
 								<input class="form-control" type="date" name="endDate"
 									placeholder="End Date" />

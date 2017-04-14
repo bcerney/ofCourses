@@ -7,15 +7,12 @@
 <title>eLearning Portal</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, userscalable=no">
-<!-- <link rel="stylesheet" type="text/css" href="/../css/student.css"> -->
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
-	<link rel="stylesheet" href="css/loggedIn.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="/../css/student.css"> -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<c:url var="loggedInCssUrl" value="/css/loggedIn.css"/>
+	<link rel="stylesheet" href="${loggedInCssUrl}" />
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 </head>
 <body>
