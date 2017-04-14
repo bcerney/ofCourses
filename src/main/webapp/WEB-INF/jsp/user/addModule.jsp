@@ -10,8 +10,6 @@
 				<c:url value="/dashboard/${course.courseId}/addModule"
 					var="addModule" />
 				<li><a href="${addModule}">Add Module</a></li>
-				<li>Add Lesson</li>
-				<li>Add Resources</li>
 			</ul>
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard" />

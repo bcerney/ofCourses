@@ -7,10 +7,10 @@
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard"/>
 					<li><a href="${dashboard}">Dashboard</a></li>
-				<c:url value="/user/courseCatalog" var="catalog"/>
+<%-- 				<c:url value="/user/courseCatalog" var="catalog"/>
 				<li>
 					<a href="${catalog}">Course Catalog</a>
-				</li>
+				</li> --%>
 				<li></li>
 			</ul>
 		</div>
@@ -25,13 +25,13 @@
 			<div id= "courses">
 			<c:forEach var="course" items="${allCourses}">
 				<h3>${course.name}</h3>
-				<p>${course.subject}</p>
-				<p>${course.capacity}</p>
-				<p>${course.description}</p>
-				<p>${course.fee}</p>
-				<p>${course.startDate}</p>
-				<p>${course.endDate}</p>
-				<p>${course.difficulty}</p>	
+					<p>Subject: ${course.subject}</p>
+					<p>Level: ${course.difficulty}</p>
+					<p>Capacity: ${course.capacity}</p>
+					<p>${course.description}</p>
+					<p>Start Date: ${course.startDate}</p>
+					<p>End Date: ${course.endDate}</p>
+					<p>Cost: $${course.fee}</p>
 				<c:url var="courseDetailHref" value="/user/courseDetail">
 					<c:param name ="courseId" value="${course.courseId}"/>
 					</c:url>
