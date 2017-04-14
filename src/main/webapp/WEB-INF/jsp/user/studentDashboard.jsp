@@ -8,6 +8,12 @@
 				<c:url value="/dashboard" var="dashboard"/>
 				<li>
 					<a href="${dashboard}">My Courses</a>
+					<c:forEach var = "course" items="${studentsCourses}">
+						<li><c:url var="courseDetailHref" value="dashboard/${course.courseId}">
+						<c:param name ="courseId" value="${course.courseId}"/>
+						</c:url>
+				<a id="detailPageLink" href= "${courseDetailHref}">${course.name}</a> 
+					</c:forEach></li>
 				</li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
@@ -36,10 +42,10 @@
 				<p>${course.endDate}</p>
 				<p>${course.difficulty}</p>	
 				<!-- TODO: have this navigate to student view of course -->
-				<%-- <c:url var="courseDetailHref" value="/courseDetail">
+				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}">
 					<c:param name ="courseId" value="${course.courseId}"/>
 					</c:url>
-				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a> --%>	
+				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a> 	
 			</c:forEach>
 		</div>
 		</div>
