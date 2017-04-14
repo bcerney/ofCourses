@@ -22,11 +22,19 @@
 			<div id="dashMain" class="col-sm-9 col-md-10">
 				<h1 class="page-header"><c:out value="${course.name}"/></h1>
 
-				<%-- <div class="courseDetail">
+							
+				<div class="courseDetail">
 					<c:url var="formAction" value="/courseDetail" />
 
 					
 						<h2>${course.name}</h2>
+						<p>${course.subject}</p>
+						<p>${course.capacity}</p>
+						<p>${course.description}</p>
+						<p>${course.fee}</p>
+						<p>${course.startDate}</p>
+						<p>${course.endDate}</p>
+						<p>${course.difficulty}</p>	
 
 						<div>
 							<label for="courseModule">Course Module 1</label> <input
@@ -44,7 +52,7 @@
 						</div>
 
 
-				</div> --%>
+				</div> 
 
 			</div>
 			<!-- dashMain -->
