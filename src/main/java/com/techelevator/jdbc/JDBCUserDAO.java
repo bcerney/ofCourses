@@ -1,6 +1,7 @@
 package com.techelevator.jdbc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -104,7 +105,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	}
 	
 	@Override
-	public ArrayList getStudentsByCourseId(long courseId) {
+	public List getStudentsByCourseId(long courseId) {
 		ArrayList <User> courseRoster = new ArrayList<>();
 		String sqlGetClassRoster = "SELECT * FROM users JOIN student_course ON (users.userId = student_course.studentId) JOIN courses ON (courses.courseId = student_course.courseId) WHERE courses.courseId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetClassRoster, courseId);
