@@ -201,7 +201,7 @@ public class UserController {
 		
 		ArrayList<Lesson> lessons = lessonDAO.getLessonsByModuleId(moduleId);
 		if (lessons != null) {
-			request.setAttribute("lessons", lessons);
+			request.setAttribute("allLessons", lessons);
 		}
 
 		if (module.getCourseId() == courseId) {

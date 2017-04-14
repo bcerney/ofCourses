@@ -9,9 +9,7 @@
 				<li>
 					<a href="${dashboard}">Dashboard</a>
 					<c:forEach var = "course" items="${studentsCourses}">
-						<li><c:url var="courseDetailHref" value="dashboard/${course.courseId}">
-						<c:param name ="courseId" value="${course.courseId}"/>
-						</c:url>
+						<li><c:url var="courseDetailHref" value="/dashboard/${course.courseId}"/>
 				<a id="detailPageLink" href= "${courseDetailHref}">${course.name}</a> 
 					</c:forEach></li>
 				</li>
