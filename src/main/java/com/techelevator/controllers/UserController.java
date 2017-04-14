@@ -20,9 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.techelevator.daos.CourseDAO;
+import com.techelevator.daos.LessonDAO;
+import com.techelevator.daos.ModuleDAO;
 import com.techelevator.daos.UserDAO;
 import com.techelevator.jdbc.JDBCCourseDAO;
 import com.techelevator.models.Course;
+import com.techelevator.models.Lesson;
+import com.techelevator.models.Module;
 import com.techelevator.models.User;
 
 @Controller
@@ -31,11 +35,15 @@ public class UserController {
 	
 	private UserDAO userDAO;
 	private CourseDAO courseDAO;
+	private ModuleDAO moduleDAO;
+	private LessonDAO lessonDAO;
 	
 	@Autowired
-	public UserController(UserDAO userDAO, CourseDAO courseDAO) {
+	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO) {
 		this.userDAO = userDAO;
 		this.courseDAO = courseDAO;
+		this.moduleDAO = moduleDAO;
+		this.lessonDAO = lessonDAO;
 	}
 	
 	@RequestMapping(path={"/dashboard"}, method=RequestMethod.GET)
@@ -151,6 +159,23 @@ public class UserController {
 		userDAO.addUserToCourse(studentId, courseId);
 		System.out.println("user id" + studentId + "course id" +courseId);
 		return "redirect:/dashboard/"+ courseId;
-	
 	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}"}, method=RequestMethod.GET)
+	public String displayModule(HttpServletRequest request,
+									@PathVariable long courseId,
+									@PathVariable long moduleId) {
+		Module module = moduleDAO.getModuleByModuleId(moduleId);
+		ArrayList<Lesson> lessons = lessonDAO.getLessonsByModuleId(moduleId);
+		request.setAttribute("module", module);
+		request.setAttribute("lessons", lessons);
+
+		if (module.getCourseId() == courseId) {
+			return "user/dashboard/"+courseId+"/"+moduleId;
+		} else {
+			//TODO: add error message or 403 redirect
+			return "redirect:/courseDetail";
+		}
+	}
+	
 }
