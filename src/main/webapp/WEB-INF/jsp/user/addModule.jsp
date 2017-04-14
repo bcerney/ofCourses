@@ -22,29 +22,7 @@
 			<div id="dashMain" class="col-sm-9 col-md-10">
 				<h1 class="page-header">Add Module</h1>
 
-				<%-- <div class="courseDetail">
-					<c:url var="formAction" value="/courseDetail" />
-
-					
-						<h2>${course.name}</h2>
-
-						<div>
-							<label for="courseModule">Course Module 1</label> <input
-								type="text" name="courseModule" placeholder="Course Module" />
-						</div>
-
-						<div class="courseModule">
-							<label for="courseModule">Course Module 2</label> <input
-								type="text" name="courseModule" placeholder="Course Module" />
-						</div>
-
-						<div class="courseModule">
-							<label for="courseModule">Course Module 3</label> <input
-								type="text" name="courseModule" placeholder="Course Module" />
-						</div>
-
-
-				</div> --%>
+				
 
 			</div>
 			<!-- dashMain -->
