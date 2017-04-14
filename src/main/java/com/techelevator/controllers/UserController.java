@@ -150,6 +150,25 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping(path={"/dashboard/{courseId}/addModule"}, method=RequestMethod.POST)
+	public String submitAddModule(HttpServletRequest request, 
+									  @PathVariable long courseId,
+									  @RequestParam String moduleName,
+									  @RequestParam String moduleDescription,
+									  ModelMap model) {
+		//User currentUser = (User) model.get("currentUser");
+		Module moduleToAdd = new Module(moduleName, moduleDescription, courseId);
+		Module addedModule = moduleDAO.createNewModule(moduleToAdd);
+		
+		if (addedModule != null) {
+			long moduleId = addedModule.getModuleId();
+			return "redirect:/dashboard/{courseId}/"+moduleId;
+		} else {
+			//TODO: if module not added, have error message
+			return "redirect:/dashboard/{courseId}/addModule";
+		}
+	}
+	
 	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.POST)
 	public String enroleStudents(HttpServletRequest request,
 								ModelMap model,

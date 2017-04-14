@@ -6,6 +6,16 @@ public class Module {
 	private String description;
 	private long courseId;
 	
+	public Module() {
+		
+	}
+	
+	public Module(String name, String description, long courseId) {
+		this.name = name;
+		this.description = description;
+		this.courseId = courseId;
+	}
+	
 	public long getModuleId() {
 		return moduleId;
 	}
