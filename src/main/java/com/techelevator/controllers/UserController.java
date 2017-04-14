@@ -225,4 +225,13 @@ public class UserController {
 
 		return "user/addLesson";
 	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/roster"}, method=RequestMethod.GET)
+	public String displayClassRoster(HttpServletRequest request,
+									@PathVariable long courseId){
+		List <User> classRoster = userDAO.getStudentsByCourseId(courseId);
+		
+		request.setAttribute("roster", classRoster);
+		return "user/studentRoster";
+	}
 }
