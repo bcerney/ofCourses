@@ -51,35 +51,37 @@ public class HomeController {
 		}
 	}
 	
-	@RequestMapping(path={"/login"}, method=RequestMethod.GET)
-	public String displayLoginPage() {
-		return "login/login";
-	}
-	
-	@RequestMapping(path={"/login"}, method=RequestMethod.POST)
-	public String login(@RequestParam String email,
-						@RequestParam String password,
-						ModelMap model) {
-		
-		if(userDAO.userIsAuthenticated(email, password)) {
-			User currentUser = userDAO.getUserOnLogin(email, password);
-			model.put("currentUser", currentUser);
-			return "redirect:/dashboard";
-//			if (currentUser.getUserType().equals("teacher")) {
-//				return "redirect:/user/teacherDashboard";
-//			} else {
-//				return "redirect:/user/studentDashboard";
-//			}
-		} else {
-			return "redirect:/login";
-		}
-	}
-	@RequestMapping(path="/user/logout")
-    public String logout(HttpSession session, ModelMap model) {
-    	session.invalidate();
-    	model.remove("currentUser");
-        return "redirect:/";
-    }
+// Everything below has been transferred to AuthenticationController so it should be removed.
+
+//	@RequestMapping(path={"/login"}, method=RequestMethod.GET)
+//	public String displayLoginPage() {
+//		return "login/login";
+//	}
+//	
+//	@RequestMapping(path={"/login"}, method=RequestMethod.POST)
+//	public String login(@RequestParam String email,
+//						@RequestParam String password,
+//						ModelMap model) {
+//		
+//		if(userDAO.userIsAuthenticated(email, password)) {
+//			User currentUser = userDAO.getUserOnLogin(email, password);
+//			model.put("currentUser", currentUser);
+//			return "redirect:/dashboard";
+////			if (currentUser.getUserType().equals("teacher")) {
+////				return "redirect:/user/teacherDashboard";
+////			} else {
+////				return "redirect:/user/studentDashboard";
+////			}
+//		} else {
+//			return "redirect:/login";
+//		}
+//	}
+//	@RequestMapping(path="/user/logout")
+//    public String logout(HttpSession session, ModelMap model) {
+//    	session.invalidate();
+//    	model.remove("currentUser");
+//        return "redirect:/";
+//    }
 	
 	
 }
