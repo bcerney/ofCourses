@@ -117,5 +117,26 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		String sqlVerifyEnrollment = "SELECT * FROM student_course WHERE courseId = ? AND studentId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlVerifyEnrollment, courseId, studentId);
 		return results.next();
+	}
+
+	@Override
+	public boolean isCourseFull(long courseId) {
+		String sqlGetEnrollmentTotal ="SELECT COUNT(*) FROM student_course WHERE courseId = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetEnrollmentTotal, courseId);
+		results.next();
+		int totalEnrollment = results.getInt(1);
+		System.out.println(totalEnrollment);
+		
+		String sqlGetCapacity = "SELECT capacity FROM courses WHERE courseId = ?";
+		SqlRowSet results1 = jdbcTemplate.queryForRowSet(sqlGetCapacity, courseId);
+		results1.next();
+		int capacity = results1.getInt(1);
+		System.out.println(capacity);
+		if (totalEnrollment > capacity) {
+			return true;
+		}else{
+			return false;
+		}
+		
 	}		
 }
