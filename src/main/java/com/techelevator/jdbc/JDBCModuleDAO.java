@@ -62,10 +62,10 @@ public class JDBCModuleDAO extends JDBCDAO implements ModuleDAO {
 	
 	private Module mapRowToModule(SqlRowSet results) {
 		Module aModule = new Module();
-		aModule.setModuleId(results.getLong("courseId"));
+		aModule.setModuleId(results.getLong("moduleId"));
 		aModule.setName(results.getString("name"));
 		aModule.setDescription(results.getString("description"));
-		aModule.setCourseId(results.getInt("courseId"));
+		aModule.setCourseId(results.getLong("courseId"));
 		return aModule;
 	}
 	

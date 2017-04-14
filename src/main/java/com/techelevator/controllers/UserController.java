@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.techelevator.daos.CourseDAO;
+import com.techelevator.daos.ModuleDAO;
 import com.techelevator.daos.UserDAO;
 import com.techelevator.jdbc.JDBCCourseDAO;
 import com.techelevator.models.Course;
+import com.techelevator.models.Module;
 import com.techelevator.models.User;
 
 @Controller
@@ -31,11 +33,13 @@ public class UserController {
 	
 	private UserDAO userDAO;
 	private CourseDAO courseDAO;
+	private ModuleDAO moduleDAO;
 	
 	@Autowired
-	public UserController(UserDAO userDAO, CourseDAO courseDAO) {
+	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO) {
 		this.userDAO = userDAO;
 		this.courseDAO = courseDAO;
+		this.moduleDAO = moduleDAO;
 	}
 	
 	@RequestMapping(path={"/dashboard"}, method=RequestMethod.GET)
@@ -139,6 +143,25 @@ public class UserController {
 		} else {
 			//TODO: add error message or 403 redirect
 			return "redirect:/courseDetail";
+		}
+	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/addModule"}, method=RequestMethod.POST)
+	public String submitAddModule(HttpServletRequest request, 
+									  @PathVariable long courseId,
+									  @RequestParam String moduleName,
+									  @RequestParam String moduleDescription,
+									  ModelMap model) {
+		//User currentUser = (User) model.get("currentUser");
+		Module moduleToAdd = new Module(moduleName, moduleDescription, courseId);
+		Module addedModule = moduleDAO.createNewModule(moduleToAdd);
+		
+		if (addedModule != null) {
+			long moduleId = addedModule.getModuleId();
+			return "redirect:/dashboard/{courseId}/"+moduleId;
+		} else {
+			//TODO: if module not added, have error message
+			return "redirect:/dashboard/{courseId}/addModule";
 		}
 	}
 	
