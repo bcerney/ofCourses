@@ -7,7 +7,7 @@
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard"/>
 				<li>
-					<a href="${dashboard}">My Courses</a>
+					<a href="${dashboard}">Dashboard</a>
 					<c:forEach var = "course" items="${studentsCourses}">
 						<li><c:url var="courseDetailHref" value="dashboard/${course.courseId}">
 						<c:param name ="courseId" value="${course.courseId}"/>
