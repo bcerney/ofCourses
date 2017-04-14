@@ -127,9 +127,12 @@ public class UserController {
 	public String displayCourseDetail(HttpServletRequest request, 
 									  @PathVariable long courseId,
 									  ModelMap model) {
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseById(courseId);	
+		User teacher = userDAO.getUserById(course.getTeacherId());
+		List <Module> modules = moduleDAO.getModulesByCourseId(courseId);
 		request.setAttribute("course", course);
-		
+		request.setAttribute("modules", modules);
+		request.setAttribute("teacher", teacher);
 		return "user/courseDetail";
 	}
 	
