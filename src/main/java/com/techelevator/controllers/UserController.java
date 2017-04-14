@@ -190,10 +190,13 @@ public class UserController {
 	
 	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}"}, method=RequestMethod.GET)
 	public String displayModule(HttpServletRequest request,
-									@PathVariable long courseId,
-									@PathVariable long moduleId) {
+								@PathVariable long courseId,
+								@PathVariable long moduleId) {
 		
+		Course course = courseDAO.getCourseById(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
+		
+		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 		
 		ArrayList<Lesson> lessons = lessonDAO.getLessonsByModuleId(moduleId);
@@ -207,5 +210,19 @@ public class UserController {
 			//TODO: add error message or 403 redirect
 			return "redirect:/dashboard/"+courseId+"/"+moduleId;
 		}
+	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/addLesson"}, method=RequestMethod.GET)
+	public String displayAddLesson(HttpServletRequest request,
+									@PathVariable long courseId,
+									@PathVariable long moduleId) {
+		
+		Course course = courseDAO.getCourseById(courseId);
+		Module module = moduleDAO.getModuleByModuleId(moduleId);
+		
+		request.setAttribute("course", course);
+		request.setAttribute("module", module);
+
+		return "user/addLesson";
 	}
 }
