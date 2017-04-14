@@ -24,7 +24,6 @@
 						<h2>${lesson.name}</h2>
 						<p>${lesson.description}</p>
 					</div>
-					
 				</c:forEach>
 				
 			</div>
