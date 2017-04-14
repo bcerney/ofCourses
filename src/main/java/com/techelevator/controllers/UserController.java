@@ -147,10 +147,14 @@ public class UserController {
 								ModelMap model,
 								@RequestParam long courseId){
 		User currentUser = (User) model.get("currentUser");
-		long studentId = currentUser.getUserId();		
-		userDAO.addUserToCourse(studentId, courseId);
-		System.out.println("user id" + studentId + "course id" +courseId);
-		return "redirect:/dashboard/"+ courseId;
-	
+		long studentId = currentUser.getUserId();	
+		if (courseDAO.isCourseFull(courseId) || courseDAO.studentIsEnrolledInCourse(courseId, studentId)) {
+			return "redirect:/dashboard";
+			//TODO: add error message
+		}else{
+			userDAO.addUserToCourse(studentId, courseId);
+			System.out.println("user id" + studentId + "course id" +courseId);
+			return "redirect:/dashboard/"+ courseId;
+		}
 	}
 }
