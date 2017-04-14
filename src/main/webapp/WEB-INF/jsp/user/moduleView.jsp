@@ -16,12 +16,8 @@
 			<div id="dashMain" class="col-sm-9 col-md-10">
 				<h1 class="page-header"><c:out value="${module.name}"/></h1>
 
-				<!-- <c:if> -->
-					<c:url var="addLesson" value="/dashboard/${course.courseId}/${course.courseId}/addLesson"/>
-					<a id="detailPageLink" href= "${courseDetailHref}">Add Lesson</a>
-					
-					<p>Add Lesson</p>							
-				<!-- </c:if> -->
+					<c:url var="addLessonHref" value="/dashboard/${course.courseId}/${module.moduleId}/addLesson"/>
+					<a id="detailPageLink" href= "${addLessonHref}">Add Lesson</a>							
 				
 				<c:forEach var="lesson" items="${allLessons}">
 					<div class="moduleLesson">
