@@ -138,5 +138,6 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 			return false;
 		}
 		
-	}		
+	}
+	
 }
