@@ -146,7 +146,7 @@ public class UserController {
 			return "user/addModule";
 		} else {
 			//TODO: add error message or 403 redirect
-			return "redirect:/courseDetail";
+			return "redirect:/dashboard/" + courseId;
 		}
 	}
 	
@@ -202,7 +202,7 @@ public class UserController {
 			return "user/moduleView";
 		} else {
 			//TODO: add error message or 403 redirect
-			return "redirect:/courseDetail";
+			return "redirect:/dashboard/"+courseId+"/"+moduleId;
 		}
 	}
 }
