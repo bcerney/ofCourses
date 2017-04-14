@@ -29,14 +29,14 @@
 
 			<div id="courses">
 				<c:forEach var="course" items="${userCourses}">
-					<h3>${course.name}</h3>
+				<h3>${course.name}</h3>
 					<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
 					<p>Capacity: ${course.capacity}</p>
 					<p>${course.description}</p>
-					<p>Cost: $${course.fee}</p>
 					<p>Start Date: ${course.startDate}</p>
 					<p>End Date: ${course.endDate}</p>
+					<p>Cost: $${course.fee}</p>
 					
 					<c:url value="/dashboard/${course.courseId}" var="courseDetail">
 						<%-- <c:param name="courseId" value="${course.courseId}"/> --%>

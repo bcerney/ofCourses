@@ -32,14 +32,15 @@
 			<div id= "courses">
 			<c:forEach var="course" items="${studentsCourses}">
 				<h3>${course.name}</h3>
-				<p>${course.subject}</p>
-				<p>${course.capacity}</p>
-				<p>${course.description}</p>
-				<p>${course.fee}</p>
-				<p>${course.startDate}</p>
-				<p>${course.endDate}</p>
-				<p>${course.difficulty}</p>	
-				<!-- TODO: have this navigate to student view of course -->
+					<p>Subject: ${course.subject}</p>
+					<p>Level: ${course.difficulty}</p>
+					<p>Capacity: ${course.capacity}</p>
+					<p>${course.description}</p>
+					<p>Start Date: ${course.startDate}</p>
+					<p>End Date: ${course.endDate}</p>
+					<p>Cost: $${course.fee}</p>
+
+					<!-- TODO: have this navigate to student view of course -->
 				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}">
 					<c:param name ="courseId" value="${course.courseId}"/>
 					</c:url>
