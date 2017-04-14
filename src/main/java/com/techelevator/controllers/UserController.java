@@ -39,7 +39,7 @@ public class UserController {
 	private LessonDAO lessonDAO;
 	
 	@Autowired
-	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO) {
+	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO) {
 		this.userDAO = userDAO;
 		this.courseDAO = courseDAO;
 		this.moduleDAO = moduleDAO;
@@ -146,7 +146,7 @@ public class UserController {
 			return "user/addModule";
 		} else {
 			//TODO: add error message or 403 redirect
-			return "redirect:/courseDetail";
+			return "redirect:/dashboard/" + courseId;
 		}
 	}
 	
@@ -195,10 +195,10 @@ public class UserController {
 		request.setAttribute("lessons", lessons);
 
 		if (module.getCourseId() == courseId) {
-			return "user/dashboard/"+courseId+"/"+moduleId;
+			return "user/dashboard/moduleView";
 		} else {
 			//TODO: add error message or 403 redirect
-			return "redirect:/courseDetail";
+			return "redirect:/dashboard/"+courseId+"/"+moduleId;
 		}
 	}
 }
