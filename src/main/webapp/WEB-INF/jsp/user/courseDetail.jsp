@@ -35,24 +35,18 @@
 						<p>${course.startDate}</p>
 						<p>${course.endDate}</p>
 						<p>${course.difficulty}</p>	
-
-						<div>
-							<label for="courseModule">Course Module 1</label> <input
-								type="text" name="courseModule" placeholder="Course Module" />
-						</div>
-
-						<div class="courseModule">
-							<label for="courseModule">Course Module 2</label> <input
-								type="text" name="courseModule" placeholder="Course Module" />
-						</div>
-
-						<div class="courseModule">
-							<label for="courseModule">Course Module 3</label> <input
-								type="text" name="courseModule" placeholder="Course Module" />
-						</div>
-
-
-				</div> 
+					<h3>Available Modules</h3>
+					
+					<c:forEach var = "module" items = "${modules}" >
+					<div class = "courseModule">
+						<c:url var="moduleHref" value="/dashboard/${course.courseId}/${module.moduleId}">
+						<c:param name ="moduleId" value="${module.moduleId}"/>
+						</c:url>
+				<a id="detailPageLink" href= "${moduleHref}">${module.name}</a> </div>
+					
+					</c:forEach>
+			
+				
 
 			</div>
 			<!-- dashMain -->
