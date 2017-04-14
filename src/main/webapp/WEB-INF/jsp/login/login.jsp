@@ -11,7 +11,7 @@
 		<c:url var="formAction" value="/login" />
 		<form method="POST" action="${formAction}">
 			<%-- <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> --%>
-			<div class="col-sm-4"></div>
+			<div class="col-sm-6" > 
 			
 			<div class="form-group">
 				<label for="email">Email Address: </label> <input type="text"
@@ -26,8 +26,10 @@
 			<!-- TODO: option to change password -->
 			<button type="submit" class="btn btn-default">Log In</button>
 
-			<div class="col-sm-4"></div>
 		</form>
+		</div>
+			<div class="col-sm-6"></div>
+
 	</div>
 </div>
 

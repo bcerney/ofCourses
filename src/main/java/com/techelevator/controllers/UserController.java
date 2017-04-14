@@ -144,11 +144,13 @@ public class UserController {
 	
 	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.POST)
 	public String enroleStudents(HttpServletRequest request,
-								@RequestParam long studentId,
+								ModelMap model,
 								@RequestParam long courseId){
+		User currentUser = (User) model.get("currentUser");
+		long studentId = currentUser.getUserId();		
 		userDAO.addUserToCourse(studentId, courseId);
-		
-		return "redirect:/"+ courseId;
+		System.out.println("user id" + studentId + "course id" +courseId);
+		return "redirect:/dashboard/"+ courseId;
 	
 	}
 }
