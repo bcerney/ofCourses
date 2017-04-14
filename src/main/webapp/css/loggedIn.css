@@ -1,5 +1,22 @@
+/* #dashSidebar{
+	border: 1px solid black;
+	margin-left: 2px;
+	
+} */
 
+.sidebar-div{
+	/* position: fixed; */
+	border: 1px solid black;
+	/* margin-left: 2px; */
+	
+}
 
 #firstName{
 	max-width: 50%;
+}
+
+
+.footerText{
+	text-align: center;
+	margin: 40px;
 }
