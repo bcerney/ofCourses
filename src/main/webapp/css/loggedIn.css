@@ -6,7 +6,9 @@
 
 .sidebar-div{
 	/* position: fixed; */
-	border: 1px solid black;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
 	/* margin-left: 2px; */
 	
 }
@@ -20,3 +22,42 @@
 	text-align: center;
 	margin: 40px;
 }
+
+#courseName{
+	max-width: 50%;
+}
+
+#subject{
+	max-width: 50%;
+}
+
+#courseCapacity{
+	max-width: 50%;
+}
+
+#courseDescription{
+	max-width: 50%;
+}
+
+#courseDifficulty{
+	max-width: 50%;
+	margin-right: 10px;
+	padding-right: 20px;
+	
+}
+
+#courseFee{
+	max-width: 50%;
+}
+
+#startDate{
+	max-width: 50%;
+}
+
+#endDate{
+	max-width: 50%;
+}
+
+
+
+
