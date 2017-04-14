@@ -110,11 +110,12 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		String sqlCourseHasTeacher = "SELECT * FROM courses WHERE courseId = ? AND teacherId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlCourseHasTeacher, courseId, teacherId);
 		return results.next();
-		
 	}
 	
-	
-	
-	
-	
+	@Override
+	public boolean studentIsEnrolledInCourse(long courseId, long studentId) {
+		String sqlVerifyEnrollment = "SELECT * FROM student_course WHERE courseId = ? AND studentId = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlVerifyEnrollment, courseId, studentId);
+		return results.next();
+	}		
 }
