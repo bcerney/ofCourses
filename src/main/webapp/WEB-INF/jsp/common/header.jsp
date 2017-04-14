@@ -23,8 +23,11 @@
 			<div class="container-fluid">
 				
 				<div class="navbar-header">
-					<c:url value="/home" var="home"/>
-					<a class="navbar-brand" href="${home}">eLearning Portal</a>
+					<%-- <c:url value="#" var="home"/> --%>
+					<a class="navbar-brand" 
+					<%-- href="${home}" --%>
+					>
+					eLearning Portal</a>
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#portal-navbar-collapse" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
