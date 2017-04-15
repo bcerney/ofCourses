@@ -13,21 +13,21 @@ import com.techelevator.daos.CourseDAO;
 import com.techelevator.daos.LessonDAO;
 import com.techelevator.daos.ModuleDAO;
 import com.techelevator.daos.ResourceDAO;
-import com.techelevator.daos.ScoreDAO;
+import com.techelevator.daos.StudentAssignmentDAO;
 import com.techelevator.daos.UserDAO;
 import com.techelevator.jdbc.JDBCAssignmentDAO;
 import com.techelevator.jdbc.JDBCCourseDAO;
 import com.techelevator.jdbc.JDBCLessonDAO;
 import com.techelevator.jdbc.JDBCModuleDAO;
 import com.techelevator.jdbc.JDBCResourceDAO;
-import com.techelevator.jdbc.JDBCScoreDAO;
+import com.techelevator.jdbc.JDBCStudentAssignmentDAO;
 import com.techelevator.jdbc.JDBCUserDAO;
 
 
 
 public class ScoreDAOIntegrationTest extends DAOIntegrationTest {
 
-	private static ScoreDAO scoreDao;
+	private static StudentAssignmentDAO scoreDao;
 	private static AssignmentDAO assignmentDao;
 	private static LessonDAO lessonDao;
 	private static CourseDAO courseDao;
@@ -41,7 +41,7 @@ public class ScoreDAOIntegrationTest extends DAOIntegrationTest {
 	moduleDao =  new JDBCModuleDAO(getDataSource());
 	lessonDao = new JDBCLessonDAO(getDataSource());
 	assignmentDao = new JDBCAssignmentDAO(getDataSource());
-	scoreDao = new JDBCScoreDAO(getDataSource());	
+	scoreDao = new JDBCStudentAssignmentDAO(getDataSource());	
 	}
 	
 	@Test
@@ -90,17 +90,17 @@ public class ScoreDAOIntegrationTest extends DAOIntegrationTest {
 	newAssignment.setName("Assignment");
 	long assignmentId = assignmentDao.createNewAssignment(newAssignment).getAssignmentId();
 	
-	Score newScore = new Score();
+	StudentAssignment newScore = new StudentAssignment();
 	newScore.setScore(5);
 	newScore.setStudentId(teachId);
 	newScore.setAssignmentId(assignmentId);
-	Score testScore = scoreDao.createScore(newScore);
+	StudentAssignment testScore = scoreDao.createScore(newScore);
 	
 	assert_scores_are_equal(newScore, scoreDao.getScoreForStudentByAssignmentId(testScore.getStudentId(), testScore.getAssignmentId()));
 	
 	}
 	
-	private void assert_scores_are_equal(Score createdScore, Score returnedScore){
+	private void assert_scores_are_equal(StudentAssignment createdScore, StudentAssignment returnedScore){
 		Assert.assertEquals(createdScore.getScore(), returnedScore.getScore());
 	}
 }
