@@ -14,8 +14,8 @@ userType varchar (32) NOT NULL,
 firstName varchar (64) NOT NULL,
 lastName varchar (64) NOT NULL,
 email varchar (128) NOT NULL,
-salt varchar (255) NOT NULL,
-password varchar (64) NOT NULL,
+salt varchar(255) NOT NULL,
+password varchar (128) NOT NULL,	
 CONSTRAINT pk_users_userId PRIMARY KEY (userId)
 );
 
@@ -33,7 +33,7 @@ startDate date NOT NULL,
 endDate date NOT NULL,
 teacherId integer NOT NULL,	
 subject varchar (64) NOT NULL,
-difficulty varchar (16) NOT NULL,
+difficulty varchar(16) NOT NULL,
 CONSTRAINT pk_courses_courseId PRIMARY KEY (courseId),
 CONSTRAINT fk_courses_teacherId FOREIGN KEY (teacherId) REFERENCES users(userId)
 );
@@ -77,7 +77,6 @@ CONSTRAINT pk_assignments_assignmentId PRIMARY KEY (assignmentId),
 CONSTRAINT fk_assignments_lessonId FOREIGN KEY (lessonId) REFERENCES lessons(lessonId)
 );
 
-CREATE SEQUENCE seq_resourceId;
 
 CREATE TABLE resources
 (
@@ -99,14 +98,16 @@ CONSTRAINT fk_student_course_studentId FOREIGN KEY (studentId) REFERENCES users(
 CONSTRAINT fk_student_course_courseId FOREIGN KEY (courseId) REFERENCES courses(courseId)
 );
 
-CREATE TABLE scores
+CREATE TABLE student_assignment
 (
 studentId integer NOT NULL,
 assignmentId integer NOT NULL,
-score integer NOT NULL,
-CONSTRAINT pk_grades_studentId_assignmentId PRIMARY KEY (studentId, assignmentId),
-CONSTRAINT fk_scores_studentId FOREIGN KEY (studentId) REFERENCES users(userId),
-CONSTRAINT fk_scores_assignmentId FOREIGN KEY (assignmentId) REFERENCES assignments(assignmentId)
+score integer DEFAULT -1,
+isSubmitted boolean DEFAULT false,
+submission text NOT NULL,
+CONSTRAINT pk_student_assignment_studentId_assignmentId PRIMARY KEY (studentId, assignmentId),
+CONSTRAINT fk_student_assignment_studentId FOREIGN KEY (studentId) REFERENCES users(userId),
+CONSTRAINT fk_student_assignment_assignmentId FOREIGN KEY (assignmentId) REFERENCES assignments(assignmentId)
 );
 
 COMMIT;
