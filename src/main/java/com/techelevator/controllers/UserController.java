@@ -178,12 +178,16 @@ public class UserController {
 								@RequestParam long courseId){
 		User currentUser = (User) model.get("currentUser");
 		long studentId = currentUser.getUserId();	
+		
 		if (courseDAO.isCourseFull(courseId) || courseDAO.studentIsEnrolledInCourse(courseId, studentId)) {
-			return "redirect:/dashboard";
 			//TODO: add error message
-		}else{
+			return "redirect:/dashboard";
+		} else {
 			userDAO.addUserToCourse(studentId, courseId);
 			System.out.println("user id" + studentId + "course id" +courseId);
+			
+			
+			
 			return "redirect:/dashboard/"+ courseId;
 		}
 	}
