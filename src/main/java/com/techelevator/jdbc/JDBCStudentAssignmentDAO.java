@@ -19,7 +19,7 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 
 	@Override
 	public StudentAssignment createScore(StudentAssignment score) {
-		String sqlCreateScore = "INSERT INTO scores (score, studentId, assignmentId) VALUES (?,?,?)";
+		String sqlCreateScore = "INSERT INTO student_assignment (score, studentId, assignmentId) VALUES (?,?,?)";
 		int rowsAffected = jdbcTemplate.update(sqlCreateScore, score.getScore(), score.getStudentId(), score.getAssignmentId());
 		if (rowsAffected == 1) {
 			return score;
@@ -33,38 +33,39 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		String sqlGetScoreForStudent = "SELECT * FROM scores WHERE studentId = ? AND assignmentId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoreForStudent, studentId, assignmentId);
 		if(results.next()) {
-			return mapRowToScore(results);
+			return mapRowToStudentAssignment(results);
 		} else {
 			return null;
 		}
 	}
 	
 	@Override
-	public List getAllScoresForStudent(long studentId) {
+	public List<StudentAssignment> getAllScoresForStudent(long studentId) {
 		List <StudentAssignment> studentGrades = new ArrayList<>();
 		String sqlGetScoresForStudent = "SELECT score FROM student_assignment WHERE studentId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoresForStudent, studentId);
 		while (results.next()) {
-			StudentAssignment nextStudentAssignment = mapRowToScore(results);
+			StudentAssignment nextStudentAssignment = mapRowToStudentAssignment(results);
 			studentGrades.add(nextStudentAssignment);
 		}
 		return studentGrades;
 	}
 	
 	@Override
-	public List getAllScoresForStudentByCourse(long studentId, long courseId) {
+	public List<StudentAssignment> getAllScoresForStudentByCourse(long studentId, long courseId) {
 		List <StudentAssignment> studentCourseGrades = new ArrayList<>();
 		String sqlGetScoresForStudentByClass = "SELECT score FROM student_assignment JOIN users ON users.userId= student_assignment.studentId JOIN student_course ON users.userId = student_assignment.studentId JOIN courses ON student_course.courseId = courses.courseId WHERE users.userId = ? AND courses.courseId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoresForStudentByClass, studentId, courseId);
 		while (results.next()) {
-			StudentAssignment nextStudentAssignment = mapRowToScore(results);
+			StudentAssignment nextStudentAssignment = mapRowToStudentAssignment(results);
 			studentCourseGrades.add(nextStudentAssignment);
 		}
 		return studentCourseGrades;
 		
 	}
 
-	private StudentAssignment mapRowToScore(SqlRowSet results) {
+
+	private StudentAssignment mapRowToStudentAssignment(SqlRowSet results) {
 		StudentAssignment aScore = new StudentAssignment();
 		aScore.setScore(results.getInt("score"));
 		aScore.setStudentId(results.getLong("studentId"));

@@ -11,6 +11,20 @@ public class Assignment {
 	private long lessonId;
 	private long maxScore;
 	
+	public Assignment() {
+		
+	}
+	
+	public Assignment(String name, String description, LocalDate assignDate, LocalDate dueDate, long lessonId,
+			long maxScore) {
+		this.name = name;
+		this.description = description;
+		this.assignDate = assignDate;
+		this.dueDate = dueDate;
+		this.lessonId = lessonId;
+		this.maxScore = maxScore;
+	}
+
 	public long getAssignmentId() {
 		return assignmentId;
 	}

@@ -50,6 +50,7 @@ public class UserController {
 	
 	@Autowired
 	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO, ResourceDAO resourceDAO, AssignmentDAO assignmentDAO) {
+
 		this.userDAO = userDAO;
 		this.courseDAO = courseDAO;
 		this.moduleDAO = moduleDAO;
@@ -320,6 +321,57 @@ public class UserController {
 		request.setAttribute("lesson", lesson);
 
 		return "user/addResource";
+	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment"}, method=RequestMethod.GET)
+	public String displayAddAssignment(HttpServletRequest request,
+									@PathVariable long courseId,
+									@PathVariable long moduleId,
+									@PathVariable long lessonId) {
+		
+		Course course = courseDAO.getCourseById(courseId);
+		Module module = moduleDAO.getModuleByModuleId(moduleId);
+		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
+		
+		request.setAttribute("course", course);
+		request.setAttribute("module", module);
+		request.setAttribute("lesson", lesson);
+
+		return "user/addAssignment";
+	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment"}, method=RequestMethod.POST)
+	public String submitAddAssignment(HttpServletRequest request,
+									@PathVariable long courseId,
+									@PathVariable long moduleId,
+									@PathVariable long lessonId,
+									@RequestParam String assignmentName,
+									@RequestParam String assignmentDescription,
+									@RequestParam long assignmentMaxScore,
+									@RequestParam("assignDate")
+	   								@DateTimeFormat(pattern="MM/dd/yyyy")
+	   								LocalDate assignDate,
+	   								@RequestParam("dueDate")
+	   								@DateTimeFormat(pattern="MM/dd/yyyy")
+	  								LocalDate dueDate) {
+		
+		Assignment assignmentToAdd = new Assignment(assignmentName, assignmentDescription, assignDate, dueDate, lessonId, assignmentMaxScore);
+		Assignment createdAssignment = assignmentDAO.createNewAssignment(assignmentToAdd);
+		
+		if (createdAssignment != null) {
+			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId+"/addAssignment";
+		} else {
+			//TODO: add error message
+			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId+"/addAssignment";
+		}
+		
+//		Course course = courseDAO.getCourseById(courseId);
+//		Module module = moduleDAO.getModuleByModuleId(moduleId);
+//		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
+//		
+//		request.setAttribute("course", course);
+//		request.setAttribute("module", module);
+//		request.setAttribute("lesson", lesson);
 	}
 	
 	@RequestMapping(path={"/dashboard/{courseId}/roster"}, method=RequestMethod.GET)
