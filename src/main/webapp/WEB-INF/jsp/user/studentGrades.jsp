@@ -20,7 +20,7 @@
 		<h3>${user.firstName} ${user.lastName}</h3>
 		<h4>${course.name}</h4>
 		
-		<c:forEach var="grade" items="{studentGrades}">
+		<c:forEach var="grade" items="${studentGrades}">
 		${grade.score}</c:forEach>
 		
 	
