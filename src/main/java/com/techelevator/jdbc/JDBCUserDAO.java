@@ -105,8 +105,8 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	}
 	
 	@Override
-	public List getStudentsByCourseId(long courseId) {
-		ArrayList <User> courseRoster = new ArrayList<>();
+	public List<User> getStudentsByCourseId(long courseId) {
+		List<User> courseRoster = new ArrayList<User>();
 		String sqlGetClassRoster = "SELECT * FROM users JOIN student_course ON (users.userId = student_course.studentId) JOIN courses ON (courses.courseId = student_course.courseId) WHERE courses.courseId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetClassRoster, courseId);
 		while (results.next()) {
@@ -117,6 +117,7 @@ public class JDBCUserDAO extends JDBCDAO implements UserDAO {
 	}
 	
 	@Override
+	//TODO: should this return something to allow us to check if user was successfully added
 	public void addUserToCourse(long studentId, long courseId) {
 		String sqlAddStudentToCourse = "INSERT INTO student_course (studentId, courseId) VALUES (?, ?)";
 		jdbcTemplate.update(sqlAddStudentToCourse, studentId, courseId);

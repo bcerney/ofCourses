@@ -26,38 +26,54 @@
 				<h1 class="page-header">${course.name}- ${module.name} -
 					${lesson.name}</h1>
 
-				<div id="addResource" class="add-module-div">
-					<h2>Add Resource</h2>
+				<div id="addAssignment" class="add-module-div">
+					<h2>Add Assignment</h2>
 
 					<c:url
-						value="/dashboard/${course.courseId}/${module.moduleId}/addResource"
-						var="addResource" />
-					<form method="POST" action=${addResource}>
+						value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment"
+						var="addAssignment" />
+					<form method="POST" action=addAssignment}>
 
-						<div id="resourceTitle" class="form-group row">
-							<label for="resourceTitle" class="col-md-2 col-form-label">Title:
+						<div id="assignmentName" class="form-group row">
+							<label for="assignmentName" class="col-md-2 col-form-label">Name:
 							</label>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="resourceTitle"
-									placeholder="Title" />
+								<input class="form-control" type="text" name="assignmentName"
+									placeholder="Name" />
 							</div>
 						</div>
 
-						<div id="resourceDescription" class="form-group row">
-							<label for="resourceDescription" class="col-md-2 col-form-label">Description:
+						<div id="assignmentDescription" class="form-group row">
+							<label for="assignmentDescription" class="col-md-2 col-form-label">Description:
 							</label>
 							<div class="col-md-8">
 								<input class="form-control" type="text"
-									name="resourceDescription" placeholder="Description" />
+									name="assignmentDescription" placeholder="Description" />
 							</div>
 						</div>
 						
-						<div id="resourceUrl" class="form-group row">
-							<label for="resourceUrl" class="col-md-2 col-form-label">URL:
+						<div id="assignmentMaxScore" class="form-group row">
+							<label for="assignmentMaxScore" class="col-md-2 col-form-label">Max Score:
 							</label>
 							<div class="col-md-8">
 								<input class="form-control" type="text"
-									name="resourceUrl" placeholder="URL" />
+									name="assignmentMaxScore" placeholder="Max Score" />
+							</div>
+						</div>
+						
+						<div id="assignDate" class="form-group row">
+							<label for="assignDate" class="col-md-2 col-form-label">Assign Date: </label>
+							<div class="col-md-8">
+								<input class="form-control" type="date" name="assignDate"
+									placeholder="mm/dd/yyyy" />
+							</div>
+						</div>
+						
+						<div id="dueDate" class="form-group row">
+							<label for="dueDate" class="col-md-2 col-form-label">Due Date: </label>
+							<div class="col-md-8">
+								<input class="form-control" type="date" name="dueDate"
+									placeholder="mm/dd/yyyy" />
 							</div>
 						</div>
 

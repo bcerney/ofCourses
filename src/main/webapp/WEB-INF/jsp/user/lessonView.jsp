@@ -35,6 +35,8 @@
 				
 				<c:url value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource" var="addResource"/>
 				<a href="${addResource}" class="btn btn-primary">Add Resource</a>
+				<c:url value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment" var="addAssignment"/>
+				<a href="${addAssignment}" class="btn btn-primary">Add Assignment</a>
 
 				
 				<c:forEach var="resource" items="${allResources}" varStatus="loop">
