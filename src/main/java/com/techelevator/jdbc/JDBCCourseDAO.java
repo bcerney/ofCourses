@@ -69,7 +69,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	}
 
 	@Override
-	public List <Course> getCoursesByTeacherId(long teacherId) {
+	public List<Course> getCoursesByTeacherId(long teacherId) {
 		ArrayList <Course> teacherCourses = new ArrayList<>();
 		String sqlGetCoursesByTeacherId = "SELECT * FROM courses WHERE teacherId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCoursesByTeacherId, teacherId);
@@ -81,7 +81,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	}
 
 	@Override
-	public List <Course> getAllCourses() {
+	public List<Course> getAllCourses() {
 		ArrayList <Course> allCourses = new ArrayList<>();
 		String sqlGetAllCourses = "SELECT * FROM courses WHERE startDate >= NOW()";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCourses);
@@ -93,7 +93,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	}
 
 	@Override
-	public List getCoursesByUserId(long userId) {
+	public List<Course> getCoursesByUserId(long userId) {
 		ArrayList <Course> usersCourses = new ArrayList<>();
 		String sqlGetAllCoursesByUser = "SELECT * FROM courses JOIN student_course ON courses.courseId = student_course.courseId JOIN users ON users.userId = student_course.studentId WHERE userId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCoursesByUser, userId);
