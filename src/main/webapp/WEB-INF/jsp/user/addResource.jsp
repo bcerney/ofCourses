@@ -66,6 +66,5 @@
 	<!-- row -->
 </div>
 <!-- dashboardDiv -->
-</body>
+
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
-</html>
