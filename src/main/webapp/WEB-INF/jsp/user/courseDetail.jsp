@@ -11,8 +11,10 @@
 					<li><a href="${dashboard}">Dashboard</a></li>
 				</ul>
 				<ul class="nav sidebar-nav">
+					<c:if test="${currentUser.userType == 'teacher'}">
 					<c:url value="/dashboard/${course.courseId}/addModule" var="addModule"/>
 					<li><a href="${addModule}">Add Module</a></li>
+					</c:if>
 				</ul>
 				
 			</div>

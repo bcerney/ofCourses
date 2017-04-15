@@ -5,7 +5,7 @@
 BEGIN;
 
 -- Teachers 1 thru 4, Team Bravo--
-INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Brian', 'Cerny','cerny@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
+INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Brian', 'Cerney','cerney@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Eric', 'George','george@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Kyle', 'Wine','wine@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Alex', 'Khrizman','khrizman@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
@@ -16,7 +16,7 @@ INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES 
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Elmer', 'Fudd','fudd@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 
 -- Students 8 thru 11, Team Bravo --
-INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('student', 'Brian', 'Cerny','brian@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
+INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('student', 'Brian', 'Cerney','brian@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('student', 'Eric', 'George','eric@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('student', 'Kyle', 'Wine','kyle@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('student', 'Alex', 'Khrizman','alex@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
@@ -320,6 +320,37 @@ INSERT INTO lessons (name, moduleId, description) VALUES ('No Less', 28, 'Lorem 
 INSERT INTO lessons (name, moduleId, description) VALUES ('On Less', 28, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 INSERT INTO lessons (name, moduleId, description) VALUES ('Slones', 28, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 INSERT INTO lessons (name, moduleId, description) VALUES ('Loness', 28, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+
+
+
+-- Course 1, Module 1, Lesson 1, resources 1-3
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+
+-- Course 1, Module 1, Lesson 2, resources 1-3
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+
+-- Course 1, Module 1, Lesson 3, resources 1-3
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+
+-- Course 1, Module 1, Lesson 4, resources 1-3
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+
+-- Course 1, Module 1, Lesson 5, resources 1-3
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+
+
+
+
 
 
 COMMIT;
