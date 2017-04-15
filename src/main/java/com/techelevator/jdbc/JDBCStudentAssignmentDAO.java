@@ -15,7 +15,7 @@ import com.techelevator.models.StudentAssignment;
 
 @Component
 public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignmentDAO {
-	
+
 	@Autowired
 	public JDBCStudentAssignmentDAO(DataSource dataSource) {
 		super(dataSource);
@@ -58,7 +58,8 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 	@Override
 	public List<StudentAssignment> getAllStudentAssignmentsByStudentIdAndCourseId(long studentId, long courseId) {
 		List <StudentAssignment> studentCourseGrades = new ArrayList<>();
-		String sqlGetScoresForStudentByClass = "SELECT score FROM student_assignment JOIN users ON users.userId= student_assignment.studentId JOIN student_course ON users.userId = student_assignment.studentId JOIN courses ON student_course.courseId = courses.courseId WHERE users.userId = ? AND courses.courseId = ?";
+		String sqlGetScoresForStudentByClass = "SELECT * FROM student_assignment JOIN users ON users.userId= student_assignment.studentId JOIN student_course ON users.userId = student_assignment.studentId JOIN courses ON student_course.courseId = courses.courseId WHERE users.userId = ? AND courses.courseId = ?";
+		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoresForStudentByClass, studentId, courseId);
 		while (results.next()) {
 			StudentAssignment nextStudentAssignment = mapRowToStudentAssignment(results);
@@ -74,7 +75,7 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		aScore.setScore(results.getInt("score"));
 		aScore.setStudentId(results.getLong("studentId"));
 		aScore.setAssignmentId(results.getLong("assignmentId"));
-		aScore.setSubmissionText(results.getString("submissionText"));
+		aScore.setSubmissionText(results.getString("submission"));
 		aScore.setSubmitted(results.getBoolean("isSubmitted"));
 		return aScore;
 	}
