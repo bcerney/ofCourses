@@ -77,6 +77,7 @@ CONSTRAINT pk_assignments_assignmentId PRIMARY KEY (assignmentId),
 CONSTRAINT fk_assignments_lessonId FOREIGN KEY (lessonId) REFERENCES lessons(lessonId)
 );
 
+CREATE SEQUENCE seq_resourceId;
 
 CREATE TABLE resources
 (
