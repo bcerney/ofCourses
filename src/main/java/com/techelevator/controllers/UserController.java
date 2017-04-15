@@ -130,10 +130,10 @@ public class UserController {
 		if (createdCourse != null) {
 			long courseId = createdCourse.getCourseId();
 			request.setAttribute("courseId", courseId);
-			return "redirect:/" + courseId;
+			return "redirect:/dashboard/" + courseId;
 		} else {
 			//TODO: add error message to request
-			return "redirect:/createCourse";
+			return "redirect:/dashboard/createCourse";
 		}
 	}
 	
