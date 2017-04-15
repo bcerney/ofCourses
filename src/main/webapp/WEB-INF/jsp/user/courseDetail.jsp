@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/WEB-INF/jsp/common/loggedInHeader.jsp" />
-
+ 
 
 
 	<div id="dashboardDiv" class="container-fluid">
@@ -13,6 +13,8 @@
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard/${course.courseId}/addModule" var="addModule"/>
 					<li><a href="${addModule}">Add Module</a></li>
+					<li>Add Lesson</li>
+					<li>Add Resources</li>
 				</ul>
 				
 			</div>
@@ -27,20 +29,20 @@
 
 					
 						<h2>${course.name}</h2>
-						<p>Subject: ${course.subject}</p>
-						<p>Level: ${course.difficulty}</p>	
-						<p>Capacity: ${course.capacity}</p>
+						<p>${course.subject}</p>
+						<p>${course.capacity}</p>
 						<p>${course.description}</p>
-						<p>Start Date: ${course.startDate}</p>
-						<p>End Date: ${course.endDate}</p>
-						<p>Cost: $${course.fee}</p>
-					<h3>Modules</h3>
+						<p>${course.fee}</p>
+						<p>${course.startDate}</p>
+						<p>${course.endDate}</p>
+						<p>${course.difficulty}</p>	
+					<h3>Available Modules</h3>
 					
-					<c:forEach var = "module" items = "${modules}" varStatus="loop">
-						<div class = "courseModule">
+					<c:forEach var = "module" items = "${modules}" >
+					<div class = "courseModule">
 						<c:url var="moduleHref" value="/dashboard/${course.courseId}/${module.moduleId}"/>
 
-					<a id="detailPageLink" href= "${moduleHref}">${loop.index+1}. ${module.name}</a> </div>
+				<a id="detailPageLink" href= "${moduleHref}">${module.name}</a> </div>
 					
 					</c:forEach>
 			

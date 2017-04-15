@@ -16,23 +16,28 @@
 	}
 
 #firstName{
-	width: 30%;
+	width: 50%;
+	min-width: 250px;
 }
 
 #lastName{
-	width: 30%;
+	width: 50%;
+	min-width: 250px;
 }
 
 #email{
-	width: 30%;
+	width: 50%;
+	min-width: 250px;
 }
 
 #password{
-	width: 30%;
+	width: 50%;
+	min-width: 250px;
 }
 
 #confirmPassword{
-	width: 30%;
+	width: 50%;
+	min-width: 250px;
 }
 .btn-default{
 	margin: 20px;
