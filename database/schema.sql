@@ -81,7 +81,7 @@ CREATE SEQUENCE seq_resourceId;
 
 CREATE TABLE resources
 (
-resourceId integer NOT NULL,	
+resourceId integer DEFAULT NEXTVAL('seq_resourceId'),
 url text NOT NULL,
 description text NOT NULL,
 title varchar (255) NOT NULL,
