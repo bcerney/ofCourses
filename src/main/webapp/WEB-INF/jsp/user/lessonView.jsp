@@ -28,15 +28,7 @@
 			<div id="dashMain" class="col-sm-9 col-md-10">
 				<h1 class="page-header"><c:out value="${lesson.name}"/></h1>
 
-				<h1 class="page-header"><c:out value="${lesson.description}"/></h1>
-				
-
-				<c:url value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource" var="addResource"/>
-				<a href="${addResource}" class="btn btn-primary">Add Resource</a>
-				<c:url value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment" var="addAssignment"/>
-				<a href="${addAssignment}" class="btn btn-primary">Add Assignment</a>
-
-
+				<h4 class="page-header"><c:out value="${lesson.description}"/></h4>
 				
 				<c:forEach var="resource" items="${allResources}">
 					<div class="lessonResource">
@@ -46,6 +38,20 @@
 					<h3>${resource.title}</h3>					
 					<p>${resource.description}</p>
 					<p>${resource.url}</p>
+					</div>
+				</c:forEach>
+
+				<h2>Assignments</h2>
+
+				<c:forEach var="assignment" items="${allAssignments}">
+					<div class="lessonAssignment">
+						
+<!--					<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>   -->
+<!--						<h2><a href="${lessonHref}">${loop.index+1}. ${lesson.name}</a></h2>   -->
+					<h3>${assignment.name}</h3>					
+					<p>${assignment.description}</p>
+					<p>Due: ${assignment.dueDate}</p>
+					<p>Total Points: ${assignment.maxScore}</p>
 					</div>
 				</c:forEach>
 

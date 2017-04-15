@@ -7,13 +7,8 @@
 	<div class="row">
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
-				<c:url value="/dashboard/${course.courseId}/addModule"
-					var="addModule" />
-				<li><a href="${addModule}">Add Module</a></li>
-			</ul>
-			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard" />
-				<li><a href="${dashboard}">My Courses</a></li>
+				<li><a href="${dashboard}">Dashboard</a></li>
 			</ul>
 		</div>
 		<!-- dashSidebar -->

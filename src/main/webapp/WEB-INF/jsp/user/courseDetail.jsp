@@ -29,14 +29,12 @@
 					<c:url var="formAction" value="/courseDetail" />
 
 					
-						<h2>${course.name}</h2>
-						<p>${course.subject}</p>
-						<p>${course.capacity}</p>
-						<p>${course.description}</p>
-						<p>${course.fee}</p>
-						<p>${course.startDate}</p>
-						<p>${course.endDate}</p>
-						<p>${course.difficulty}</p>	
+ 						<p>PROGRESS (GRADE) HERE</p>
+ 						<p>Subject: ${course.subject}</p>
+ 						<p>Level: ${course.difficulty}</p>	
+ 						<p>${course.description}</p>
+ 						<p>Start Date: ${course.startDate}</p>
+ 						<p>End Date: ${course.endDate}</p>
 					<h3>Modules</h3>
 					
 					<c:forEach var = "module" items = "${modules}" varStatus="loop" >
