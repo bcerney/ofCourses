@@ -37,13 +37,13 @@
 						<p>${course.startDate}</p>
 						<p>${course.endDate}</p>
 						<p>${course.difficulty}</p>	
-					<h3>Available Modules</h3>
+					<h3>Modules</h3>
 					
-					<c:forEach var = "module" items = "${modules}" >
+					<c:forEach var = "module" items = "${modules}" varStatus="loop" >
 					<div class = "courseModule">
 						<c:url var="moduleHref" value="/dashboard/${course.courseId}/${module.moduleId}"/>
 
-				<a id="detailPageLink" href= "${moduleHref}">${module.name}</a> </div>
+				<a id="detailPageLink" href= "${moduleHref}">${loop.index+1}. ${module.name}</a> </div>
 					
 					</c:forEach>
 			

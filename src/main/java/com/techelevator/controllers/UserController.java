@@ -19,16 +19,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.techelevator.daos.AssignmentDAO;
 import com.techelevator.daos.CourseDAO;
 import com.techelevator.daos.LessonDAO;
 import com.techelevator.daos.ModuleDAO;
 import com.techelevator.daos.StudentAssignmentDAO;
+import com.techelevator.daos.ResourceDAO;
 import com.techelevator.daos.UserDAO;
 import com.techelevator.jdbc.JDBCCourseDAO;
+import com.techelevator.models.Assignment;
 import com.techelevator.models.Course;
 import com.techelevator.models.Lesson;
 import com.techelevator.models.Module;
+
 import com.techelevator.models.StudentAssignment;
+import com.techelevator.models.Resource;
 import com.techelevator.models.User;
 
 @Controller
@@ -40,14 +45,18 @@ public class UserController {
 	private ModuleDAO moduleDAO;
 	private LessonDAO lessonDAO;
 	private StudentAssignmentDAO studentAssignmentDAO;
+	private ResourceDAO resourceDAO;
+	private AssignmentDAO assignmentDAO;
 	
 	@Autowired
-	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO) {
+	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO, ResourceDAO resourceDAO, AssignmentDAO assignmentDAO) {
 		this.userDAO = userDAO;
 		this.courseDAO = courseDAO;
 		this.moduleDAO = moduleDAO;
 		this.lessonDAO = lessonDAO;
 		this.studentAssignmentDAO = studentAssignmentDAO;
+		this.resourceDAO = resourceDAO;
+		this.assignmentDAO = assignmentDAO;
 	}
 	
 	@RequestMapping(path={"/dashboard"}, method=RequestMethod.GET)
@@ -207,7 +216,7 @@ public class UserController {
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 		
-		ArrayList<Lesson> lessons = lessonDAO.getLessonsByModuleId(moduleId);
+		List<Lesson> lessons = lessonDAO.getLessonsByModuleId(moduleId);
 		if (lessons != null) {
 			request.setAttribute("allLessons", lessons);
 		}
@@ -268,11 +277,14 @@ public class UserController {
 		Course course = courseDAO.getCourseById(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
+		List<Resource> resources = resourceDAO.getResourcesByLessonId(lessonId);
+		List<Assignment> assignments = assignmentDAO.getAssignmentsByLessonId(lessonId);
 		
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
-
+		request.setAttribute("allResources", resources);
+		request.setAttribute("allAssignments", assignments);
 		return "user/lessonView";
 	}
 	

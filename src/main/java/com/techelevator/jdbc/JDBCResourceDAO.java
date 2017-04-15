@@ -1,16 +1,21 @@
 package com.techelevator.jdbc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.daos.ResourceDAO;
 import com.techelevator.models.Resource;
 
+@Component
 public class JDBCResourceDAO extends JDBCDAO implements ResourceDAO {
 
+	@Autowired
 	public JDBCResourceDAO(DataSource dataSource) {
 		super(dataSource);
 		// TODO Auto-generated constructor stub
@@ -41,7 +46,7 @@ public class JDBCResourceDAO extends JDBCDAO implements ResourceDAO {
 	}
 
 	@Override
-	public ArrayList<Resource> getResourcesByLessonId(long lessonId) {
+	public List<Resource> getResourcesByLessonId(long lessonId) {
 		ArrayList<Resource> resources = new ArrayList<Resource>();
 		String sqlGetResourcesByLessonId = "SELECT * FROM resources WHERE lessonId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetResourcesByLessonId, lessonId);
@@ -49,7 +54,8 @@ public class JDBCResourceDAO extends JDBCDAO implements ResourceDAO {
 			Resource nextResource = mapRowToResource(results);
 			resources.add(nextResource);
 		}
-		return resources;	}
+		return resources;	
+	}
 
 	private long getNextResourceId() {
 		return super.getNextId("seq_resourceId");
