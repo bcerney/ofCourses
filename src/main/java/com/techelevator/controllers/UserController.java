@@ -178,12 +178,16 @@ public class UserController {
 								@RequestParam long courseId){
 		User currentUser = (User) model.get("currentUser");
 		long studentId = currentUser.getUserId();	
+		
 		if (courseDAO.isCourseFull(courseId) || courseDAO.studentIsEnrolledInCourse(courseId, studentId)) {
-			return "redirect:/dashboard";
 			//TODO: add error message
-		}else{
+			return "redirect:/dashboard";
+		} else {
 			userDAO.addUserToCourse(studentId, courseId);
 			System.out.println("user id" + studentId + "course id" +courseId);
+			
+			
+			
 			return "redirect:/dashboard/"+ courseId;
 		}
 	}
@@ -226,10 +230,86 @@ public class UserController {
 		return "user/addLesson";
 	}
 	
+	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/addLesson"}, method=RequestMethod.POST)
+	public String submitAddLesson(HttpServletRequest request,
+									@PathVariable long courseId,
+									@PathVariable long moduleId,
+									@RequestParam String lessonName,
+									@RequestParam String lessonDescription) {
+		
+		Lesson lessonToAdd = new Lesson(lessonName, lessonDescription, moduleId);
+		Lesson addedLesson = lessonDAO.createNewLesson(lessonToAdd);
+		
+		if (addedLesson != null) {
+			long lessonId = addedLesson.getLessonId();
+			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId;
+		} else {
+			//TODO: add error message
+			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/addLesson";
+		}
+		
+//		Course course = courseDAO.getCourseById(courseId);
+//		Module module = moduleDAO.getModuleByModuleId(moduleId);
+//		
+//		request.setAttribute("course", course);
+//		request.setAttribute("module", module);
+	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}"}, method=RequestMethod.GET)
+	public String displayLessonView(HttpServletRequest request,
+									@PathVariable long courseId,
+									@PathVariable long moduleId,
+									@PathVariable long lessonId) {
+		
+		Course course = courseDAO.getCourseById(courseId);
+		Module module = moduleDAO.getModuleByModuleId(moduleId);
+		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
+		
+		request.setAttribute("course", course);
+		request.setAttribute("module", module);
+		request.setAttribute("lesson", lesson);
+
+		return "user/lessonView";
+	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addResource"}, method=RequestMethod.GET)
+	public String displayAddResource(HttpServletRequest request,
+									@PathVariable long courseId,
+									@PathVariable long moduleId,
+									@PathVariable long lessonId) {
+		
+		Course course = courseDAO.getCourseById(courseId);
+		Module module = moduleDAO.getModuleByModuleId(moduleId);
+		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
+		
+		request.setAttribute("course", course);
+		request.setAttribute("module", module);
+		request.setAttribute("lesson", lesson);
+
+		return "user/addResource";
+	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addResource"}, method=RequestMethod.POST)
+	public String submitAddResource(HttpServletRequest request,
+									@PathVariable long courseId,
+									@PathVariable long moduleId,
+									@PathVariable long lessonId) {
+		
+		Course course = courseDAO.getCourseById(courseId);
+		Module module = moduleDAO.getModuleByModuleId(moduleId);
+		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
+		
+		request.setAttribute("course", course);
+		request.setAttribute("module", module);
+		request.setAttribute("lesson", lesson);
+
+		return "user/addResource";
+	}
+	
 	@RequestMapping(path={"/dashboard/{courseId}/roster"}, method=RequestMethod.GET)
 	public String displayClassRoster(HttpServletRequest request,
 									@PathVariable long courseId){
-		List <User> classRoster = userDAO.getStudentsByCourseId(courseId);
+		List<User> classRoster = userDAO.getStudentsByCourseId(courseId);
 		
 		request.setAttribute("roster", classRoster);
 		return "user/studentRoster";

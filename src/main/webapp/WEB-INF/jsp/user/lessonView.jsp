@@ -8,6 +8,9 @@
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard" var="dashboard"/>
 					<li><a href="${dashboard}">Dashboard</a></li>
+
+
+
 					
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<li>
@@ -21,11 +24,18 @@
 					</c:if>	
 				</ul>
 			
+
 			</div>
 			<!-- dashSidebar -->
 
 			<div id="dashMain" class="col-sm-9 col-md-10">
 				<h1 class="page-header"><c:out value="${lesson.name}"/></h1>
+
+				<h1 class="page-header"><c:out value="${lesson.description}"/></h1>
+				
+				<c:url value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource" var="addResource"/>
+				<a href="${addResource}" class="btn btn-primary">Add Resource</a>
+
 				
 				<c:forEach var="resource" items="${allResources}" varStatus="loop">
 					<div class="lessonResource">
@@ -38,6 +48,7 @@
 					<p>${resource.description}</p>
 					</div>
 				</c:forEach>
+
 				
 			</div>
 			<!-- dashMain -->
