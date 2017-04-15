@@ -17,14 +17,13 @@
 			</ul>
 		</div>
 		
-		<c:forEach var="student" items="${roster}">
-
-		<div class = "studentRoster"> 
-			<c:url var="studentHref" value="/dashboard/${course.courseId}/roster/${student.userId}"/>
-		<a id="studentPageLink" href= "${studentHref}">${student.firstName} ${student.lastName}</a></div>
+		<h3>${user.firstName} ${user.lastName}</h3>
+		<h4>${course.name}</h4>
 		
-		</c:forEach>
-
+		<c:forEach var="grade" items="{studentGrades}">
+		${grade.score}</c:forEach>
+		
+	
 
 </body>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

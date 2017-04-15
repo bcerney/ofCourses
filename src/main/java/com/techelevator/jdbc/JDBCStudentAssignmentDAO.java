@@ -64,11 +64,14 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		
 	}
 
+
 	private StudentAssignment mapRowToStudentAssignment(SqlRowSet results) {
-		StudentAssignment studentAssignment = new StudentAssignment();
-		studentAssignment.setScore(results.getInt("score"));
-		studentAssignment.setStudentId(results.getLong("studentId"));
-		studentAssignment.setAssignmentId(results.getLong("assignmentId"));
-		return studentAssignment;
+		StudentAssignment aScore = new StudentAssignment();
+		aScore.setScore(results.getInt("score"));
+		aScore.setStudentId(results.getLong("studentId"));
+		aScore.setAssignmentId(results.getLong("assignmentId"));
+		aScore.setSubmissionText(results.getString("submissionText"));
+		aScore.setSubmitted(results.getBoolean("isSubmitted"));
+		return aScore;
 	}
 }

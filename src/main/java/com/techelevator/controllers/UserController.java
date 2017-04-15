@@ -23,6 +23,7 @@ import com.techelevator.daos.AssignmentDAO;
 import com.techelevator.daos.CourseDAO;
 import com.techelevator.daos.LessonDAO;
 import com.techelevator.daos.ModuleDAO;
+import com.techelevator.daos.StudentAssignmentDAO;
 import com.techelevator.daos.ResourceDAO;
 import com.techelevator.daos.UserDAO;
 import com.techelevator.jdbc.JDBCCourseDAO;
@@ -30,6 +31,8 @@ import com.techelevator.models.Assignment;
 import com.techelevator.models.Course;
 import com.techelevator.models.Lesson;
 import com.techelevator.models.Module;
+
+import com.techelevator.models.StudentAssignment;
 import com.techelevator.models.Resource;
 import com.techelevator.models.User;
 
@@ -41,6 +44,7 @@ public class UserController {
 	private CourseDAO courseDAO;
 	private ModuleDAO moduleDAO;
 	private LessonDAO lessonDAO;
+	private StudentAssignmentDAO studentAssignmentDAO;
 	private ResourceDAO resourceDAO;
 	private AssignmentDAO assignmentDAO;
 	
@@ -51,6 +55,7 @@ public class UserController {
 		this.courseDAO = courseDAO;
 		this.moduleDAO = moduleDAO;
 		this.lessonDAO = lessonDAO;
+		this.studentAssignmentDAO = studentAssignmentDAO;
 		this.resourceDAO = resourceDAO;
 		this.assignmentDAO = assignmentDAO;
 	}
@@ -373,8 +378,27 @@ public class UserController {
 	public String displayClassRoster(HttpServletRequest request,
 									@PathVariable long courseId){
 		List<User> classRoster = userDAO.getStudentsByCourseId(courseId);
+		Course course = courseDAO.getCourseById(courseId);
 		
+		request.setAttribute("course", course);
 		request.setAttribute("roster", classRoster);
+		
 		return "user/studentRoster";
+	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/roster/{userId}"}, method=RequestMethod.GET)
+	public String displayStudentGrades(HttpServletRequest request,
+										@PathVariable long courseId,
+										@PathVariable long userId){
+		List<StudentAssignment> studentGrades = studentAssignmentDAO.getAllScoresForStudentByCourse(userId, courseId);
+		
+		User user = userDAO.getUserById(userId);
+		Course course = courseDAO.getCourseById(courseId);
+		
+		request.setAttribute("studentGrades", studentGrades);
+		request.setAttribute("user", user);
+		request.setAttribute("course", course);
+		
+		return "user/studentGrades";
 	}
 }
