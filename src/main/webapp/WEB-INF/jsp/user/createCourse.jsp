@@ -65,7 +65,7 @@
 				<h1 class="page-header">My Courses</h1>
 
 				<div id="createCourse" class="create-course-div">
-					<c:url var="formAction" value="/createCourse" />
+					<c:url var="formAction" value="/dashboard/createCourse" />
 					<form method="POST" action="${formAction}">
 					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 						<h2>Create Course</h2>
