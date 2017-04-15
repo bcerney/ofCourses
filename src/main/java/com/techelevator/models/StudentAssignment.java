@@ -1,10 +1,25 @@
 package com.techelevator.models;
 
-public class Score {
+public class StudentAssignment {
 	private int score;
 	private long studentId;
 	private long assignmentId;
+	private boolean isSubmitted;
+	private String submissionText;
 	
+	
+	public boolean isSubmitted() {
+		return isSubmitted;
+	}
+	public void setSubmitted(boolean isSubmitted) {
+		this.isSubmitted = isSubmitted;
+	}
+	public String getSubmissionText() {
+		return submissionText;
+	}
+	public void setSubmissionText(String submissionText) {
+		this.submissionText = submissionText;
+	}
 	public int getScore() {
 		return score;
 	}
@@ -23,4 +38,5 @@ public class Score {
 	public void setAssignmentId(long assignmentId) {
 		this.assignmentId = assignmentId;
 	}
+	
 }
