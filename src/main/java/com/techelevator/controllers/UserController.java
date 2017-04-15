@@ -49,7 +49,7 @@ public class UserController {
 	private AssignmentDAO assignmentDAO;
 	
 	@Autowired
-	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO, ResourceDAO resourceDAO, AssignmentDAO assignmentDAO) {
+	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO, ResourceDAO resourceDAO, AssignmentDAO assignmentDAO, StudentAssignmentDAO studentAssignmentDAO) {
 
 		this.userDAO = userDAO;
 		this.courseDAO = courseDAO;
@@ -130,10 +130,10 @@ public class UserController {
 		if (createdCourse != null) {
 			long courseId = createdCourse.getCourseId();
 			request.setAttribute("courseId", courseId);
-			return "redirect:/" + courseId;
+			return "redirect:/dashboard/" + courseId;
 		} else {
 			//TODO: add error message to request
-			return "redirect:/createCourse";
+			return "redirect:/dashboard/createCourse";
 		}
 	}
 	
@@ -187,7 +187,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.POST)
-	public String enroleStudents(HttpServletRequest request,
+	public String enrollStudents(HttpServletRequest request,
 								ModelMap model,
 								@RequestParam long courseId){
 		User currentUser = (User) model.get("currentUser");
@@ -200,6 +200,13 @@ public class UserController {
 			userDAO.addUserToCourse(studentId, courseId);
 			System.out.println("user id" + studentId + "course id" +courseId);
 			
+			List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
+			
+//			for (Module module : courseModules) {
+//				List<Lesson> moduleLessons = lessonDAO.getLessonsByModuleId(module.getModuleId());
+//				
+//				for ()
+//			}
 			
 			
 			return "redirect:/dashboard/"+ courseId;
@@ -390,7 +397,7 @@ public class UserController {
 	public String displayStudentGrades(HttpServletRequest request,
 										@PathVariable long courseId,
 										@PathVariable long userId){
-		List<StudentAssignment> studentGrades = studentAssignmentDAO.getAllScoresForStudentByCourse(userId, courseId);
+		List<StudentAssignment> studentGrades = studentAssignmentDAO.getAllStudentAssignmentsByStudentIdAndCourseId(userId, courseId);
 		
 		User user = userDAO.getUserById(userId);
 		Course course = courseDAO.getCourseById(courseId);

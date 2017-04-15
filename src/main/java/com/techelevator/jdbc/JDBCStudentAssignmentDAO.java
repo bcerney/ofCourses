@@ -5,31 +5,35 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.daos.StudentAssignmentDAO;
 import com.techelevator.models.Course;
 import com.techelevator.models.StudentAssignment;
 
+@Component
 public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignmentDAO {
-
+	
+	@Autowired
 	public JDBCStudentAssignmentDAO(DataSource dataSource) {
 		super(dataSource);
 	}
 
 	@Override
-	public StudentAssignment createScore(StudentAssignment score) {
-		String sqlCreateScore = "INSERT INTO student_assignment (score, studentId, assignmentId) VALUES (?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlCreateScore, score.getScore(), score.getStudentId(), score.getAssignmentId());
+	public StudentAssignment createStudentAssignment(StudentAssignment studentAssignment) {
+		String sqlCreateScore = "INSERT INTO student_assignment (studentId, assignmentId) VALUES (?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlCreateScore, studentAssignment.getStudentId(), studentAssignment.getAssignmentId());
 		if (rowsAffected == 1) {
-			return score;
+			return studentAssignment;
 		} else {
 			return null;
 		}
 	}
 
 	@Override
-	public StudentAssignment getScoreForStudentByAssignmentId(long studentId, long assignmentId) {
+	public StudentAssignment getStudentAssignmentByAssignmentId(long studentId, long assignmentId) {
 		String sqlGetScoreForStudent = "SELECT * FROM scores WHERE studentId = ? AND assignmentId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoreForStudent, studentId, assignmentId);
 		if(results.next()) {
@@ -52,7 +56,7 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 	}
 	
 	@Override
-	public List<StudentAssignment> getAllScoresForStudentByCourse(long studentId, long courseId) {
+	public List<StudentAssignment> getAllStudentAssignmentsByStudentIdAndCourseId(long studentId, long courseId) {
 		List <StudentAssignment> studentCourseGrades = new ArrayList<>();
 		String sqlGetScoresForStudentByClass = "SELECT score FROM student_assignment JOIN users ON users.userId= student_assignment.studentId JOIN student_course ON users.userId = student_assignment.studentId JOIN courses ON student_course.courseId = courses.courseId WHERE users.userId = ? AND courses.courseId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoresForStudentByClass, studentId, courseId);
