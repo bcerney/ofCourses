@@ -32,13 +32,9 @@
 					<p>Start Date: ${course.startDate}</p>
 					<p>End Date: ${course.endDate}</p>
 					<p>Cost: $${course.fee}</p>
-				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}">
-					<c:param name ="courseId" value="${course.courseId}"/>
-					</c:url>
-				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a> 	
-
+				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}"/>
 						
-					<c:url var="formAction" value="/courseCatalog">
+ 					<c:url var="formAction" value="/courseCatalog">
 						<c:param name="courseId" value="${course.courseId}" />
 					</c:url>
 					<form method="POST" action="${formAction}">

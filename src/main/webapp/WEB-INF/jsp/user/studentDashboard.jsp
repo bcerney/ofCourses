@@ -24,27 +24,21 @@
 
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
-			<h1 class="page-header">My Courses</h1>
-			<div id="exampleCourse" class="dashboard-course-div">
-				<h2>Course Name</h2>
-				<p>A description of the course.</p>
-			</div>
+			<h1 class="page-header">
+				<c:out value="${currentUser.firstName}"/>'s Courses
+			</h1>
+
 			<div id= "courses">
 			<c:forEach var="course" items="${studentsCourses}">
 				<h3>${course.name}</h3>
+ 					<p>PROGRESS (GRADE) HERE</p>
 					<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
-					<p>Capacity: ${course.capacity}</p>
 					<p>${course.description}</p>
 					<p>Start Date: ${course.startDate}</p>
 					<p>End Date: ${course.endDate}</p>
-					<p>Cost: $${course.fee}</p>
 
 					<!-- TODO: have this navigate to student view of course -->
-				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}">
-					<c:param name ="courseId" value="${course.courseId}"/>
-					</c:url>
-				<a id="detailPageLink" href= "${courseDetailHref}">Get More Info!</a> 	
 			</c:forEach>
 		</div>
 		</div>
