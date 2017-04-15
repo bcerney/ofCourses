@@ -1,6 +1,7 @@
 package com.techelevator.jdbc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -45,7 +46,7 @@ public class JDBCModuleDAO extends JDBCDAO implements ModuleDAO {
 	}
 	
 	@Override
-	public ArrayList<Module> getModulesByCourseId(long id) {
+	public List<Module> getModulesByCourseId(long id) {
 		ArrayList <Module> modules = new ArrayList <Module>();
 		String sqlGetModulesByCourseId = "SELECT * FROM modules WHERE courseId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetModulesByCourseId, id);
