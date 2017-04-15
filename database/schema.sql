@@ -80,7 +80,7 @@ CONSTRAINT fk_assignments_lessonId FOREIGN KEY (lessonId) REFERENCES lessons(les
 
 CREATE TABLE resources
 (
-resourceId integer NOT NULL,	
+resourceId integer DEFAULT NEXTVAL('seq_resourceId'),
 url text NOT NULL,
 description text NOT NULL,
 title varchar (255) NOT NULL,
