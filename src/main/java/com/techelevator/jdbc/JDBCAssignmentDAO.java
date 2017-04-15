@@ -6,10 +6,12 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.daos.AssignmentDAO;
 import com.techelevator.models.Assignment;
 
+@Component
 public class JDBCAssignmentDAO extends JDBCDAO implements AssignmentDAO{
 
 	@Autowired

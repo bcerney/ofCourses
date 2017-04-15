@@ -1,6 +1,7 @@
 package com.techelevator.jdbc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -45,7 +46,7 @@ public class JDBCLessonDAO extends JDBCDAO implements LessonDAO {
 	}
 
 	@Override
-	public ArrayList<Lesson> getLessonsByModuleId(long moduleId) {
+	public List<Lesson> getLessonsByModuleId(long moduleId) {
 		ArrayList<Lesson> lessons = new ArrayList<Lesson>();
 		String sqlGetLessonsByModuleId = "SELECT * FROM lessons WHERE moduleId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetLessonsByModuleId, moduleId);

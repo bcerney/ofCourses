@@ -9,5 +9,5 @@ public interface LessonDAO {
 	
 	public Lesson createNewLesson(Lesson lesson);
 	public Lesson getLessonByLessonId(long id);
-	public ArrayList<Lesson> getLessonsByModuleId(long id);
+	public List<Lesson> getLessonsByModuleId(long id);
 }
