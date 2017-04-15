@@ -8,18 +8,15 @@
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard" var="dashboard"/>
 					<li><a href="${dashboard}">Dashboard</a></li>
-
-
-
-					
+				
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<li>
-					<c:url var="addLessonHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment"/>
-					<a id="detailPageLink" href= "${addLessonHref}">Add Resource</a>							
+					<c:url var="addResourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource"/>
+					<a id="detailPageLink" href= "${addResourceHref}">Add Resource</a>							
 					</li>
 					<li>
-					<c:url var="addLessonHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment"/>
-					<a id="detailPageLink" href= "${addLessonHref}">Add Assignment</a>							
+					<c:url var="addAssignmentHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment"/>
+					<a id="detailPageLink" href= "${addAssignmentHref}">Add Assignment</a>							
 					</li>
 					</c:if>	
 				</ul>
@@ -33,21 +30,22 @@
 
 				<h1 class="page-header"><c:out value="${lesson.description}"/></h1>
 				
+
 				<c:url value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource" var="addResource"/>
 				<a href="${addResource}" class="btn btn-primary">Add Resource</a>
 				<c:url value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment" var="addAssignment"/>
 				<a href="${addAssignment}" class="btn btn-primary">Add Assignment</a>
 
+
 				
-				<c:forEach var="resource" items="${allResources}" varStatus="loop">
+				<c:forEach var="resource" items="${allResources}">
 					<div class="lessonResource">
 						
 <!--					<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>   -->
 <!--						<h2><a href="${lessonHref}">${loop.index+1}. ${lesson.name}</a></h2>   -->
-					<p>${resource.title}</p>					
+					<h3>${resource.title}</h3>					
+					<p>${resource.description}</p>
 					<p>${resource.url}</p>
-					<p>${resource.description}</p>
-					<p>${resource.description}</p>
 					</div>
 				</c:forEach>
 
