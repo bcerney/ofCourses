@@ -69,6 +69,8 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		aScore.setScore(results.getInt("score"));
 		aScore.setStudentId(results.getLong("studentId"));
 		aScore.setAssignmentId(results.getLong("assignmentId"));
+		aScore.setSubmissionText(results.getString("submissionText"));
+		aScore.setSubmitted(results.getBoolean("isSubmitted"));
 		return aScore;
 	}
 }
