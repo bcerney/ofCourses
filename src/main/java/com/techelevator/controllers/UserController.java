@@ -49,7 +49,7 @@ public class UserController {
 	private AssignmentDAO assignmentDAO;
 	
 	@Autowired
-	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO, ResourceDAO resourceDAO, AssignmentDAO assignmentDAO) {
+	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO, ResourceDAO resourceDAO, AssignmentDAO assignmentDAO, StudentAssignmentDAO studentAssignmentDAO) {
 
 		this.userDAO = userDAO;
 		this.courseDAO = courseDAO;
