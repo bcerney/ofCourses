@@ -33,8 +33,8 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 	}
 
 	@Override
-	public StudentAssignment getStudentAssignmentByAssignmentId(long studentId, long assignmentId) {
-		String sqlGetScoreForStudent = "SELECT * FROM scores WHERE studentId = ? AND assignmentId = ?";
+	public StudentAssignment getStudentAssignmentByStudentIdAndAssignmentId(long studentId, long assignmentId) {
+		String sqlGetScoreForStudent = "SELECT * FROM student_assignment WHERE studentId = ? AND assignmentId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoreForStudent, studentId, assignmentId);
 		if(results.next()) {
 			return mapRowToStudentAssignment(results);
@@ -44,7 +44,7 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 	}
 	
 	@Override
-	public List<StudentAssignment> getAllScoresForStudent(long studentId) {
+	public List<StudentAssignment> getAllStudentAssignmentsByStudentId(long studentId) {
 		List <StudentAssignment> studentGrades = new ArrayList<>();
 		String sqlGetScoresForStudent = "SELECT score FROM student_assignment WHERE studentId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoresForStudent, studentId);
@@ -71,12 +71,13 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 
 
 	private StudentAssignment mapRowToStudentAssignment(SqlRowSet results) {
-		StudentAssignment aScore = new StudentAssignment();
-		aScore.setScore(results.getInt("score"));
-		aScore.setStudentId(results.getLong("studentId"));
-		aScore.setAssignmentId(results.getLong("assignmentId"));
-		aScore.setSubmissionText(results.getString("submission"));
-		aScore.setSubmitted(results.getBoolean("isSubmitted"));
-		return aScore;
+		StudentAssignment studentAssignment = new StudentAssignment();
+		studentAssignment.setStudentId(results.getLong("studentId"));
+		studentAssignment.setAssignmentId(results.getLong("assignmentId"));
+		studentAssignment.setScore(results.getLong("score"));
+		studentAssignment.setSubmissionText(results.getString("submissionText"));
+		studentAssignment.setIsSubmitted(results.getBoolean("isSubmitted"));
+		studentAssignment.setSubmissionDate(results.getDate("submissionDate").toLocalDate());
+		return studentAssignment;
 	}
 }

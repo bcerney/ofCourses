@@ -103,9 +103,10 @@ CREATE TABLE student_assignment
 (
 studentId integer NOT NULL,
 assignmentId integer NOT NULL,
+submissionDate date DEFAULT now(),
 score integer DEFAULT -1,
 isSubmitted boolean DEFAULT false,
-submission text NOT NULL,
+submissionText text,
 CONSTRAINT pk_student_assignment_studentId_assignmentId PRIMARY KEY (studentId, assignmentId),
 CONSTRAINT fk_student_assignment_studentId FOREIGN KEY (studentId) REFERENCES users(userId),
 CONSTRAINT fk_student_assignment_assignmentId FOREIGN KEY (assignmentId) REFERENCES assignments(assignmentId)

@@ -188,16 +188,23 @@ public class UserController {
 			return "redirect:/dashboard";
 		} else {
 			userDAO.addUserToCourse(studentId, courseId);
-			System.out.println("user id" + studentId + "course id" + courseId);
-
+			System.out.println("User ID " + studentId + " added to Course ID " + courseId);
+			
+			//TODO: pull this out into its own method (inside controller?)
 			List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
 
-			// for (Module module : courseModules) {
-			// List<Lesson> moduleLessons =
-			// lessonDAO.getLessonsByModuleId(module.getModuleId());
-			//
-			// for ()
-			// }
+			 for (Module module : courseModules) {
+				 List<Lesson> moduleLessons = lessonDAO.getLessonsByModuleId(module.getModuleId());
+				 
+				 for (Lesson lesson : moduleLessons) {
+					 List<Assignment> lessonAssignments = assignmentDAO.getAssignmentsByLessonId(lesson.getLessonId());
+					 
+					 for (Assignment assignment : lessonAssignments) {
+						 StudentAssignment studentAssignmentToCreate = new StudentAssignment(studentId, assignment.getAssignmentId());
+						 studentAssignmentDAO.createStudentAssignment(studentAssignmentToCreate);
+					 }
+				 }
+			 }
 
 			return "redirect:/dashboard/" + courseId;
 		}
@@ -292,26 +299,23 @@ public class UserController {
 
 		return "user/addResource";
 	}
-	
-	@RequestMapping(path = {"/dashboard/{courseId}/{moduleId}/{lessonId}/addResource"}, method = RequestMethod.POST)
-	public String submitAddResource(HttpServletRequest request, 
-									@PathVariable long courseId,
-									@PathVariable long moduleId, 
-									@PathVariable long lessonId,
-									@RequestParam String resourceTitle,
-									@RequestParam String resourceDescription,
-									@RequestParam String resourceUrl) {
-		
-		//TODO: proper link being created requires https:// prefix, best way to ensure that?
+
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addResource" }, method = RequestMethod.POST)
+	public String submitAddResource(HttpServletRequest request, @PathVariable long courseId,
+			@PathVariable long moduleId, @PathVariable long lessonId, @RequestParam String resourceTitle,
+			@RequestParam String resourceDescription, @RequestParam String resourceUrl) {
+
+		// TODO: proper link being created requires https:// prefix, best way to
+		// ensure that?
 		Resource resourceToAdd = new Resource(resourceUrl, resourceDescription, resourceTitle, lessonId);
 		Resource createdResource = resourceDAO.createNewResource(resourceToAdd);
-		
+
 		if (createdResource != null) {
 			System.out.println("Resource " + createdResource.getTitle() + " successfully added!");
-			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId;
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;
 		} else {
-			//TODO: error message
-			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId+"/addResource";
+			// TODO: error message
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId + "/addResource";
 		}
 	}
 
@@ -330,42 +334,42 @@ public class UserController {
 		return "user/addAssignment";
 	}
 
-	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment"}, method=RequestMethod.POST)
-	public String submitAddAssignment(HttpServletRequest request,
-									@PathVariable long courseId,
-									@PathVariable long moduleId,
-									@PathVariable long lessonId,
-									@RequestParam String assignmentName,
-									@RequestParam String assignmentDescription,
-									@RequestParam long assignmentMaxScore,
-									//TODO: same issue as course creation, can we fix date string passed w/ data input
-									@RequestParam("assignDate")
-	   								@DateTimeFormat(pattern="yyyy-MM-dd")
-									LocalDate assignDate,
-									@RequestParam("dueDate")
-	   								@DateTimeFormat(pattern="yyyy-MM-dd")
-	   								LocalDate dueDate) {
-		
-		Assignment assignmentToAdd = new Assignment(assignmentName, assignmentDescription, assignDate, dueDate, lessonId, assignmentMaxScore);
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment" }, method = RequestMethod.POST)
+	public String submitAddAssignment(HttpServletRequest request, 
+									  @PathVariable long courseId,
+									  @PathVariable long moduleId, 
+									  @PathVariable long lessonId, 
+									  @RequestParam String assignmentName,
+									  @RequestParam String assignmentDescription, 
+									  @RequestParam long assignmentMaxScore,
+									  // TODO: same issue as course creation, can we fix date string passed w/ data input
+									  @RequestParam("assignDate") 
+									  @DateTimeFormat(pattern = "yyyy-MM-dd")
+									  LocalDate assignDate,
+									  @RequestParam("dueDate")
+									  @DateTimeFormat(pattern = "yyyy-MM-dd") 
+									  LocalDate dueDate) {
+
+		Assignment assignmentToAdd = new Assignment(assignmentName, assignmentDescription, assignDate, dueDate,
+				lessonId, assignmentMaxScore);
 		Assignment createdAssignment = assignmentDAO.createNewAssignment(assignmentToAdd);
-		
+
 		if (createdAssignment != null) {
-			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId;
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;
 		} else {
-			//TODO: add error message
-			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId+"/addAssignment";
+			// TODO: add error message
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId + "/addAssignment";
 		}
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/roster"}, method=RequestMethod.GET)
-	public String displayClassRoster(HttpServletRequest request,
-									@PathVariable long courseId){
+
+	@RequestMapping(path = { "/dashboard/{courseId}/roster" }, method = RequestMethod.GET)
+	public String displayClassRoster(HttpServletRequest request, @PathVariable long courseId) {
 		List<User> classRoster = userDAO.getStudentsByCourseId(courseId);
 		Course course = courseDAO.getCourseById(courseId);
-		
+
 		request.setAttribute("course", course);
 		request.setAttribute("roster", classRoster);
-		
+
 		return "user/studentRoster";
 	}
 
