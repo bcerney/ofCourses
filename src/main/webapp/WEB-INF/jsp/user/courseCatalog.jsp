@@ -33,14 +33,16 @@
 					<p>End Date: ${course.endDate}</p>
 					<p>Cost: $${course.fee}</p>
 				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}"/>
-						
+				
+				<c:if test="${currentUser.userType = 'student'}">		
  					<c:url var="formAction" value="/courseCatalog">
 						<c:param name="courseId" value="${course.courseId}" />
 					</c:url>
 					<form method="POST" action="${formAction}">
 						<input type="submit" value="Enroll Today!" />
 					</form>
-					
+				</c:if>
+				
 				</c:forEach>
 			</div>
 		</div>
