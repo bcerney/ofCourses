@@ -13,7 +13,7 @@ public interface UserDAO {
 	
 	public boolean userIsAuthenticated(String email, String password);
 	public User getUserOnLogin(String email, String password);
-	public List getStudentsByCourseId(long courseId);
+	public List<User> getStudentsByCourseId(long courseId);
 	public User getUserById(long id);
 	public void addUserToCourse(long studentId, long courseId);
 
