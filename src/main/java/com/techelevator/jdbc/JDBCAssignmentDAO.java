@@ -1,6 +1,7 @@
 package com.techelevator.jdbc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -44,7 +45,7 @@ public class JDBCAssignmentDAO extends JDBCDAO implements AssignmentDAO{
 	}
 
 	@Override
-	public ArrayList<Assignment> getAssignmentsByLessonId(long lessonId) {
+	public List<Assignment> getAssignmentsByLessonId(long lessonId) {
 		ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 		String sqlGetAssignmentsByLessonId = "SELECT * FROM assignments WHERE lessonId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAssignmentsByLessonId, lessonId);
