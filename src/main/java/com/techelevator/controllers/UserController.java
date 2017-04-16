@@ -39,7 +39,7 @@ import com.techelevator.models.User;
 @Controller
 @SessionAttributes("currentUser")
 public class UserController {
-	
+
 	private UserDAO userDAO;
 	private CourseDAO courseDAO;
 	private ModuleDAO moduleDAO;
@@ -47,9 +47,10 @@ public class UserController {
 	private StudentAssignmentDAO studentAssignmentDAO;
 	private ResourceDAO resourceDAO;
 	private AssignmentDAO assignmentDAO;
-	
+
 	@Autowired
-	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO, ResourceDAO resourceDAO, AssignmentDAO assignmentDAO, StudentAssignmentDAO studentAssignmentDAO) {
+	public UserController(UserDAO userDAO, CourseDAO courseDAO, ModuleDAO moduleDAO, LessonDAO lessonDAO,
+			ResourceDAO resourceDAO, AssignmentDAO assignmentDAO, StudentAssignmentDAO studentAssignmentDAO) {
 
 		this.userDAO = userDAO;
 		this.courseDAO = courseDAO;
@@ -59,8 +60,8 @@ public class UserController {
 		this.resourceDAO = resourceDAO;
 		this.assignmentDAO = assignmentDAO;
 	}
-	
-	@RequestMapping(path={"/dashboard"}, method=RequestMethod.GET)
+
+	@RequestMapping(path = { "/dashboard" }, method = RequestMethod.GET)
 	public String displayDashboard(HttpServletRequest request, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
 		if (currentUser.getUserType().equals("teacher")) {
@@ -74,157 +75,140 @@ public class UserController {
 		}
 	}
 
-	
-	
-//	@RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
-//	public String displayStudentDashboard(HttpServletRequest request, ModelMap model) {
-//		User currentUser = (User) model.get("currentUser");
-//		ArrayList <Course> studentCourses = courseDAO.getCoursesByUserId(currentUser.getUserId());
-//		request.setAttribute("studentsCourses", studentCourses);
-//		return "dashboard";
-//	}
-//	
-//	
-//	@RequestMapping(path={"/teacherDashboard"}, method=RequestMethod.GET)
-//	public String displayTeacherDashboard(HttpServletRequest request, ModelMap model) {
-//		User currentUser = (User) model.get("currentUser");
-//		ArrayList <Course> userCourses = courseDAO.getCoursesByTeacherId(currentUser.getUserId());
-//		request.setAttribute("userCourses", userCourses);
-//		return "dashboard";
-//	}
-	
-	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.GET)
+	// @RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
+	// public String displayStudentDashboard(HttpServletRequest request,
+	// ModelMap model) {
+	// User currentUser = (User) model.get("currentUser");
+	// ArrayList <Course> studentCourses =
+	// courseDAO.getCoursesByUserId(currentUser.getUserId());
+	// request.setAttribute("studentsCourses", studentCourses);
+	// return "dashboard";
+	// }
+	//
+	//
+	// @RequestMapping(path={"/teacherDashboard"}, method=RequestMethod.GET)
+	// public String displayTeacherDashboard(HttpServletRequest request,
+	// ModelMap model) {
+	// User currentUser = (User) model.get("currentUser");
+	// ArrayList <Course> userCourses =
+	// courseDAO.getCoursesByTeacherId(currentUser.getUserId());
+	// request.setAttribute("userCourses", userCourses);
+	// return "dashboard";
+	// }
+
+	@RequestMapping(path = { "/courseCatalog" }, method = RequestMethod.GET)
 	public String displyCourseCatalogPage(HttpServletRequest request) {
-		List <Course> allCourses = courseDAO.getAllCourses();
+		List<Course> allCourses = courseDAO.getAllCourses();
 		request.setAttribute("allCourses", allCourses);
-		
+
 		return "user/courseCatalog";
 	}
-	
-	@RequestMapping(path={"/dashboard/createCourse"}, method=RequestMethod.GET)
+
+	@RequestMapping(path = { "/dashboard/createCourse" }, method = RequestMethod.GET)
 	public String displayCreateCourse() {
 		return "user/createCourse";
 	}
-	
-	@RequestMapping(path={"/dashboard/createCourse"}, method=RequestMethod.POST)
-	public String submitCreateCourse(HttpServletRequest request,
-									   @RequestParam String courseName,
-									   @RequestParam long courseCapacity,
-									   @RequestParam String courseDescription,
-									   @NumberFormat(pattern="#.##")
-									   @RequestParam BigDecimal courseFee,
-									   //TODO: date input for Chrome only accepts this DateTimeFormat, can we change?
-									   @RequestParam("startDate")
-									   @DateTimeFormat(pattern="yyyy-MM-dd")
-									   LocalDate startDate,
-									   @RequestParam("endDate")
-									   @DateTimeFormat(pattern="yyyy-MM-dd")
-									   LocalDate endDate,
-									   @RequestParam String subject,
-									   @RequestParam("courseDifficulty") String courseDifficulty,
-									   ModelMap model) {
-		
+
+	@RequestMapping(path = { "/dashboard/createCourse" }, method = RequestMethod.POST)
+	public String submitCreateCourse(HttpServletRequest request, @RequestParam String courseName,
+			@RequestParam long courseCapacity, @RequestParam String courseDescription,
+			@NumberFormat(pattern = "#.##") @RequestParam BigDecimal courseFee,
+			// TODO: date input for Chrome only accepts this DateTimeFormat, can
+			// we change?
+			@RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+			@RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
+			@RequestParam String subject, @RequestParam("courseDifficulty") String courseDifficulty, ModelMap model) {
+
 		User currentUser = (User) model.get("currentUser");
-		Course courseToCreate = new Course(currentUser.getUserId(), courseName, courseCapacity, courseDescription, courseFee, startDate, endDate, subject, courseDifficulty);
+		Course courseToCreate = new Course(currentUser.getUserId(), courseName, courseCapacity, courseDescription,
+				courseFee, startDate, endDate, subject, courseDifficulty);
 		Course createdCourse = courseDAO.createNewCourse(courseToCreate);
-		
+
 		if (createdCourse != null) {
 			long courseId = createdCourse.getCourseId();
 			request.setAttribute("courseId", courseId);
 			return "redirect:/dashboard/" + courseId;
 		} else {
-			//TODO: add error message to request
+			// TODO: add error message to request
 			return "redirect:/dashboard/createCourse";
 		}
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}"}, method=RequestMethod.GET)
-	public String displayCourseDetail(HttpServletRequest request, 
-									  @PathVariable long courseId,
-									  ModelMap model) {
-		Course course = courseDAO.getCourseById(courseId);	
+
+	@RequestMapping(path = { "/dashboard/{courseId}" }, method = RequestMethod.GET)
+	public String displayCourseDetail(HttpServletRequest request, @PathVariable long courseId, ModelMap model) {
+		Course course = courseDAO.getCourseById(courseId);
 		User teacher = userDAO.getUserById(course.getTeacherId());
-		List <Module> modules = moduleDAO.getModulesByCourseId(courseId);
+		List<Module> modules = moduleDAO.getModulesByCourseId(courseId);
 		request.setAttribute("course", course);
 		request.setAttribute("modules", modules);
 		request.setAttribute("teacher", teacher);
 		return "user/courseDetail";
 	}
-	
 
-	@RequestMapping(path={"/dashboard/{courseId}/addModule"}, method=RequestMethod.GET)
-	public String displayAddModule(HttpServletRequest request, 
-									  @PathVariable long courseId,
-									  ModelMap model) {
+	@RequestMapping(path = { "/dashboard/{courseId}/addModule" }, method = RequestMethod.GET)
+	public String displayAddModule(HttpServletRequest request, @PathVariable long courseId, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
 		Course course = courseDAO.getCourseById(courseId);
 		request.setAttribute("course", course);
-		
+
 		if (currentUser.getUserType().equals("teacher")) {
 			return "user/addModule";
 		} else {
-			//TODO: add error message or 403 redirect
+			// TODO: add error message or 403 redirect
 			return "redirect:/dashboard/" + courseId;
 		}
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/addModule"}, method=RequestMethod.POST)
-	public String submitAddModule(HttpServletRequest request, 
-									  @PathVariable long courseId,
-									  @RequestParam String moduleName,
-									  @RequestParam String moduleDescription,
-									  ModelMap model) {
-		//User currentUser = (User) model.get("currentUser");
+
+	@RequestMapping(path = { "/dashboard/{courseId}/addModule" }, method = RequestMethod.POST)
+	public String submitAddModule(HttpServletRequest request, @PathVariable long courseId,
+			@RequestParam String moduleName, @RequestParam String moduleDescription, ModelMap model) {
+		// User currentUser = (User) model.get("currentUser");
 		Module moduleToAdd = new Module(moduleName, moduleDescription, courseId);
 		Module addedModule = moduleDAO.createNewModule(moduleToAdd);
-		
+
 		if (addedModule != null) {
 			long moduleId = addedModule.getModuleId();
-			return "redirect:/dashboard/"+courseId+"/"+moduleId;
+			return "redirect:/dashboard/" + courseId + "/" + moduleId;
 		} else {
-			//TODO: if module not added, have error message
-			return "redirect:/dashboard/"+courseId+"/addModule";
+			// TODO: if module not added, have error message
+			return "redirect:/dashboard/" + courseId + "/addModule";
 		}
 	}
-	
-	@RequestMapping(path={"/courseCatalog"}, method=RequestMethod.POST)
-	public String enrollStudents(HttpServletRequest request,
-								ModelMap model,
-								@RequestParam long courseId){
+
+	@RequestMapping(path = { "/courseCatalog" }, method = RequestMethod.POST)
+	public String enrollStudents(HttpServletRequest request, ModelMap model, @RequestParam long courseId) {
 		User currentUser = (User) model.get("currentUser");
-		long studentId = currentUser.getUserId();	
-		
+		long studentId = currentUser.getUserId();
+
 		if (courseDAO.isCourseFull(courseId) || courseDAO.studentIsEnrolledInCourse(courseId, studentId)) {
-			//TODO: add error message
+			// TODO: add error message
 			return "redirect:/dashboard";
 		} else {
 			userDAO.addUserToCourse(studentId, courseId);
-			System.out.println("user id" + studentId + "course id" +courseId);
-			
+			System.out.println("user id" + studentId + "course id" + courseId);
+
 			List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
-			
-//			for (Module module : courseModules) {
-//				List<Lesson> moduleLessons = lessonDAO.getLessonsByModuleId(module.getModuleId());
-//				
-//				for ()
-//			}
-			
-			
-			return "redirect:/dashboard/"+ courseId;
+
+			// for (Module module : courseModules) {
+			// List<Lesson> moduleLessons =
+			// lessonDAO.getLessonsByModuleId(module.getModuleId());
+			//
+			// for ()
+			// }
+
+			return "redirect:/dashboard/" + courseId;
 		}
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}"}, method=RequestMethod.GET)
-	public String displayModule(HttpServletRequest request,
-								@PathVariable long courseId,
-								@PathVariable long moduleId) {
-		
+
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}" }, method = RequestMethod.GET)
+	public String displayModule(HttpServletRequest request, @PathVariable long courseId, @PathVariable long moduleId) {
+
 		Course course = courseDAO.getCourseById(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
-		
+
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
-		
+
 		List<Lesson> lessons = lessonDAO.getLessonsByModuleId(moduleId);
 		if (lessons != null) {
 			request.setAttribute("allLessons", lessons);
@@ -233,62 +217,56 @@ public class UserController {
 		if (module.getCourseId() == courseId) {
 			return "user/moduleView";
 		} else {
-			//TODO: add error message or 403 redirect
-			return "redirect:/dashboard/"+courseId+"/"+moduleId;
+			// TODO: add error message or 403 redirect
+			return "redirect:/dashboard/" + courseId + "/" + moduleId;
 		}
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/addLesson"}, method=RequestMethod.GET)
-	public String displayAddLesson(HttpServletRequest request,
-									@PathVariable long courseId,
-									@PathVariable long moduleId) {
-		
+
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/addLesson" }, method = RequestMethod.GET)
+	public String displayAddLesson(HttpServletRequest request, @PathVariable long courseId,
+			@PathVariable long moduleId) {
+
 		Course course = courseDAO.getCourseById(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
-		
+
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 
 		return "user/addLesson";
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/addLesson"}, method=RequestMethod.POST)
-	public String submitAddLesson(HttpServletRequest request,
-									@PathVariable long courseId,
-									@PathVariable long moduleId,
-									@RequestParam String lessonName,
-									@RequestParam String lessonDescription) {
-		
+
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/addLesson" }, method = RequestMethod.POST)
+	public String submitAddLesson(HttpServletRequest request, @PathVariable long courseId, @PathVariable long moduleId,
+			@RequestParam String lessonName, @RequestParam String lessonDescription) {
+
 		Lesson lessonToAdd = new Lesson(lessonName, lessonDescription, moduleId);
 		Lesson addedLesson = lessonDAO.createNewLesson(lessonToAdd);
-		
+
 		if (addedLesson != null) {
 			long lessonId = addedLesson.getLessonId();
-			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId;
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;
 		} else {
-			//TODO: add error message
-			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/addLesson";
+			// TODO: add error message
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/addLesson";
 		}
-		
-//		Course course = courseDAO.getCourseById(courseId);
-//		Module module = moduleDAO.getModuleByModuleId(moduleId);
-//		
-//		request.setAttribute("course", course);
-//		request.setAttribute("module", module);
+
+		// Course course = courseDAO.getCourseById(courseId);
+		// Module module = moduleDAO.getModuleByModuleId(moduleId);
+		//
+		// request.setAttribute("course", course);
+		// request.setAttribute("module", module);
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}"}, method=RequestMethod.GET)
-	public String displayLessonView(HttpServletRequest request,
-									@PathVariable long courseId,
-									@PathVariable long moduleId,
-									@PathVariable long lessonId) {
-		
+
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}" }, method = RequestMethod.GET)
+	public String displayLessonView(HttpServletRequest request, @PathVariable long courseId,
+			@PathVariable long moduleId, @PathVariable long lessonId) {
+
 		Course course = courseDAO.getCourseById(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
 		List<Resource> resources = resourceDAO.getResourcesByLessonId(lessonId);
 		List<Assignment> assignments = assignmentDAO.getAssignmentsByLessonId(lessonId);
-		
+
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
@@ -296,17 +274,15 @@ public class UserController {
 		request.setAttribute("allAssignments", assignments);
 		return "user/lessonView";
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addResource"}, method=RequestMethod.GET)
-	public String displayAddResource(HttpServletRequest request,
-									@PathVariable long courseId,
-									@PathVariable long moduleId,
-									@PathVariable long lessonId) {
-		
+
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addResource" }, method = RequestMethod.GET)
+	public String displayAddResource(HttpServletRequest request, @PathVariable long courseId,
+			@PathVariable long moduleId, @PathVariable long lessonId) {
+
 		Course course = courseDAO.getCourseById(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
-		
+
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
@@ -314,40 +290,44 @@ public class UserController {
 		return "user/addResource";
 	}
 	
-	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addResource"}, method=RequestMethod.POST)
-	public String submitAddResource(HttpServletRequest request,
+	//TODO: finish submitAddResrouce
+	@RequestMapping(path = {"/dashboard/{courseId}/{moduleId}/{lessonId}/addResource"}, method = RequestMethod.POST)
+	public String submitAddResource(HttpServletRequest request, 
 									@PathVariable long courseId,
-									@PathVariable long moduleId,
-									@PathVariable long lessonId) {
+									@PathVariable long moduleId, 
+									@PathVariable long lessonId,
+									@RequestParam String resourceTitle,
+									@RequestParam String resourceDescription,
+									@RequestParam String resourceUrl) {
 		
-		Course course = courseDAO.getCourseById(courseId);
-		Module module = moduleDAO.getModuleByModuleId(moduleId);
-		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
+		//TODO: proper link being created requires https:// prefix, best way to ensure that?
+		Resource resourceToAdd = new Resource(resourceUrl, resourceDescription, resourceTitle, lessonId);
+		Resource createdResource = resourceDAO.createNewResource(resourceToAdd);
 		
-		request.setAttribute("course", course);
-		request.setAttribute("module", module);
-		request.setAttribute("lesson", lesson);
-
-		return "user/addResource";
+		if (createdResource != null) {
+			System.out.println("Resource " + createdResource.getTitle() + " successfully added!");
+			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId;
+		} else {
+			//TODO: error message
+			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId+"/addResource";
+		}
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment"}, method=RequestMethod.GET)
-	public String displayAddAssignment(HttpServletRequest request,
-									@PathVariable long courseId,
-									@PathVariable long moduleId,
-									@PathVariable long lessonId) {
-		
+
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment" }, method = RequestMethod.GET)
+	public String displayAddAssignment(HttpServletRequest request, @PathVariable long courseId,
+			@PathVariable long moduleId, @PathVariable long lessonId) {
+
 		Course course = courseDAO.getCourseById(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
-		
+
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
 
 		return "user/addAssignment";
 	}
-	
+
 	@RequestMapping(path={"/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment"}, method=RequestMethod.POST)
 	public String submitAddAssignment(HttpServletRequest request,
 									@PathVariable long courseId,
@@ -356,12 +336,13 @@ public class UserController {
 									@RequestParam String assignmentName,
 									@RequestParam String assignmentDescription,
 									@RequestParam long assignmentMaxScore,
+									//TODO: same issue as course creation, can we fix date string passed w/ data input
 									@RequestParam("assignDate")
-	   								@DateTimeFormat(pattern="MM/dd/yyyy")
-	   								LocalDate assignDate,
-	   								@RequestParam("dueDate")
-	   								@DateTimeFormat(pattern="MM/dd/yyyy")
-	  								LocalDate dueDate) {
+	   								@DateTimeFormat(pattern="yyyy-MM-dd")
+									LocalDate assignDate,
+									@RequestParam("dueDate")
+	   								@DateTimeFormat(pattern="yyyy-MM-dd")
+	   								LocalDate dueDate) {
 		
 		Assignment assignmentToAdd = new Assignment(assignmentName, assignmentDescription, assignDate, dueDate, lessonId, assignmentMaxScore);
 		Assignment createdAssignment = assignmentDAO.createNewAssignment(assignmentToAdd);
@@ -393,20 +374,20 @@ public class UserController {
 		
 		return "user/studentRoster";
 	}
-	
-	@RequestMapping(path={"/dashboard/{courseId}/roster/{userId}"}, method=RequestMethod.GET)
-	public String displayStudentGrades(HttpServletRequest request,
-										@PathVariable long courseId,
-										@PathVariable long userId){
-		List<StudentAssignment> studentGrades = studentAssignmentDAO.getAllStudentAssignmentsByStudentIdAndCourseId(userId, courseId);
-		
+
+	@RequestMapping(path = { "/dashboard/{courseId}/roster/{userId}" }, method = RequestMethod.GET)
+	public String displayStudentGrades(HttpServletRequest request, @PathVariable long courseId,
+			@PathVariable long userId) {
+		List<StudentAssignment> studentGrades = studentAssignmentDAO
+				.getAllStudentAssignmentsByStudentIdAndCourseId(userId, courseId);
+
 		User user = userDAO.getUserById(userId);
 		Course course = courseDAO.getCourseById(courseId);
-		
+
 		request.setAttribute("studentGrades", studentGrades);
 		request.setAttribute("user", user);
 		request.setAttribute("course", course);
-		
+
 		return "user/studentGrades";
 	}
 }

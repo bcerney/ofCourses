@@ -28,20 +28,22 @@
 			<div id="dashMain" class="col-sm-9 col-md-10">
 				<h1 class="page-header"><c:out value="${lesson.name}"/></h1>
 
-				<h4 class="page-header"><c:out value="${lesson.description}"/></h4>
+				<h4><c:out value="${lesson.description}"/></h4>
 				
+				<h2 class="page-header">Resources</h2>
 				<c:forEach var="resource" items="${allResources}">
 					<div class="lessonResource">
 						
 <!--					<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>   -->
 <!--						<h2><a href="${lessonHref}">${loop.index+1}. ${lesson.name}</a></h2>   -->
-					<h3>${resource.title}</h3>					
+					
+					<a href="${resource.url}"><h3>${resource.title}</h3></a>				
 					<p>${resource.description}</p>
-					<p>${resource.url}</p>
+					<%-- <p>${resource.url}</p> --%>
 					</div>
 				</c:forEach>
 
-				<h2>Assignments</h2>
+				<h2 class="page-header">Assignments</h2>
 
 				<c:forEach var="assignment" items="${allAssignments}">
 					<div class="lessonAssignment">

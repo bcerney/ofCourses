@@ -22,7 +22,7 @@
 					<h2>Add Resource</h2>
 
 					<c:url
-						value="/dashboard/${course.courseId}/${module.moduleId}/addResource"
+						value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource"
 						var="addResource" />
 					<form method="POST" action=${addResource}>
 
