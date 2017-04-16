@@ -29,7 +29,7 @@
 			<!-- dashSidebar -->
 
 			<div id="dashMain" class="col-sm-9 col-md-10">
-				<h1 class="page-header"><c:out value="${module.name}"/></h1>
+				<h1 class="page-header">MODULE: <c:out value="${module.name}"/></h1>
 				
 				<c:forEach var="lesson" items="${allLessons}" varStatus="loop">
 					<div class="moduleLesson">
