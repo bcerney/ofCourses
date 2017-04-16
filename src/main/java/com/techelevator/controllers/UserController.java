@@ -64,13 +64,16 @@ public class UserController {
 	@RequestMapping(path = { "/dashboard" }, method = RequestMethod.GET)
 	public String displayDashboard(HttpServletRequest request, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
+		System.out.println("Current User is a " + currentUser.getUserType() + " with ID of " + currentUser.getUserId() + ", email is " + currentUser.getEmail());
 		if (currentUser.getUserType().equals("teacher")) {
-			List<Course> userCourses = courseDAO.getCoursesByTeacherId(currentUser.getUserId());
-			request.setAttribute("userCourses", userCourses);
+			List<Course> teacherCourses = courseDAO.getCoursesByTeacherId(currentUser.getUserId());
+			request.setAttribute("teacherCourses", teacherCourses);
+			System.out.println("Entered Teacher Dashboard");
 			return "user/teacherDashboard";
 		} else {
 			List<Course> studentCourses = courseDAO.getCoursesByUserId(currentUser.getUserId());
 			request.setAttribute("studentsCourses", studentCourses);
+			System.out.println("Entered Student Dashboard");
 			return "user/studentDashboard";
 		}
 	}

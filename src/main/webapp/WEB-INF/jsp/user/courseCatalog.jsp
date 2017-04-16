@@ -34,7 +34,7 @@
 					<p>Cost: $${course.fee}</p>
 				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}"/>
 				
-				<c:if test="${currentUser.userType = 'student'}">		
+				<c:if test="${currentUser.userType == 'student'}">		
  					<c:url var="formAction" value="/courseCatalog">
 						<c:param name="courseId" value="${course.courseId}" />
 					</c:url>

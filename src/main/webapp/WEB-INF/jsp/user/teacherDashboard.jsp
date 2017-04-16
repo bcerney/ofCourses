@@ -8,7 +8,7 @@
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
 			<c:url value="/dashboard" var="dashboard"/>
-					<li><a href="${dashboard}">Dashboard</a></li>
+				<li><a href="${dashboard}">Dashboard</a></li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
 					<a href="${catalog}">Course Catalog</a>
@@ -28,7 +28,7 @@
 			</h1>
 
 			<div id="courses">
-				<c:forEach var="course" items="${userCourses}">
+				<c:forEach var="course" items="${teacherCourses}">
 				<h3>${course.name}</h3>
 					<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
