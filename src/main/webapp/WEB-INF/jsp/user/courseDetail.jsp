@@ -9,8 +9,7 @@
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard" var="dashboard"/>
 					<li><a href="${dashboard}">Dashboard</a></li>
-				</ul>
-				<ul class="nav sidebar-nav">
+
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<c:url value="/dashboard/${course.courseId}/addModule" var="addModule"/>
 					<li><a href="${addModule}">Add Module</a></li>
@@ -30,8 +29,10 @@
 				<div class="courseDetail">
 					<c:url var="formAction" value="/courseDetail" />
 
-					
+					<c:if test="${currentUser.userType == 'student'}">
  						<p>PROGRESS (GRADE) HERE</p>
+ 					</c:if>	
+ 						
  						<p>Subject: ${course.subject}</p>
  						<p>Level: ${course.difficulty}</p>	
  						<p>${course.description}</p>

@@ -284,6 +284,30 @@ public class UserController {
 		request.setAttribute("allAssignments", assignments);
 		return "user/lessonView";
 	}
+	
+	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}" }, method = RequestMethod.POST)
+	public String submitAssignment(HttpServletRequest request,
+									ModelMap model, 
+									@PathVariable long courseId,
+									@PathVariable long moduleId,
+									@PathVariable long lessonId,
+									@RequestParam long assignmentId,
+									@RequestParam String submissionText) {
+		
+		User currentUser = (User)model.get("currentUser");
+		long studentId = currentUser.getUserId();
+
+		
+		if (submissionText != null) {
+			
+			studentAssignmentDAO.addTextSubmission(studentId, assignmentId, submissionText);
+//			studentAssignmentDAO.addFileSubmission();
+		}
+		
+		return "user/lessonView"	;				
+	}
+															   
+	
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addResource" }, method = RequestMethod.GET)
 	public String displayAddResource(HttpServletRequest request, @PathVariable long courseId,
