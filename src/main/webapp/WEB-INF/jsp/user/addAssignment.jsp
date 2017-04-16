@@ -27,7 +27,7 @@
 					<c:url
 						value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment"
 						var="addAssignment" />
-					<form method="POST" action=${addAssignment}>
+					<form method="POST" action=addAssignment>
 
 						<div id="assignmentName" class="form-group row">
 							<label for="assignmentName" class="col-md-2 col-form-label">Name:

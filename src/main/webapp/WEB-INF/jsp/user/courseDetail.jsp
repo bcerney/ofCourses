@@ -13,6 +13,8 @@
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<c:url value="/dashboard/${course.courseId}/addModule" var="addModule"/>
 					<li><a href="${addModule}">Add Module</a></li>
+					<c:url value="/dashboard/${course.courseId}/roster" var="roster"/>
+					<li><a href="${roster}">View Student Roster</a></li>
 					</c:if>
 
 				</ul>
