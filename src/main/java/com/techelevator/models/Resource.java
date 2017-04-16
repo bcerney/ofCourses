@@ -6,6 +6,17 @@ public class Resource {
 	private String description;
 	private String title;
 	private long lessonId;
+	
+	public Resource() {
+		
+	}
+
+	public Resource(String url, String description, String title, long lessonId) {
+		this.url = url;
+		this.description = description;
+		this.title = title;
+		this.lessonId = lessonId;
+	}
 
 	public long getResourceId() {
 		return resourceId;
