@@ -290,7 +290,6 @@ public class UserController {
 		return "user/addResource";
 	}
 	
-	//TODO: finish submitAddResrouce
 	@RequestMapping(path = {"/dashboard/{courseId}/{moduleId}/{lessonId}/addResource"}, method = RequestMethod.POST)
 	public String submitAddResource(HttpServletRequest request, 
 									@PathVariable long courseId,
@@ -348,19 +347,11 @@ public class UserController {
 		Assignment createdAssignment = assignmentDAO.createNewAssignment(assignmentToAdd);
 		
 		if (createdAssignment != null) {
-			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId+"/addAssignment";
+			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId;
 		} else {
 			//TODO: add error message
 			return "redirect:/dashboard/"+courseId+"/"+moduleId+"/"+lessonId+"/addAssignment";
 		}
-		
-//		Course course = courseDAO.getCourseById(courseId);
-//		Module module = moduleDAO.getModuleByModuleId(moduleId);
-//		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
-//		
-//		request.setAttribute("course", course);
-//		request.setAttribute("module", module);
-//		request.setAttribute("lesson", lesson);
 	}
 	
 	@RequestMapping(path={"/dashboard/{courseId}/roster"}, method=RequestMethod.GET)
