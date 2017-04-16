@@ -113,11 +113,12 @@ public class UserController {
 									   @RequestParam String courseDescription,
 									   @NumberFormat(pattern="#.##")
 									   @RequestParam BigDecimal courseFee,
+									   //TODO: date input for Chrome only accepts this DateTimeFormat, can we change?
 									   @RequestParam("startDate")
-									   @DateTimeFormat(pattern="MM/dd/yyyy")
+									   @DateTimeFormat(pattern="yyyy-MM-dd")
 									   LocalDate startDate,
 									   @RequestParam("endDate")
-									   @DateTimeFormat(pattern="MM/dd/yyyy")
+									   @DateTimeFormat(pattern="yyyy-MM-dd")
 									   LocalDate endDate,
 									   @RequestParam String subject,
 									   @RequestParam("courseDifficulty") String courseDifficulty,
