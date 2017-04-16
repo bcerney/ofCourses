@@ -103,7 +103,7 @@ CREATE TABLE student_assignment
 (
 studentId integer NOT NULL,
 assignmentId integer NOT NULL,
-submissionDate date DEFAULT now(),
+submissionDate date,
 score integer DEFAULT -1,
 isSubmitted boolean DEFAULT false,
 submissionText text,

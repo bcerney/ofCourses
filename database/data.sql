@@ -354,27 +354,45 @@ INSERT INTO resources (title, url, lessonId, description) VALUES ('Ricksource', 
 
 
 
--- Course 1, Module 1, Lesson 1, assignments 1-3
+-- Course 1, Module 1, Lesson 1, assignments 1-2
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Describe Rick', '2017-04-27', '2017-04-30', 50, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('More Rick Practice', '2017-04-27', '2017-04-30', 50, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 
--- Course 1, Module 1, Lesson 2, assignments 1-3
+-- Course 1, Module 1, Lesson 2, assignments 1-2
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Describe Rick', '2017-04-27', '2017-04-30', 50, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('More Rick Practice', '2017-04-27', '2017-04-30', 50, 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 
--- Course 1, Module 1, Lesson 3, assignments 1-3
+-- Course 1, Module 1, Lesson 3, assignments 1-2
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Describe Rick', '2017-04-27', '2017-04-30', 50, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('More Rick Practice', '2017-04-27', '2017-04-30', 50, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 
--- Course 1, Module 1, Lesson 4, assignments 1-3
+-- Course 1, Module 1, Lesson 4, assignments 1-2
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Describe Rick', '2017-04-27', '2017-04-30', 50, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('More Rick Practice', '2017-04-27', '2017-04-30', 50, 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 
--- Course 1, Module 1, Lesson 5, assignments 1-3
+-- Course 1, Module 1, Lesson 5, assignments 1-2
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Describe Rick', '2017-04-27', '2017-04-30', 50, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('More Rick Practice', '2017-04-27', '2017-04-30', 50, 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
 
 
+-- Course 1 
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 1);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 2);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 1);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 2);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 1);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 2);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 1);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 2);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 1);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 2);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 1);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 2);
 
 
 COMMIT;
