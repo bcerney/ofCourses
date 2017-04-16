@@ -8,7 +8,10 @@
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard" var="dashboard"/>
 					<li><a href="${dashboard}">Dashboard</a></li>
-				
+					<c:url value="/dashboard/${course.courseId}/${module.moduleId}"
+					var="addModule" />
+					<li><a href="${addModule}">Back to Module</a></li>
+					
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<li>
 					<c:url var="addResourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource"/>
@@ -26,7 +29,7 @@
 			<!-- dashSidebar -->
 
 			<div id="dashMain" class="col-sm-9 col-md-10">
-				<h1 class="page-header"><c:out value="${lesson.name}"/></h1>
+				<h1 class="page-header">Lesson: <c:out value="${lesson.name}"/></h1>
 
 				<h4><c:out value="${lesson.description}"/></h4>
 				
