@@ -64,13 +64,16 @@ public class UserController {
 	@RequestMapping(path = { "/dashboard" }, method = RequestMethod.GET)
 	public String displayDashboard(HttpServletRequest request, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
+		System.out.println("Current User is a " + currentUser.getUserType() + " with ID of " + currentUser.getUserId() + ", email is " + currentUser.getEmail());
 		if (currentUser.getUserType().equals("teacher")) {
 			List<Course> teacherCourses = courseDAO.getCoursesByTeacherId(currentUser.getUserId());
 			request.setAttribute("teacherCourses", teacherCourses);
+			System.out.println("Entered Teacher Dashboard");
 			return "user/teacherDashboard";
 		} else {
 			List<Course> studentCourses = courseDAO.getCoursesByUserId(currentUser.getUserId());
 			request.setAttribute("studentsCourses", studentCourses);
+			System.out.println("Entered Student Dashboard");
 			return "user/studentDashboard";
 		}
 	}
@@ -352,6 +355,17 @@ public class UserController {
 		Assignment createdAssignment = assignmentDAO.createNewAssignment(assignmentToAdd);
 
 		if (createdAssignment != null) {
+			// create student_assignment for assignment and all students already enrolled in the course
+			List<User> studentsEnrolledInCourse = userDAO.getStudentsByCourseId(courseId);
+			if (studentsEnrolledInCourse.size() > 0) {
+				for (User student : studentsEnrolledInCourse) {
+					StudentAssignment studentAssignmentToCreate = new StudentAssignment(student.getUserId(), createdAssignment.getAssignmentId());
+					StudentAssignment createdStudentAssignment = studentAssignmentDAO.createStudentAssignment(studentAssignmentToCreate);
+					System.out.println("Created StudentAssignment for Student ID: " + createdStudentAssignment.getStudentId() + ", Assignment ID: " + createdStudentAssignment.getAssignmentId());
+				}
+			}
+			
+			
 			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;
 		} else {
 			// TODO: add error message

@@ -23,7 +23,7 @@
 				<div id="addModule" class="add-module-div">
 					<c:url value="/dashboard/${course.courseId}/addModule"
 						var="addModule" />
-					<form method="POST" action=${addModule}>
+					<form method="POST" action=addModule>
 						<div id="moduleName" class="form-group row">
 							<label for="moduleName" class="col-md-2 col-form-label">Module
 								Name: </label>
