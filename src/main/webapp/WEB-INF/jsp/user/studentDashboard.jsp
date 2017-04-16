@@ -8,10 +8,10 @@
 				<c:url value="/dashboard" var="dashboard"/>
 				<li>
 					<a href="${dashboard}">Dashboard</a>
-					<c:forEach var = "course" items="${studentsCourses}">
+<%-- 					<c:forEach var = "course" items="${studentsCourses}">
 						<li><c:url var="courseDetailHref" value="/dashboard/${course.courseId}"/>
-				<a id="detailPageLink" href= "${courseDetailHref}">${course.name}</a> 
-					</c:forEach></li>
+					<a id="detailPageLink" href= "${courseDetailHref}">${course.name}</a> 
+					</c:forEach></li> --%>
 				</li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
@@ -31,12 +31,12 @@
 			<div id= "courses">
 			<c:forEach var="course" items="${studentsCourses}">
 				<h3>${course.name}</h3>
- 					<p>PROGRESS (GRADE) HERE</p>
+<%--  					<p>PROGRESS (GRADE) HERE</p>
 					<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
 					<p>${course.description}</p>
 					<p>Start Date: ${course.startDate}</p>
-					<p>End Date: ${course.endDate}</p>
+					<p>End Date: ${course.endDate}</p> --%>
 
 					<!-- TODO: have this navigate to student view of course -->
 			</c:forEach>

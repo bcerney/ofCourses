@@ -68,7 +68,12 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		return studentCourseGrades;
 		
 	}
-
+	
+	@Override
+	public void addTextSubmission(long studentId, long assignmentId, String submissionText) {
+		String sqlAddTextSubmission = "";
+		// TODO: update assignment
+	}
 
 	private StudentAssignment mapRowToStudentAssignment(SqlRowSet results) {
 		StudentAssignment studentAssignment = new StudentAssignment();
@@ -80,4 +85,5 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		studentAssignment.setSubmissionDate(results.getDate("submissionDate").toLocalDate());
 		return studentAssignment;
 	}
+
 }
