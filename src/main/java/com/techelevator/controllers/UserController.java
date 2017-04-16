@@ -332,13 +332,20 @@ public class UserController {
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment" }, method = RequestMethod.POST)
-	public String submitAddAssignment(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long moduleId, @PathVariable long lessonId, @RequestParam String assignmentName,
-			@RequestParam String assignmentDescription, @RequestParam long assignmentMaxScore,
-			// TODO: same issue as course creation, can we fix date string
-			// passed w/ data input
-			@RequestParam("assignDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate assignDate,
-			@RequestParam("dueDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dueDate) {
+	public String submitAddAssignment(HttpServletRequest request, 
+									  @PathVariable long courseId,
+									  @PathVariable long moduleId, 
+									  @PathVariable long lessonId, 
+									  @RequestParam String assignmentName,
+									  @RequestParam String assignmentDescription, 
+									  @RequestParam long assignmentMaxScore,
+									  // TODO: same issue as course creation, can we fix date string passed w/ data input
+									  @RequestParam("assignDate") 
+									  @DateTimeFormat(pattern = "yyyy-MM-dd")
+									  LocalDate assignDate,
+									  @RequestParam("dueDate")
+									  @DateTimeFormat(pattern = "yyyy-MM-dd") 
+									  LocalDate dueDate) {
 
 		Assignment assignmentToAdd = new Assignment(assignmentName, assignmentDescription, assignDate, dueDate,
 				lessonId, assignmentMaxScore);
