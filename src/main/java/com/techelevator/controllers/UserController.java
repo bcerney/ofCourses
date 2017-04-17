@@ -512,7 +512,7 @@ public class UserController {
 			 }
 		 }
 		
-		
+		request.setAttribute("courseId", courseId);
 		request.setAttribute("submissions", currentUserSubmissions);
 		
 		return "user/studentCourseProgress";

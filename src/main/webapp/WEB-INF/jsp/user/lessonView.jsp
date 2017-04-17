@@ -51,7 +51,7 @@
 				<h2 class="page-header">Assignments</h2>
 
 				<c:forEach var="assignment" items="${allAssignments}" varStatus="loop">
-					<div class="lessonAssignment">
+					<div id="${assignment.assignmentId}" class="lessonAssignment">
 						
 				<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>
 					<h3>${loop.index+1}: ${assignment.name}</h3>					
