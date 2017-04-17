@@ -265,20 +265,31 @@ public class UserController {
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}" }, method = RequestMethod.GET)
-	public String displayLessonView(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long moduleId, @PathVariable long lessonId) {
-
+	public String displayLessonView(HttpServletRequest request,
+									ModelMap model,
+									@PathVariable long courseId,
+									@PathVariable long moduleId, 
+									@PathVariable long lessonId) {
+		
+		User currentUser = (User)model.get("currentUser");
+		long studentId = currentUser.getUserId();
+		
 		Course course = courseDAO.getCourseById(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
 		List<Resource> resources = resourceDAO.getResourcesByLessonId(lessonId);
 		List<Assignment> assignments = assignmentDAO.getAssignmentsByLessonId(lessonId);
-
+		List<StudentAssignment> studentAssignments = studentAssignmentDAO.getAllStudentAssignmentsByStudentIdAndLessonId(studentId, lessonId);
+		
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
 		request.setAttribute("allResources", resources);
 		request.setAttribute("allAssignments", assignments);
+		request.setAttribute("studentAssignments", studentAssignments);
+		
+		
+		request.setAttribute("now", LocalDate.now());
 		return "user/lessonView";
 	}
 	
@@ -294,13 +305,11 @@ public class UserController {
 		User currentUser = (User)model.get("currentUser");
 		long studentId = currentUser.getUserId();
 
-		
 		if (submissionText != null) {
-			
 			studentAssignmentDAO.addTextSubmission(studentId, assignmentId, submissionText);
 //			studentAssignmentDAO.addFileSubmission();
 		}
-		
+				
 		return "user/lessonView"	;				
 	}
 															   

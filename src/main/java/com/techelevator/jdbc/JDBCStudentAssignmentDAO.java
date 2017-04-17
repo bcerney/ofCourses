@@ -70,9 +70,28 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 	}
 	
 	@Override
+	public List<StudentAssignment> getAllStudentAssignmentsByStudentIdAndLessonId(long studentId, long lessonId) {
+		List <StudentAssignment> studentLessonGrades = new ArrayList<>();
+		String sqlGetScoresForStudentByLesson = "SELECT * FROM student_assignment "
+									+ "JOIN assignments ON student_assignment.assignmentId = assignments.assignmentId "
+									+ "WHERE studentId = ? AND lessonId = ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetScoresForStudentByLesson, studentId, lessonId);
+		while (results.next()) {
+			StudentAssignment nextStudentAssignment = mapRowToStudentAssignment(results);
+			studentLessonGrades.add(nextStudentAssignment);
+		}
+		return studentLessonGrades;
+		
+	}
+	
+	@Override
 	public void addTextSubmission(long studentId, long assignmentId, String submissionText) {
-		String sqlAddTextSubmission = "";
-		// TODO: update assignment
+		String sqlAddTextSubmission = "UPDATE student_assignment "
+									+ "SET isSubmitted = true, submissionText = ?, submissionDate = NOW() "
+									+ "WHERE studentId = ? AND assignmentId = ?";
+		jdbcTemplate.update(sqlAddTextSubmission, submissionText, studentId, assignmentId);
+		
 	}
 
 	private StudentAssignment mapRowToStudentAssignment(SqlRowSet results) {
@@ -82,7 +101,9 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		studentAssignment.setScore(results.getLong("score"));
 		studentAssignment.setSubmissionText(results.getString("submissionText"));
 		studentAssignment.setIsSubmitted(results.getBoolean("isSubmitted"));
-		studentAssignment.setSubmissionDate(results.getDate("submissionDate").toLocalDate());
+		if (results.getDate("submissionDate") != null) {
+			studentAssignment.setSubmissionDate(results.getDate("submissionDate").toLocalDate());
+		}
 		return studentAssignment;
 	}
 

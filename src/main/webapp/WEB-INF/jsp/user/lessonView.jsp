@@ -1,6 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/WEB-INF/jsp/common/loggedInHeader.jsp" />
-
 
 	<div id="dashboardDiv" class="container-fluid">
 		<div class="row">
@@ -54,45 +53,54 @@
 				<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>
 					<h3>${loop.index+1}: ${assignment.name}</h3>					
 					<p>${assignment.description}</p>
-					<p>Due: ${assignment.dueDate}</p>
 					<p>Total Points: ${assignment.maxScore}</p>
-	
-					<c:choose>
 
-						<c:when test="${1 == 2}"> <!-- already been submitted -->
-						Assignment was submitted on:
-						</c:when>
+ 				<c:if test="${currentUser.userType == 'student'}">
+ 				
+ 				<c:choose>
+				
+					<c:when test="${studentAssignments[loop.index].submitted}">
+						Assignment submitted on ${studentAssignments[loop.index].submissionDate}
+					</c:when>
 
-						<c:otherwise> <!-- not yet submitted -->
-						
- 							<c:choose>
-								<c:when test="${1 == 1}">
+										
+					<c:otherwise>
+										
+					 	<c:choose>
+							<c:when test="${assignment.daysLeft == -1}">
 									Assignment is Past Due!
-								</c:when>
+							</c:when>
 								
-								<c:when test="${1 == 1}">
+							<c:when test="${assignment.daysLeft == 0}">
 									Assignment is Due Today!	
-								</c:when>
+							</c:when>
 								
-								<c:when test="${1 == 1}">
+							<c:when test="${assignment.daysLeft == 1}">
 									Assignment is Due Tomorrow!	
-								</c:when>
+							</c:when>
 								
-								<c:otherwise>
-									Assignment is Due in # Days								
-								</c:otherwise>
-							</c:choose>
+							<c:when test="${assignment.daysLeft > 1 && assignment.daysLeft < 7}">
+									Assignment is Due in ${assignment.daysLeft} Days	
+							</c:when>
+								
+ 							<c:otherwise>
+									Assignment is Due On ${assignment.dueDate}							
+							</c:otherwise>
 							
-							<c:url
+						</c:choose> 
+					
+						<c:url
 								value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"
 								var="submitAssignment" />
 							<form method="POST" action="${submitAssignment}">
 							
 								<div id="assignmentSubmission" class="form-group row">
-<!--									<label for="assignmentSubmission" class="col-md-2 col-form-label">Your Response: </label>   -->
+<!--  								<label for="assignmentSubmission" class="col-md-2 col-form-label">Your Response: </label>   -->
 									<div class="col-md-8">
-										<input class="form-control" type="text" name="assignmentSubmission"
-											placeholder="Write Your Response Here" />
+										<input type="hidden" name="assignmentId" value="${assignment.assignmentId}"/>
+										<input class="form-control" type="text" name="submissionText"
+											placeholder="Write Your Response Here" 
+											maxlength="5000" style="height: 200px"/>
 									</div>
 								</div>
 								
@@ -106,15 +114,12 @@
 								
 								<input class="formSubmitButton" type="submit" value="Submit Assignment ${loop.index+1}" />
 							</form>
-						
-						</c:otherwise>
+					
+					
+					</c:otherwise>
 
-
-
-
-
-					</c:choose>
-									
+				</c:choose>
+				</c:if>				
 
 					
 					</div>

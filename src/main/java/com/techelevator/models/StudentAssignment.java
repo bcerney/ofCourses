@@ -42,7 +42,7 @@ public class StudentAssignment {
 		this.isSubmitted = isSubmitted;
 	}
 	
-	public LocalDate submissionDate() {
+	public LocalDate getSubmissionDate() {
 		return submissionDate;
 	}
 	

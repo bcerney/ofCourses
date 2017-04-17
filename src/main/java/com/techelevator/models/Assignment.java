@@ -1,6 +1,8 @@
 package com.techelevator.models;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 public class Assignment {
 	private long assignmentId;
@@ -66,5 +68,8 @@ public class Assignment {
 	}
 	public void setMaxScore(long maxScore) {
 		this.maxScore = maxScore;
+	}
+	public long getDaysLeft() {
+		return LocalDate.now().until(dueDate, ChronoUnit.DAYS);
 	}
 }
