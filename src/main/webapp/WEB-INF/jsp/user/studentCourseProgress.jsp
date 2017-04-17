@@ -20,16 +20,17 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 			<h1 class="page-header">
-				<c:out value="${currentUser.firstName}" />
-				's Assignments
+				<c:out value="${currentUser.firstName}" />'s Assignments
 			</h1>
 
 			<div id="assignments">
-
+				<div id="gradedAssignments">
+				<h2>Graded Assignments</h2>
 				<c:forEach var="submission" items="${submissions}">
+					<c:if test="${submission.studentAssignment.isSubmitted && submission.studentAssignment.score > 0}">
 					
-					<p>${submission.lesson.name}</p>
 					<p>${submission.assignment.name}</p>
+					<p>${submission.lesson.name}</p>
 					<p>${submission.studentAssignment.score}</p>
 
 					<%--  					<p>PROGRESS (GRADE) HERE</p>
@@ -39,9 +40,11 @@
 					<p>Start Date: ${course.startDate}</p>
 					<p>End Date: ${course.endDate}</p> --%>
 
-
+					</c:if>
 					<!-- TODO: have this navigate to student view of course -->
 				</c:forEach>
+				</div>
+				<!-- #gradedAssignments -->
 			</div>
 			<!-- #assignments -->
 		</div>
