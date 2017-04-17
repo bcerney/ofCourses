@@ -35,7 +35,7 @@ public class StudentAssignment {
 		this.assignmentId = assignmentId;
 	}
 
-	public boolean isSubmitted() {
+	public boolean getIsSubmitted() {
 		return isSubmitted;
 	}
 	public void setIsSubmitted(boolean isSubmitted) {
