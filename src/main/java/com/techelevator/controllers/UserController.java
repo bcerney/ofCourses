@@ -450,7 +450,7 @@ public class UserController {
 					 
 					 StudentAssignment studentAssignment = studentAssignmentDAO.getStudentAssignmentByStudentIdAndAssignmentId(currentUser.getUserId(), assignment.getAssignmentId());
 					 nextSubmission.setStudentAssignment(studentAssignment);
-					 
+//					 System.out.println(studentAssignment.getScore() + studentAssignment.getAssignmentId());
 					 currentUserSubmissions.add(nextSubmission);
 				 }
 			 }
@@ -465,6 +465,7 @@ public class UserController {
 //		System.out.println(assignments.size());
 //		System.out.println(studentGrades.size());
 //		
+		request.setAttribute("user", currentUser);
 		request.setAttribute("submissions", currentUserSubmissions);
 		return "user/studentGrades";
 	}

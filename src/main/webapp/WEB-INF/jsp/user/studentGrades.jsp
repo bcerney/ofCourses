@@ -26,11 +26,39 @@
 		<div id = "gradeColumn"><c:forEach var="grade" items="${studentGrades}">
 		</c:forEach></div>
 		 --%>
+		 
+		 
+		<h2>Graded Assignments</h2>
+		<c:forEach var="hw" items="${submissions}">
+		<c:choose>
+		<c:when test= "${hw.studentAssignment.score != -1}">Assignment: ${hw.assignment.name} Grade: ${hw.studentAssignment.score}<br></c:when>
+		</c:choose></c:forEach>
 		
-		<c:forEach var="assignment" items="${submissions}">
-		Assignment: ${assignment.assignment.name} Grade: <c:choose>
-		<c:when test="${assignment.studentAssignment.score == -1}">Not Completed<br></c:when>
-		<c:otherwise>Grade: ${assignment.studentAssignment.score}<br></c:otherwise></c:choose><br></c:forEach>
+		<h2>Submitted Assignments</h3>
+		<c:forEach var="hw" items="${submissions}">
+		<c:choose> 
+		<c:when test="${hw.studentAssignment.isSubmitted == true && hw.studentAssignment.score == -1}">
+
+	 	Assignment: ${hw.assignment.name}<br>
+		Submission Text: ${hw.studentAssignment.submissionText}<br>
+		<form method= "POST" action=studentGrades>
+		<label for= "assignmentGrade">Grade:</label>
+		<input class = "form-control" type="text" name="assignmentGrade"/>
+		<input class="formSubmitButton" type="submit" value="Submit Grade"/>
+		</form>
+		
+		</c:when>
+		</c:choose>
+		</c:forEach>
+		
+		<h2>Non-Submitted Assignments</h2>
+		<c:forEach var = "hw" items= "${submissions}">
+		<c:choose>
+		<c:when test = "${hw.studentAssignment.score == -1}">
+		Assignment: ${hw.assignment.name} <strong>Due Date:</strong> ${hw.assignment.dueDate}<br>
+		</c:when>
+		</c:choose>
+		</c:forEach>
 
 </body>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
