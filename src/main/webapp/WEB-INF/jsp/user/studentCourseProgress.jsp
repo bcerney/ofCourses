@@ -14,6 +14,11 @@
 				<c:url value="/courseCatalog" var="catalog" />
 				<li><a href="${catalog}">Course Catalog</a></li>
 			</ul>
+			<ul class="nav sidebar-nav">
+				<li><a href="#incompleteAssignments">Incomplete Assignments</a></li>
+				<li><a href="#submittedAssignments">Submitted Assignments</a></li>
+				<li><a href="#gradedAssignments">Graded Assignments</a></li>
+			</ul>
 		</div>
 		<!-- dashSidebar -->
 
@@ -38,6 +43,9 @@
 							<p>${submission.assignment.description}</p>
 							<p><strong>Max Score: </strong>${submission.assignment.maxScore}</p>
 							<p><strong>Due: </strong>${submission.assignment.dueDate}</p>
+							
+							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}#${submission.assignment.assignmentId}" var="assignmentsHref"/>
+							<a href="${assignmentsHref}" class="btn btn-primary">Go To Assignment</a>
 							
 
 						</div>
