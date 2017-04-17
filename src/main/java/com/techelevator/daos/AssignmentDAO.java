@@ -9,4 +9,5 @@ public interface AssignmentDAO {
 	public Assignment createNewAssignment(Assignment assignment);
 	public Assignment getAssignmentbyAssignmentId(long id);
 	public List<Assignment> getAssignmentsByLessonId(long id);
+	public List<Assignment> getAssignmentsByStudentIdAndCourseId(long studentId, long courseId);
 }
