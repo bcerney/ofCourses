@@ -428,20 +428,44 @@ public class UserController {
 	@RequestMapping(path = { "/dashboard/{courseId}/roster/{userId}" }, method = RequestMethod.GET)
 	public String displayStudentGrades(HttpServletRequest request, @PathVariable long courseId,
 			@PathVariable long userId) {
-		List<StudentAssignment> studentGrades = studentAssignmentDAO
-				.getAllStudentAssignmentsByStudentIdAndCourseId(userId, courseId);
-		List<Assignment> assignments = assignmentDAO.getAssignmentsByStudentIdAndCourseId(userId, courseId);
+//		List<StudentAssignment> studentGrades = studentAssignmentDAO
+//				.getAllStudentAssignmentsByStudentIdAndCourseId(userId, courseId);
+//		List<Assignment> assignments = assignmentDAO.getAssignmentsByStudentIdAndCourseId(userId, courseId);
+//		
 
-		User user = userDAO.getUserById(userId);
-		Course course = courseDAO.getCourseById(courseId);
+		List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
+		List<Submission> currentUserSubmissions = new ArrayList<Submission>();
+		User currentUser = userDAO.getUserById(userId);
 		
-		request.setAttribute("assignments", assignments);
-		request.setAttribute("studentGrades", studentGrades);
-		request.setAttribute("user", user);
-		request.setAttribute("course", course);
-		System.out.println(assignments.size());
-		System.out.println(studentGrades.size());
-		
+		for (Module module : courseModules) {
+			 List<Lesson> moduleLessons = lessonDAO.getLessonsByModuleId(module.getModuleId());
+			 
+			 for (Lesson lesson : moduleLessons) {
+				 List<Assignment> lessonAssignments = assignmentDAO.getAssignmentsByLessonId(lesson.getLessonId());
+				 
+				 for (Assignment assignment : lessonAssignments) {
+					 Submission nextSubmission = new Submission();
+					 nextSubmission.setLesson(lesson);
+					 nextSubmission.setAssignment(assignment);
+					 
+					 StudentAssignment studentAssignment = studentAssignmentDAO.getStudentAssignmentByStudentIdAndAssignmentId(currentUser.getUserId(), assignment.getAssignmentId());
+					 nextSubmission.setStudentAssignment(studentAssignment);
+					 
+					 currentUserSubmissions.add(nextSubmission);
+				 }
+			 }
+		 }
+//		User user = userDAO.getUserById(userId);
+//		Course course = courseDAO.getCourseById(courseId);
+//		
+//		request.setAttribute("assignments", assignments);
+//		request.setAttribute("studentGrades", studentGrades);
+//		request.setAttribute("user", user);
+//		request.setAttribute("course", course);
+//		System.out.println(assignments.size());
+//		System.out.println(studentGrades.size());
+//		
+		request.setAttribute("submissions", currentUserSubmissions);
 		return "user/studentGrades";
 	}
 	
