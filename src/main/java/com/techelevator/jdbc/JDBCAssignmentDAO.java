@@ -55,6 +55,18 @@ public class JDBCAssignmentDAO extends JDBCDAO implements AssignmentDAO{
 		}
 		return assignments;
 	}
+	
+	@Override
+	public List<Assignment> getAssignmentsByStudentIdAndCourseId(long studentId, long courseId) {
+		List<Assignment> assignments = new ArrayList<Assignment>();
+		String sqlGetAssignmentsByStudentIdAndCourseId = "SELECT * FROM assignments JOIN lessons ON assignments.lessonId = lessons.lessonId JOIN modules ON lessons.moduleId = modules.moduleId JOIN courses ON modules.courseId = courses.courseId JOIN student_course ON courses.courseId = student_course.courseId WHERE studentId = ? AND courses.courseId = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAssignmentsByStudentIdAndCourseId, studentId, courseId);
+		while (results.next()) {
+			Assignment nextAssigment = mapRowToAssignment(results);
+			assignments.add(nextAssigment);
+		}
+		return assignments;
+	}
 
 	private long getNextAssignmentId() {
 		return super.getNextId("seq_assignmentId");

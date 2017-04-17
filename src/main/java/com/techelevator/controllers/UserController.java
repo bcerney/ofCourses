@@ -425,14 +425,18 @@ public class UserController {
 			@PathVariable long userId) {
 		List<StudentAssignment> studentGrades = studentAssignmentDAO
 				.getAllStudentAssignmentsByStudentIdAndCourseId(userId, courseId);
+		List<Assignment> assignments = assignmentDAO.getAssignmentsByStudentIdAndCourseId(userId, courseId);
 
 		User user = userDAO.getUserById(userId);
 		Course course = courseDAO.getCourseById(courseId);
-
+		
+		request.setAttribute("assignments", assignments);
 		request.setAttribute("studentGrades", studentGrades);
 		request.setAttribute("user", user);
 		request.setAttribute("course", course);
-
+		System.out.println(assignments.size());
+		System.out.println(studentGrades.size());
+		
 		return "user/studentGrades";
 	}
 	
