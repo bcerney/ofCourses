@@ -343,6 +343,11 @@ public class UserController {
 
 		// TODO: proper link being created requires https:// prefix, best way to
 		// ensure that?
+		
+		if (!resourceUrl.startsWith("http://") && !resourceUrl.startsWith("https://")) {
+			resourceUrl = "http://" + resourceUrl;
+		}
+		
 		Resource resourceToAdd = new Resource(resourceUrl, resourceDescription, resourceTitle, lessonId);
 		Resource createdResource = resourceDAO.createNewResource(resourceToAdd);
 
@@ -482,7 +487,8 @@ public class UserController {
 											   ModelMap model) {
 		
 		User currentUser = (User) model.get("currentUser");
-	
+		
+		//TODO: pull this monstrosity out into it's own method
 		List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
 		List<Submission> currentUserSubmissions = new ArrayList<Submission>();
 
