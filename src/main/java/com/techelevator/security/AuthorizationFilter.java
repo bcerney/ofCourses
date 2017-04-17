@@ -85,7 +85,7 @@ public class AuthorizationFilter implements Filter {
 		String requestCourseId = null;
 		String[] path = httpRequest.getServletPath().split("/");
 		if(path.length >= 3) {
-			if(path[2] != null && !path[2].equals("createCourse")) {
+			if(path[2] != null && !path[2].equals("createCourse") && !path[2].equals("progress")) {
 				requestCourseId = path[2];
 			}
 		}

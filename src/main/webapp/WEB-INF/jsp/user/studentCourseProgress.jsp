@@ -9,7 +9,7 @@
 				<li>
 					<a href="${dashboard}">Dashboard</a>
 				</li>
-				<c:url value="/dashboard/progress" var="progress"/>
+				<c:url value="/dashboard/${currentUser.userId}/progress" var="progress"/>
 				<li>
 					<a href="${progress}">Course Progress</a>
 				</li>

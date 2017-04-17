@@ -429,4 +429,27 @@ public class UserController {
 
 		return "user/studentGrades";
 	}
+	
+	@RequestMapping(path={"/dashboard/progress"}, method=RequestMethod.GET)
+	public String displayStudentCourseProgress(HttpServletRequest request, ModelMap model) {
+		
+		User currentUser = (User) model.get("currentUser");
+		
+		
+		return "user/studentCourseProgress";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
