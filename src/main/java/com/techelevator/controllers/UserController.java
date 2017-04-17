@@ -33,6 +33,7 @@ import com.techelevator.models.Lesson;
 import com.techelevator.models.Module;
 
 import com.techelevator.models.StudentAssignment;
+import com.techelevator.models.Submission;
 import com.techelevator.models.Resource;
 import com.techelevator.models.User;
 
@@ -64,6 +65,11 @@ public class UserController {
 	@RequestMapping(path = { "/dashboard" }, method = RequestMethod.GET)
 	public String displayDashboard(HttpServletRequest request, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
+		
+		if (currentUser == null) {
+			return "redirect:/login";
+		}
+		
 		if (currentUser.getUserType().equals("teacher")) {
 			List<Course> teacherCourses = courseDAO.getCoursesByTeacherId(currentUser.getUserId());
 			request.setAttribute("teacherCourses", teacherCourses);
@@ -310,7 +316,7 @@ public class UserController {
 //			studentAssignmentDAO.addFileSubmission();
 		}
 				
-		return "user/lessonView"	;				
+		return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;			
 	}
 															   
 	
@@ -433,4 +439,65 @@ public class UserController {
 		
 		return "user/studentGrades";
 	}
+	
+	//TODO: going another route with displaying course progress, student clicks through on dashboard link
+//	@RequestMapping(path={"/dashboard/progress"}, method=RequestMethod.GET)
+//	public String displayStudentCourseProgress(HttpServletRequest request, ModelMap model) {
+//		
+//		User currentUser = (User) model.get("currentUser");
+//		List<Course> currentUserCourses = courseDAO.getCoursesByUserId(currentUser.getUserId());
+//		
+//		request.setAttribute("currentUserCourses", currentUserCourses);
+//		
+//		return "user/studentCourseProgress";
+//	}
+	
+	@RequestMapping(path={"/dashboard/{courseId}/{userId}/progress"}, method=RequestMethod.GET)
+	public String displayStudentCourseProgress(HttpServletRequest request,
+											   @PathVariable long courseId,
+											   ModelMap model) {
+		
+		User currentUser = (User) model.get("currentUser");
+	
+		List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
+		List<Submission> currentUserSubmissions = new ArrayList<Submission>();
+
+		for (Module module : courseModules) {
+			 List<Lesson> moduleLessons = lessonDAO.getLessonsByModuleId(module.getModuleId());
+			 
+			 for (Lesson lesson : moduleLessons) {
+				 List<Assignment> lessonAssignments = assignmentDAO.getAssignmentsByLessonId(lesson.getLessonId());
+				 
+				 for (Assignment assignment : lessonAssignments) {
+					 Submission nextSubmission = new Submission();
+					 nextSubmission.setLesson(lesson);
+					 nextSubmission.setAssignment(assignment);
+					 
+					 StudentAssignment studentAssignment = studentAssignmentDAO.getStudentAssignmentByStudentIdAndAssignmentId(currentUser.getUserId(), assignment.getAssignmentId());
+					 nextSubmission.setStudentAssignment(studentAssignment);
+					 
+					 currentUserSubmissions.add(nextSubmission);
+				 }
+			 }
+		 }
+		
+		
+		request.setAttribute("submissions", currentUserSubmissions);
+		
+		return "user/studentCourseProgress";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
