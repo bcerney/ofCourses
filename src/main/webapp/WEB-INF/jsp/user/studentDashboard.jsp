@@ -9,10 +9,10 @@
 				<li>
 					<a href="${dashboard}">Dashboard</a>
 				</li>
-				<c:url value="/dashboard/progress" var="progress"/>
+				<%-- <c:url value="/dashboard/progress" var="progress"/>
 				<li>
 					<a href="${progress}">Course Progress</a>
-				</li>
+				</li> --%>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
 					<a href="${catalog}">Course Catalog</a>
@@ -30,11 +30,10 @@
 			<div id= "courses">
 			<c:forEach var="course" items="${studentsCourses}">
 				<c:url var="courseDetailHref" value="/dashboard/${course.courseId}"/>
-				 
-			
 				<h3><a id="detailPageLink" href= "${courseDetailHref}">${course.name}</a></h3>
-<%--  					<p>PROGRESS (GRADE) HERE</p>
-					<p>Subject: ${course.subject}</p>
+  				<c:url value="/dashboard/${course.courseId}/${currentUser.userId}/progress" var="currentProgress"/>
+  				<p><a href="${currentProgress}">Current Progress</a></p>
+				<%--	<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
 					<p>${course.description}</p>
 					<p>Start Date: ${course.startDate}</p>
