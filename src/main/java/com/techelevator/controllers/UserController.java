@@ -316,7 +316,7 @@ public class UserController {
 //			studentAssignmentDAO.addFileSubmission();
 		}
 				
-		return "user/lessonView"	;				
+		return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;			
 	}
 															   
 	
