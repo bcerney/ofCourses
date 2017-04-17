@@ -41,6 +41,12 @@
 		<param-value>/WEB-INF/springmvc-servlet.xml</param-value>
 	</context-param>
 
+	<context-param> 
+	    <description>Location to store uploaded file</description> 
+	    <param-name>file-upload</param-name> 
+	    <param-value>/WEB-INF/submissions/</param-value> 
+	</context-param>
+
 <!--   <filter>
   	<filter-name>csrfFilter</filter-name>
   	<filter-class>com.techelevator.security.CSRFFilter</filter-class>
