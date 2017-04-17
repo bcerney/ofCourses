@@ -100,9 +100,21 @@
 										<input type="hidden" name="assignmentId" value="${assignment.assignmentId}"/>
 										<input class="form-control" type="text" name="submissionText"
 											placeholder="Write Your Response Here" 
-											maxlength="5000" style="height: 200px"/>
+											maxlength="5000" style="height: 100px"/>
 									</div>
 								</div>
+
+								<input type="file" name="file" size="50" /><br/>
+								
+<!-- 								<div>
+								<form action="UploadServlet" method="post" enctype="multipart/form-data">
+								<input type="file" name="file" size="50" /><br/>
+								<input type="submit" value="Upload File" />
+								</form>
+								</div> -->
+								
+								<input class="formSubmitButton" type="submit" value="Submit Assignment ${loop.index+1}"/><br><br>
+								
 								
 <!-- 								<div id="assignmentFeedback" class="form-group row">
 									<label for="assignmentFeedback" class="col-md-2 col-form-label">Feedback: </label>
@@ -112,7 +124,6 @@
 									</div>
 								</div> -->
 								
-								<input class="formSubmitButton" type="submit" value="Submit Assignment ${loop.index+1}" />
 							</form>
 					
 					
