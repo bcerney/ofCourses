@@ -343,6 +343,11 @@ public class UserController {
 
 		// TODO: proper link being created requires https:// prefix, best way to
 		// ensure that?
+		
+		if (!resourceUrl.startsWith("http://") && !resourceUrl.startsWith("https://")) {
+			resourceUrl = "http://" + resourceUrl;
+		}
+		
 		Resource resourceToAdd = new Resource(resourceUrl, resourceDescription, resourceTitle, lessonId);
 		Resource createdResource = resourceDAO.createNewResource(resourceToAdd);
 

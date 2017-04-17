@@ -27,7 +27,7 @@
 				<div id="gradedAssignments">
 				<h2>Graded Assignments</h2>
 				<c:forEach var="submission" items="${submissions}">
-					<c:if test="${submission.studentAssignment.isSubmitted && submission.studentAssignment.score > 0}">
+					<c:if test="${(submission.studentAssignment.isSubmitted) && (submission.studentAssignment.score > 0)}">
 					
 					<p>${submission.assignment.name}</p>
 					<p>${submission.lesson.name}</p>

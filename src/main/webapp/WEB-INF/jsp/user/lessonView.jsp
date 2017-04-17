@@ -39,7 +39,7 @@
 <!--					<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>   -->
 <!--					<h2><a href="${lessonHref}">${loop.index+1}. ${lesson.name}</a></h2>   -->
 					
-					<a href="${resource.url}"><h3>${resource.title}</h3></a>				
+					<a href="${resource.url}" target="_blank"><h3>${resource.title}</h3></a>				
 					<p>${resource.description}</p>
 					<%-- <p>${resource.url}</p> --%>
 					</div>
