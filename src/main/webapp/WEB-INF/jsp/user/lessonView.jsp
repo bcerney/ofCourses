@@ -39,9 +39,12 @@
 <!--					<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>   -->
 <!--					<h2><a href="${lessonHref}">${loop.index+1}. ${lesson.name}</a></h2>   -->
 					
-					<a href="${resource.url}" target="_blank"><h3>${resource.title}</h3></a>				
+					<h3>${resource.title}</h3>
+									
 					<p>${resource.description}</p>
-					<%-- <p>${resource.url}</p> --%>
+					
+					<iframe width="420" height="315" src="${resource.embeddedUrl}"></iframe> 
+					<a href="${resource.url}" target="_blank">Direct Link</a>
 					</div>
 				</c:forEach>
 
