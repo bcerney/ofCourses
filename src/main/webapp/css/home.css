@@ -7,26 +7,25 @@
 }
 
 
-
 #loginButton{
-	color: red;
+	color: #329d27;
 }
 
 #signUpButton{
-		color: red;
+		color: #329d27;
 } 
 
 #loginButton:hover{
-	color: blue;
+	color: #14d100;
 }
 
 #signUpButton:hover{
-		color: blue;
-} 
-
+		color: #14d100;
+}
 .footerText{
 	text-align: center;
 	margin: 40px;
+	color: #14d100;
 }
 
 .form-group{

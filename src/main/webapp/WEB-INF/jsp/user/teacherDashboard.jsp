@@ -8,13 +8,13 @@
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
 			<c:url value="/dashboard" var="dashboard"/>
-				<li><a id="dashboardLink" href="${dashboard}">Dashboard</a></li>
+				<li><a class="link" href="${dashboard}">Dashboard</a></li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
-					<a href="${catalog}">Course Catalog</a>
+					<a class="link" href="${catalog}">Course Catalog</a>
 				</li>
 				<c:url value="/dashboard/createCourse" var="createCourse" />
-				<li><a href="${createCourse}">Create Course</a></li>
+				<li><a class="link" href="${createCourse}">Create Course</a></li>
 				<li></li>
 			</ul>
 		</div>

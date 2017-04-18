@@ -59,8 +59,8 @@
 							<label for="resourceDescription" class="col-md-2 col-form-label">Description:
 							</label>
 							<div class="col-md-8">
-								<input class="form-control" type="text"
-									name="resourceDescription" placeholder="Description" />
+								<textarea cols="6" rows="5" class="form-control" 
+									name="resourceDescription" placeholder="Description" > </textarea>
 							</div>
 						</div>
 						
