@@ -14,4 +14,6 @@ public interface StudentAssignmentDAO {
 //	public ArrayList<Score> getAllScoresForStudentByCourseId(long assignmentId);
 	public List<StudentAssignment> getAllStudentAssignmentsByStudentIdAndLessonId(long studentId, long lessonId);
 	public void addTextSubmission(long studentId, long assignmentId, String submissionText);
+	public void gradeAssignment(long studentId, long assignmentId, long score);
+		
 }
