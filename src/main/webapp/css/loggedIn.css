@@ -4,35 +4,45 @@
 	
 } */
 
-.link{
-	color: blue;
+.studentRoster{
+	display: block;
+	position: relative;
+  	left: 180px;
 }
 
+.link{
+/* 	color: #14d100; */	
+	color: #329d27;
+}
+.link:hover{
+/* 	color: #0d8800; */
+	color: #14d100;
+}
 
 
 #logout:hover{
-	color: blue;
+	color: #14d100;
 	
 }
 #logout{
-	color: red;
+	color: #329d27;
 	
 }
 
 #loginButton{
-	color: red;
+	color: #329d27;
 }
 
 #signUpButton{
-		color: red;
+		color: #329d27;
 } 
 
 #loginButton:hover{
-	color: blue;
+	color: #14d100;
 }
 
 #signUpButton:hover{
-		color: blue;
+		color: #14d100;
 } 
 
 .sidebar-div{
@@ -40,6 +50,7 @@
 	border-top: 1px solid black;
 	border-right: 1px solid black;
 	border-bottom: 1px solid black;
+	max-width: 200px;
 	/* margin-left: 2px; */
 	
 }
@@ -53,6 +64,8 @@
 .footerText{
 	text-align: center;
 	margin: 40px;
+	color: #14d100;
+	
 }
 
 #courseName{
@@ -106,6 +119,7 @@
 #lessonDescription{
 	max-width: 50%;
 	min-width: 250px;
+	min-height: 500px;
 }
 
 #assignmentName{

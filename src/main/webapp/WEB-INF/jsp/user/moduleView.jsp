@@ -35,7 +35,7 @@
 					<div class="moduleLesson">
 						
 					<c:url var="lessonHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>
-					<h2><a href="${lessonHref}">${loop.index+1}. ${lesson.name}</a></h2>
+					<h2>${loop.index+1}.<a class="link" href="${lessonHref}"> ${lesson.name}</a></h2>
 					<p>${lesson.description}</p>
 					
 					</div>

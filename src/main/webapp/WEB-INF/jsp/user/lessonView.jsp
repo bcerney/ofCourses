@@ -6,19 +6,19 @@
 			<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard" var="dashboard"/>
-					<li><a id="dashboardLink" href="${dashboard}">Dashboard</a></li>
+					<li><a class="link" href="${dashboard}">Dashboard</a></li>
 					<c:url value="/dashboard/${course.courseId}/${module.moduleId}"
 					var="addModule" />
-					<li><a href="${addModule}">Back to Module</a></li>
+					<li><a class="link" href="${addModule}">Back to Module</a></li>
 					
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<li>
 					<c:url var="addResourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource"/>
-					<a id="addResourceLink" href= "${addResourceHref}">Add Resource</a>							
+					<a class="link" href= "${addResourceHref}">Add Resource</a>							
 					</li>
 					<li>
 					<c:url var="addAssignmentHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment"/>
-					<a id="addAssignmentLink" href= "${addAssignmentHref}">Add Assignment</a>							
+					<a class="link" href= "${addAssignmentHref}">Add Assignment</a>							
 					</li>
 					</c:if>	
 				</ul>
@@ -44,7 +44,7 @@
 					<p>${resource.description}</p>
 					
 					<iframe width="420" height="315" src="${resource.embeddedUrl}"></iframe> 
-					<a href="${resource.url}" target="_blank">Direct Link</a>
+					<a class="link" href="${resource.url}" target="_blank">Direct Link</a>
 					</div>
 				</c:forEach>
 
@@ -101,9 +101,9 @@
 <!--  								<label for="assignmentSubmission" class="col-md-2 col-form-label">Your Response: </label>   -->
 									<div class="col-md-8">
 										<input type="hidden" name="assignmentId" value="${assignment.assignmentId}"/>
-										<input class="form-control" type="text" name="submissionText"
+										<textarea cols="6" rows="5" class="form-control" name="submissionText"
 											placeholder="Write Your Response Here" 
-											maxlength="5000" style="height: 100px"/>
+											maxlength="5000" > </textarea>
 									</div>
 								</div>
 

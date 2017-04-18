@@ -58,8 +58,8 @@
 							<label for="lessonDescription" class="col-md-2 col-form-label">Lesson
 								Description: </label>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="lessonDescription"
-									placeholder="Lesson Description" />
+								<textarea cols="6" rows="5" class="form-control" name="lessonDescription"
+									placeholder="Lesson Description"> </textarea> 
 							</div>
 						</div>
 						

@@ -6,23 +6,25 @@
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
 			<c:url value="/dashboard" var="dashboard"/>
-					<li><a id="dashboardLink" href="${dashboard}">Dashboard</a></li>
+					<li><a class="link" href="${dashboard}">Dashboard</a></li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
-					<a href="${catalog}">Course Catalog</a>
+					<a class="link" href="${catalog}">Course Catalog</a>
 				</li>
 				<c:url value="/dashboard/createCourse" var="createCourse" />
-				<li><a href="${createCourse}">Create Course</a></li>
-				<li></li>
+				<li><a class="link" href="${createCourse}">Create Course</a></li>
+				
 			</ul>
 		</div>
-		
+</div>
+</div>		
 		<c:forEach var="student" items="${roster}">
 
-		<div class = "studentRoster"> 
+		<div class = "studentRoster"> <ul>
 			<c:url var="studentHref" value="/dashboard/${course.courseId}/roster/${student.userId}"/>
-		<a id="studentPageLink" href= "${studentHref}">${student.firstName} ${student.lastName}</a></div>
-		
+		<li><a class="link" href= "${studentHref}">${student.firstName} ${student.lastName}</a></li>
+		</ul>
+		</div>
 		</c:forEach>
 
 
