@@ -93,6 +93,12 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		jdbcTemplate.update(sqlAddTextSubmission, submissionText, studentId, assignmentId);
 		
 	}
+	
+	@Override
+	public void gradeAssignment(long studentId, long assignmentId, long score){
+		String sqlGradeAssignment = "UPDATE student_assignment SET score = ? WHERE studentId = ? AND assignmentId = ?";
+		jdbcTemplate.update(sqlGradeAssignment, score, studentId, assignmentId);
+	}
 
 	private StudentAssignment mapRowToStudentAssignment(SqlRowSet results) {
 		StudentAssignment studentAssignment = new StudentAssignment();

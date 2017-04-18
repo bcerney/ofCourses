@@ -4,6 +4,37 @@
 	
 } */
 
+.link{
+	color: blue;
+}
+
+
+
+#logout:hover{
+	color: blue;
+	
+}
+#logout{
+	color: red;
+	
+}
+
+#loginButton{
+	color: red;
+}
+
+#signUpButton{
+		color: red;
+} 
+
+#loginButton:hover{
+	color: blue;
+}
+
+#signUpButton:hover{
+		color: blue;
+} 
+
 .sidebar-div{
 	/* position: fixed; */
 	border-top: 1px solid black;
@@ -67,6 +98,110 @@
 	min-width: 250px;
 }
 
+#lessonName{
+	max-width: 50%;
+	min-width: 250px;
+}
 
+#lessonDescription{
+	max-width: 50%;
+	min-width: 250px;
+}
 
+#assignmentName{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#assignmentDescription{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#assignmentMaxScore{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#assignDate{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#dueDate{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#moduleName{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#moduleDescription{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#resourceTitle{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#resourceDescription{
+	max-width: 50%;
+	min-width: 250px;
+}
+
+#resourceUrl{
+	max-width: 50%;
+	min-width: 250px;
+}
+/* 
+#addLessonLink{
+	color: red;
+}
+#backToCourseLink{
+	color: red;
+}
+
+#addAssignmentLink{
+	color: red;
+	
+}
+#addResourceLink{
+	color: red;
+}
+
+#viewStudentRosterLink{
+	color: red;
+}
+#addModuleLink{
+	color: red;
+}
+
+#backToCourseLink{
+	color: red;
+}
+
+#backToModuleLink{
+	color: red;
+	
+}
+#detailPageLink{
+	color: red;
+}
+
+#currentProgressLink{
+	color: red;
+}
+
+#dashboardLink{
+	color: red;
+	
+}
+
+#courseCatalogLink{
+	color: red;
+} */
 

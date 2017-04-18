@@ -6,7 +6,7 @@
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
 			<c:url value="/dashboard" var="dashboard"/>
-					<li><a href="${dashboard}">Dashboard</a></li>
+					<li><a id="dashboardLink" href="${dashboard}">Dashboard</a></li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
 					<a href="${catalog}">Course Catalog</a>

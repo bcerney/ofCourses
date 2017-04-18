@@ -8,13 +8,13 @@
 			<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard" var="dashboard"/>
-					<li><a href="${dashboard}">Dashboard</a></li>
+					<li><a class="link" href="${dashboard}">Dashboard</a></li>
 
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<c:url value="/dashboard/${course.courseId}/addModule" var="addModule"/>
-					<li><a href="${addModule}">Add Module</a></li>
+					<li><a class="link" href="${addModule}">Add Module</a></li>
 					<c:url value="/dashboard/${course.courseId}/roster" var="roster"/>
-					<li><a href="${roster}">View Student Roster</a></li>
+					<li><a class="link" href="${roster}">View Student Roster</a></li>
 					</c:if>
 
 				</ul>

@@ -519,14 +519,14 @@ public class UserController {
 	}
 	
 	
+	@RequestMapping(path = {"/dashboard/{courseId}/roster/{userId}"}, method = RequestMethod.POST)
+	public String gradeAssignment(HttpServletRequest request, @RequestParam long assignmentId, @RequestParam long assignmentGrade, @PathVariable long userId, @PathVariable long courseId){
+
+	studentAssignmentDAO.gradeAssignment(userId, assignmentId, assignmentGrade);
 	
+	return "redirect:/dashboard/" + courseId + "/roster/" + userId;
 	
-	
-	
-	
-	
-	
-	
+	} 
 	
 	
 	
