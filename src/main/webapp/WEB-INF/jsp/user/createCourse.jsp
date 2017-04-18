@@ -50,10 +50,10 @@
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard"/>
-					<li><a id="dashboardLink" href="${dashboard}">Dashboard</a></li>
+					<li><a class="link" href="${dashboard}">Dashboard</a></li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
-					<a id="courseCatalogLink" href="${catalog}">Course Catalog</a>
+					<a class="link" href="${catalog}">Course Catalog</a>
 				</li>
 				<li></li>
 			</ul>
@@ -96,8 +96,8 @@
 
 						<div id="courseDescription" class="form-group row">
 							<label for="courseDescription" class="col-md-2 col-form-label">Description</label> 
-							<div class="col-md-8"><input
-								class="form-control" type="text" name="courseDescription" placeholder="Description" />
+							<div class="col-md-8"><textarea cols="6" rows="5"
+								class="form-control"  name="courseDescription" placeholder="Description" > </textarea>
 						</div>
 						</div>
 						<div id="courseDifficulty" class="form-group">

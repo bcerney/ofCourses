@@ -53,8 +53,8 @@
 							<label for="moduleDescription" class="col-md-2 col-form-label">Module
 								Description: </label>
 							<div class="col-md-8">
-								<input class="form-control" type="text" name="moduleDescription"
-									placeholder="Module Description" />
+								<textarea cols="6" rows="5" class="form-control" name="moduleDescription"
+									placeholder="Module Description" > </textarea>
 							</div>
 						</div>
 						<input class="formSubmitButton" type="submit" value="Add Module" />
