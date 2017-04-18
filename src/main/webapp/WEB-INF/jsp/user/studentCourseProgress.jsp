@@ -24,9 +24,10 @@
 
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
-			<h1 class="page-header">
-				<c:out value="${currentUser.firstName}" />
-				's Assignments
+			<h1 class="">
+				<c:out value="${currentUser.firstName}" />'s Assignments for 
+				<br>
+				<c:out value="${course.name}"/>
 			</h1>
 
 			<div id="assignments">
@@ -34,18 +35,18 @@
 					<h2 class="page-header">Incomplete Assignments</h2>
 					<c:forEach var="submission" items="${submissions}">
 						<c:if
-							test="${!submission.studentAssignment.isSubmitted}">
+							test="${!submission.studentAssignment.submitted}">
 						<div class="incomplete-assignment-div">
-							<h4>${submission.assignment.name}</h4>
+							<h3>${submission.assignment.name}</h3>
 							
 							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}" var="lessonHref"/>
-							<h5><a href="${lessonHref}">Lesson: ${submission.lesson.name}</a></h5>
+							<p><strong>Lesson: </strong><a href="${lessonHref}">${submission.lesson.name}</a></p>
 							<p>${submission.assignment.description}</p>
 							<p><strong>Max Score: </strong>${submission.assignment.maxScore}</p>
-							<p><strong>Due: </strong>${submission.assignment.dueDate}</p>
+							<p><strong>Due Date: </strong>${submission.assignment.dueDate}</p>
 							
 							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}#${submission.assignment.assignmentId}" var="assignmentsHref"/>
-							<a href="${assignmentsHref}" class="btn btn-primary">Go To Assignment</a>
+							<a href="${assignmentsHref}" class="btn btn-success">Go To Assignment</a>
 							
 
 						</div>
@@ -53,19 +54,21 @@
 						<!-- TODO: have this navigate to student view of course -->
 					</c:forEach>
 				</div>
-				<!-- #submittedAssignments -->
+				<!-- #incompleteAssignments -->
 
 
 				<div id="submittedAssignments">
 					<h2 class="page-header">Submitted Assignments</h2>
 					<c:forEach var="submission" items="${submissions}">
 						<c:if
-							test="${(submission.studentAssignment.isSubmitted) && (submission.studentAssignment.score == -1)}">
+							test="${(submission.studentAssignment.submitted) && (submission.studentAssignment.score == -1)}">
 
-							<p>${submission.assignment.name}</p>
-							<p>${submission.lesson.name}</p>
-							<p>${submission.studentAssignment.submissionDate}</p>
-							<p>${submission.studentAssignment.submissionText}</p>
+							<h4>${submission.assignment.name}</h4>
+							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}" var="lessonHref"/>
+							<p><strong>Lesson: </strong><a href="${lessonHref}">${submission.lesson.name}</a></p>
+							<p><strong>Submission: </strong>${submission.studentAssignment.submissionText}</p>
+							<p><strong>Submitted on: </strong>${submission.studentAssignment.submissionDate}</p>
+							
 
 							<%--  					<p>PROGRESS (GRADE) HERE</p>
 					<p>Subject: ${course.subject}</p>
@@ -84,18 +87,15 @@
 					<h2 class="page-header">Graded Assignments</h2>
 					<c:forEach var="submission" items="${submissions}">
 						<c:if
-							test="${(submission.studentAssignment.isSubmitted) && (submission.studentAssignment.score > -1)}">
+							test="${(submission.studentAssignment.submitted) && (submission.studentAssignment.score > -1)}">
 
-							<p>${submission.assignment.name}</p>
-							<p>${submission.lesson.name}</p>
-							<p>${submission.studentAssignment.score}</p>
-
-							<%--  					<p>PROGRESS (GRADE) HERE</p>
-					<p>Subject: ${course.subject}</p>
-					<p>Level: ${course.difficulty}</p>
-					<p>${course.description}</p>
-					<p>Start Date: ${course.startDate}</p>
-					<p>End Date: ${course.endDate}</p> --%>
+							<h4>${submission.assignment.name}</h4>
+							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}" var="lessonHref"/>
+							<h5>Lesson: <a href="${lessonHref}">${submission.lesson.name}</a></h5>
+							<p><strong>Submission: </strong>${submission.studentAssignment.submissionText}</p>
+							<p><strong>Submitted on: </strong>${submission.studentAssignment.submissionDate}</p>
+							<p><strong>Score: </strong>${submission.studentAssignment.score}/${submission.assignment.maxScore}</p>
+							
 
 						</c:if>
 						<!-- TODO: have this navigate to student view of course -->
