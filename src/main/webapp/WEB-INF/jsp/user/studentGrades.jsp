@@ -26,24 +26,30 @@
 		<div id = "gradeColumn"><c:forEach var="grade" items="${studentGrades}">
 		</c:forEach></div>
 		 --%>
-		 
-		 
+
+
 		<h2>Graded Assignments</h2>
 		<c:forEach var="hw" items="${submissions}">
-		<c:choose>
-		<c:when test= "${hw.studentAssignment.score != -1}">Assignment: ${hw.assignment.name} Grade: ${hw.studentAssignment.score}<br></c:when>
-		</c:choose></c:forEach>
-		
-		<h2>Submitted Assignments</h3>
+			<%-- <p>${hw.studentAssignment.score}</p>
+			<p>${hw.assignment.name}</p> --%>
+			<c:choose>
+				<c:when test="${hw.studentAssignment.score != -1}">
+				Assignment: ${hw.assignment.name} Grade: ${hw.studentAssignment.score}<br>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+
+		<h2>Submitted Assignments</h2>
 		<c:forEach var="hw" items="${submissions}">
 		<c:choose> 
-		<c:when test="${hw.studentAssignment.isSubmitted == true && hw.studentAssignment.score == -1}">
+		<c:when test="${hw.studentAssignment.submitted == true && hw.studentAssignment.score == -1}">
 
 	 	Assignment: ${hw.assignment.name}<br>
 		Submission Text: ${hw.studentAssignment.submissionText}<br>
-		<form method= "POST" action=studentGrades>
+		<form method= "POST" action="">
 		<label for= "assignmentGrade">Grade:</label>
 		<input class = "form-control" type="text" name="assignmentGrade"/>
+		<input type= "hidden" name= "assignmentId" value = "${hw.assignment.assignmentId}"/>
 		<input class="formSubmitButton" type="submit" value="Submit Grade"/>
 		</form>
 		
