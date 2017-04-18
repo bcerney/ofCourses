@@ -6,6 +6,24 @@
 	box-shadow: 5px 5px 15px black;
 }
 
+
+
+#loginButton{
+	color: red;
+}
+
+#signUpButton{
+		color: red;
+} 
+
+#loginButton:hover{
+	color: blue;
+}
+
+#signUpButton:hover{
+		color: blue;
+} 
+
 .footerText{
 	text-align: center;
 	margin: 40px;

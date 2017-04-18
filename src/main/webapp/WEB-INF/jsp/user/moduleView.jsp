@@ -7,15 +7,15 @@
 			<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard" var="dashboard"/>
-					<li><a href="${dashboard}">Dashboard</a></li>
+					<li><a class="link" href="${dashboard}">Dashboard</a></li>
 					<c:url value="/dashboard/${course.courseId}"
 					var="addModule" />
-					<li><a href="${addModule}">Back to Course</a></li>
+					<li><a class="link" href="${addModule}">Back to Course</a></li>
 					
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<li>
 					<c:url var="addLessonHref" value="/dashboard/${course.courseId}/${module.moduleId}/addLesson"/>
-					<a id="detailPageLink" href= "${addLessonHref}">Add Lesson</a>							
+					<a class="link" href= "${addLessonHref}">Add Lesson</a>							
 					</li>
 					</c:if>
 					

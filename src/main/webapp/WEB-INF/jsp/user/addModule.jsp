@@ -1,6 +1,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/WEB-INF/jsp/common/loggedInHeader.jsp" />
+<script type="text/javascript">
+	$(document).ready(function () {
+		
+		$("form").validate({
+			
+			rules : {
+				moduleName : {
+					required : true
+				},
+				moduleDescription : {
+					required : true
+				}
+			},
+			errorClass: "error"
+		});
+	});
 
+</script>
 
 
 <div id="dashboardDiv" class="container-fluid">
@@ -8,10 +25,10 @@
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard" />
-				<li><a href="${dashboard}">Dashboard</a></li>
+				<li><a class="link" href="${dashboard}">Dashboard</a></li>
 				<c:url value="/dashboard/${course.courseId}"
 				var="addModule" />
-				<li><a href="${addModule}">Back to Course</a></li>
+				<li><a class="link" href="${addModule}">Back to Course</a></li>
 			</ul>
 		</div>
 		<!-- dashSidebar -->
@@ -32,7 +49,7 @@
 									placeholder="Module Name" />
 							</div>
 						</div>
-						<div id="moduleName" class="form-group row">
+						<div id="moduleDescription" class="form-group row">
 							<label for="moduleDescription" class="col-md-2 col-form-label">Module
 								Description: </label>
 							<div class="col-md-8">

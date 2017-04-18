@@ -6,7 +6,7 @@
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard" />
-				<li><a href="${dashboard}">Dashboard</a></li>
+				<li><a class="link" href="${dashboard}">Dashboard</a></li>
 				<%-- <c:url value="/dashboard/progress" var="progress"/>
 				<li>
 					<a href="${progress}">Course Progress</a>
@@ -15,9 +15,9 @@
 				<li><a href="${catalog}">Course Catalog</a></li>
 			</ul>
 			<ul class="nav sidebar-nav">
-				<li><a href="#incompleteAssignments">Incomplete Assignments</a></li>
-				<li><a href="#submittedAssignments">Submitted Assignments</a></li>
-				<li><a href="#gradedAssignments">Graded Assignments</a></li>
+				<li><a class="link" href="#incompleteAssignments">Incomplete Assignments</a></li>
+				<li><a class="link" href="#submittedAssignments">Submitted Assignments</a></li>
+				<li><a class="link" href="#gradedAssignments">Graded Assignments</a></li>
 			</ul>
 		</div>
 		<!-- dashSidebar -->
