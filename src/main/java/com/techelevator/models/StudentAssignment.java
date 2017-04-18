@@ -38,7 +38,7 @@ public class StudentAssignment {
 	public boolean isSubmitted() {
 		return isSubmitted;
 	}
-	public void setIsSubmitted(boolean isSubmitted) {
+	public void setSubmitted(boolean isSubmitted) {
 		this.isSubmitted = isSubmitted;
 	}
 	

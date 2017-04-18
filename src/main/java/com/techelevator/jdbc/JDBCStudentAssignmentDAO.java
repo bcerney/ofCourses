@@ -106,7 +106,7 @@ public class JDBCStudentAssignmentDAO extends JDBCDAO implements StudentAssignme
 		studentAssignment.setAssignmentId(results.getLong("assignmentId"));
 		studentAssignment.setScore(results.getLong("score"));
 		studentAssignment.setSubmissionText(results.getString("submissionText"));
-		studentAssignment.setIsSubmitted(results.getBoolean("isSubmitted"));
+		studentAssignment.setSubmitted(results.getBoolean("isSubmitted"));
 		if (results.getDate("submissionDate") != null) {
 			studentAssignment.setSubmissionDate(results.getDate("submissionDate").toLocalDate());
 		}
