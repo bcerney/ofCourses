@@ -490,29 +490,8 @@ public class UserController {
 		
 		User currentUser = (User) model.get("currentUser");
 		List<Submission> currentUserSubmissions = getSubmissionsByStudentIdAndCourseId(currentUser.getUserId(), courseId);
-		
-		//TODO: pull this monstrosity out into it's own method
-//		List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
-//		List<Submission> currentUserSubmissions = new ArrayList<Submission>();
-//
-//		for (Module module : courseModules) {
-//			 List<Lesson> moduleLessons = lessonDAO.getLessonsByModuleId(module.getModuleId());
-//			 
-//			 for (Lesson lesson : moduleLessons) {
-//				 List<Assignment> lessonAssignments = assignmentDAO.getAssignmentsByLessonId(lesson.getLessonId());
-//				 
-//				 for (Assignment assignment : lessonAssignments) {
-//					 Submission nextSubmission = new Submission();
-//					 nextSubmission.setLesson(lesson);
-//					 nextSubmission.setAssignment(assignment);
-//					 
-//					 StudentAssignment studentAssignment = studentAssignmentDAO.getStudentAssignmentByStudentIdAndAssignmentId(currentUser.getUserId(), assignment.getAssignmentId());
-//					 nextSubmission.setStudentAssignment(studentAssignment);
-//					 
-//					 currentUserSubmissions.add(nextSubmission);
-//				 }
-//			 }
-//		 }
+		//TODO: finish and implement method
+		//int currentCoursePercentage = calculateGradedAssignmentPercentage(currentUserSubmissions);
 		
 		request.setAttribute("course", courseDAO.getCourseById(courseId));
 		request.setAttribute("submissions", currentUserSubmissions);
@@ -545,6 +524,15 @@ public class UserController {
 		
 		return currentUserSubmissions;
 	}
+	
+//	private int calculateGradedAssignmentPercentage(List<Submission> submissionList) {
+//		int combinedScores = 0;
+//		int combinedMaxScores = 0;
+//		
+//		for (Submission submission : submissionList) {
+//			if (submission.getStudentAssignment().getScore())
+//		}
+//	}
 	
 	
 	@RequestMapping(path = {"/dashboard/{courseId}/roster/{userId}"}, method = RequestMethod.POST)

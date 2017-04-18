@@ -91,7 +91,7 @@
 
 							<h4>${submission.assignment.name}</h4>
 							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}" var="lessonHref"/>
-							<h5>Lesson: <a href="${lessonHref}">${submission.lesson.name}</a></h5>
+							<p><strong>Lesson: </strong><a href="${lessonHref}">${submission.lesson.name}</a></p>
 							<p><strong>Submission: </strong>${submission.studentAssignment.submissionText}</p>
 							<p><strong>Submitted on: </strong>${submission.studentAssignment.submissionDate}</p>
 							<p><strong>Score: </strong>${submission.studentAssignment.score}/${submission.assignment.maxScore}</p>
