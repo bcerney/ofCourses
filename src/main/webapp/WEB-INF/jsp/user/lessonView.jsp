@@ -6,7 +6,7 @@
 			<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 				<ul class="nav sidebar-nav">
 					<c:url value="/dashboard" var="dashboard"/>
-					<li><a href="${dashboard}">Dashboard</a></li>
+					<li><a id="dashboardLink" href="${dashboard}">Dashboard</a></li>
 					<c:url value="/dashboard/${course.courseId}/${module.moduleId}"
 					var="addModule" />
 					<li><a href="${addModule}">Back to Module</a></li>
@@ -14,11 +14,11 @@
 					<c:if test="${currentUser.userType == 'teacher'}">
 					<li>
 					<c:url var="addResourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource"/>
-					<a id="detailPageLink" href= "${addResourceHref}">Add Resource</a>							
+					<a id="addResourceLink" href= "${addResourceHref}">Add Resource</a>							
 					</li>
 					<li>
 					<c:url var="addAssignmentHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment"/>
-					<a id="detailPageLink" href= "${addAssignmentHref}">Add Assignment</a>							
+					<a id="addAssignmentLink" href= "${addAssignmentHref}">Add Assignment</a>							
 					</li>
 					</c:if>	
 				</ul>

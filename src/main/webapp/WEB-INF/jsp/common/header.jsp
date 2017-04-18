@@ -37,9 +37,9 @@
 				<div class="collapse navbar-collapse" id="te-navbar-collapse">	
 					<ul class="nav navbar-nav">
 						<c:url value="/login" var="login"/>
-						<li><a href="${login}">Log In</a></li>
+						<li><a id="loginButton" href="${login}">Log In</a></li>
 						<c:url value="/register" var="register"/>
-						<li><a href="${register}">Sign Up</a></li>
+						<li><a id="signUpButton" href="${register}">Sign Up</a></li>
 					</ul>
 				</div> <!-- .navbar-collpase -->
 			

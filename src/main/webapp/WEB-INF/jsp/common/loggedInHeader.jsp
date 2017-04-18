@@ -37,7 +37,7 @@
 					<ul class="nav navbar-nav">
 						
 						<c:url value="/" var="logout"/>
-						<li><a href="${logout}">Log Out</a></li>
+						<li><a id="logout" href="${logout}">Log Out</a></li>
 						
 					</ul>
 				</div> <!-- .navbar-collpase -->

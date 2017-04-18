@@ -7,7 +7,7 @@
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard"/>
 				<li>
-					<a href="${dashboard}">Dashboard</a>
+					<a class="link" href="${dashboard}">Dashboard</a>
 				</li>
 				<%-- <c:url value="/dashboard/progress" var="progress"/>
 				<li>
@@ -15,7 +15,7 @@
 				</li> --%>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
-					<a href="${catalog}">Course Catalog</a>
+					<a class="link" href="${catalog}">Course Catalog</a>
 				</li>
 			</ul>
 		</div>
@@ -30,9 +30,9 @@
 			<div id= "courses">
 			<c:forEach var="course" items="${studentsCourses}">
 				<c:url var="courseDetailHref" value="/dashboard/${course.courseId}"/>
-				<h3><a id="detailPageLink" href= "${courseDetailHref}">${course.name}</a></h3>
+				<h3><a class="link" href= "${courseDetailHref}">${course.name}</a></h3>
   				<c:url value="/dashboard/${course.courseId}/${currentUser.userId}/progress" var="currentProgress"/>
-  				<p><a href="${currentProgress}">Current Progress</a></p>
+  				<p><a class="link" href="${currentProgress}">Current Progress</a></p>
 				<%--	<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
 					<p>${course.description}</p>
