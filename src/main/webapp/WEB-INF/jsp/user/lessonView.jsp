@@ -107,7 +107,7 @@
 									</div>
 								</div>
 
-								<input type="file" name="file" size="50" /><br/>
+								<input type="file" name="file-upload" size="10000000" /><br/>
 								
 <!-- 								<div>
 								<form action="UploadServlet" method="post" enctype="multipart/form-data">
