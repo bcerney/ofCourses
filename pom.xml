@@ -100,7 +100,6 @@
 		    <artifactId>cucumber-junit</artifactId>
 		    <version>1.2.4</version>
 		    <scope>test</scope>
-<<<<<<< HEAD
 		</dependency>
 		
 		<dependency>
@@ -115,8 +114,6 @@
 		    <version>2.5</version>
 		</dependency>
 		
-=======
-		 </dependency>
 		 <dependency>
 		    <groupId>javax.mail</groupId>
 		    <artifactId>mail</artifactId>
@@ -128,7 +125,6 @@
 <version>2.3.1</version>
 <scope>provided</scope>
 </dependency> -->
->>>>>>> bbb015e404fe96854e8f83c410aa49b0055d6005
 	</dependencies>
 	<build>
 		<plugins>
