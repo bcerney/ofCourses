@@ -34,6 +34,7 @@ endDate date NOT NULL,
 teacherId integer NOT NULL,	
 subject varchar (64) NOT NULL,
 difficulty varchar(16) NOT NULL,
+isActive boolean DEFAULT false,
 CONSTRAINT pk_courses_courseId PRIMARY KEY (courseId),
 CONSTRAINT fk_courses_teacherId FOREIGN KEY (teacherId) REFERENCES users(userId)
 );

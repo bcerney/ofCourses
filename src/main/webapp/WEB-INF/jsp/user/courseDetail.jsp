@@ -34,6 +34,7 @@
 
 				<c:if test="${currentUser.userType == 'student'}">
 					<p>PROGRESS (GRADE) HERE</p>
+					<p>Instructor: ${teacher.firstName} ${teacher.lastName}</p>
 				</c:if>
 
 				<p>Subject: ${course.subject}</p>
