@@ -4,12 +4,19 @@
 	
 } */
 
+.sidebar-nav{
+	background-color: blue;
+	height: 200px;
+		
+}
+
 .navbar{
 		margin: 10px;
 background-color: white;
 	
 border-bottom: solid;
 border-color: black; 
+
 }
 
 .studentRoster{
@@ -183,6 +190,7 @@ border-color: black;
 	max-width: 50%;
 	min-width: 250px;
 }
+
 /* 
 #addLessonLink{
 	color: red;
@@ -230,4 +238,3 @@ border-color: black;
 #courseCatalogLink{
 	color: red;
 } */
-

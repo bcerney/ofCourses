@@ -31,8 +31,6 @@ public class Resource {
 		String embeddedUrl = "#";
 		if(url.contains("youtube") && !url.contains("embed")) {
 			embeddedUrl = url.replace("watch?v=", "embed/");
-		} else if(url.contains("vimeo") && !url.contains("player.vimeo.com")) {
-			embeddedUrl = url.replace("vimeo.com", "player.vimeo.com/video");
 		}
 		return embeddedUrl;
 	}

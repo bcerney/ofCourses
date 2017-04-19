@@ -14,6 +14,7 @@ public class Course {
 	private long teacherId;
 	private String subject;
 	private String difficulty;
+	private String teacherFullName;
 	
 	public Course() {
 		
@@ -91,5 +92,11 @@ public class Course {
 	}
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
+	}
+	public String getTeacherFullName() {
+		return teacherFullName;
+	}
+	public void setTeacherFullName(String teacherFullName) {
+		this.teacherFullName = teacherFullName;
 	}
 }

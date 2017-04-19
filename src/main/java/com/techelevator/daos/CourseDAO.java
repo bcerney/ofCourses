@@ -7,7 +7,7 @@ import com.techelevator.models.Course;
 public interface CourseDAO {
 
 	public Course createNewCourse(Course course);
-	public Course getCourseById(long id);
+	public Course getCourseByCourseId(long id);
 	public List<Course> getCoursesByTeacherId(long teacherId);
 	public List<Course> getAllCourses();
 	public List<Course> getCoursesByUserId(long userId);

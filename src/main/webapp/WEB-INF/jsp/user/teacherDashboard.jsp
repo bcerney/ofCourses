@@ -23,8 +23,9 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 
+			<p>Welcome, <c:out value="${currentUser.firstName}"/></p>
 			<h1 class="page-header">
-				Courses Taught By <c:out value="${currentUser.firstName}"/>
+				Your Courses
 			</h1>
 
 			<div id="courses">
