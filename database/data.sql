@@ -31,10 +31,10 @@ INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES 
 
 
 -- Courses 1 thru 4, Team Bravo Courses --
+INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Quantum Bananas', 30, 99.99, '2017-05-04', '2017-07-10', 4, 'Physics', 'advanced', 'Quantum Bananas integrages the complex nature of quantum theory with typical day-to-day occurances.  The course covers topics ranging from quantum theory and how it relates to grocery shopping, to being able to predict the optimal type of cat litter to use so that even if you were to put your cat in a box, it would survive.  Just like the boson particle, this class will only exist for a short time.  If it were to exist for longer, you wouldn''t know where to find it.');
+INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Wine on Beer', 15, 40.00, '2017-06-01', '2017-06-30', 3, 'Wine Arts', 'beginner', 'KYLE TEXT HERE');
 INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Guitar Acchordingly', 20, 149.95, '2017-04-26', '2017-07-20', 1, 'Music', 'beginner', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec quam aliquet, imperdiet nisi in, porttitor felis. Morbi finibus velit sed lorem rhoncus porta vel eu turpis. Nunc malesuada erat ut luctus congue. In eu tortor et odio vulputate auctor. Sed in justo porttitor leo imperdiet mollis. Aliquam accumsan, lectus vel imperdiet lobortis, sem nisl sodales ligula, ac varius erat neque vulputate massa. Duis sit amet magna sed felis imperdiet convallis.');
 INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Photography for Mummies', 15, 25.00, '2017-06-01', '2017-06-30', 2, 'Time Wasting', 'intermediate', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mi elit, consequat non pulvinar a, porttitor et ipsum. Proin ultricies non tortor non condimentum. Donec porta felis eget tellus consectetur pellentesque. Nulla ullamcorper, justo eget congue facilisis, purus quam elementum elit, eget luctus sapien mauris quis tellus. Aliquam vel eros sed enim commodo congue et et diam. Aliquam mattis, massa eu interdum faucibus, nibh felis pulvinar risus, id iaculis urna orci sit amet sem. Vestibulum pellentesque felis tellus, ac tempor lorem lacinia vel. Vestibulum eget orci nunc. Sed eget dolor ac eros sagittis condimentum nec non orci. Duis ultricies lectus vel neque tincidunt ornare. Integer venenatis viverra justo, ut hendrerit mauris tincidunt sit amet. Nunc hendrerit lectus eget est tempor finibus. Donec convallis, eros congue convallis congue, lorem tortor tristique dui, et semper nisi velit ut ipsum. Suspendisse aliquam magna nec faucibus sollicitudin. Cras metus lacus, bibendum at dui eu, mattis blandit diam.');
-INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Wine on Beer', 15, 40.00, '2017-06-01', '2017-06-30', 3, 'Wine Arts', 'beginner', 'KYLE TEXT HERE');
-INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Quantum Bananas', 30, 99.99, '2017-05-04', '2017-07-10', 4, 'Physics', 'advanced', 'Quantum Bananas integrages the complex nature of quantum theory with typical day-to-day occurances.  The course covers topics ranging from quantum theory and how it relates to grocery shopping, to being able to predict the optimal type of cat litter to use so that even if you were to put your cat in a box, it would survive.  Just like the boson particle, this class will only exist for a short time.  If it were to exist for longer, you wouldn''t know where to find it.');
 
 -- Courses 5 thru 7 fake courses--
 INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Why Black Holes Suck', 50, 0, '2017-08-14', '2018-08-15', 5, 'Science', 'advanced', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend sodales ullamcorper. Phasellus blandit elit eget congue tincidunt. Donec vitae nisi imperdiet, dictum risus interdum, convallis lorem. Phasellus efficitur sit amet tellus vitae aliquam. Duis malesuada leo ac massa suscipit sodales. Nulla ut rutrum tortor. Nulla ligula ipsum, porta quis tempus ut, laoreet et tortor. Maecenas a erat nulla. Morbi porttitor, justo porta sodales accumsan, urna risus vulputate elit, nec blandit tellus felis eget dui. Donec iaculis diam a nulla convallis, a bibendum felis finibus. Nunc finibus suscipit tortor sit amet vestibulum. Quisque fringilla in enim sit amet interdum. Nullam viverra tincidunt augue, eget sollicitudin ipsum gravida eu. Quisque ac massa arcu.');
@@ -85,54 +85,63 @@ INSERT INTO modules (name, courseId, description) VALUES ('KYLE TEXT HERE', 2, '
 
 
 -- Course 3, modules 7 thru 13 --
-INSERT INTO modules (name, courseId, description) VALUES ('Introduction', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Getting Started', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Checking Yourself', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Wrecking Yourself', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Self Assessment', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Integration', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Final Project', 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO modules (name, courseId, description) VALUES ('Why Play Guitar', 3, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Selecting a Guitar', 3, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Basic Chords', 3, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Basic Finger Picking', 3, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Reading Tabliture', 3, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Writing Tabliture', 3, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Your First Song', 3, 'Coming Soon!!!');
 
 -- Course 4, modules 14 thru 20 --
-INSERT INTO modules (name, courseId, description) VALUES ('Introduction', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Getting Started', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Checking Yourself', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Wrecking Yourself', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Self Assessment', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Integration', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Final Project', 4, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO modules (name, courseId, description) VALUES ('It IS art!!!', 4, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Even Mummies Can Shoot', 4, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Choosing the Rich Camera', 4, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Moving Away from Auto', 4, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Getting the Shot', 4, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Building your Portfolio', 4, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Do''s and Dont''s', 4, 'Coming Soon!!!');
 
 -- Course 5, modules 21 thru 27 --
-INSERT INTO modules (name, courseId, description) VALUES ('Introduction', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Getting Started', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Checking Yourself', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Wrecking Yourself', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Self Assessment', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Integration', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Final Project', 5, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO modules (name, courseId, description) VALUES ('Black Holes: Why We Care', 5, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Basic Astronomical Principles', 5, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Universe Hopping', 5, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Time Travel', 5, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Mathematical Complexities', 5, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('The Multiverse Principle', 5, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Current Research', 5, 'Coming Soon!!!');
 
 -- Course 6, modules 28 thru 34 --
-INSERT INTO modules (name, courseId, description) VALUES ('Introduction', 6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Getting Started', 6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Checking Yourself', 6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Wrecking Yourself', 6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Self Assessment', 6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Integration', 6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Final Project', 6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO modules (name, courseId, description) VALUES ('Why Go Electric?', 6, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Choosing your Ride', 6, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('An Ohm-mazing Choice', 6, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('The Actual "Smart Car"', 6, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('It Drives You', 6, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('The Wow Effect', 6, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Upgrading', 6, 'Coming Soon!!!');
 
 -- Course 7, modules 35 thru 41 --
-INSERT INTO modules (name, courseId, description) VALUES ('Introduction', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Getting Started', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Checking Yourself', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Wrecking Yourself', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Self Assessment', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Integration', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
-INSERT INTO modules (name, courseId, description) VALUES ('Final Project', 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ante non accumsan tincidunt. Integer scelerisque sagittis enim, fermentum congue purus egestas a. In hac habitasse platea dictumst.');
+INSERT INTO modules (name, courseId, description) VALUES ('Why Hunt Small Game?', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Right Prey, Right Gun', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Don''t Fur-get the Essentials', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Friendly Fire', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Wabbit Season', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Skinning your Catch', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('The Best Meal Ever', 7, 'Coming Soon!!!');
+
+-- Course 7, modules 35 thru 41 --
+INSERT INTO modules (name, courseId, description) VALUES ('Why Hunt Small Game?', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Right Prey, Right Gun', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Don''t Fur-get the Essentials', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Friendly Fire', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Wabbit Season', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('Skinning your Catch', 7, 'Coming Soon!!!');
+INSERT INTO modules (name, courseId, description) VALUES ('The Best Meal Ever', 7, 'Coming Soon!!!');
 
 
 
 -- Course 1, Module 1, lessons 1-3
-INSERT INTO lessons (name, moduleId, description) VALUES ('Randomness', 1, 'What is randomness? The lesson shows you how to determine if a process is random in nature, or predetermined.  It is key in understanding the more complex ideas being quantum theory.');
+INSERT INTO lessons (name, moduleId, description) VALUES ('Randomness', 1, 'What is randomness? The lesson shows you how to determine if a process is random in nature, or predetermined.  It is key in understanding the more complex ideas behind quantum theory.');
 INSERT INTO lessons (name, moduleId, description) VALUES ('Mathematics of Radomness', 1, 'This lesson delves into the mathematics behind random behavior. Understanding of partial differential equations is suggested. Not for the faint of math.');
 INSERT INTO lessons (name, moduleId, description) VALUES ('Brownian Motion', 1, 'It''s happening all around us, every day. If you''re ever seen dust particles floating around in a sun-light room, you''ve witnessed Brownian motion.  Here''s what really going on.');
 -- Course 1, Module 2, lessons 4-7
@@ -165,36 +174,38 @@ INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 6, '
 INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 6, 'KYLE TEXT HERE');
 
 
--- Course 1, Module 1, Lesson 1, resources 1-3
+-- Course 1, Module 1, Lesson 1, resources 1-2
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=tClZGWlRLoE', 1, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=vSxU0_wNXJY', 1, 'YoutubeDescription');
--- Course 1, Module 1, Lesson 2, resources 1-3
+-- Course 1, Module 1, Lesson 2, resource 3
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=Xo-m9xw6eSo', 2, 'YoutubeDescription');
--- Course 1, Module 1, Lesson 3, resources 1-3
+-- Course 1, Module 1, Lesson 3, resources 4-6
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=7mmeksMiXp4', 3, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=sIKD1tQryHg', 3, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=rvYfNz2H3Uk', 3, 'YoutubeDescription');
 
--- Course 1, Module 2, Lesson 1, resources 1-3
+-- Course 1, Module 2, Lesson 1, resource 7
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=ev9zrt__lec', 4, 'YoutubeDescription');
--- Course 1, Module 2, Lesson 2, resources 1-3
+-- Course 1, Module 2, Lesson 2, resources 8-9
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=hW7DW9NIO9M', 5, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=A5IlKfdbjAk', 5, 'YoutubeDescription');
--- Course 1, Module 2, Lesson 3, resources 1-3
+-- Course 1, Module 2, Lesson 3, resources 10-11
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=eD7hXLRqWWM', 6, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=X5Fel1VKEN8', 6, 'YoutubeDescription');
--- Course 1, Module 2, Lesson 4, resources 1-3
+-- Course 1, Module 2, Lesson 4, resources 12-13
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=kYAdwS5MFjQ', 7, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=eGxPGgPdTVw', 7, 'YoutubeDescription');
 
--- Course 1, Module 1, Lesson 1, resources 1-3
+-- Course 1, Module 1, Lesson 1, resources 14-15
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=tClZGWlRLoE', 8, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=vSxU0_wNXJY', 8, 'YoutubeDescription');
--- Course 1, Module 1, Lesson 2, resources 1-3
+-- Course 1, Module 1, Lesson 2, resources 16-17
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=tClZGWlRLoE', 9, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=vSxU0_wNXJY', 9, 'YoutubeDescription');
--- Course 1, Module 1, Lesson 3, resources 1-3
+-- Course 1, Module 1, Lesson 3, resource 18
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=7mmeksMiXp4', 10, 'YoutubeDescription');
+
+
 
 
 
