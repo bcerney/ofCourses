@@ -7,12 +7,10 @@
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard" />
 				<li><a class="link" href="${dashboard}">Dashboard</a></li>
-				<%-- <c:url value="/dashboard/progress" var="progress"/>
-				<li>
-					<a href="${progress}">Course Progress</a>
-				</li> --%>
 				<c:url value="/courseCatalog" var="catalog" />
 				<li><a class="link" href="${catalog}">Course Catalog</a></li>
+			</ul>
+			<ul class="nav sidebar-nav">
 				<li><a class="link" href="#incompleteAssignments">Incomplete Assignments</a></li>
 				<li><a class="link" href="#submittedAssignments">Submitted Assignments</a></li>
 				<li><a class="link" href="#gradedAssignments">Graded Assignments</a></li>
@@ -27,6 +25,17 @@
 				<br>
 				<c:out value="${course.name}"/>
 			</h1>
+			
+			<h2>Current Grade: 
+				<c:choose>
+					<c:when test="${currentGrade == -1 }">
+						n/a
+					</c:when>
+					<c:otherwise>
+						${currentGrade}
+					</c:otherwise>
+				</c:choose>
+			</h2>
 
 			<div id="assignments">
 				<div id="incompleteAssignments">
