@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:import url="/WEB-INF/jsp/common/loggedInHeader.jsp" />
 
 	<div id="dashboardDiv" class="container-fluid">
@@ -39,12 +40,21 @@
 <!--					<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>   -->
 <!--					<h2><a href="${lessonHref}">${loop.index+1}. ${lesson.name}</a></h2>   -->
 					
-					<h3>${resource.title}</h3>
-									
-					<p>${resource.description}</p>
 					
-					<iframe width="420" height="315" src="${resource.embeddedUrl}"></iframe> 
-					<a class="link" href="${resource.url}" target="_blank">Direct Link</a>
+				<c:choose>
+					<c:when test="${fn:containsIgnoreCase(resource.url, 'youtube')}">									
+						<iframe width="640" height="360" src="${resource.embeddedUrl}" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe> 
+					</c:when> 
+								
+					<c:otherwise>
+						<h3><a class="link" href="${resource.url}" target="_blank">${resource.title}</a></h3>
+					</c:otherwise>
+					
+				</c:choose>
+				
+					<p>${resource.description}</p>
+					<br>
+				
 					</div>
 				</c:forEach>
 
@@ -63,7 +73,10 @@
  				<c:choose>
 				
 					<c:when test="${studentAssignments[loop.index].submitted}">
-						Assignment submitted on ${studentAssignments[loop.index].submissionDate}
+						<p><em>Assignment submitted on ${studentAssignments[loop.index].submissionDate}.</em></p>
+						<p><strong> YOUR RESPONSE BELOW:</strong><p>
+						<p>${studentAssignments[loop.index].submissionText}</p>
+						
 					</c:when>
 
 										
