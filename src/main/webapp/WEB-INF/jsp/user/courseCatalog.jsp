@@ -39,7 +39,7 @@
 						<c:param name="courseId" value="${course.courseId}" />
 					</c:url>
 					<form method="POST" action="${formAction}">
-						<input type="submit" value="Enroll Today!" />
+						<input type="submit" class="btn btn-success" value="Enroll Today!" />
 					</form>
 				</c:if>
 				
