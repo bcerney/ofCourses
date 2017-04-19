@@ -42,7 +42,7 @@
 					<c:url value="/dashboard/${course.courseId}" var="courseDetail">
 						<%-- <c:param name="courseId" value="${course.courseId}"/> --%>
 					</c:url>
-					<a id="courseDetailBtn" class="btn btn-primary" href="${courseDetail}">Go To Course</a>
+					<a id="courseDetailBtn" class="btn btn-success" href="${courseDetail}">Go To Course</a>
 				</c:forEach>
 			</div>
 		</div>

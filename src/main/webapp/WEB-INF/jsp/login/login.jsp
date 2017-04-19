@@ -24,7 +24,7 @@
 					class="form-control" />
 			</div>
 			<!-- TODO: option to change password -->
-			<button type="submit" class="btn btn-default">Log In</button>
+			<button type="submit" class="btn btn-success">Log In</button>
 
 		</form>
 		</div>

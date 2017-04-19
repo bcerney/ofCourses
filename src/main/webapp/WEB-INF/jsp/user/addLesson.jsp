@@ -61,9 +61,9 @@
 								<textarea cols="6" rows="5" class="form-control" name="lessonDescription"
 									placeholder="Lesson Description"> </textarea> 
 							</div>
-						</div>
 						
-						<input class="formSubmitButton" type="submit" value="Add Lesson" />
+						</div>
+						<input class="btn btn-success" type="submit" value="Add Lesson" />
 						
 					</form>
 				</div>
