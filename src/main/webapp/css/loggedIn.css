@@ -4,6 +4,14 @@
 	
 } */
 
+.navbar{
+		margin: 10px;
+background-color: white;
+	
+border-bottom: solid;
+border-color: black; 
+}
+
 .studentRoster{
 	display: block;
 	position: relative;
@@ -22,15 +30,17 @@
 
 #logout:hover{
 	color: #14d100;
-	
+	font-weight: bold;
 }
 #logout{
 	color: #329d27;
+	
 	
 }
 
 #loginButton{
 	color: #329d27;
+	font-weight: bold;
 }
 
 #signUpButton{
@@ -39,10 +49,12 @@
 
 #loginButton:hover{
 	color: #14d100;
+	font-weight: bold;
 }
 
 #signUpButton:hover{
 		color: #14d100;
+		font-weight: bold;
 } 
 
 .sidebar-div{
