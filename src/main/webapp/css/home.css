@@ -6,9 +6,17 @@
 	box-shadow: 5px 5px 15px black;
 }
 
+.navbar{
+	margin: 10px;
+background-color: white;
+border-color: black;	
+/* border-bottom: black; */
+
+}
 
 #loginButton{
 	color: #329d27;
+	
 }
 
 #signUpButton{
@@ -17,10 +25,12 @@
 
 #loginButton:hover{
 	color: #14d100;
+	font-weight: bold;
 }
 
 #signUpButton:hover{
 		color: #14d100;
+		font-weight: bold;
 }
 .footerText{
 	text-align: center;
