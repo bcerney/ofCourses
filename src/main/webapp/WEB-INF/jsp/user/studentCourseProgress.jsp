@@ -7,12 +7,8 @@
 			<ul class="nav sidebar-nav">
 				<c:url value="/dashboard" var="dashboard" />
 				<li><a class="link" href="${dashboard}">Dashboard</a></li>
-				<%-- <c:url value="/dashboard/progress" var="progress"/>
-				<li>
-					<a href="${progress}">Course Progress</a>
-				</li> --%>
 				<c:url value="/courseCatalog" var="catalog" />
-				<li><a href="${catalog}">Course Catalog</a></li>
+				<li><a class="link" href="${catalog}">Course Catalog</a></li>
 			</ul>
 			<ul class="nav sidebar-nav">
 				<li><a class="link" href="#incompleteAssignments">Incomplete Assignments</a></li>
