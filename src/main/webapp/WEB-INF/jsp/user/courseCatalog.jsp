@@ -25,6 +25,7 @@
 			<div id="courses">
 				<c:forEach var="course" items="${allCourses}">
 					<h3>${course.name}</h3>
+					<p>Instructor: ${course.teacherFullName}</p>
 					<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
 					<p>Capacity: ${course.capacity}</p>

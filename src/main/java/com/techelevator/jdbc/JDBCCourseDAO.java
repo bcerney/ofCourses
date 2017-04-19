@@ -37,10 +37,12 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	}
 
 	@Override
-	public Course getCourseById(long id) {
+	public Course getCourseByCourseId(long id) {
 		Course course = null;
-		String sqlGetCourseById = "SELECT * FROM courses WHERE courseId = ?";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCourseById, id);
+		String sqlGetCourseByCourseId = "SELECT courses.*, firstName, lastName "
+				+ "FROM courses JOIN users ON users.userId = courses.teacherId "
+				+ "WHERE courseId = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCourseByCourseId, id);
 		if(results.next()) {
 			course = mapRowToCourse(results);
 		}
@@ -49,29 +51,12 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	
 	
 	
-	private Course mapRowToCourse(SqlRowSet results) {
-		Course aCourse = new Course();
-		aCourse.setCourseId(results.getLong("courseId"));
-		aCourse.setName(results.getString("name"));
-		aCourse.setCapacity(results.getLong("capacity"));
-		aCourse.setDescription(results.getString("description"));
-		aCourse.setFee(results.getBigDecimal("fee"));
-		aCourse.setStartDate(results.getDate("startDate").toLocalDate());
-		aCourse.setEndDate(results.getDate("endDate").toLocalDate());
-		aCourse.setTeacherId(results.getLong("teacherId"));
-		aCourse.setSubject(results.getString("subject"));
-		aCourse.setDifficulty(results.getString("difficulty"));
-		return aCourse;
-	}
-	
-	private long getNextCourseId() {
-		return super.getNextId("seq_courseId");
-	}
-
 	@Override
 	public List<Course> getCoursesByTeacherId(long teacherId) {
 		ArrayList <Course> teacherCourses = new ArrayList<>();
-		String sqlGetCoursesByTeacherId = "SELECT * FROM courses WHERE teacherId = ?";
+		String sqlGetCoursesByTeacherId = "SELECT courses.*, firstName, lastName "
+				+ "FROM courses JOIN users ON users.userId = courses.teacherId "
+				+ "WHERE teacherId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetCoursesByTeacherId, teacherId);
 		while (results.next()){
 			Course nextCourse = mapRowToCourse(results);
@@ -83,7 +68,9 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	@Override
 	public List<Course> getAllCourses() {
 		ArrayList <Course> allCourses = new ArrayList<>();
-		String sqlGetAllCourses = "SELECT * FROM courses WHERE startDate >= NOW()";
+		String sqlGetAllCourses = "SELECT courses.*, firstName, lastName "
+				+ "FROM courses JOIN users ON users.userId = courses.teacherId "
+				+ "WHERE startDate >= NOW() ORDER BY name ASC";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCourses);
 		while (results.next()) {
 			Course nextCourse = mapRowToCourse(results);
@@ -95,7 +82,12 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 	@Override
 	public List<Course> getCoursesByUserId(long userId) {
 		ArrayList <Course> usersCourses = new ArrayList<>();
-		String sqlGetAllCoursesByUser = "SELECT * FROM courses JOIN student_course ON courses.courseId = student_course.courseId JOIN users ON users.userId = student_course.studentId WHERE userId = ?";
+		String sqlGetAllCoursesByUser = "SELECT t.firstName, t.lastName,  courses.* "
+				+ "FROM courses "
+				+ "RIGHT JOIN student_course ON courses.courseId = student_course.courseId "
+				+ "JOIN users u ON u.userId = student_course.studentId "
+				+ "JOIN users t ON t.userId = courses.teacherId "
+				+ "WHERE u.userId = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCoursesByUser, userId);
 		while (results.next()) {
 			Course nextCourse = mapRowToCourse(results);
@@ -140,4 +132,24 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		
 	}
 	
+	private Course mapRowToCourse(SqlRowSet results) {
+		Course aCourse = new Course();
+		aCourse.setCourseId(results.getLong("courseId"));
+		aCourse.setName(results.getString("name"));
+		aCourse.setCapacity(results.getLong("capacity"));
+		aCourse.setDescription(results.getString("description"));
+		aCourse.setFee(results.getBigDecimal("fee"));
+		aCourse.setStartDate(results.getDate("startDate").toLocalDate());
+		aCourse.setEndDate(results.getDate("endDate").toLocalDate());
+		aCourse.setTeacherId(results.getLong("teacherId"));
+		aCourse.setSubject(results.getString("subject"));
+		aCourse.setDifficulty(results.getString("difficulty"));
+		aCourse.setTeacherFullName(results.getString("firstName") + " " + results.getString("lastName"));
+		return aCourse;
+	}
+	
+	private long getNextCourseId() {
+		return super.getNextId("seq_courseId");
+	}
+
 }

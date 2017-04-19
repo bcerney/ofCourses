@@ -56,7 +56,7 @@ public class CourseDAOIntegrationTest extends DAOIntegrationTest {
 		Course testCourse = courseDao.createNewCourse(course);
 		
 		
-		assert_courses_are_equal(course, courseDao.getCourseById(testCourse.getCourseId()));
+		assert_courses_are_equal(course, courseDao.getCourseByCourseId(testCourse.getCourseId()));
 		
 	}
 	

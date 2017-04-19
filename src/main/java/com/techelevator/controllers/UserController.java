@@ -143,7 +143,7 @@ public class UserController {
 
 	@RequestMapping(path = { "/dashboard/{courseId}" }, method = RequestMethod.GET)
 	public String displayCourseDetail(HttpServletRequest request, @PathVariable long courseId, ModelMap model) {
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseByCourseId(courseId);
 		User teacher = userDAO.getUserById(course.getTeacherId());
 		List<Module> modules = moduleDAO.getModulesByCourseId(courseId);
 		request.setAttribute("course", course);
@@ -155,7 +155,7 @@ public class UserController {
 	@RequestMapping(path = { "/dashboard/{courseId}/addModule" }, method = RequestMethod.GET)
 	public String displayAddModule(HttpServletRequest request, @PathVariable long courseId, ModelMap model) {
 		User currentUser = (User) model.get("currentUser");
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseByCourseId(courseId);
 		request.setAttribute("course", course);
 
 		if (currentUser.getUserType().equals("teacher")) {
@@ -217,7 +217,7 @@ public class UserController {
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}" }, method = RequestMethod.GET)
 	public String displayModule(HttpServletRequest request, @PathVariable long courseId, @PathVariable long moduleId) {
 
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 
 		request.setAttribute("course", course);
@@ -240,7 +240,7 @@ public class UserController {
 	public String displayAddLesson(HttpServletRequest request, @PathVariable long courseId,
 			@PathVariable long moduleId) {
 
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 
 		request.setAttribute("course", course);
@@ -281,7 +281,7 @@ public class UserController {
 		User currentUser = (User)model.get("currentUser");
 		long studentId = currentUser.getUserId();
 		
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
 		List<Resource> resources = resourceDAO.getResourcesByLessonId(lessonId);
@@ -329,7 +329,7 @@ public class UserController {
 	public String displayAddResource(HttpServletRequest request, @PathVariable long courseId,
 			@PathVariable long moduleId, @PathVariable long lessonId) {
 
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
 
@@ -368,7 +368,7 @@ public class UserController {
 	public String displayAddAssignment(HttpServletRequest request, @PathVariable long courseId,
 			@PathVariable long moduleId, @PathVariable long lessonId) {
 
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
 
@@ -421,7 +421,7 @@ public class UserController {
 	@RequestMapping(path = { "/dashboard/{courseId}/roster" }, method = RequestMethod.GET)
 	public String displayClassRoster(HttpServletRequest request, @PathVariable long courseId) {
 		List<User> classRoster = userDAO.getStudentsByCourseId(courseId);
-		Course course = courseDAO.getCourseById(courseId);
+		Course course = courseDAO.getCourseByCourseId(courseId);
 
 		request.setAttribute("course", course);
 		request.setAttribute("roster", classRoster);
@@ -497,7 +497,7 @@ public class UserController {
 		//TODO: finish and implement method
 		//int currentCoursePercentage = calculateGradedAssignmentPercentage(currentUserSubmissions);
 		
-		request.setAttribute("course", courseDAO.getCourseById(courseId));
+		request.setAttribute("course", courseDAO.getCourseByCourseId(courseId));
 		request.setAttribute("submissions", currentUserSubmissions);
 		
 		return "user/studentCourseProgress";
