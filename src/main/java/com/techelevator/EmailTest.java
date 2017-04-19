@@ -11,9 +11,8 @@ public class EmailTest {
 	public void sendMail(){
 		
 		sendMailTeacher.start();
+		
 	}
-	
-	
 	
 }
 
