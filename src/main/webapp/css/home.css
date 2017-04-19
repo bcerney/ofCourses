@@ -7,9 +7,10 @@
 }
 
 .navbar{
-	margin: 10px;
-background-color: white;
-border-color: white;	
+/* 	margin: 10px; */
+/* background-color: white; */
+border-radius: 0px;	
+border-bottom: solid;	
 /* border-bottom: black; */
 
 }

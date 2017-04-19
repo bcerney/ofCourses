@@ -3,26 +3,32 @@
 	margin-left: 2px;
 	
 } */
+.assignments{
+	/* position: relative;
+	left: 120px; */
 
+}
 .sidebar-nav{
-	background-color: blue;
-	height: 200px;
+	margin-right: 5px;
+	
+	height: 1500px;
 		
 }
 
 .navbar{
-		margin: 10px;
-background-color: white;
-	
-border-bottom: solid;
-border-color: black; 
+/* border-color: white; */
 
+ 	/* 	margin: 10px;
+background-color: white; */
+border-radius: 0px;	
+border-bottom: solid;
+/* border-color: black; */ 
 }
 
-.studentRoster{
+.studentRoster{/* 
 	display: block;
 	position: relative;
-  	left: 180px;
+  	left: 180px; */
 }
 
 .link{
@@ -66,9 +72,9 @@ border-color: black;
 
 .sidebar-div{
 	/* position: fixed; */
-	border-top: 1px solid black;
+/* 	border-top: 1px solid black; */
 	border-right: 1px solid black;
-	border-bottom: 1px solid black;
+	/* border-bottom: 1px solid black; */
 	max-width: 200px;
 	/* margin-left: 2px; */
 	

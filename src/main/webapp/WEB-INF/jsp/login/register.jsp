@@ -86,7 +86,7 @@
 					type="password" id="confirmPassword" name="confirmPassword"
 					placeholder="Re-type Password" class="form-control" />
 			</div>
-			<button type="submit" class="btn btn-default">Create Account</button>
+			<button type="submit" class="btn btn-success">Create Account</button>
 
 			</div>
 		</form>

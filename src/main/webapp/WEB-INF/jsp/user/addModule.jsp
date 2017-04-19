@@ -57,7 +57,7 @@
 									placeholder="Module Description" > </textarea>
 							</div>
 						</div>
-						<input class="formSubmitButton" type="submit" value="Add Module" />
+						<input class="btn btn-success" type="submit" value="Add Module" />
 					</form>
 				</div>
 				<!-- #addModule -->
