@@ -32,7 +32,7 @@
 				<c:url var="courseDetailHref" value="/dashboard/${course.courseId}"/>
 				<h3><a class="link" href= "${courseDetailHref}">${course.name}</a></h3>
   				<c:url value="/dashboard/${course.courseId}/${currentUser.userId}/progress" var="currentProgress"/>
-  				<p><a class="link" href="${currentProgress}">Current Progress</a></p>
+  				<p><a class="btn btn-success" href="${currentProgress}">Current Progress</a></p>
 				<%--	<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
 					<p>${course.description}</p>

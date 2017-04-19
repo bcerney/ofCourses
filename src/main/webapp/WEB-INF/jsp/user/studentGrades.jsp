@@ -6,18 +6,19 @@
 		<div id="dashSidebar" class="col-sm-3 col-md-2 sidebar-div">
 			<ul class="nav sidebar-nav">
 			<c:url value="/dashboard" var="dashboard"/>
-					<li><a id="dashboardLink" href="${dashboard}">Dashboard</a></li>
+					<li><a class="link" href="${dashboard}">Dashboard</a></li>
 				<c:url value="/courseCatalog" var="catalog"/>
 				<li>
-					<a href="${catalog}">Course Catalog</a>
+					<a class="link" href="${catalog}">Course Catalog</a>
 				</li>
 				<c:url value="/dashboard/createCourse" var="createCourse" />
-				<li><a href="${createCourse}">Create Course</a></li>
+				<li><a class="link" href="${createCourse}">Create Course</a></li>
 				<li></li>
 			</ul>
 		</div>
 		
-		<h3>${user.firstName} ${user.lastName}</h3>
+			<div class = "assignments">
+		<h2>${user.firstName} ${user.lastName}</h2>
 		<h4>${course.name}</h4>
 		
 	<%-- 
@@ -28,44 +29,45 @@
 		 --%>
 
 
-		<h2>Graded Assignments</h2>
+		<h3>Graded Assignments</h3>
 		<c:forEach var="hw" items="${submissions}">
 			<%-- <p>${hw.studentAssignment.score}</p>
 			<p>${hw.assignment.name}</p> --%>
 			<c:choose>
 				<c:when test="${hw.studentAssignment.score != -1}">
-				Assignment: ${hw.assignment.name} Grade: ${hw.studentAssignment.score}<br>
+				<p>Assignment: ${hw.assignment.name} </p> <br> 
+				<p>Grade: ${hw.studentAssignment.score} </p><br>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 
-		<h2>Submitted Assignments</h2>
+		<h3>Submitted Assignments</h3>
 		<c:forEach var="hw" items="${submissions}">
 		<c:choose> 
 		<c:when test="${hw.studentAssignment.submitted == true && hw.studentAssignment.score == -1}">
 
-	 	Assignment: ${hw.assignment.name}<br>
-		Submission Text: ${hw.studentAssignment.submissionText}<br>
+	 	<p> Assignment: ${hw.assignment.name}</p> <br>
+		<p>Submission Text: ${hw.studentAssignment.submissionText}</p><br>
 		<form method= "POST" action="">
-		<label for= "assignmentGrade">Grade:</label>
+		<p><label for= "assignmentGrade">Grade:</label></p>
 		<input class = "form-control" type="text" name="assignmentGrade"/>
 		<input type= "hidden" name= "assignmentId" value = "${hw.assignment.assignmentId}"/>
-		<input class="formSubmitButton" type="submit" value="Submit Grade"/>
+		<input class="btn btn-success" type="submit" value="Submit Grade"/>
 		</form>
 		
 		</c:when>
 		</c:choose>
 		</c:forEach>
 		
-		<h2>Non-Submitted Assignments</h2>
+		<h3>Non-Submitted Assignments</h3>
 		<c:forEach var = "hw" items= "${submissions}">
 		<c:choose>
 		<c:when test = "${hw.studentAssignment.score == -1}">
-		Assignment: ${hw.assignment.name} <strong>Due Date:</strong> ${hw.assignment.dueDate}<br>
+		<p>Assignment: ${hw.assignment.name} </p><br> <p> <strong>Due Date:</strong> ${hw.assignment.dueDate}</p><br>
 		</c:when>
 		</c:choose>
 		</c:forEach>
-
+</div>
 </body>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
 </html>

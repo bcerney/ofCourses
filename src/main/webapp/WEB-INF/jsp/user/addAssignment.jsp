@@ -45,8 +45,8 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 			<div class="container-fluid">
-				<h1 class="page-header">${course.name}- ${module.name} -
-					${lesson.name}</h1>
+				<h1 class="page-header"><c:out value="${course.name}- ${module.name} -
+					${lesson.name}"/></h1>
 
 				<div id="addAssignment" class="add-module-div">
 					<h2>Add Assignment</h2>
@@ -99,7 +99,7 @@
 							</div>
 						</div>
 
-						<input class="formSubmitButton" type="submit" value="Add Assignment" />
+						<input class="btn btn-success" type="submit" value="Add Assignment" />
 
 					</form>
 				</div>

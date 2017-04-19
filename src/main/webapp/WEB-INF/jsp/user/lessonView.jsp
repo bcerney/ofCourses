@@ -120,7 +120,7 @@
 									</div>
 								</div>
 
-								<input type="file" name="file-upload" size="10000000" /><br/>
+								<input class="btn btn-success" type="file" name="file-upload" size="10000000" /><br/>
 								
 <!-- 								<div>
 								<form action="UploadServlet" method="post" enctype="multipart/form-data">
@@ -129,7 +129,7 @@
 								</form>
 								</div> -->
 								
-								<input class="formSubmitButton" type="submit" value="Submit Assignment ${loop.index+1}"/><br><br>
+								<input class="btn btn-success" type="submit" value="Submit Assignment ${loop.index+1}"/><br><br>
 								
 								
 <!-- 								<div id="assignmentFeedback" class="form-group row">
