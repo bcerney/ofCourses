@@ -542,6 +542,10 @@ public class UserController {
 			}
 		}
 		
+		if (combinedMaxScores == 0) {
+			return -1;
+		}
+		
 		return (int) ((combinedScores / combinedMaxScores) * 100);
 	}
 	

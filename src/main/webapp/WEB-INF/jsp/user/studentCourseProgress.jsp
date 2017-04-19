@@ -25,6 +25,17 @@
 				<br>
 				<c:out value="${course.name}"/>
 			</h1>
+			
+			<h2>Current Grade: 
+				<c:choose>
+					<c:when test="${currentGrade == -1 }">
+						n/a
+					</c:when>
+					<c:otherwise>
+						${currentGrade}
+					</c:otherwise>
+				</c:choose>
+			</h2>
 
 			<div id="assignments">
 				<div id="incompleteAssignments">
