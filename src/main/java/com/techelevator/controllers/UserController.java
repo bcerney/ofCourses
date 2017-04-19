@@ -108,6 +108,10 @@ public class UserController {
 		List<Course> allCourses = courseDAO.getAllCourses();
 		request.setAttribute("allCourses", allCourses);
 
+		for (Course course: allCourses) {
+			System.out.println(course.isActive());
+		}
+		
 		return "user/courseCatalog";
 	}
 
