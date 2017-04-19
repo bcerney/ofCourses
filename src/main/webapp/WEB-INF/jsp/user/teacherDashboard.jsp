@@ -43,7 +43,9 @@
 					
 					<c:url value="/dashboard/${course.courseId}" var="courseDetail">
 					</c:url>
-					<a id="courseDetailBtn" class="btn btn-primary" href="${courseDetailHref}">Launch Course</a>
+
+					<a id="courseDetailBtn" class="btn btn-success" href="${courseDetailHref}">Launch Course</a>
+
 				</c:forEach>
 			</div>
 		</div>

@@ -12,9 +12,7 @@
 					<a href="${progress}">Course Progress</a>
 				</li> --%>
 				<c:url value="/courseCatalog" var="catalog" />
-				<li><a href="${catalog}">Course Catalog</a></li>
-			</ul>
-			<ul class="nav sidebar-nav">
+				<li><a class="link" href="${catalog}">Course Catalog</a></li>
 				<li><a class="link" href="#incompleteAssignments">Incomplete Assignments</a></li>
 				<li><a class="link" href="#submittedAssignments">Submitted Assignments</a></li>
 				<li><a class="link" href="#gradedAssignments">Graded Assignments</a></li>
