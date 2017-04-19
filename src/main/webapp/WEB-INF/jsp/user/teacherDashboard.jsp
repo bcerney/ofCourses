@@ -30,7 +30,9 @@
 
 			<div id="courses">
 				<c:forEach var="course" items="${teacherCourses}">
-				<h3>${course.name}</h3>
+					<c:url value="/dashboard/${course.courseId}" var="courseDetailHref">
+					</c:url>
+				<h3><a class="link" href= "${courseDetailHref}">${course.name}</a></h3>
 <%-- 					<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
 					<p>Capacity: ${course.capacity}</p>
@@ -40,9 +42,10 @@
 					<p>Cost: $${course.fee}</p> --%>
 					
 					<c:url value="/dashboard/${course.courseId}" var="courseDetail">
-						<%-- <c:param name="courseId" value="${course.courseId}"/> --%>
 					</c:url>
-					<a id="courseDetailBtn" class="btn btn-success" href="${courseDetail}">Go To Course</a>
+
+					<a id="courseDetailBtn" class="btn btn-success" href="${courseDetailHref}">Launch Course</a>
+
 				</c:forEach>
 			</div>
 		</div>

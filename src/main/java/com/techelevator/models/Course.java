@@ -15,9 +15,9 @@ public class Course {
 	private String subject;
 	private String difficulty;
 	private String teacherFullName;
+	private boolean isActive;
 	
 	public Course() {
-		
 	}
 	
 	public Course(long teacherId, String name, long capacity, String description, BigDecimal fee, LocalDate startDate,
@@ -98,5 +98,11 @@ public class Course {
 	}
 	public void setTeacherFullName(String teacherFullName) {
 		this.teacherFullName = teacherFullName;
+	}
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 }
