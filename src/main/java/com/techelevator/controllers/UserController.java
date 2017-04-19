@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.techelevator.MailSender;
 import com.techelevator.daos.AssignmentDAO;
 import com.techelevator.daos.CourseDAO;
 import com.techelevator.daos.LessonDAO;
@@ -310,9 +311,12 @@ public class UserController {
 		
 		User currentUser = (User)model.get("currentUser");
 		long studentId = currentUser.getUserId();
+		long teacherId = courseDAO.getCourseById(courseId).getTeacherId();
 
 		if (submissionText != null) {
 			studentAssignmentDAO.addTextSubmission(studentId, assignmentId, submissionText);
+//			MailSender sendMailTeacher = new MailSender(userDAO.getUserById(teacherId).getEmail(), "Homework Submission Notification", "Homework has been submitted by " + currentUser.getFirstName() + " " + currentUser.getLastName());
+//			sendMailTeacher.start();
 //			studentAssignmentDAO.addFileSubmission();
 		}
 				

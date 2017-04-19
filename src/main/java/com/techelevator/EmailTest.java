@@ -1,10 +1,19 @@
 package com.techelevator;
 
-import javax.management.Notification;
 
-//public class EmailTest {
-//	Notification note = new Notification(newSubmission);
-//	
-//	MailSender sendMailTeacher = new MailSender(null, null, null);
-//	
-//}
+
+public class EmailTest {
+	
+	
+	MailSender sendMailTeacher = new MailSender("kyleDwine@gmail.com", "Hi!", "It's a body!");
+	
+	
+	public void sendMail(){
+		
+		sendMailTeacher.start();
+	}
+	
+	
+	
+}
+
