@@ -426,8 +426,9 @@ public class UserController {
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/roster/{userId}" }, method = RequestMethod.GET)
-	public String displayStudentGrades(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long userId) {
+	public String displayStudentGrades(HttpServletRequest request, 
+									   @PathVariable long courseId,
+									   @PathVariable long userId) {
 //		List<StudentAssignment> studentGrades = studentAssignmentDAO
 //				.getAllStudentAssignmentsByStudentIdAndCourseId(userId, courseId);
 //		List<Assignment> assignments = assignmentDAO.getAssignmentsByStudentIdAndCourseId(userId, courseId);
@@ -488,10 +489,19 @@ public class UserController {
 											   ModelMap model) {
 		
 		User currentUser = (User) model.get("currentUser");
+		List<Submission> currentUserSubmissions = getSubmissionsByStudentIdAndCourseId(currentUser.getUserId(), courseId);
+		//TODO: finish and implement method
+		//int currentCoursePercentage = calculateGradedAssignmentPercentage(currentUserSubmissions);
 		
-		//TODO: pull this monstrosity out into it's own method
-		List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
+		request.setAttribute("course", courseDAO.getCourseById(courseId));
+		request.setAttribute("submissions", currentUserSubmissions);
+		
+		return "user/studentCourseProgress";
+	}
+	
+	private List<Submission> getSubmissionsByStudentIdAndCourseId(long studentId, long courseId) {
 		List<Submission> currentUserSubmissions = new ArrayList<Submission>();
+		List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
 
 		for (Module module : courseModules) {
 			 List<Lesson> moduleLessons = lessonDAO.getLessonsByModuleId(module.getModuleId());
@@ -504,7 +514,7 @@ public class UserController {
 					 nextSubmission.setLesson(lesson);
 					 nextSubmission.setAssignment(assignment);
 					 
-					 StudentAssignment studentAssignment = studentAssignmentDAO.getStudentAssignmentByStudentIdAndAssignmentId(currentUser.getUserId(), assignment.getAssignmentId());
+					 StudentAssignment studentAssignment = studentAssignmentDAO.getStudentAssignmentByStudentIdAndAssignmentId(studentId, assignment.getAssignmentId());
 					 nextSubmission.setStudentAssignment(studentAssignment);
 					 
 					 currentUserSubmissions.add(nextSubmission);
@@ -512,15 +522,25 @@ public class UserController {
 			 }
 		 }
 		
-		request.setAttribute("courseId", courseId);
-		request.setAttribute("submissions", currentUserSubmissions);
-		
-		return "user/studentCourseProgress";
+		return currentUserSubmissions;
 	}
+	
+//	private int calculateGradedAssignmentPercentage(List<Submission> submissionList) {
+//		int combinedScores = 0;
+//		int combinedMaxScores = 0;
+//		
+//		for (Submission submission : submissionList) {
+//			if (submission.getStudentAssignment().getScore())
+//		}
+//	}
 	
 	
 	@RequestMapping(path = {"/dashboard/{courseId}/roster/{userId}"}, method = RequestMethod.POST)
-	public String gradeAssignment(HttpServletRequest request, @RequestParam long assignmentId, @RequestParam long assignmentGrade, @PathVariable long userId, @PathVariable long courseId){
+	public String gradeAssignment(HttpServletRequest request, 
+								  @RequestParam long assignmentId, 
+								  @RequestParam long assignmentGrade, 
+								  @PathVariable long userId, 
+								  @PathVariable long courseId){
 
 	studentAssignmentDAO.gradeAssignment(userId, assignmentId, assignmentGrade);
 	
