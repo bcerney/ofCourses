@@ -311,7 +311,7 @@ public class UserController {
 		
 		User currentUser = (User)model.get("currentUser");
 		long studentId = currentUser.getUserId();
-		long teacherId = courseDAO.getCourseById(courseId).getTeacherId();
+		long teacherId = courseDAO.getCourseByCourseId(courseId).getTeacherId();
 
 		if (submissionText != null) {
 			studentAssignmentDAO.addTextSubmission(studentId, assignmentId, submissionText);
@@ -499,6 +499,7 @@ public class UserController {
 		
 		request.setAttribute("course", courseDAO.getCourseByCourseId(courseId));
 		request.setAttribute("submissions", currentUserSubmissions);
+		request.setAttribute("currentGrade", calculateGradedAssignmentPercentage(currentUserSubmissions));
 		
 		return "user/studentCourseProgress";
 	}
@@ -529,14 +530,20 @@ public class UserController {
 		return currentUserSubmissions;
 	}
 	
-//	private int calculateGradedAssignmentPercentage(List<Submission> submissionList) {
-//		int combinedScores = 0;
-//		int combinedMaxScores = 0;
-//		
-//		for (Submission submission : submissionList) {
-//			if (submission.getStudentAssignment().getScore())
-//		}
-//	}
+	private int calculateGradedAssignmentPercentage(List<Submission> submissionList) {
+		long combinedScores = 0;
+		long combinedMaxScores = 0;
+		
+		for (Submission submission : submissionList) {
+			long submissionScore = submission.getStudentAssignment().getScore();
+			if (submissionScore > -1) {
+				combinedScores += submissionScore;
+				combinedMaxScores += submission.getAssignment().getMaxScore();
+			}
+		}
+		
+		return (int) ((combinedScores / combinedMaxScores) * 100);
+	}
 	
 	
 	@RequestMapping(path = {"/dashboard/{courseId}/roster/{userId}"}, method = RequestMethod.POST)
@@ -544,7 +551,7 @@ public class UserController {
 								  @RequestParam long assignmentId, 
 								  @RequestParam long assignmentGrade, 
 								  @PathVariable long userId, 
-								  @PathVariable long courseId){
+								  @PathVariable long courseId){ 
 
 	studentAssignmentDAO.gradeAssignment(userId, assignmentId, assignmentGrade);
 	
