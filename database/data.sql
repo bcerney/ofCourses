@@ -32,7 +32,7 @@ INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES 
 
 -- Courses 1 thru 4, Team Bravo Courses --
 INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Quantum Bananas', 30, 99.99, '2017-05-04', '2017-07-10', 4, 'Physics', 'advanced', 'Quantum Bananas integrages the complex nature of quantum theory with typical day-to-day occurances.  The course covers topics ranging from quantum theory and how it relates to grocery shopping, to being able to predict the optimal type of cat litter to use so that even if you were to put your cat in a box, it would survive.  Just like the boson particle, this class will only exist for a short time.  If it were to exist for longer, you wouldn''t know where to find it.');
-INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Wine on Beer', 15, 40.00, '2017-06-01', '2017-06-30', 3, 'Wine Arts', 'beginner', 'KYLE TEXT HERE');
+INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Wine on Beer', 15, 40.00, '2017-06-01', '2017-06-30', 3, 'Wine Arts', 'beginner', 'Like beer? Want to know more about beer? Want to drink a beer? Then this is the class for you. Learn about beers of the world with Kyle Wine! It’s way better than whatever lame course Eric George is teaching.');
 INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Guitar Acchordingly', 20, 149.95, '2017-04-26', '2017-07-20', 1, 'Music', 'beginner', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec quam aliquet, imperdiet nisi in, porttitor felis. Morbi finibus velit sed lorem rhoncus porta vel eu turpis. Nunc malesuada erat ut luctus congue. In eu tortor et odio vulputate auctor. Sed in justo porttitor leo imperdiet mollis. Aliquam accumsan, lectus vel imperdiet lobortis, sem nisl sodales ligula, ac varius erat neque vulputate massa. Duis sit amet magna sed felis imperdiet convallis.');
 INSERT INTO courses (name, capacity, fee, startDate, endDate, teacherId, subject, difficulty, description) VALUES ('Photography for Mummies', 15, 25.00, '2017-06-01', '2017-06-30', 2, 'Time Wasting', 'intermediate', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mi elit, consequat non pulvinar a, porttitor et ipsum. Proin ultricies non tortor non condimentum. Donec porta felis eget tellus consectetur pellentesque. Nulla ullamcorper, justo eget congue facilisis, purus quam elementum elit, eget luctus sapien mauris quis tellus. Aliquam vel eros sed enim commodo congue et et diam. Aliquam mattis, massa eu interdum faucibus, nibh felis pulvinar risus, id iaculis urna orci sit amet sem. Vestibulum pellentesque felis tellus, ac tempor lorem lacinia vel. Vestibulum eget orci nunc. Sed eget dolor ac eros sagittis condimentum nec non orci. Duis ultricies lectus vel neque tincidunt ornare. Integer venenatis viverra justo, ut hendrerit mauris tincidunt sit amet. Nunc hendrerit lectus eget est tempor finibus. Donec convallis, eros congue convallis congue, lorem tortor tristique dui, et semper nisi velit ut ipsum. Suspendisse aliquam magna nec faucibus sollicitudin. Cras metus lacus, bibendum at dui eu, mattis blandit diam.');
 
@@ -79,9 +79,9 @@ INSERT INTO modules (name, courseId, description) VALUES ('Quantum Theory Basics
 INSERT INTO modules (name, courseId, description) VALUES ('Alternate Dimensions and Our World', 1, 'We live in the dimension we all know and see. But in reality, the universe is so vast that there are an infinate number of dimensions that exist, and on different timelines.  Some dimensions are actually in a completely different age of our universe.  This is where time-travel comes into play, but we haven''t quite figured out how to traverse dimensions, or have we?');
 
 -- Course 2, modules 4 thru 6 --
-INSERT INTO modules (name, courseId, description) VALUES ('KYLE TEXT HERE', 2, 'KYLE TEXT HERE');
-INSERT INTO modules (name, courseId, description) VALUES ('KYLE TEXT HERE', 2, 'KYLE TEXT HERE');
-INSERT INTO modules (name, courseId, description) VALUES ('KYLE TEXT HERE', 2, 'KYLE TEXT HERE');
+INSERT INTO modules (name, courseId, description) VALUES ('Intro To Beer', 2, 'An absolutely riveting foray into the world of beer. Learn about its history, how it''s made, and the people who drink it');
+INSERT INTO modules (name, courseId, description) VALUES ('Advanced Beer', 2, 'Now that you know the basics it’s time to go even deeper into beer.');
+INSERT INTO modules (name, courseId, description) VALUES ('Beer Mastery', 2, 'The end is in sight. You are almost a beer master.');
 
 
 -- Course 3, modules 7 thru 13 --
@@ -154,24 +154,20 @@ INSERT INTO lessons (name, moduleId, description) VALUES ('Multiple Dimensions',
 INSERT INTO lessons (name, moduleId, description) VALUES ('Time Travel', 3, 'This lesson describes a simplified view of time travel, and shows how time travel can only move forward in time, at least with modern quantum physical laws.');
 INSERT INTO lessons (name, moduleId, description) VALUES ('Subatomic Travel', 3, 'Remember that last lesson?  Well, those rules don''t actually apply to particles! In a way, we will show how particles can actually travel back in time, under the right conditions.');
 
--- Course 2, Module 4, lessons 11-15
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 4, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 4, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 4, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 4, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 4, 'KYLE TEXT HERE');
--- Course 2, Module 5, lessons 16-20
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 5, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 5, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 5, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 5, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 5, 'KYLE TEXT HERE');
--- Course 2, Module 6, lessons 21-25
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 6, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 6, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 6, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 6, 'KYLE TEXT HERE');
-INSERT INTO lessons (name, moduleId, description) VALUES ('KYLE TEXT HERE', 6, 'KYLE TEXT HERE');
+-- Course 2, Module 4, lessons 11-13
+INSERT INTO lessons (name, moduleId, description) VALUES ('History of Beer', 4, 'Follow the History of beer. From the ancient Egyptians all the way to modern times.');
+INSERT INTO lessons (name, moduleId, description) VALUES ('Beer Etiquette', 4, 'Did you know it’s considered rude to drink a Budweiser on the third Saturday of the month in the state of Mississippi? It’s a fact! Find out about this and numerous other beer rules.');
+INSERT INTO lessons (name, moduleId, description) VALUES ('Making Beer', 4, 'Now it’s time to actually make beer! Grab your barley, hops, and water, it’s time to make beer!');
+
+-- Course 2, Module 5, lessons 14-16
+INSERT INTO lessons (name, moduleId, description) VALUES ('Rare Beers', 5, 'Some beers demand attention because of their scarcity.');
+INSERT INTO lessons (name, moduleId, description) VALUES ('Buying Beer', 5, 'More than just a normal transaction. Buying beer is one of the most important financial decisions you ever make. Make it wisely!');
+INSERT INTO lessons (name, moduleId, description) VALUES ('Opening a beer', 5, 'You don’t just have to use a bottle opener. There are plenty of creative ways to open a beer bottle.');
+-- Course 2, Module 6, lessons 17-19
+INSERT INTO lessons (name, moduleId, description) VALUES ('Beer Tricks', 6, 'Ready to impress your friends with some amazing and dangerous beer stunts? Then sign this waiver and come with me!');
+INSERT INTO lessons (name, moduleId, description) VALUES ('Beer Legends', 6, 'Did you know Wade Boggs once drank 107 beers on a cross country flight? Let''s learn about him and other legends of the world of beer.');
+INSERT INTO lessons (name, moduleId, description) VALUES ('Hold my Beer', 6, 'Let’s review everything we’ve learned so far and then have a beer.');
+
 
 
 -- Course 1, Module 1, Lesson 1, resources 1-2
@@ -184,53 +180,106 @@ INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle'
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=sIKD1tQryHg', 3, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=rvYfNz2H3Uk', 3, 'YoutubeDescription');
 
--- Course 1, Module 2, Lesson 1, resource 7
+-- Course 1, Module 2, Lesson 4, resource 7
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=ev9zrt__lec', 4, 'YoutubeDescription');
--- Course 1, Module 2, Lesson 2, resources 8-9
+-- Course 1, Module 2, Lesson 5, resources 8-9
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=hW7DW9NIO9M', 5, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=A5IlKfdbjAk', 5, 'YoutubeDescription');
--- Course 1, Module 2, Lesson 3, resources 10-11
+-- Course 1, Module 2, Lesson 6, resources 10-11
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=eD7hXLRqWWM', 6, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=X5Fel1VKEN8', 6, 'YoutubeDescription');
--- Course 1, Module 2, Lesson 4, resources 12-13
+-- Course 1, Module 2, Lesson 7, resources 12-13
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=kYAdwS5MFjQ', 7, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=eGxPGgPdTVw', 7, 'YoutubeDescription');
 
--- Course 1, Module 1, Lesson 1, resources 14-15
+-- Course 1, Module 1, Lesson 8, resources 14-15
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=tClZGWlRLoE', 8, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=vSxU0_wNXJY', 8, 'YoutubeDescription');
--- Course 1, Module 1, Lesson 2, resources 16-17
+-- Course 1, Module 1, Lesson 9, resources 16-17
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=tClZGWlRLoE', 9, 'YoutubeDescription');
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=vSxU0_wNXJY', 9, 'YoutubeDescription');
--- Course 1, Module 1, Lesson 3, resource 18
+-- Course 1, Module 1, Lesson 10, resource 18
 INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=7mmeksMiXp4', 10, 'YoutubeDescription');
 
+
+-- Course 2, Module 4, Lesson 11, resources 19-20
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=WT-FT5HDPNo', 11, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=6n-qie51FVA', 11, 'YoutubeDescription');
+-- Course 2, Module 4, Lesson 12, resources 21-22
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=Mb3h7Q3YkoM', 12, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=pVcbasIb8lQ', 12, 'YoutubeDescription');
+-- Course 2, Module 4, Lesson 13, resources 23-24
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=VPKXAToDr-M', 13, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=M9X6wn7yyy8', 13, 'YoutubeDescription');
+
+-- Course 2, Module 5, Lesson 14, resources 25-26
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=Ow-WGOgKR24', 14, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=fpJnhI1hhME', 14, 'YoutubeDescription');
+-- Course 2, Module 5, Lesson 15, resources 27-28
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=1yHsoW6CTjM', 15, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=f9coeReh1-w', 15, 'YoutubeDescription');
+-- Course 2, Module 5, Lesson 16, resources 29-30
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=ShI1jj8Dc-w', 16, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=JEbmqw1w9Vs', 16, 'YoutubeDescription');
+
+-- Course 2, Module 6, Lesson 17, resources 31-32
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=XRpvab3kdOc', 17, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=Uu0xL8M_BBI', 17, 'YoutubeDescription');
+-- Course 2, Module 6, Lesson 18, resources 33-34
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=75Gx8OmO9Rk', 18, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=ptrmW51ed58', 18, 'YoutubeDescription');
+-- Course 2, Module 6, Lesson 19, resources 35-36
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=PM_X-2Y6OZo', 19, 'YoutubeDescription');
+INSERT INTO resources (title, url, lessonId, description) VALUES ('YoutubeTitle', 'https://www.youtube.com/watch?v=oBxPXXVljLo', 19, 'YoutubeDescription');
 
 
 
 
 -- Course 1, Module 1, Lesson 1, assignment 1
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Randomness Experience', '2017-04-27', '2017-04-30', 50, 1, 'Give one random occurence that occured in your life and explain whether it was truly random or not.');
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Randomness Experience', '2017-04-27', '2017-04-29', 50, 1, 'Give one random occurence that occured in your life and explain whether it was truly random or not.');
 -- Course 1, Module 1, Lesson 2, assignments 2-3
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Current Random Event', '2017-04-27', '2017-04-30', 50, 2, 'Find one current event (in the last 2 weeks) and quantify the level of randomness.  Use appropriate scaling.');
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Dice Roll', '2017-04-27', '2017-04-30', 50, 2, 'Quantify the level of randomness in 3 six-sided dice rolls, if rolled in two different locations by two different people.  Use appropriate scaling.');
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Current Random Event', '2017-04-28', '2017-04-30', 50, 2, 'Find one current event (in the last 2 weeks) and quantify the level of randomness.  Use appropriate scaling.');
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Dice Roll', '2017-04-28', '2017-04-30', 50, 2, 'Quantify the level of randomness in 3 six-sided dice rolls, if rolled in two different locations by two different people.  Use appropriate scaling.');
 -- Course 1, Module 1, Lesson 3, assignments 4
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Brownian Example', '2017-04-27', '2017-04-30', 50, 3, 'Describe traffic patterns using the parameters of Brownian motion. Include multiple different sequences, and directional vectors.');
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Brownian Example', '2017-05-01', '2017-05-03', 50, 3, 'Describe traffic patterns using the parameters of Brownian motion. Include multiple different sequences, and directional vectors.');
 
--- Course 1, Module 2, Lesson 1, NO ASSIGNMENTS
--- Course 1, Module 2, Lesson 2, assignment 5
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Relative Misconceptions', '2017-04-27', '2017-04-30', 50, 5, 'Explain the 3 most common misconceptions of the Theory of Relativity.');
--- Course 1, Module 2, Lesson 3, assignment 6
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Particle Interaction', '2017-04-27', '2017-04-30', 50, 6, 'Explain the conditions under which fast particles interact.');
--- Course 1, Module 2, Lesson 4, assignment 7
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Strings versus Particles', '2017-04-27', '2017-04-30', 50, 7, 'Compare and contrast String Thoery versus traditional particle theory. Reference current research.');
+-- Course 1, Module 2, Lesson 4, NO ASSIGNMENTS
+-- Course 1, Module 2, Lesson 5, assignment 5
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Relative Misconceptions', '2017-05-01', '2017-05-03', 50, 5, 'Explain the 3 most common misconceptions of the Theory of Relativity.');
+-- Course 1, Module 2, Lesson 6, assignment 6
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Particle Interaction', '2017-05-02', '2017-05-04', 50, 6, 'Explain the conditions under which fast particles interact.');
+-- Course 1, Module 2, Lesson 7, assignment 7
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Strings versus Particles', '2017-05-03', '2017-05-05', 50, 7, 'Compare and contrast String Thoery versus traditional particle theory. Reference current research.');
 
--- Course 1, Module 3, Lesson 1, assignment 8
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Dimensional Analysis', '2017-04-27', '2017-04-30', 50, 8, 'Describe the 4th dimension and it''s relationship with the first three. Create a thought experiment where at least 3 alternate dimensions simultaneously exist.');
--- Course 1, Module 3, Lesson 2, assignment 9
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Travel Time', '2017-04-27', '2017-04-30', 50, 9, 'Explain why time travel, as we understand it, cannot occur in the negative direction.');
--- Course 1, Module 3, Lesson 3, assignment 10
-INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Subatomic Particles Behavior', '2017-04-27', '2017-04-30', 50, 10, 'Explain why particles can appear to travel in time. Your response should include concepts from relativity.');
+-- Course 1, Module 3, Lesson 8, assignment 8
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Dimensional Analysis', '2017-05-07', '2017-05-09', 50, 8, 'Describe the 4th dimension and it''s relationship with the first three. Create a thought experiment where at least 3 alternate dimensions simultaneously exist.');
+-- Course 1, Module 3, Lesson 9, assignment 9
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Travel Time', '2017-05-09', '2017-05-11', 50, 9, 'Explain why time travel, as we understand it, cannot occur in the negative direction.');
+-- Course 1, Module 3, Lesson 10, assignment 10
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Subatomic Particles Behavior', '2017-05-11', '2017-05-13', 50, 10, 'Explain why particles can appear to travel in time. Your response should include concepts from relativity.');
+
+
+-- Course 2, Module 4, Lesson 11, assignment 11
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Drink a beer!', '2017-04-27', '2017-04-29', 50, 11, 'Please write a one page essay on the beer you just drank.');
+-- Course 2, Module 4, Lesson 12, assignment 12
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Make a Beer Rule', '2017-04-30', '2017-05-01', 50, 12, 'Come up with your own arbitrary beer rule. ');
+-- Course 2, Module 4, Lesson 13, assignment 13
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Make a beer.', '2017-05-01', '2017-05-03', 50, 13, 'Make some beer. Then write a one page paper on the experience.');
+
+-- Course 2, Module 5, Lesson 14, assignment 14
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Rare Beer Experience', '2017-05-01', '2017-05-03', 50, 14, 'Camp out overnight waiting for the next big beer release. Write about the experience.');
+-- Course 2, Module 5, Lesson 15, assignment 15
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Buy Some Beer', '2017-05-02', '2017-05-04', 50, 15, 'Head over to the store and buy some beer. Now write about the experience. How much did it cost? What did you buy? Did you enjoy the experience?');
+-- Course 2, Module 5, Lesson 16, assignment 16
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Open a beer.', '2017-05-03', '2017-05-05', 50, 16, 'Find a creative new way to open a beer bottle.');
+
+-- Course 2, Module 6, Lesson 17, assignment 17
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Create your own beer stunt', '2017-05-07', '2017-05-09', 50, 17, 'Create a step by step guide for your own death defying beer stunt. ');
+-- Course 2, Module 6, Lesson 18, assignment 18
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Who is your beer hero?', '2017-05-09', '2017-05-11', 50, 18, 'Write about your beer hero. Who is this person? What characteristics make them your hero?');
+-- Course 2, Module 6, Lesson 19, assignment 19
+INSERT INTO assignments (name, assignDate, dueDate, maxScore, lessonId, description) VALUES ('Drink a beer', '2017-05-11', '2017-05-13', 50, 19, 'Don’t write anything, just enjoy a beer. You earned it!');
+
 
 
 -- Course 1 Student Assignments
@@ -333,5 +382,95 @@ INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 8);
 INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 9);
 INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 10);
 
+-- Course 2 Student Assignments
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 19);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 19);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 19);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 19);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 19);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (13, 19);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (14, 19);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (15, 19);
+
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 11);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 12);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 13);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 14);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 15);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 16);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 17);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 18);
+INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 19);
 
 COMMIT;
