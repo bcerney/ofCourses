@@ -4,12 +4,19 @@
 	
 } */
 
+.sidebar-nav{
+	background-color: blue;
+	height: 200px;
+		
+}
+
 .navbar{
 		margin: 10px;
 background-color: white;
 	
 border-bottom: solid;
 border-color: black; 
+
 }
 
 .studentRoster{
