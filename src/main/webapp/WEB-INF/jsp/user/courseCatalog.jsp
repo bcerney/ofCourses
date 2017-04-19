@@ -32,16 +32,26 @@
 					<p>${course.description}</p>
 					<p>Start Date: ${course.startDate}</p>
 					<p>End Date: ${course.endDate}</p>
-					<p>Cost: $${course.fee}</p>
+					<p>Cost: $${course.fee}</p>					
 				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}"/>
-				
-				<c:if test="${currentUser.userType == 'student'}">		
- 					<c:url var="formAction" value="/courseCatalog">
-						<c:param name="courseId" value="${course.courseId}" />
-					</c:url>
-					<form method="POST" action="${formAction}">
-						<input type="submit" class="btn btn-success" value="Enroll Today!" />
-					</form>
+								
+				<c:if test="${currentUser.userType == 'student'}">
+ 					<c:choose>
+						<c:when test="${course.active}">
+		 					<c:url var="formAction" value="/courseCatalog">
+								<c:param name="courseId" value="${course.courseId}" />
+							</c:url>
+							<form method="POST" action="${formAction}">
+								<input type="submit" class="btn btn-success" value="Enroll Now" />
+							</form>
+						</c:when>
+						
+						<c:otherwise>
+							<p>COMING SOON!!!</p>
+						</c:otherwise>
+					
+					</c:choose>
+					
 				</c:if>
 				
 				</c:forEach>

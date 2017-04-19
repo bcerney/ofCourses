@@ -76,7 +76,6 @@
 						<p><em>Assignment submitted on ${studentAssignments[loop.index].submissionDate}.</em></p>
 						<p><strong> YOUR RESPONSE BELOW:</strong><p>
 						<p>${studentAssignments[loop.index].submissionText}</p>
-						
 					</c:when>
 
 										

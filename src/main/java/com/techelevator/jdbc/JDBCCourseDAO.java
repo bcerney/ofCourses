@@ -145,6 +145,7 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		aCourse.setSubject(results.getString("subject"));
 		aCourse.setDifficulty(results.getString("difficulty"));
 		aCourse.setTeacherFullName(results.getString("firstName") + " " + results.getString("lastName"));
+		aCourse.setActive(results.getBoolean("isActive"));
 		return aCourse;
 	}
 	

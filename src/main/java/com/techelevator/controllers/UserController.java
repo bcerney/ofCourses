@@ -108,6 +108,10 @@ public class UserController {
 		List<Course> allCourses = courseDAO.getAllCourses();
 		request.setAttribute("allCourses", allCourses);
 
+		for (Course course: allCourses) {
+			System.out.println(course.isActive());
+		}
+		
 		return "user/courseCatalog";
 	}
 
@@ -311,7 +315,7 @@ public class UserController {
 		
 		User currentUser = (User)model.get("currentUser");
 		long studentId = currentUser.getUserId();
-		long teacherId = courseDAO.getCourseById(courseId).getTeacherId();
+		long teacherId = courseDAO.getCourseByCourseId(courseId).getTeacherId();
 
 		if (submissionText != null) {
 			studentAssignmentDAO.addTextSubmission(studentId, assignmentId, submissionText);
