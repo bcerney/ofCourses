@@ -31,7 +31,7 @@
 				<c:forEach var="course" items="${teacherCourses}">
 					<c:url value="/dashboard/${course.courseId}" var="courseDetailHref">
 					</c:url>
-				<h3><a class="link" href= "${courseDetailHref}"><c:out value = "${course.name}"/></a></h3>
+
 <%-- 					<p>Subject: ${course.subject}</p>
 					<p>Level: ${course.difficulty}</p>
 					<p>Capacity: ${course.capacity}</p>
@@ -53,6 +53,9 @@
 						</c:choose>
 						
 					</form> --%>
+
+				<h3><a class="link" href= "${courseDetailHref}"><c:out value="${course.name}"/></a></h3>
+
 					
 				</c:forEach>
 			</div>

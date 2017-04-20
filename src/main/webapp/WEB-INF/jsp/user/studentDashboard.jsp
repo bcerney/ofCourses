@@ -30,15 +30,9 @@
 			<div id= "courses">
 			<c:forEach var="course" items="${studentsCourses}">
 				<c:url var="courseDetailHref" value="/dashboard/${course.courseId}"/>
-				<h3><a class="link" href= "${courseDetailHref}">${course.name}</a></h3>
+				<h3><a class="link" href= "${courseDetailHref}"><c:out value="${course.name}"/></a></h3>
   				<c:url value="/dashboard/${course.courseId}/${currentUser.userId}/progress" var="currentProgress"/>
   				<p><a class="btn btn-success" href="${currentProgress}">Current Progress</a></p>
-				<%--	<p>Subject: ${course.subject}</p>
-					<p>Level: ${course.difficulty}</p>
-					<p>${course.description}</p>
-					<p>Start Date: ${course.startDate}</p>
-					<p>End Date: ${course.endDate}</p> --%>
-
 
 					<!-- TODO: have this navigate to student view of course -->
 			</c:forEach>

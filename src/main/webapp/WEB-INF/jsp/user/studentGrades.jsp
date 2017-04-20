@@ -18,8 +18,8 @@
 		</div>
 		
 			<div id="dashMain" class="col-sm-9 col-md-10">
-		<h2>${user.firstName} ${user.lastName}</h2>
-		<h4>${course.name}</h4>
+		<h2><c:out value="${user.firstName}"/> <c:out value="${user.lastName}"/></h2>
+		<h4><c:out value="${course.name}"/></h4>
 		
 	<%-- 
 		<div id = "nameColumn"><c:forEach var="assignment" items="${assignments}">
@@ -35,8 +35,8 @@
 			<p>${hw.assignment.name}</p> --%>
 			<c:choose>
 				<c:when test="${hw.studentAssignment.score != -1}">
-				<p>Assignment: ${hw.assignment.name} </p> <br> 
-				<p>Grade: ${hw.studentAssignment.score} </p><br>
+				<p>Assignment: <c:out value="${hw.assignment.name}"/> </p> <br> 
+				<p>Grade: <c:out value="${hw.studentAssignment.score}"/> </p><br>
 				</c:when>
 			</c:choose>
 		</c:forEach>
@@ -46,8 +46,8 @@
 		<c:choose> 
 		<c:when test="${hw.studentAssignment.submitted == true && hw.studentAssignment.score == -1}">
 
-	 	<p> Assignment: ${hw.assignment.name}</p> <br>
-		<p>Submission Text: ${hw.studentAssignment.submissionText}</p><br>
+	 	<p> Assignment: <c:out value="${hw.assignment.name}"/></p> <br>
+		<p>Submission Text: <c:out value="${hw.studentAssignment.submissionText}"/></p><br>
 		<form method= "POST" action="">
 		<p><label for= "assignmentGrade">Grade:</label></p>
 		<input class = "form-control" type="text" name="assignmentGrade"/>
@@ -63,7 +63,7 @@
 		<c:forEach var = "hw" items= "${submissions}">
 		<c:choose>
 		<c:when test = "${hw.studentAssignment.score == -1}">
-		<p>Assignment: ${hw.assignment.name} </p><br> <p> <strong>Due Date:</strong> ${hw.assignment.dueDate}</p><br>
+		<p>Assignment: <c:out value="${hw.assignment.name}"/> </p><br> <p> <strong>Due Date:</strong> <c:out value="${hw.assignment.dueDate}"/></p><br>
 		</c:when>
 		</c:choose>
 		</c:forEach>
