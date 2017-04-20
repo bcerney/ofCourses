@@ -35,6 +35,7 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 			<div class="container-fluid">
+
 				<h1 class="page-header"><c:out value="${course.name}- ${module.name}"></c:out></h1>
 
 				<div id="addLesson" class="add-module-div">
