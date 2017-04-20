@@ -132,6 +132,12 @@ public class JDBCCourseDAO extends JDBCDAO implements CourseDAO {
 		
 	}
 	
+	@Override
+	public void changeCourseStatus(Course course) {
+		String sqlChangeCourseStatus = "UPDATE courses SET isActive = ? WHERE courseId = ?";
+		jdbcTemplate.update(sqlChangeCourseStatus, course.isActive(), course.getCourseId());
+	}	
+	
 	private Course mapRowToCourse(SqlRowSet results) {
 		Course aCourse = new Course();
 		aCourse.setCourseId(results.getLong("courseId"));

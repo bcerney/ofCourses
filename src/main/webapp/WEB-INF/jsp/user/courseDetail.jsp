@@ -28,7 +28,6 @@
 				<c:out value="${course.name}" />
 			</h1>
 
-
 			<div class="courseDetail">
 				<c:url var="formAction" value="/courseDetail" />
 
@@ -42,6 +41,23 @@
 				<p>${course.description}</p>
 				<p>Start Date: ${course.startDate}</p>
 				<p>End Date: ${course.endDate}</p>
+
+				<c:if test="${currentUser.userType == 'teacher'}">
+ 					<c:url var="formAction" value="/dashboard/${course.courseId}"/>
+					<form method="POST" action="${formAction}">
+						<c:choose>
+							<c:when test="${course.active}">
+								<input type="submit" class="btn btn-success" value="Close Enrollment" />
+							</c:when>
+							
+							<c:otherwise>
+								<input type="submit" class="btn btn-success" value="Launch Course" />
+							</c:otherwise>
+						</c:choose>
+						
+					</form>
+				</c:if>
+
 				<h3>Modules</h3>
 
 				<c:forEach var="module" items="${modules}" varStatus="loop">

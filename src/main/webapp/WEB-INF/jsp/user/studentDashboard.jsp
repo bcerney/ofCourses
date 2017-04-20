@@ -24,7 +24,7 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 			<h1 class="page-header">
-				<c:out value="${currentUser.firstName}"/>'s Courses
+				Your Courses
 			</h1>
 
 			<div id= "courses">
