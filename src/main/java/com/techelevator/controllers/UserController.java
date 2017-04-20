@@ -128,19 +128,31 @@ public class UserController {
 			@RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
 			@RequestParam String subject, @RequestParam("courseDifficulty") String courseDifficulty, ModelMap model) {
 
-		User currentUser = (User) model.get("currentUser");
-		Course courseToCreate = new Course(currentUser.getUserId(), courseName, courseCapacity, courseDescription,
-				courseFee, startDate, endDate, subject, courseDifficulty);
-		Course createdCourse = courseDAO.createNewCourse(courseToCreate);
+		if (isValidStartDateAndEndDate(startDate, endDate)) {
+			User currentUser = (User) model.get("currentUser");
+			Course courseToCreate = new Course(currentUser.getUserId(), courseName, courseCapacity, courseDescription,
+					courseFee, startDate, endDate, subject, courseDifficulty);
+			Course createdCourse = courseDAO.createNewCourse(courseToCreate);
 
-		if (createdCourse != null) {
-			long courseId = createdCourse.getCourseId();
-			request.setAttribute("courseId", courseId);
-			return "redirect:/dashboard/" + courseId;
+			if (createdCourse != null) {
+				long courseId = createdCourse.getCourseId();
+				request.setAttribute("courseId", courseId);
+				return "redirect:/dashboard/" + courseId;
+			} else {
+				// TODO: add error message to request
+				return "redirect:/dashboard/createCourse";
+			}
 		} else {
 			// TODO: add error message to request
 			return "redirect:/dashboard/createCourse";
 		}
+	}
+	
+	private boolean isValidStartDateAndEndDate(LocalDate startDate, LocalDate endDate) {
+		boolean endDateIsAfterStartDate = endDate.isAfter(startDate);
+		boolean startDateIsAfterNow = startDate.isAfter(LocalDate.now());
+		
+		return endDateIsAfterStartDate && startDateIsAfterNow;
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}" }, method = RequestMethod.GET)
@@ -309,8 +321,6 @@ public class UserController {
 		request.setAttribute("allResources", resources);
 		request.setAttribute("allAssignments", assignments);
 		request.setAttribute("studentAssignments", studentAssignments);
-		
-		
 		request.setAttribute("now", LocalDate.now());
 		return "user/lessonView";
 	}
@@ -509,8 +519,6 @@ public class UserController {
 		
 		User currentUser = (User) model.get("currentUser");
 		List<Submission> currentUserSubmissions = getSubmissionsByStudentIdAndCourseId(currentUser.getUserId(), courseId);
-		//TODO: finish and implement method
-		//int currentCoursePercentage = calculateGradedAssignmentPercentage(currentUserSubmissions);
 		
 		request.setAttribute("course", courseDAO.getCourseByCourseId(courseId));
 		request.setAttribute("submissions", currentUserSubmissions);

@@ -35,7 +35,7 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 			<div class="container-fluid">
-				<h1 class="page-header"><c:out value="${course.name}- ${module.name} -
+				<h1 class="page-header"><c:out value="${course.name} - ${module.name} -
 					${lesson.name}"/> </h1>
 
 				<div id="addResource" class="add-module-div">
@@ -72,6 +72,8 @@
 									name="resourceUrl" placeholder="URL" />
 							</div>
 						</div>
+						
+						<p><strong>NOTE: </strong><em>When uploading <strong>video</strong> URLs, currently our site only supports links from YouTube.</em></p>
 
 						<input class="btn btn-success" type="submit" value="Add Resource" />
 
