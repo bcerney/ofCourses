@@ -45,6 +45,7 @@
 				<c:if test="${currentUser.userType == 'teacher'}">
  					<c:url var="formAction" value="/dashboard/${course.courseId}"/>
 					<form method="POST" action="${formAction}">
+					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 						<c:choose>
 							<c:when test="${course.active}">
 								<input type="submit" class="btn btn-success" value="Close Enrollment" />

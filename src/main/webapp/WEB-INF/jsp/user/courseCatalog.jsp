@@ -42,6 +42,7 @@
 								<c:param name="courseId" value="${course.courseId}" />
 							</c:url>
 							<form method="POST" action="${formAction}">
+							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 								<input type="submit" class="btn btn-success" value="Enroll Now" />
 							</form>
 						</c:when>

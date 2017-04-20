@@ -45,6 +45,7 @@
 						value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addResource"
 						var="addResource" />
 					<form method="POST" action=addResource>
+					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 
 						<div id="resourceTitle" class="form-group row">
 							<label for="resourceTitle" class="col-md-2 col-form-label">Title:
