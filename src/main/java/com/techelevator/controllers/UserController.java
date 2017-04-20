@@ -460,46 +460,16 @@ public class UserController {
 	public String displayStudentGrades(HttpServletRequest request, 
 									   @PathVariable long courseId,
 									   @PathVariable long userId) {
-//		List<StudentAssignment> studentGrades = studentAssignmentDAO
-//				.getAllStudentAssignmentsByStudentIdAndCourseId(userId, courseId);
-//		List<Assignment> assignments = assignmentDAO.getAssignmentsByStudentIdAndCourseId(userId, courseId);
-//		
-
-		List<Module> courseModules = moduleDAO.getModulesByCourseId(courseId);
-		List<Submission> currentUserSubmissions = new ArrayList<Submission>();
-		User currentUser = userDAO.getUserById(userId);
 		
-		for (Module module : courseModules) {
-			 List<Lesson> moduleLessons = lessonDAO.getLessonsByModuleId(module.getModuleId());
-			 
-			 for (Lesson lesson : moduleLessons) {
-				 List<Assignment> lessonAssignments = assignmentDAO.getAssignmentsByLessonId(lesson.getLessonId());
-				 
-				 for (Assignment assignment : lessonAssignments) {
-					 Submission nextSubmission = new Submission();
-					 nextSubmission.setLesson(lesson);
-					 nextSubmission.setAssignment(assignment);
-					 
-					 StudentAssignment studentAssignment = studentAssignmentDAO.getStudentAssignmentByStudentIdAndAssignmentId(currentUser.getUserId(), assignment.getAssignmentId());
-					 nextSubmission.setStudentAssignment(studentAssignment);
-//					 System.out.println(studentAssignment.getScore() + studentAssignment.getAssignmentId());
-					 currentUserSubmissions.add(nextSubmission);
-				 }
-			 }
-		 }
-//		User user = userDAO.getUserById(userId);
-//		Course course = courseDAO.getCourseById(courseId);
-//		
-//		request.setAttribute("assignments", assignments);
-//		request.setAttribute("studentGrades", studentGrades);
-//		request.setAttribute("user", user);
-//		request.setAttribute("course", course);
-//		System.out.println(assignments.size());
-//		System.out.println(studentGrades.size());
-//		
-		request.setAttribute("user", currentUser);
+		User student = userDAO.getUserById(userId);
+		List<Submission> currentUserSubmissions = getSubmissionsByStudentIdAndCourseId(student.getUserId(), courseId);
+		
+		request.setAttribute("student", student);
+		request.setAttribute("course", courseDAO.getCourseByCourseId(courseId));
 		request.setAttribute("submissions", currentUserSubmissions);
-		return "user/studentGrades";
+		request.setAttribute("currentGrade", calculateGradedAssignmentPercentage(currentUserSubmissions));
+		
+		return "user/teacherStudentProgress";
 	}
 	
 	//TODO: going another route with displaying course progress, student clicks through on dashboard link
