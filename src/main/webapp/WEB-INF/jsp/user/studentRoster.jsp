@@ -17,7 +17,7 @@
 		<div id="dashMain" class="col-sm-7 col-md-9">
 
 			<h1 class="page-header">
-				Roster |
+				Roster <span class="glyphicon glyphicon-user"></span>
 				<c:out value="${course.name}" />
 			</h1>
 
