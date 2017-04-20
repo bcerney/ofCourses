@@ -43,7 +43,7 @@
 					
 				<c:choose>
 					<c:when test="${fn:containsIgnoreCase(resource.url, 'youtube')}">									
-						<iframe width="640" height="360" src="${resource.embeddedUrl}" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe> 
+						<iframe width="960" height="540" src="${resource.embeddedUrl}" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe> 
 					</c:when> 
 								
 					<c:otherwise>

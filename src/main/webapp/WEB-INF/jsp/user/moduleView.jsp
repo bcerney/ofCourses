@@ -36,7 +36,7 @@
 						
 					<c:url var="lessonHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>
 					<h2>${loop.index+1}.<a class="link" href="${lessonHref}"> <c:url value = "${lesson.name}"/></a></h2>
-					<p><c:url value = "${lesson.description}"/></p>
+					<p class="viewMaxWidth"><c:url value = "${lesson.description}"/></p>
 					
 					</div>
 				</c:forEach>

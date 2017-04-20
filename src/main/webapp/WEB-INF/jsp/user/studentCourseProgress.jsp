@@ -46,7 +46,7 @@
 							
 							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}" var="lessonHref"/>
 							<p><strong>Lesson: </strong><a href="${lessonHref}"><c:out value="${submission.lesson.name}"/></a></p>
-							<p><c:out value="${submission.assignment.description}"/></p>
+							<p class="viewMaxWidth"><c:out value="${submission.assignment.description}"/></p>
 							<p><strong>Max Score: </strong><c:out value="${submission.assignment.maxScore}"/></p>
 							<p><strong>Due Date: </strong><c:out value="${submission.assignment.dueDate}"/></p>
 							
