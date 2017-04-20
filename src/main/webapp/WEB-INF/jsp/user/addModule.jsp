@@ -41,6 +41,7 @@
 					<c:url value="/dashboard/${course.courseId}/addModule"
 						var="addModule" />
 					<form method="POST" action=addModule>
+					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 						<div id="moduleName" class="form-group row">
 							<label for="moduleName" class="col-md-2 col-form-label">Module
 								Name: </label>

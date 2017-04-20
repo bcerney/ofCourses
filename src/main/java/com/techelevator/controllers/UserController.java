@@ -82,42 +82,22 @@ public class UserController {
 		}
 	}
 
-	// @RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
-	// public String displayStudentDashboard(HttpServletRequest request,
-	// ModelMap model) {
-	// User currentUser = (User) model.get("currentUser");
-	// ArrayList <Course> studentCourses =
-	// courseDAO.getCoursesByUserId(currentUser.getUserId());
-	// request.setAttribute("studentsCourses", studentCourses);
-	// return "dashboard";
-	// }
-	//
-	//
-	// @RequestMapping(path={"/teacherDashboard"}, method=RequestMethod.GET)
-	// public String displayTeacherDashboard(HttpServletRequest request,
-	// ModelMap model) {
-	// User currentUser = (User) model.get("currentUser");
-	// ArrayList <Course> userCourses =
-	// courseDAO.getCoursesByTeacherId(currentUser.getUserId());
-	// request.setAttribute("userCourses", userCourses);
-	// return "dashboard";
-	// }
-
 	@RequestMapping(path = { "/courseCatalog" }, method = RequestMethod.GET)
 	public String displyCourseCatalogPage(HttpServletRequest request) {
 		List<Course> allCourses = courseDAO.getAllCourses();
 		request.setAttribute("allCourses", allCourses);
 
-		for (Course course: allCourses) {
-			System.out.println(course.isActive());
-		}
-		
 		return "user/courseCatalog";
 	}
 
 	@RequestMapping(path = { "/dashboard/createCourse" }, method = RequestMethod.GET)
-	public String displayCreateCourse() {
-		return "user/createCourse";
+	public String displayCreateCourse(ModelMap model) {
+		User currentUser = (User) model.get("currentUser");
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/createCourse";			
+		} else {
+			return "redirect:/dashboard/";
+		}
 	}
 
 	@RequestMapping(path = { "/dashboard/createCourse" }, method = RequestMethod.POST)
@@ -130,19 +110,31 @@ public class UserController {
 			@RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate,
 			@RequestParam String subject, @RequestParam("courseDifficulty") String courseDifficulty, ModelMap model) {
 
-		User currentUser = (User) model.get("currentUser");
-		Course courseToCreate = new Course(currentUser.getUserId(), courseName, courseCapacity, courseDescription,
-				courseFee, startDate, endDate, subject, courseDifficulty);
-		Course createdCourse = courseDAO.createNewCourse(courseToCreate);
+		if (isValidStartDateAndEndDate(startDate, endDate)) {
+			User currentUser = (User) model.get("currentUser");
+			Course courseToCreate = new Course(currentUser.getUserId(), courseName, courseCapacity, courseDescription,
+					courseFee, startDate, endDate, subject, courseDifficulty);
+			Course createdCourse = courseDAO.createNewCourse(courseToCreate);
 
-		if (createdCourse != null) {
-			long courseId = createdCourse.getCourseId();
-			request.setAttribute("courseId", courseId);
-			return "redirect:/dashboard/" + courseId;
+			if (createdCourse != null) {
+				long courseId = createdCourse.getCourseId();
+				request.setAttribute("courseId", courseId);
+				return "redirect:/dashboard/" + courseId;
+			} else {
+				// TODO: add error message to request
+				return "redirect:/dashboard/createCourse";
+			}
 		} else {
 			// TODO: add error message to request
 			return "redirect:/dashboard/createCourse";
 		}
+	}
+	
+	private boolean isValidStartDateAndEndDate(LocalDate startDate, LocalDate endDate) {
+		boolean endDateIsAfterStartDate = endDate.isAfter(startDate);
+		boolean startDateIsAfterNow = startDate.isAfter(LocalDate.now());
+		
+		return endDateIsAfterStartDate && startDateIsAfterNow;
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}" }, method = RequestMethod.GET)
@@ -255,15 +247,21 @@ public class UserController {
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/addLesson" }, method = RequestMethod.GET)
 	public String displayAddLesson(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long moduleId) {
+			@PathVariable long moduleId, ModelMap model) {
 
+		User currentUser = (User) model.get("currentUser");
 		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 
-		return "user/addLesson";
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/addLesson";
+		} else {
+			// TODO: add error message or 403 redirect
+			return "redirect:/dashboard/" + courseId + "/" + moduleId;
+		}		
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/addLesson" }, method = RequestMethod.POST)
@@ -311,8 +309,6 @@ public class UserController {
 		request.setAttribute("allResources", resources);
 		request.setAttribute("allAssignments", assignments);
 		request.setAttribute("studentAssignments", studentAssignments);
-		
-		
 		request.setAttribute("now", LocalDate.now());
 		return "user/lessonView";
 	}
@@ -332,8 +328,8 @@ public class UserController {
 
 		if (submissionText != null) {
 			studentAssignmentDAO.addTextSubmission(studentId, assignmentId, submissionText);
-//			MailSender sendMailTeacher = new MailSender(userDAO.getUserById(teacherId).getEmail(), "Homework Submission Notification", "Homework has been submitted by " + currentUser.getFirstName() + " " + currentUser.getLastName());
-//			sendMailTeacher.start();
+			MailSender sendMailTeacher = new MailSender(userDAO.getUserById(teacherId).getEmail(), "Homework Submission Notification", "Homework has been submitted by " + currentUser.getFirstName() + " " + currentUser.getLastName());
+			sendMailTeacher.start();
 //			studentAssignmentDAO.addFileSubmission();
 		}
 				
@@ -344,8 +340,10 @@ public class UserController {
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addResource" }, method = RequestMethod.GET)
 	public String displayAddResource(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long moduleId, @PathVariable long lessonId) {
+			@PathVariable long moduleId, @PathVariable long lessonId, ModelMap model) {
 
+		User currentUser = (User)model.get("currentUser");
+		
 		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
@@ -354,7 +352,12 @@ public class UserController {
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
 
-		return "user/addResource";
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/addResource";
+		} else {
+			// TODO: add error message or 403 redirect
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;
+		}		
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addResource" }, method = RequestMethod.POST)
@@ -383,8 +386,9 @@ public class UserController {
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment" }, method = RequestMethod.GET)
 	public String displayAddAssignment(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long moduleId, @PathVariable long lessonId) {
-
+			@PathVariable long moduleId, @PathVariable long lessonId, ModelMap model) {
+		User currentUser = (User)model.get("currentUser");
+		
 		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
@@ -393,7 +397,13 @@ public class UserController {
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
 
-		return "user/addAssignment";
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/addAssignment";
+		} else {
+			// TODO: add error message or 403 redirect
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;
+		}		
+		
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment" }, method = RequestMethod.POST)
@@ -511,8 +521,6 @@ public class UserController {
 		
 		User currentUser = (User) model.get("currentUser");
 		List<Submission> currentUserSubmissions = getSubmissionsByStudentIdAndCourseId(currentUser.getUserId(), courseId);
-		//TODO: finish and implement method
-		//int currentCoursePercentage = calculateGradedAssignmentPercentage(currentUserSubmissions);
 		
 		request.setAttribute("course", courseDAO.getCourseByCourseId(courseId));
 		request.setAttribute("submissions", currentUserSubmissions);

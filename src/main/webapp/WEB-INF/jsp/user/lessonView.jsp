@@ -52,7 +52,7 @@
 					
 				</c:choose>
 				
-					<p>${resource.description}</p>
+					<p><c:out value="${resource.description}"/></p>
 					<br>
 				
 					</div>
@@ -64,18 +64,18 @@
 					<div id="${assignment.assignmentId}" class="lessonAssignment">
 						
 				<c:url var="resourceHref" value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"/>
-					<h3>${loop.index+1}: ${assignment.name}</h3>					
-					<p>${assignment.description}</p>
-					<p>Total Points: ${assignment.maxScore}</p>
+					<h3>${loop.index+1}: <c:out value="${assignment.name}"/></h3>					
+					<p><c:out value="${assignment.description}"/></p>
+					<p>Total Points: <c:out value="${assignment.maxScore}"/></p>
 
  				<c:if test="${currentUser.userType == 'student'}">
  				
  				<c:choose>
 				
 					<c:when test="${studentAssignments[loop.index].submitted}">
-						<p><em>Assignment submitted on ${studentAssignments[loop.index].submissionDate}.</em></p>
+						<p><em>Assignment submitted on <c:out value="${studentAssignments[loop.index].submissionDate}"/>.</em></p>
 						<p><strong> YOUR RESPONSE BELOW:</strong><p>
-						<p>${studentAssignments[loop.index].submissionText}</p>
+						<p><c:out value="${studentAssignments[loop.index].submissionText}"/></p>
 					</c:when>
 
 										
@@ -95,11 +95,11 @@
 							</c:when>
 								
 							<c:when test="${assignment.daysLeft > 1 && assignment.daysLeft < 7}">
-									Assignment is Due in ${assignment.daysLeft} Days	
+									Assignment is Due in <c:out value="${assignment.daysLeft}"/> Days	
 							</c:when>
 								
  							<c:otherwise>
-									Assignment is Due On ${assignment.dueDate}							
+									Assignment is Due On <c:out value="${assignment.dueDate}"/>							
 							</c:otherwise>
 							
 						</c:choose> 
@@ -108,6 +108,7 @@
 								value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"
 								var="submitAssignment" />
 							<form method="POST" action="${submitAssignment}">
+							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							
 								<div id="assignmentSubmission" class="form-group row">
 <!--  								<label for="assignmentSubmission" class="col-md-2 col-form-label">Your Response: </label>   -->

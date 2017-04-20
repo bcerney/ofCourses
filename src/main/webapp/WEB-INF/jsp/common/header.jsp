@@ -21,23 +21,19 @@
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
-				
 				<div class="navbar-header">
-					<%-- <c:url value="#" var="home"/> --%>
-					<a class="navbar-brand" 
-					<%-- href="${home}" --%>
-					>
-					eLearning Portal</a>
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#portal-navbar-collapse" aria-expanded="false">
+					
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#te-navbar-collapse" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
+					<a class="navbar-brand">eLearning Portal</a>
 				</div> <!-- .navbar-header -->
 				
-				<div class="collapse navbar-collapse" id="te-navbar-collapse">	
-					<ul class="nav navbar-nav">
+				<div id="te-navbar-collapse" class="collapse navbar-collapse">	
+					<ul class="nav navbar-nav navbar-right">
 						<c:url value="/login" var="login"/>
 						<li><a id="loginButton" href="${login}">Log In</a></li>
 						<c:url value="/register" var="register"/>

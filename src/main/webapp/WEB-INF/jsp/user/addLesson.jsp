@@ -35,7 +35,8 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 			<div class="container-fluid">
-				<h1 class="page-header">${course.name}- ${module.name}</h1>
+
+				<h1 class="page-header"><c:out value="${course.name}- ${module.name}"></c:out></h1>
 
 				<div id="addLesson" class="add-module-div">
 					<h2>Add Lesson</h2>
@@ -44,6 +45,7 @@
 						value="/dashboard/${course.courseId}/${module.moduleId}/addLesson"
 						var="addLesson" />
 					<form method="POST" action=addLesson>
+					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 					
 						<div id="lessonName" class="form-group row">
 							<label for="lessonName" class="col-md-2 col-form-label">Lesson

@@ -21,8 +21,7 @@
 				dueDate : {
 					required : true
 				}
-				
-			};
+			}
 			errorClass: "error"
 		});
 	});
@@ -55,6 +54,7 @@
 						value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}/addAssignment"
 						var="addAssignment" />
 					<form method="POST" action=addAssignment>
+					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 
 						<div id="assignmentName" class="form-group row">
 							<label for="assignmentName" class="col-md-2 col-form-label">Name:

@@ -11,19 +11,48 @@
 				<li><a class="link" href="${catalog}">Course Catalog</a></li>
 				<c:url value="/dashboard/createCourse" var="createCourse" />
 				<li><a class="link" href="${createCourse}">Create Course</a></li>
-
 			</ul>
 		</div>
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
+			<h1 class="page-header">
+				Roster |
+				<c:out value="${course.name}" />
+			</h1>
 
 			<c:forEach var="student" items="${roster}">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Age</th>
+								<th>City</th>
+								<th>Country</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Anna</td>
+								<td>Pitt</td>
+								<td>35</td>
+								<td>New York</td>
+								<td>USA</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
 
 				<ul>
 					<c:url var="studentHref"
 						value="/dashboard/${course.courseId}/roster/${student.userId}" />
-					<li><a class="link" href="${studentHref}">${student.firstName}
-							${student.lastName}</a></li>
+					<li><a class="link" href="${studentHref}"><c:out
+								value="${student.firstName}" /> <c:out
+								value="${student.lastName}" /></a></li>
 				</ul>
 
 			</c:forEach>
