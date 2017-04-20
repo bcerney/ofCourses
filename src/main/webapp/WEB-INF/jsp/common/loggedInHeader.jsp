@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>eLearning Portal</title>
+<title>ofCourses Portal</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, userscalable=no">
 <!-- <link rel="stylesheet" type="text/css" href="/../css/student.css"> -->
@@ -20,7 +20,7 @@
 	src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 
 			<div class="navbar-header">
@@ -32,7 +32,10 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand">eLearning Portal</a> 
+				<a class="navbar-brand">
+					ofCourses Portal
+				</a>
+				
 				<%-- <c:url value="/img/background_v1.jpg" var="landingHero"/>
         
         		<img src="${landingHero}" alt="Welcome to eLearning" class="navbar-brand"> --%>
@@ -41,11 +44,12 @@
 
 			<div id="te-navbar-collapse" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li id="navUserName"><a><c:out
-						value="${currentUser.firstName}" /> <c:out
-						value="${currentUser.lastName}" /></a></li>
 					<c:url value="/" var="logout" />
 					<li><a id="logout" href="${logout}">Log Out</a></li>
+					<li id="navUserName"><a><c:out
+							value="${currentUser.firstName}" /> <c:out
+							value="${currentUser.lastName}" /></a>
+					</li>
 				</ul>
 			</div>
 			<!-- .navbar-collpase -->
