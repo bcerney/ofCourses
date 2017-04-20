@@ -82,34 +82,11 @@ public class UserController {
 		}
 	}
 
-	// @RequestMapping(path={"/studentDashboard"}, method=RequestMethod.GET)
-	// public String displayStudentDashboard(HttpServletRequest request,
-	// ModelMap model) {
-	// User currentUser = (User) model.get("currentUser");
-	// ArrayList <Course> studentCourses =
-	// courseDAO.getCoursesByUserId(currentUser.getUserId());
-	// request.setAttribute("studentsCourses", studentCourses);
-	// return "dashboard";
-	// }
-	//
-	//
-	// @RequestMapping(path={"/teacherDashboard"}, method=RequestMethod.GET)
-	// public String displayTeacherDashboard(HttpServletRequest request,
-	// ModelMap model) {
-	// User currentUser = (User) model.get("currentUser");
-	// ArrayList <Course> userCourses =
-	// courseDAO.getCoursesByTeacherId(currentUser.getUserId());
-	// request.setAttribute("userCourses", userCourses);
-	// return "dashboard";
-	// }
-
 	@RequestMapping(path = { "/courseCatalog" }, method = RequestMethod.GET)
 	public String displyCourseCatalogPage(HttpServletRequest request) {
 		List<Course> allCourses = courseDAO.getAllCourses();
 		request.setAttribute("allCourses", allCourses);
 
-		
-		
 		return "user/courseCatalog";
 	}
 
