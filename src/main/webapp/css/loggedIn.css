@@ -7,6 +7,11 @@
 	background-image: url("../img/concrete_seamless.png");
 	
 } */
+.viewMaxWidth{
+	max-width: 640px;
+	
+}
+
 body {
 	/* background: radial-gradient(circle, black, white); */
 	background-image: url("../img/concrete_seamless.png"); 	
