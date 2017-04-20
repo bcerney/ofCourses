@@ -5,8 +5,8 @@
 BEGIN;
 
 -- Teachers 1 thru 4, Team Bravo--
-INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Alex', 'Khrizman', 'khrizman@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
-INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Kyle', 'Wine', 'wine@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
+INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Alex', 'Khrizman', 'a.khrizman@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
+INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Kyle', 'Wine', 'kyledwine@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Brian', 'Cerney', 'cerney@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 INSERT INTO users (userType, firstName, lastName, email, salt, password) VALUES ('teacher', 'Eric', 'George', 'george@gmail.com', 'a5ovqz02NeLR963sLDKVQ5DJ79p1x4YRa/RTjtsX6iIukUknFLUg/kehZCklFFkNaLHD8ac5EwJ92rPyfH+91hG+x8+XkRUl9mSLrRrhusJekcL/+OH5jKUL6NanbQcIOJ639+dwlIJSmFhLbayWJpBObt+Ogv76V+SwxH/0fmo=', 'ubwMT/KWFtKP7LCRfI0UZA==');
 

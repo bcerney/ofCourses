@@ -24,15 +24,15 @@
 			</div> -->
 			<div id="courses">
 				<c:forEach var="course" items="${allCourses}">
-					<h3>${course.name}</h3>
-					<p>Instructor: ${course.teacherFullName}</p>
-					<p>Subject: ${course.subject}</p>
-					<p>Level: ${course.difficulty}</p>
-					<p>Capacity: ${course.capacity}</p>
-					<p>${course.description}</p>
-					<p>Start Date: ${course.startDate}</p>
-					<p>End Date: ${course.endDate}</p>
-					<p>Cost: $${course.fee}</p>					
+					<h3><c:out value = "${course.name}"/></h3>
+					<p>Instructor: <c:out value = "${course.teacherFullName}"/></p>
+					<p>Subject: <c:out value = "${course.subject}"/></p>
+					<p>Level: <c:out value = "${course.difficulty}"/></p>
+					<p>Capacity: <c:out value = "${course.capacity}"/></p>
+					<p><c:out value = "${course.description}"/></p>
+					<p>Start Date: <c:out value = "${course.startDate}"/></p>
+					<p>End Date: <c:out value = "${course.endDate}"/></p>
+					<p>Cost: $<c:out value = "${course.fee}"/></p>					
 				 <c:url var="courseDetailHref" value="dashboard/${course.courseId}"/>
 								
 				<c:if test="${currentUser.userType == 'student'}">
