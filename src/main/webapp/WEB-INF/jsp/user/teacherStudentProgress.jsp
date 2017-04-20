@@ -19,9 +19,9 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 			<h1 class="page-header"><c:out value="${course.name}"/></h1>
-			<h2 class="">
+			<h3 class="page-header">
 				<span class="glyphicon glyphicon-road"></span> <c:out value="${student.firstName} ${student.lastName}"/>'s Progress 
-			</h2>
+			</h3>
 			
 			
 			<h2>Current Grade90: 
