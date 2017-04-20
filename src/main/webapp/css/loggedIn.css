@@ -7,15 +7,15 @@
 	background-image: url("../img/concrete_seamless.png");
 	
 } */
-.viewMaxWidth{
-	max-width: 640px;
-	
+.viewMaxWidth {
+	max-width: 960px; 
 }
 
 body {
 	/* background: radial-gradient(circle, black, white); */
-	background-image: url("../img/concrete_seamless.png"); 	
+	background-image: url("../img/concrete_seamless.png");
 }
+
 
 .assignments{
 	/* position: relative;
@@ -26,9 +26,9 @@ body {
 	/* margin-right: 5px; */
 /* 	background-color: white;
 	opacity: 0.2; */
-	height: 1500px;
-	
-	
+/* 	height: 1500px;
+ */	
+	margin-top: 70px;
 		
 }
 
@@ -90,10 +90,16 @@ border-bottom: solid;
 .sidebar-div{
 	/* position: fixed; */
 /* 	border-top: 1px solid black; */
-	border-right: 1px solid black;
-	/* border-bottom: 1px solid black; */
+/* 	border-right: 1px solid black;
+ */	/* border-bottom: 1px solid black; */
 	max-width: 200px;
-	/* margin-left: 2px; */
+	/* margin-left: 2px; */	
+}
+
+#dashMain {
+	margin-top: 50px;
+	border-left: 1px solid black;
+	margin-bottom: 20px;
 	
 }
 
@@ -107,7 +113,8 @@ border-bottom: solid;
 	text-align: center;
 	margin: 40px;
 	color: #14d100;
-	
+	position: relative;
+	top: 100px;
 }
 
 #courseName{
@@ -261,3 +268,12 @@ border-bottom: solid;
 #courseCatalogLink{
 	color: red;
 } */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  /* Set the fixed height of the footer here */
+  height: 20px;
+  background-color: #f5f5f5;

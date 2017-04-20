@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>eLearning Portal</title>
+<title>ofCourses: The Obvious Place to Learn</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, userscalable=no">
 <!-- <link rel="stylesheet" type="text/css" href="/../css/student.css"> -->
@@ -29,7 +29,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand">eLearning Portal</a>
+					<a class="navbar-brand">ofCourses: The Obvious Place to Learn</a>
 				</div> <!-- .navbar-header -->
 				
 				<div id="te-navbar-collapse" class="collapse navbar-collapse">	

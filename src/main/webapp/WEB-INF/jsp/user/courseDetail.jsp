@@ -38,7 +38,7 @@
 
 				<p>Subject: <c:out value="${course.subject}"/></p>
 				<p>Level: <c:out value="${course.difficulty}"/></p>
-				<p><c:out value="${course.description}"/></p>
+				<p class="viewMaxWidth"><c:out value="${course.description}"/></p>
 				<p>Start Date: <c:out value="${course.startDate}"/></p>
 				<p>End Date: <c:out value="${course.endDate}"/></p>
 
