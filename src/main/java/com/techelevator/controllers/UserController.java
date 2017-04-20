@@ -114,8 +114,13 @@ public class UserController {
 	}
 
 	@RequestMapping(path = { "/dashboard/createCourse" }, method = RequestMethod.GET)
-	public String displayCreateCourse() {
-		return "user/createCourse";
+	public String displayCreateCourse(ModelMap model) {
+		User currentUser = (User) model.get("currentUser");
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/createCourse";			
+		} else {
+			return "redirect:/dashboard/";
+		}
 	}
 
 	@RequestMapping(path = { "/dashboard/createCourse" }, method = RequestMethod.POST)
@@ -265,15 +270,21 @@ public class UserController {
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/addLesson" }, method = RequestMethod.GET)
 	public String displayAddLesson(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long moduleId) {
+			@PathVariable long moduleId, ModelMap model) {
 
+		User currentUser = (User) model.get("currentUser");
 		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 
 		request.setAttribute("course", course);
 		request.setAttribute("module", module);
 
-		return "user/addLesson";
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/addLesson";
+		} else {
+			// TODO: add error message or 403 redirect
+			return "redirect:/dashboard/" + courseId + "/" + moduleId;
+		}		
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/addLesson" }, method = RequestMethod.POST)
@@ -352,8 +363,10 @@ public class UserController {
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addResource" }, method = RequestMethod.GET)
 	public String displayAddResource(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long moduleId, @PathVariable long lessonId) {
+			@PathVariable long moduleId, @PathVariable long lessonId, ModelMap model) {
 
+		User currentUser = (User)model.get("currentUser");
+		
 		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
@@ -362,7 +375,12 @@ public class UserController {
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
 
-		return "user/addResource";
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/addResource";
+		} else {
+			// TODO: add error message or 403 redirect
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;
+		}		
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addResource" }, method = RequestMethod.POST)
@@ -391,8 +409,9 @@ public class UserController {
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment" }, method = RequestMethod.GET)
 	public String displayAddAssignment(HttpServletRequest request, @PathVariable long courseId,
-			@PathVariable long moduleId, @PathVariable long lessonId) {
-
+			@PathVariable long moduleId, @PathVariable long lessonId, ModelMap model) {
+		User currentUser = (User)model.get("currentUser");
+		
 		Course course = courseDAO.getCourseByCourseId(courseId);
 		Module module = moduleDAO.getModuleByModuleId(moduleId);
 		Lesson lesson = lessonDAO.getLessonByLessonId(lessonId);
@@ -401,7 +420,13 @@ public class UserController {
 		request.setAttribute("module", module);
 		request.setAttribute("lesson", lesson);
 
-		return "user/addAssignment";
+		if (currentUser.getUserType().equals("teacher")) {
+			return "user/addAssignment";
+		} else {
+			// TODO: add error message or 403 redirect
+			return "redirect:/dashboard/" + courseId + "/" + moduleId + "/" + lessonId;
+		}		
+		
 	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/{moduleId}/{lessonId}/addAssignment" }, method = RequestMethod.POST)
