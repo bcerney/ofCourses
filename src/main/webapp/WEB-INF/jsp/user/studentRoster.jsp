@@ -14,49 +14,39 @@
 			</ul>
 		</div>
 
-		<div id="dashMain" class="col-sm-9 col-md-10">
+		<div id="dashMain" class="col-sm-7 col-md-9">
+
 			<h1 class="page-header">
-				Roster |
+				Roster <span class="glyphicon glyphicon-user"></span>
 				<c:out value="${course.name}" />
 			</h1>
 
-			<c:forEach var="student" items="${roster}">
-				<div class="table-responsive">
-					<table class="table">
-						<thead>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Student Name</th>
+							<th>Assignments</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<c:forEach var="student" items="${roster}">
+
 							<tr>
-								<th>#</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Age</th>
-								<th>City</th>
-								<th>Country</th>
+								<td><c:out value="${student.firstName} ${student.lastName}"/></td>
+								<c:url var="studentHref" value="/dashboard/${course.courseId}/roster/${student.userId}" />
+								<td><a class="btn btn-success" href="${studentHref}">See Assignments</a></td>
 							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Anna</td>
-								<td>Pitt</td>
-								<td>35</td>
-								<td>New York</td>
-								<td>USA</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
 
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 
-				<ul>
-					<c:url var="studentHref"
-						value="/dashboard/${course.courseId}/roster/${student.userId}" />
-					<li><a class="link" href="${studentHref}"><c:out
-								value="${student.firstName}" /> <c:out
-								value="${student.lastName}" /></a></li>
-				</ul>
-
-			</c:forEach>
-
+		</div>
+		
+		<div class="col-sm-2 col-md-1">
 		</div>
 	</div>
 </div>
