@@ -30,7 +30,7 @@
 						n/a
 					</c:when>
 					<c:otherwise>
-						${currentGrade}
+						<c:out value="${currentGrade}"/>
 					</c:otherwise>
 				</c:choose>
 			</h2>
@@ -42,13 +42,13 @@
 						<c:if
 							test="${!submission.studentAssignment.submitted}">
 						<div class="incomplete-assignment-div">
-							<h3>${submission.assignment.name}</h3>
+							<h3><c:out value="${submission.assignment.name}"/></h3>
 							
 							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}" var="lessonHref"/>
-							<p><strong>Lesson: </strong><a href="${lessonHref}">${submission.lesson.name}</a></p>
-							<p>${submission.assignment.description}</p>
-							<p><strong>Max Score: </strong>${submission.assignment.maxScore}</p>
-							<p><strong>Due Date: </strong>${submission.assignment.dueDate}</p>
+							<p><strong>Lesson: </strong><a href="${lessonHref}"><c:out value="${submission.lesson.name}"/></a></p>
+							<p><c:out value="${submission.assignment.description}"/></p>
+							<p><strong>Max Score: </strong><c:out value="${submission.assignment.maxScore}"/></p>
+							<p><strong>Due Date: </strong><c:out value="${submission.assignment.dueDate}"/></p>
 							
 							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}#${submission.assignment.assignmentId}" var="assignmentsHref"/>
 							<a href="${assignmentsHref}" class="btn btn-success">Go To Assignment</a>
@@ -68,11 +68,11 @@
 						<c:if
 							test="${(submission.studentAssignment.submitted) && (submission.studentAssignment.score == -1)}">
 
-							<h4>${submission.assignment.name}</h4>
+							<h4><c:out value="${submission.assignment.name}"/></h4>
 							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}" var="lessonHref"/>
-							<p><strong>Lesson: </strong><a href="${lessonHref}">${submission.lesson.name}</a></p>
-							<p><strong>Submission: </strong>${submission.studentAssignment.submissionText}</p>
-							<p><strong>Submitted on: </strong>${submission.studentAssignment.submissionDate}</p>
+							<p><strong>Lesson: </strong><a href="${lessonHref}"><c:out value="${submission.lesson.name}"/></a></p>
+							<p><strong>Submission: </strong><c:out value="${submission.studentAssignment.submissionText}"/></p>
+							<p><strong>Submitted on: </strong><c:out value="${submission.studentAssignment.submissionDate}"/></p>
 							
 
 							<%--  					<p>PROGRESS (GRADE) HERE</p>
@@ -94,12 +94,12 @@
 						<c:if
 							test="${(submission.studentAssignment.submitted) && (submission.studentAssignment.score > -1)}">
 
-							<h4>${submission.assignment.name}</h4>
+							<h4><c:out value="${submission.assignment.name}"/></h4>
 							<c:url value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}" var="lessonHref"/>
-							<p><strong>Lesson: </strong><a href="${lessonHref}">${submission.lesson.name}</a></p>
-							<p><strong>Submission: </strong>${submission.studentAssignment.submissionText}</p>
-							<p><strong>Submitted on: </strong>${submission.studentAssignment.submissionDate}</p>
-							<p><strong>Score: </strong>${submission.studentAssignment.score}/${submission.assignment.maxScore}</p>
+							<p><strong>Lesson: </strong><a href="${lessonHref}"><c:out value="${submission.lesson.name}"/></a></p>
+							<p><strong>Submission: </strong><c:out value="${submission.studentAssignment.submissionText}"/></p>
+							<p><strong>Submitted on: </strong><c:out value="${submission.studentAssignment.submissionDate}"/></p>
+							<p><strong>Score: </strong><c:out value="${submission.studentAssignment.score}/${submission.assignment.maxScore}"/></p>
 							
 
 						</c:if>

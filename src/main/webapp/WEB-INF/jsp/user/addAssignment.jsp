@@ -21,8 +21,7 @@
 				dueDate : {
 					required : true
 				}
-				
-			};
+			}
 			errorClass: "error"
 		});
 	});

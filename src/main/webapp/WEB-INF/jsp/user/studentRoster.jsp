@@ -11,7 +11,6 @@
 				<li><a class="link" href="${catalog}">Course Catalog</a></li>
 				<c:url value="/dashboard/createCourse" var="createCourse" />
 				<li><a class="link" href="${createCourse}">Create Course</a></li>
-
 			</ul>
 		</div>
 
@@ -22,8 +21,8 @@
 				<ul>
 					<c:url var="studentHref"
 						value="/dashboard/${course.courseId}/roster/${student.userId}" />
-					<li><a class="link" href="${studentHref}">${student.firstName}
-							${student.lastName}</a></li>
+					<li><a class="link" href="${studentHref}"><c:out value="${student.firstName}"/>
+							<c:out value="${student.lastName}"/></a></li>
 				</ul>
 
 			</c:forEach>
