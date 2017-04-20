@@ -9,8 +9,6 @@
 				<li><a class="link" href="${dashboard}">Dashboard</a></li>
 				<c:url value="/courseCatalog" var="catalog" />
 				<li><a class="link" href="${catalog}">Course Catalog</a></li>
-			</ul>
-			<ul class="nav sidebar-nav">
 				<li><a class="link" href="#incompleteAssignments">Incomplete Assignments</a></li>
 				<li><a class="link" href="#submittedAssignments">Submitted Assignments</a></li>
 				<li><a class="link" href="#gradedAssignments">Graded Assignments</a></li>
@@ -21,7 +19,7 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 			<h1 class="">
-				<c:out value="${currentUser.firstName}" />'s Assignments for 
+				Your Assignments for 
 				<br>
 				<c:out value="${course.name}"/>
 			</h1>
