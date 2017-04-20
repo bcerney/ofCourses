@@ -61,10 +61,10 @@ INSERT INTO student_course (studentId, courseId) VALUES (15,1);
 INSERT INTO student_course (studentId, courseId) VALUES (16,1);
 
 -- Course 2 students --
-INSERT INTO student_course (studentId, courseId) VALUES (8,2);
-INSERT INTO student_course (studentId, courseId) VALUES (9,2);
-INSERT INTO student_course (studentId, courseId) VALUES (10,2);
-INSERT INTO student_course (studentId, courseId) VALUES (11,2);
+-- INSERT INTO student_course (studentId, courseId) VALUES (8,2);
+-- INSERT INTO student_course (studentId, courseId) VALUES (9,2);
+-- INSERT INTO student_course (studentId, courseId) VALUES (10,2);
+-- INSERT INTO student_course (studentId, courseId) VALUES (11,2);
 INSERT INTO student_course (studentId, courseId) VALUES (12,2);
 INSERT INTO student_course (studentId, courseId) VALUES (13,2);
 INSERT INTO student_course (studentId, courseId) VALUES (14,2);
@@ -386,45 +386,45 @@ INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 9);
 INSERT INTO student_assignment (studentId, assignmentId) VALUES (16, 10);
 
 -- Course 2 Student Assignments
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 11);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 12);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 13);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 14);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 15);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 16);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 17);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 18);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 19);
-
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 11);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 12);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 13);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 14);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 15);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 16);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 17);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 18);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 19);
-
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 11);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 12);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 13);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 14);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 15);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 16);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 17);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 18);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 19);
-
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 11);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 12);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 13);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 14);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 15);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 16);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 17);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 18);
-INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 19);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 11);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 12);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 13);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 14);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 15);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 16);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 17);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 18);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (8, 19);
+--
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 11);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 12);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 13);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 14);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 15);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 16);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 17);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 18);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (9, 19);
+--
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 11);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 12);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 13);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 14);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 15);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 16);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 17);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 18);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (10, 19);
+--
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 11);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 12);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 13);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 14);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 15);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 16);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 17);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 18);
+-- INSERT INTO student_assignment (studentId, assignmentId) VALUES (11, 19);
 
 INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 11);
 INSERT INTO student_assignment (studentId, assignmentId) VALUES (12, 12);
