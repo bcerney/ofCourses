@@ -328,8 +328,8 @@ public class UserController {
 
 		if (submissionText != null) {
 			studentAssignmentDAO.addTextSubmission(studentId, assignmentId, submissionText);
-//			MailSender sendMailTeacher = new MailSender(userDAO.getUserById(teacherId).getEmail(), "Homework Submission Notification", "Homework has been submitted by " + currentUser.getFirstName() + " " + currentUser.getLastName());
-//			sendMailTeacher.start();
+			MailSender sendMailTeacher = new MailSender(userDAO.getUserById(teacherId).getEmail(), "Homework Submission Notification", "Homework has been submitted by " + currentUser.getFirstName() + " " + currentUser.getLastName());
+			sendMailTeacher.start();
 //			studentAssignmentDAO.addFileSubmission();
 		}
 				
