@@ -156,8 +156,8 @@ border-bottom: solid;
 #lessonDescription{
 	max-width: 50%;
 	min-width: 250px;
-	min-height: 500px;
-}
+/* 	min-height: 500px;
+ */}
 
 #assignmentName{
 	max-width: 50%;
