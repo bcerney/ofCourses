@@ -32,8 +32,18 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+
+				<c:choose>
+					<c:when test="${currentUser.userType == 'teacher'}">
+						<c:set var="portalType" value="Instructor"/>
+					</c:when>
+					<c:otherwise>
+						<c:set var="portalType" value="Student"/>
+					</c:otherwise>
+				</c:choose>
+
 				<a class="navbar-brand">
-					ofCourses Portal
+					ofCourses: ${portalType} Portal
 				</a>
 				
 				<%-- <c:url value="/img/background_v1.jpg" var="landingHero"/>
