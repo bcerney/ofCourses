@@ -35,6 +35,8 @@
 				
 				<div class="collapse navbar-collapse" id="te-navbar-collapse">	
 					<ul class="nav navbar-nav">
+
+						<li id="navUserName" ><a><c:out value="${currentUser.firstName}"/> <c:out value="${currentUser.lastName}"/></a></li>
 						
 						<c:url value="/" var="logout"/>
 						<li><a id="logout" href="${logout}">Log Out</a></li>

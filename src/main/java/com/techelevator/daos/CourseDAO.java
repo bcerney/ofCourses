@@ -14,5 +14,6 @@ public interface CourseDAO {
 	public boolean courseHasGivenTeacher(long courseId, long teacherId);
 	public boolean studentIsEnrolledInCourse(long courseId, long studentId);
 	public boolean isCourseFull(long courseID);
+	public void changeCourseStatus(Course course);
 	
 }

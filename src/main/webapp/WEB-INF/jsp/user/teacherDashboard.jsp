@@ -23,7 +23,6 @@
 
 		<div id="dashMain" class="col-sm-9 col-md-10">
 
-			<p>Welcome, <c:out value="${currentUser.firstName}"/></p>
 			<h1 class="page-header">
 				Your Courses
 			</h1>
@@ -41,11 +40,20 @@
 					<p>End Date: ${course.endDate}</p>
 					<p>Cost: $${course.fee}</p> --%>
 					
-					<c:url value="/dashboard/${course.courseId}" var="courseDetail">
-					</c:url>
-
-					<a id="courseDetailBtn" class="btn btn-success" href="${courseDetailHref}">Launch Course</a>
-
+<%--  					<c:url var="formAction" value="/dashboard/${course.courseId}"/>
+					<form method="POST" action="${formAction}">
+						<c:choose>
+							<c:when test="${course.active}">
+								<input type="submit" class="btn btn-success" value="Close Course" />
+							</c:when>
+							
+							<c:otherwise>
+								<input type="submit" class="btn btn-success" value="Launch Course" />
+							</c:otherwise>
+						</c:choose>
+						
+					</form> --%>
+					
 				</c:forEach>
 			</div>
 		</div>

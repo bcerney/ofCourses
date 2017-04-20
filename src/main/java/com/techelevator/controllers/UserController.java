@@ -153,6 +153,19 @@ public class UserController {
 		request.setAttribute("teacher", teacher);
 		return "user/courseDetail";
 	}
+	
+	@RequestMapping(path = { "/dashboard/{courseId}" }, method = RequestMethod.POST)
+	public String changeCourseStatus(HttpServletRequest request, @PathVariable long courseId,
+		ModelMap model) {
+		Course course = courseDAO.getCourseByCourseId(courseId);
+		if (course.isActive()) {
+			course.setActive(false);
+		} else {
+			course.setActive(true);
+		}
+		courseDAO.changeCourseStatus(course);
+		return "redirect:/dashboard/" + courseId;
+	}
 
 	@RequestMapping(path = { "/dashboard/{courseId}/addModule" }, method = RequestMethod.GET)
 	public String displayAddModule(HttpServletRequest request, @PathVariable long courseId, ModelMap model) {

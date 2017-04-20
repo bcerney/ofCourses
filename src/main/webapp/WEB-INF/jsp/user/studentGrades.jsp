@@ -17,7 +17,7 @@
 			</ul>
 		</div>
 		
-			<div class = "assignments">
+			<div id="dashMain" class="col-sm-9 col-md-10">
 		<h2>${user.firstName} ${user.lastName}</h2>
 		<h4>${course.name}</h4>
 		
