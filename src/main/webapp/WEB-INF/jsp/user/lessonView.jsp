@@ -31,7 +31,7 @@
 			<div id="dashMain" class="col-sm-9 col-md-10">
 				<h1 class="page-header">LESSON: <c:out value="${lesson.name}"/></h1>
 
-				<h4><c:out value="${lesson.description}"/></h4>
+				<h4 class="viewMaxWidth"><c:out value="${lesson.description}"/></h4>
 				
 				<h2 class="page-header">Resources</h2>
 				<c:forEach var="resource" items="${allResources}">
@@ -52,7 +52,7 @@
 					
 				</c:choose>
 				
-					<p><c:out value="${resource.description}"/></p>
+					<p class="viewMaxWidth"><c:out value="${resource.description}"/></p>
 					<br>
 				
 					</div>

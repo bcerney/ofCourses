@@ -32,7 +32,10 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand">eLearning Portal</a>
+				<a class="navbar-brand">eLearning Portal</a> 
+				<%-- <c:url value="/img/background_v1.jpg" var="landingHero"/>
+        
+        		<img src="${landingHero}" alt="Welcome to eLearning" class="navbar-brand"> --%>
 			</div>
 			<!-- .navbar-header -->
 
