@@ -135,7 +135,7 @@
 							</div>
 						</div>
 
-						<input class="formSubmitButton" type="submit" value="Submit!" />
+						<input class="btn btn-success" type="submit" value="Submit!" />
 
 
 					</form>
