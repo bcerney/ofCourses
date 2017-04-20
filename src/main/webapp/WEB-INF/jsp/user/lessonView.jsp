@@ -108,6 +108,7 @@
 								value="/dashboard/${course.courseId}/${module.moduleId}/${lesson.lessonId}"
 								var="submitAssignment" />
 							<form method="POST" action="${submitAssignment}">
+							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							
 								<div id="assignmentSubmission" class="form-group row">
 <!--  								<label for="assignmentSubmission" class="col-md-2 col-form-label">Your Response: </label>   -->
