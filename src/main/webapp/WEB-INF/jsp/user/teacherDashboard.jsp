@@ -31,7 +31,31 @@
 				<c:forEach var="course" items="${teacherCourses}">
 					<c:url value="/dashboard/${course.courseId}" var="courseDetailHref">
 					</c:url>
+
+<%-- 					<p>Subject: ${course.subject}</p>
+					<p>Level: ${course.difficulty}</p>
+					<p>Capacity: ${course.capacity}</p>
+					<p>${course.description}</p>
+					<p>Start Date: ${course.startDate}</p>
+					<p>End Date: ${course.endDate}</p>
+					<p>Cost: $${course.fee}</p> --%>
+					
+<%--  					<c:url var="formAction" value="/dashboard/${course.courseId}"/>
+					<form method="POST" action="${formAction}">
+						<c:choose>
+							<c:when test="${course.active}">
+								<input type="submit" class="btn btn-success" value="Close Course" />
+							</c:when>
+							
+							<c:otherwise>
+								<input type="submit" class="btn btn-success" value="Launch Course" />
+							</c:otherwise>
+						</c:choose>
+						
+					</form> --%>
+
 				<h3><a class="link" href= "${courseDetailHref}"><c:out value="${course.name}"/></a></h3>
+
 					
 				</c:forEach>
 			</div>
