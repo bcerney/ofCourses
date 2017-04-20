@@ -16,9 +16,9 @@
 
 		<div id="dashMain" class="col-sm-7 col-md-9">
 
-			<h1 class="page-header">
-				Roster <span class="glyphicon glyphicon-user"></span>
-				<c:out value="${course.name}" />
+			<h1 class="">
+			<c:out value="${course.name}" /> <span class="glyphicon glyphicon-user"></span> Roster
+				
 			</h1>
 
 			<div class="table-responsive">
@@ -26,7 +26,7 @@
 					<thead>
 						<tr>
 							<th>Student Name</th>
-							<th>Assignments</th>
+							<th>Course Progress</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -36,7 +36,7 @@
 							<tr>
 								<td><c:out value="${student.firstName} ${student.lastName}"/></td>
 								<c:url var="studentHref" value="/dashboard/${course.courseId}/roster/${student.userId}" />
-								<td><a class="btn btn-success" href="${studentHref}">See Assignments</a></td>
+								<td><a class="btn btn-success" href="${studentHref}">View Progress</a></td>
 							</tr>
 
 						</c:forEach>
