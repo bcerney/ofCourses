@@ -463,11 +463,12 @@ public class UserController {
 		
 		User student = userDAO.getUserById(userId);
 		List<Submission> currentUserSubmissions = getSubmissionsByStudentIdAndCourseId(student.getUserId(), courseId);
+		int currentGrade = calculateGradedAssignmentPercentage(currentUserSubmissions);
 		
 		request.setAttribute("student", student);
 		request.setAttribute("course", courseDAO.getCourseByCourseId(courseId));
 		request.setAttribute("submissions", currentUserSubmissions);
-		request.setAttribute("currentGrade", calculateGradedAssignmentPercentage(currentUserSubmissions));
+		request.setAttribute("currentGrade", currentGrade);
 		
 		return "user/teacherStudentProgress";
 	}
@@ -541,7 +542,7 @@ public class UserController {
 			return -1;
 		}
 		
-		return (int) ((combinedScores / combinedMaxScores) * 100);
+		return (int) (((float) combinedScores / (float)combinedMaxScores) * 100);
 	}
 	
 	
