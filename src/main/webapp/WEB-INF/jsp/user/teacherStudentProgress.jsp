@@ -58,6 +58,10 @@
 										value="${submission.lesson.name}" /></a>
 							</p>
 							<p>
+								<strong>Max Score: </strong>
+								<c:out value="${submission.assignment.maxScore}" />
+							</p>
+							<p>
 								<strong>Submission: </strong>
 								<c:out value="${submission.studentAssignment.submissionText}" />
 							</p>
@@ -65,21 +69,34 @@
 								<strong>Submitted on: </strong>
 								<c:out value="${submission.studentAssignment.submissionDate}" />
 							</p>
-
-
-							<%--  					<p>PROGRESS (GRADE) HERE</p>
-					<p>Subject: ${course.subject}</p>
-					<p>Level: ${course.difficulty}</p>
-					<p>${course.description}</p>
-					<p>Start Date: ${course.startDate}</p>
-					<p>End Date: ${course.endDate}</p> --%>
+							
+							<c:url
+								value="/dashboard/${course.courseId}/roster/${submission.studentAssignment.studentId}"
+								var="gradeAssignment">
+								<c:param name="assignmentId" value="${submission.assignment.assignmentId}"/>
+							</c:url>
+							<form method="POST" action=${gradeAssignment}>
+								<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+								<input type="hidden" name="assignmentId" value="${submission.assignment.assignmentId}"/>
+								<div id="assignmentGrade" class="form-group row">
+									<label for="assignmentGrade" class="col-md-1 col-form-label">Grade:
+									</label>
+									<div class="col-md-5">
+										<input class="form-control" type="text" name="assignmentGrade"
+											placeholder="Grade (1-${submission.assignment.maxScore})" />
+									</div>
+									
+					
+								</div>
+								<input class="btn btn-success" type="submit" value="Submit Grade" />
+							</form>
 
 						</c:if>
-						<!-- TODO: have this navigate to student view of course -->
+
 					</c:forEach>
 				</div>
 				<!-- #submittedAssignments -->
-				
+
 				<div id="gradedAssignments">
 					<h2 class="page-header">Graded Assignments</h2>
 					<c:forEach var="submission" items="${submissions}">
@@ -146,16 +163,11 @@
 									<c:out value="${submission.assignment.dueDate}" />
 								</p>
 
-								<%-- <c:url
-									value="/dashboard/${courseId}/${submission.lesson.moduleId}/${submission.lesson.lessonId}#${submission.assignment.assignmentId}"
-									var="assignmentsHref" />
-								<a href="${assignmentsHref}" class="btn btn-success">Go To
-									Assignment</a> --%>
+
 
 
 							</div>
 						</c:if>
-						<!-- TODO: have this navigate to student view of course -->
 					</c:forEach>
 				</div>
 				<!-- #incompleteAssignments -->
