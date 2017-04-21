@@ -32,15 +32,15 @@
 				<c:url var="formAction" value="/courseDetail" />
 
 				<c:if test="${currentUser.userType == 'student'}">
-					<p>PROGRESS (GRADE) HERE</p>
+					<!-- <p>PROGRESS (GRADE) HERE</p> -->
 					<p>Instructor: <c:out value="${teacher.firstName}"/> <c:out value="${teacher.lastName}"/></p>
 				</c:if>
 
-				<p>Subject: <c:out value="${course.subject}"/></p>
-				<p>Level: <c:out value="${course.difficulty}"/></p>
+				<p><strong>Subject: </strong><c:out value="${course.subject}"/></p>
+				<p><strong>Level: </strong><c:out value="${course.difficulty}"/></p>
 				<p class="viewMaxWidth"><c:out value="${course.description}"/></p>
-				<p>Start Date: <c:out value="${course.startDate}"/></p>
-				<p>End Date: <c:out value="${course.endDate}"/></p>
+				<p><strong>Start Date: </strong><c:out value="${course.startDate}"/></p>
+				<p><strong>End Date: </strong><c:out value="${course.endDate}"/></p>
 
 				<c:if test="${currentUser.userType == 'teacher'}">
  					<c:url var="formAction" value="/dashboard/${course.courseId}"/>
@@ -64,8 +64,8 @@
 				<c:forEach var="module" items="${modules}" varStatus="loop">
 					<div class="courseModule">
 						<c:url var="moduleHref"
-							value="/dashboard/${course.courseId}/${module.moduleId}" />
-						${loop.index+1}. <a class="link" href="${moduleHref}"><c:out value="${module.name}"/></a>
+							value="/dashboard/${course.courseId}/${module.moduleId}" /><h3>
+						${loop.index+1}. <a class="link" href="${moduleHref}"><c:out value="${module.name}"/></a></h3>
 					</div>
 
 				</c:forEach>
